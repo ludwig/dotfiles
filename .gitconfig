@@ -1,0 +1,15 @@
+[user]
+	name = Luis Armendariz
+	email = luis.armendariz@gmail.com
+
+# http://git.or.cz/gitwiki/Aliases
+[alias]
+	st = status
+	ci = commit
+	br = branch
+	co = commit
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
