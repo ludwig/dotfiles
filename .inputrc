@@ -1,0 +1,15 @@
+set bell-style visible
+set expand-tilde off
+set visible-stats on
+set prefer-visible-bell
+
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\e[C": forward-char
+"\e[D": backward-char
+
+"\e\e[A": history-search-backward
+"\e\e[B": history-search-forward
+"\e\e[C": forward-word
+"\e\e[D": backward-word
+
