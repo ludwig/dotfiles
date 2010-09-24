@@ -47,15 +47,19 @@ alias cgoban3='javaws http://files.gokgs.com/javaBin/cgoban.jnlp'
 if [[ $platform == 'linux' ]]; then
 
     # Linux aliases
-    alias xboard-medium='xboard -size medium'
-    alias xboard-fics='xboard-medium -ics -icshost freechess.org'
-    alias mplayer-max='mplayer -fs -zoom -loop 0'
-    alias keynote='~/.wine/drive_c/Program\ Files/KeyNote/keynote.exe 2>/dev/null'
+    alias ls='ls --color -F'
 
     # some ls aliases
     #alias ll='ls -l'
     #alias la='ls -A'
     #alias l='ls -CF'
+
+    # misc aliases
+    alias xboard-medium='xboard -size medium'
+    alias xboard-fics='xboard-medium -ics -icshost freechess.org'
+    alias mplayer-max='mplayer -fs -zoom -loop 0'
+    alias keynote='~/.wine/drive_c/Program\ Files/KeyNote/keynote.exe 2>/dev/null'
+
 
 elif [[ $platform == 'macosx' ]]; then
 
