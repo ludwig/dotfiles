@@ -3,11 +3,18 @@
 	email = luis.armendariz@gmail.com
 
 # http://git.or.cz/gitwiki/Aliases
+# http://betterexplained.com/articles/aha-moments-when-learning-git/
+# http://mislav.uniqpath.com/2010/07/git-tips/
 [alias]
 	st = status
 	ci = commit
 	br = branch
 	co = commit
+	oneline = log --pretty=oneline
+	la = log --pretty=\"format:%ad %h (%an): %s\" --date=short
+	ll = log --oneline --decorate
+	wd = diff --word-diff
+
 [color]
 	branch = auto
 	diff = auto
