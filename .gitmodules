@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/git"]
 	path = .vim/bundle/git
 	url = git://github.com/motemen/git-vim.git
+[submodule ".vim/bundle/fugitive"]
+	path = .vim/bundle/fugitive
+	url = git://github.com/tpope/vim-fugitive.git
