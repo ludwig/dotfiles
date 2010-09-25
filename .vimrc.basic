@@ -1,0 +1,102 @@
+" ~/.vimrc
+set nocompatible
+syntax on
+
+let mapleader=","
+
+set ruler
+set showcmd
+set showmode
+set showmatch
+set nowrap
+
+set tabstop=4
+set softtabstop=4
+set expandtab
+set shiftwidth=4
+set shiftround
+set smarttab
+set autoindent
+set copyindent
+
+set backspace=indent,eol,start
+set fileformats="unix,dos,mac"
+
+set gdefault
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+set modeline
+set modelines=5
+set scrolloff=4
+set showtabline=2
+set laststatus=2
+set cmdheight=1
+
+set termencoding=utf-8
+set encoding=utf-8
+set lazyredraw
+
+set nolist
+set listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
+
+set hidden
+set switchbuf=useopen
+
+set history=1000
+set undolevels=1000
+set undofile
+set undodir=~/.vim/tmp/undo//,~/tmp//,/tmp//
+set backupdir=~/.vim/tmp/backup//,~/tmp//,/tmp//
+set directory=~/.vim/tmp/swp//,~/tmp//,/tmp//
+set viminfo='20,\"80
+
+set wildmenu
+set wildmode=list:full
+set wildignore=*.swp,*.bak,*.pyc,*.class
+
+set title
+set visualbell
+set noerrorbells
+
+set cpoptions+=$
+set formatoptions-=o
+au filetype vim set formatoptions-=o
+
+set foldenable
+set foldcolumn=2
+set foldmethod=marker
+set foldlevelstart=0
+set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
+set foldtext=MyFoldText()
+function! MyFoldText()
+    let line = getline(v:foldstart)
+
+    let nucolwidth = &fdc + &number * &numberwidth
+    let windowwidth = winwidth(0) - nucolwidth - 3
+    let foldedlinecount = v:foldend - v:foldstart
+
+    " expand tabs into spaces
+    let onetab = strpart('          ', 0, &tabstop)
+    let line = substitute(line, '\t', onetab, 'g')
+
+    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+    let fillcharcount = windowwidth - len(line) - len(foldedlinecount) - 4
+    return line . ' …' . repeat(" ",fillcharcount) . foldedlinecount . ' '
+endfunction
+
+" -----------------------------------------------------------------------------
+
+set mouse=a
+set ttyfast
+
+" Remap j and k to act as expected when used on long, wrapped lines
+nnoremap j gj
+nnoremap k gk
+
+" -----------------------------------------------------------------------------
+"set smartindent
+"set number
+"set background=dark
