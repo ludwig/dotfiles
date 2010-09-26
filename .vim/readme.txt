@@ -140,6 +140,9 @@ http://github.com/remiprev/vimfiles/raw/master/bundle/shell/plugin/shell.vim
 http://www.vim.org/scripts/script.php?script_id=2611
 http://code.google.com/p/xptemplate/
 
+# stlrefvim - A C++ Standard Template Library reference manual
+http://www.vim.org/scripts/script.php?script_id=2353
+
 ###############################################################################
 
 # How can I automatically add some skeleton code when creating a new file with vim
