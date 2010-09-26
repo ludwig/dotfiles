@@ -514,6 +514,12 @@ if has("autocmd")
                 execute "0r ~/.vim/skeleton/test_template.py"
             elseif a:file =~ '.*\.py$'
                 execute "0r ~/.vim/skeleton/template.py"
+            elseif a:file =~ 'furls$'
+                execute "0r ~/.vim/skeleton/furls"
+                set ft=conf
+            elseif a:file =~ 'furls2$'
+                execute "0r ~/.vim/skeleton/furls2"
+                set ft=conf
             endif
         endfunction
     endif
