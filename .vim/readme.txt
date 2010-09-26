@@ -146,6 +146,12 @@ http://www.vim.org/scripts/script.php?script_id=2353
 # calendar.vim - calendar
 http://www.vim.org/scripts/download_script.php?src_id=12959
 
+# cocoa.vim - plugin for Cocoa/Objective-C development
+git submodule add git://github.com/msanders/cocoa.vim.git .vim/bundle/cocoa
+http://github.com/msanders/cocoa.vim
+http://www.vim.org/scripts/script.php?script_id=2674
+http://mymacinations.com/2008/02/06/changing-the-systems-default-settings-for-html-files-safe/
+
 ###############################################################################
 
 # How can I automatically add some skeleton code when creating a new file with vim

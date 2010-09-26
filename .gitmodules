@@ -31,3 +31,6 @@
 [submodule ".vim/bundle/snipmate_for_django"]
 	path = .vim/bundle/snipmate_for_django
 	url = git://github.com/robhudson/snipmate_for_django.git
+[submodule ".vim/bundle/cocoa"]
+	path = .vim/bundle/cocoa
+	url = git://github.com/msanders/cocoa.vim.git
