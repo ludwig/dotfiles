@@ -72,6 +72,9 @@ elif [[ $platform == 'macosx' ]]; then
     # this alias requires "port install launch"
     alias l='launch'
 
+    # this alias needs MacVim
+    alias g='mvim --remote-silent'
+
     # http://news.ycombinator.com/item?id=1157864
     alias eject='hdiutil eject'
     alias cpwd='pwd | xargs echo -n | pbcopy'
