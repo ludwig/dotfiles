@@ -152,6 +152,13 @@ http://github.com/msanders/cocoa.vim
 http://www.vim.org/scripts/script.php?script_id=2674
 http://mymacinations.com/2008/02/06/changing-the-systems-default-settings-for-html-files-safe/
 
+# fswitch.vim - allows switching between companion source files (like a.vim)
+http://www.vim.org/scripts/script.php?script_id=2590
+
+# protodef.vim - tool to help create skeleton implementations of c++ function prototypes
+http://www.vim.org/scripts/script.php?script_id=2624
+http://www.vimeo.com/4448265
+
 ###############################################################################
 
 # How can I automatically add some skeleton code when creating a new file with vim
