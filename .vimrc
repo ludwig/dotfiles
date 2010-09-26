@@ -548,11 +548,18 @@ au filetype vim set formatoptions-=o
 
 " Miscellaneous settings {{{
 
+" Common abbreviations / misspellings
+source ~/.vim/autocorrect.vim
+
 " Restore cursor position upon reopening files
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
-" Common abbreviations / misspellings
-source ~/.vim/autocorrect.vim
+" Horizontal rule separator (80 characters wide)
+function HorizontalRule()
+    let @s = "-------------------------------------------------------------------------------"
+    put s
+endfunction
+nnoremap <silent> <leader>hr :call HorizontalRule()<CR>
 
 " Creating underline/overline headings for markup languages
 " Inspired by http://sphinx.pocoo.org/rest.html#sections
