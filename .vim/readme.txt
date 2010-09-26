@@ -136,6 +136,10 @@ https://bitbucket.org/ns9tks/vim-fuzzyfinder/
 # shell.vim - plugin for running shell commands
 http://github.com/remiprev/vimfiles/raw/master/bundle/shell/plugin/shell.vim
 
+# xptemplate.vim - code snippets engine for vim
+http://www.vim.org/scripts/script.php?script_id=2611
+http://code.google.com/p/xptemplate/
+
 ###############################################################################
 
 # How can I automatically add some skeleton code when creating a new file with vim
