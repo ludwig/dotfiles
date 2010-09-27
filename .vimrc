@@ -511,12 +511,7 @@ if has("autocmd")
 
     if !exists('*LoadTemplate')
         function LoadTemplate(file)
-            " Add skeleton fillings for Python (normal and unittest) files
-            if a:file =~ 'test_.*\.py$'
-                execute "0r ~/.vim/skeleton/test_template.py"
-            elseif a:file =~ '.*\.py$'
-                execute "0r ~/.vim/skeleton/template.py"
-            elseif a:file =~ 'furls$'
+            if a:file =~ 'furls$'
                 execute "0r ~/.vim/skeleton/furls"
                 set ft=conf
             elseif a:file =~ 'furls2$'
