@@ -471,7 +471,8 @@ if has("autocmd")
         autocmd filetype python imap <buffer> <S-F5> <Esc>:w<CR>:!ipython %<CR>
 
         " Run a quick static syntax check every time we save a Python file
-        autocmd BufWritePost *.py call Pyflakes()
+        " (this action is also mapped to <F7> by default)
+        "autocmd BufWritePost *.py call Pyflakes()
     augroup end "}}}
 
     augroup ruby_files "{{{
