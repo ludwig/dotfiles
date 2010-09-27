@@ -38,11 +38,12 @@ set scrolloff=4                 " keep 4 lines off the edges of the screen when 
 set hlsearch                    " highlight search terms
 set incsearch                   " show search matches as you type
 set gdefault                    " search/replace "globally" (on a line) by default
-set listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
 
-" don't show invisible characters by default, but it is enabled
-" for some filetypes (see later)
+" don't show invisible characters by default, but it is enabled for some filetypes (see later)
 set nolist
+
+" strings to use in 'list' mode for the :list command
+set listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
 
 " when in insert mode, press <F2> to go to paste mode, where you
 " can paste mass data that won't be autoindented
@@ -51,6 +52,7 @@ set pastetoggle=<F2>
 " enable using the mouse if terminal emulator supports it (xterm does)
 set mouse=a
 
+" specifies what end-of-line formats will be tried when editing a new buffer
 set fileformats="unix,dos,mac"
 
 " Thanks to Steve Losh for this liberating tip
@@ -73,6 +75,8 @@ set foldlevelstart=0            " start out with everything folded
 " which commands trigger auto-unfold
 set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
 
+" customize the text displayed for a closed fold
+set foldtext=MyFoldText()
 function! MyFoldText()
     let line = getline(v:foldstart)
 
@@ -88,12 +92,11 @@ function! MyFoldText()
     let fillcharcount = windowwidth - len(line) - len(foldedlinecount) - 4
     return line . ' …' . repeat(" ",fillcharcount) . foldedlinecount . ' '
 endfunction
-set foldtext=MyFoldText()
 " }}}
 
 " Editor layout {{{
-set termencoding=utf-8
-set encoding=utf-8
+set termencoding=utf-8          " character encoding used for the terminal
+set encoding=utf-8              " character encoding used inside vim
 set lazyredraw                  " don't update the display while executing macros
 set cmdheight=1                 " use a statusbar that is 2 rows high (nevermind, set it back to 1)
 set laststatus=2                " tell VIM to always put a status line in, even if there is only one window
@@ -116,26 +119,26 @@ set switchbuf=useopen
 set history=1000
 set undolevels=1000
 
-if v:version >= 703
-    " keep a persistent backup file
-    set undofile
-    set undodir=~/.vim/tmp/undo//,~/tmp//,/tmp//
-endif
+" read/write a .viminfo file, don't store more than 80 lines of registers
+set viminfo='20,\"80
 
 " We typically don't want to use the current working directory as a backupdir.
 " Fortunately, we can set it explicitly. See the following Vim FAQ entry:
 " http://vimdoc.sourceforge.net/cgi-bin/vimfaq2html3.pl#7.2
 " See also: http://news.ycombinator.com/item?id=1688068
-set backupdir=~/.vim/tmp/backup//
-set directory=~/.vim/tmp/swp//
+set backupdir=~/.vim/tmp/backup//,~/tmp//,/tmp//
+set directory=~/.vim/tmp/swp//,~/tmp//,/tmp//
 
-" read/write a .viminfo file, don't store more than 80 lines of registers
-set viminfo='20,\"80
+" keep the undo history for our buffers 
+if v:version >= 703
+    set undofile
+    set undodir=~/.vim/tmp/undo//,~/tmp//,/tmp//
+endif
 
 " make tab completion for files/buffers act like bash
 set wildmenu
 
-" show a list when pressing tab and complete first full match
+" show a list when pressing tab, and complete first full match
 set wildmode=list:full
 
 " ignore completion for these files
@@ -155,7 +158,6 @@ set showcmd
 " modeline settings (disable mode lines, as security measure)
 set modelines=5
 set modeline
-"set nomodeline
 
 " always use a fast terminal
 set ttyfast
@@ -248,7 +250,7 @@ nmap <leader>Y "+yy
 nmap <leader>p "+p
 nmap <leader>P "+P
 
-" YankRing stuff (XXX)
+" YankRing
 let g:yankring_history_dir = '$HOME/.vim/tmp'
 nmap <leader>r :YRShow<CR>
 
