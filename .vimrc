@@ -116,7 +116,7 @@ set switchbuf=useopen
 set history=1000
 set undolevels=1000
 
-if v:version >= 730
+if v:version >= 703
     " keep a persistent backup file
     set undofile
     set undodir=~/.vim/tmp/undo//,~/tmp//,/tmp//
