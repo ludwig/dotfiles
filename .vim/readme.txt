@@ -159,6 +159,14 @@ http://www.vim.org/scripts/script.php?script_id=2590
 http://www.vim.org/scripts/script.php?script_id=2624
 http://www.vimeo.com/4448265
 
+# pyflakes.vim - PyFlakes on-the-fly Python code checking
+http://www.vim.org/scripts/script.php?script_id=2441
+http://github.com/kevinw/pyflakes
+http://github.com/kevinw/pyflakes-vim
+http://github.com/kevinw/pyflakes-vim/blob/master/pyflakes.vim
+http://github.com/nvie/vim-pyflakes
+http://github.com/nvie/vim-pyflakes/blob/master/ftplugin/python_pyflakes.vim
+
 ###############################################################################
 
 # How can I automatically add some skeleton code when creating a new file with vim
