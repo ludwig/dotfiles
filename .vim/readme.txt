@@ -167,6 +167,9 @@ http://github.com/kevinw/pyflakes-vim/blob/master/pyflakes.vim
 http://github.com/nvie/vim-pyflakes
 http://github.com/nvie/vim-pyflakes/blob/master/ftplugin/python_pyflakes.vim
 
+# VimClojure - A filetype, syntax, and indent plugin for Clojure
+http://www.vim.org/scripts/script.php?script_id=2501
+
 ###############################################################################
 
 # How can I automatically add some skeleton code when creating a new file with vim
