@@ -24,6 +24,7 @@ DYLD_LIBRARY_PATH="${HOME}/opt/local/lib:${DYLD_LIBRARY_PATH}"
 #export PS1='\u@\h:\w\$ '
 export EDITOR='vim'
 export PAGER='less -r'      # XXX: how does 'lesspipe' work here?
+export LANG='en_US.UTF-8'
 
 export LD_LIBRARY_PATH
 export DYLD_LIBRARY_PATH
