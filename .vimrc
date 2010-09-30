@@ -31,7 +31,7 @@ set copyindent                  " copy the previous indentation on autoindenting
 "set smartindent                 " use smart autoindenting when starting a new line
 "set number                      " always show line numbers
 set showmatch                   " show matching parenthesis
-set ignorecase                  " ignore case when searching
+"set ignorecase                  " ignore case when searching
 set smartcase                   " ignore case if search pattern is all lowercase (case-sensitive otherwise)
 set scrolloff=4                 " keep 4 lines off the edges of the screen when scrolling
 "set virtualedit=all             " allow the cursor to go to "invalid" places
@@ -67,7 +67,7 @@ nnoremap <C-y> 2<C-y>
 " }}}
 
 " Folding rules {{{
-set foldenable                  " enable folding
+"set foldenable                  " enable folding
 set foldcolumn=2                " add a fold column
 set foldmethod=marker           " detect triple-{ style fold markers
 set foldlevelstart=0            " start out with everything folded
