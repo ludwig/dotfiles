@@ -187,6 +187,12 @@ http://www.vim.org/scripts/script.php?script_id=1348
 # desert256 colorscheme
 http://www.vim.org/scripts/script.php?script_id=1243
 
+# calmar256 colorscheme
+http://www.vim.org/scripts/script.php?script_id=1807
+http://www.calmar.ws/dotfiles/dotfiledir/calmar256-dark.vim
+http://www.calmar.ws/dotfiles/dotfiledir/calmar256-light.vim
+http://www.calmar.ws/vim/
+
 # How can I automatically add some skeleton code when creating a new file with vim
 http://stackoverflow.com/questions/162617/how-can-i-automatically-add-some-skeleton-code-when-creating-a-new-file-with-vim
 
