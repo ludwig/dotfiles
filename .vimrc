@@ -183,6 +183,13 @@ endfunction
 " Highlighting {{{
 if &t_Co >= 256 || has("gui_running")
     "colorscheme molokai
+    "colorscheme inkpot
+    "colorscheme gardener
+    "colorscheme desert256
+    "colorscheme calmar256-dark
+    "colorscheme calmar256-light
+    "colorscheme ir_black
+    "colorscheme herald
 endif
 
 if &t_Co > 2 || has("gui_running")
