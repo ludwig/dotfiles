@@ -204,6 +204,13 @@ http://www.vim.org/scripts/script.php?script_id=2684
 http://github.com/h3rald/stash
 http://github.com/h3rald/stash/raw/master/.vim/colors/herald.vim
 
+###############################################################################
+
+# Calmar's .vimrc file
+http://www.calmar.ws/dotfiles/.vimrc.html
+
+###############################################################################
+
 # How can I automatically add some skeleton code when creating a new file with vim
 http://stackoverflow.com/questions/162617/how-can-i-automatically-add-some-skeleton-code-when-creating-a-new-file-with-vim
 
