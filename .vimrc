@@ -99,7 +99,7 @@ set termencoding=utf-8          " character encoding used for the terminal
 set encoding=utf-8              " character encoding used inside vim
 set lazyredraw                  " don't update the display while executing macros
 set cmdheight=1                 " use a statusbar that is 2 rows high (nevermind, set it back to 1)
-set laststatus=2                " tell VIM to always put a status line in, even if there is only one window
+"set laststatus=2                " tell VIM to always put a status line in, even if there is only one window
 set showtabline=2               " show tab page labels (0 = never, 1 = when more than 1, 2 = always)
 set ruler                       " show line and column number of the cursor position
 " }}}

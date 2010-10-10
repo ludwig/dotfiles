@@ -10,7 +10,7 @@ let mapleader=","
 set ruler                       " show line and column number of the cursor position
 set scrolloff=4                 " keep 4 lines off the edges of the screen when scrolling
 set showtabline=2               " show tab page labels (0 = never, 1 = when more than 1, 2 = always)
-set laststatus=2                " tell vim to always put a status line in, even if there is only one window
+"set laststatus=2                " tell vim to always put a status line in, even if there is only one window
 set cmdheight=1                 " use a statusbar that is 2 rows high (nevermind, set it back to 1)
 
 set showcmd                     " show partial command in the last line of the screen
