@@ -172,6 +172,10 @@ http://www.vim.org/scripts/script.php?script_id=2501
 
 ###############################################################################
 
+# molokai colorscheme
+http://github.com/tomasr/dotfiles/raw/master/.vim/colors/molokai.vim
+http://winterdom.com/2009/01/molokaion256colorterminals
+
 # How can I automatically add some skeleton code when creating a new file with vim
 http://stackoverflow.com/questions/162617/how-can-i-automatically-add-some-skeleton-code-when-creating-a-new-file-with-vim
 
