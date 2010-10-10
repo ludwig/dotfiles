@@ -190,9 +190,9 @@ function directory_to_titlebar
     # possible it could contain printf escape sequences.
     printf "\033]0;%s\007" "$dir"
 }
-if [[ "$TERM" == "xterm" || "$TERM" == "xterm-color" ]]; then
-    export PROMPT_COMMAND="directory_to_titlebar"
-fi
+case "$TERM" in
+    xterm*) export PROMPT_COMMAND="directory_to_titlebar" ;;
+esac
 
 # switch into dirname containing file
 cdf   () { cd    "$(dirname "$(locate "$1" | head -n 1)")"; }
