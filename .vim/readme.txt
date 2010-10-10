@@ -193,6 +193,11 @@ http://www.calmar.ws/dotfiles/dotfiledir/calmar256-dark.vim
 http://www.calmar.ws/dotfiles/dotfiledir/calmar256-light.vim
 http://www.calmar.ws/vim/
 
+# ir_black colorscheme
+http://blog.infinitered.com/entry_files/8/ir_black.vim
+http://blog.infinitered.com/entries/show/8
+http://blog.infinitered.com/entries/show/2
+
 # How can I automatically add some skeleton code when creating a new file with vim
 http://stackoverflow.com/questions/162617/how-can-i-automatically-add-some-skeleton-code-when-creating-a-new-file-with-vim
 
