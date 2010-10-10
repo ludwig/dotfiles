@@ -176,6 +176,11 @@ http://www.vim.org/scripts/script.php?script_id=2501
 http://github.com/tomasr/dotfiles/raw/master/.vim/colors/molokai.vim
 http://winterdom.com/2009/01/molokaion256colorterminals
 
+# inkpot colorscheme
+http://github.com/ciaranm/inkpot/raw/master/colors/inkpot.vim
+http://github.com/ciaranm/inkpot
+http://www.vim.org/scripts/script.php?script_id=1143
+
 # How can I automatically add some skeleton code when creating a new file with vim
 http://stackoverflow.com/questions/162617/how-can-i-automatically-add-some-skeleton-code-when-creating-a-new-file-with-vim
 
