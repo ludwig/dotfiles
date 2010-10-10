@@ -21,6 +21,8 @@ There's a number of repositories to check out::
     http://github.com/Fiona/sysconfig
     http://github.com/nvie/vimrc
     http://github.com/remiprev/vimfiles
+    http://github.com/dpc/homeskel
+    http://github.com/tomasr/dotfiles
 
 
 Interesting Articles
