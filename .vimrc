@@ -553,6 +553,9 @@ au filetype vim set formatoptions-=o
 
 " Miscellaneous settings {{{
 
+" Don't let cindent muck with ':' in insert-mode.
+set cinkeys-=:
+
 " Common abbreviations / misspellings
 source ~/.vim/autocorrect.vim
 
