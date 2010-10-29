@@ -21,7 +21,7 @@ alias mk-year='mkdir -p ~/journal/$(date +%Y) && cd ~/journal/$(date +%Y)'
 # Other useful aliases
 
 # Sourcing python virtualenv scripts
-alias activate-django='source ~/v/django-env/bin/activate && source ~/dev/django/extras/django_bash_completion'
+#alias activate-django='source ~/v/django-env/bin/activate && source ~/dev/django/extras/django_bash_completion'
 
 # print a list of all open files
 alias list-open-files="lsof | awk '!/^\$/ && /\// { print \$9 }' | sort -u"

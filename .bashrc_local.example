@@ -1,0 +1,7 @@
+
+# set up virtualenvwrapper
+export WORKON_HOME="$HOME/.virtualenvs"
+export VIRTUALENVWRAPPER_PYTHON=$(which python)
+source /usr/local/bin/virtualenvwrapper.sh
+
+# vim: syntax=sh
