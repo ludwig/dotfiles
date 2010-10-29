@@ -4,4 +4,7 @@ export WORKON_HOME="$HOME/.virtualenvs"
 export VIRTUALENVWRAPPER_PYTHON=$(which python)
 source /usr/local/bin/virtualenvwrapper.sh
 
+# enable bash tab-completion for django-admin.py and ./manage.py
+source ~/dev/django/extras/django_bash_completion
+
 # vim: syntax=sh
