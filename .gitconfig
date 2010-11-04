@@ -6,6 +6,7 @@
 # http://betterexplained.com/articles/aha-moments-when-learning-git/
 # http://mislav.uniqpath.com/2010/07/git-tips/
 # http://cheat.errtheblog.com/s/git/
+# http://stackoverflow.com/questions/348170/undo-git-add
 [alias]
 	st = status
 	ci = commit
@@ -18,6 +19,8 @@
 	ll = log --oneline --decorate
 	wd = diff --word-diff
 	ls = ls-files
+    unadd = reset HEAD --
+    unstage = reset HEAD --
 
 [color]
 	branch = auto
