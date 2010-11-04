@@ -68,6 +68,7 @@ elif [[ $platform == 'macosx' ]]; then
     alias ldd='otool -L'
     alias units='gunits -v'
     alias tree='tree -CF'
+    alias md5sum='md5 -r'
 
     # this alias requires "port install launch"
     alias l='launch'
