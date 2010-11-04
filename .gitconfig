@@ -21,6 +21,7 @@
 	ls = ls-files
     unadd = reset HEAD --
     unstage = reset HEAD --
+    diff-staged = diff --staged
 
 [color]
 	branch = auto
