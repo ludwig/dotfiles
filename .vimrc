@@ -551,6 +551,47 @@ au filetype vim set formatoptions-=o
 
 " }}}
 
+" Suggestions from Reddit {{{
+
+" From http://www.reddit.com/r/vim/comments/e341j/time_for_a_vim_tricks_thread_please_search_before/
+
+" Python filter
+vmap gp :!python<CR>
+
+" reselect visual block after changing its indent
+vnoremap < <gv
+vnoremap > >gv
+
+" move current line up
+nnoremap <A-k> :m-2<cr>
+" move current line down
+nnoremap <A-j> :m+<cr>
+" move visual selection up
+vnoremap <A-k> :m-2<cr>gv
+vnoremap <A-j> :m'>+<cr>gv
+
+" Window mappings
+set wmh=0
+" Adding the control keys to hjkl jump to the window and make it full screen
+nmap <C-j> <C-w>j<C-w>_
+nmap <C-k> <C-w>k<C-w>_
+" Move between windows using arrow keys
+nnoremap <left>  <C-w>h
+nnoremap <right> <C-w>l
+nnoremap <up>    <C-w>k
+nnoremap <down>  <C-w>j
+" Move between tabs using shifted arrow keys
+nnoremap <S-left>  gT
+nnoremap <S-right> gt
+
+" What is the syntax name for the thing under my cursor?
+" Useful for debugging syntax highlighting
+" To use, type ":echo SyntaxItem()" at the cursor location
+function! SyntaxItem()
+    return synIDattr(synID(line("."),col("."),1),"name")
+endfunction
+" }}}
+
 " Miscellaneous settings {{{
 
 " Don't let cindent muck with ':' in insert-mode.
@@ -583,6 +624,7 @@ nnoremap <leader>4 yypVr-
 nnoremap <leader>5 yypVr^
 nnoremap <leader>6 yypVr"
 
+" Filler text
 iab lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit
 iab llorem Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu.  Nulla non quam erat, luctus consequat nisi
 iab lllorem Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu.  Nulla non quam erat, luctus consequat nisi.  Integer hendrerit lacus sagittis erat fermentum tincidunt.  Cras vel dui neque.  In sagittis commodo luctus.  Mauris non metus dolor, ut suscipit dui.  Aliquam mauris lacus, laoreet et consequat quis, bibendum id ipsum.  Donec gravida, diam id imperdiet cursus, nunc nisl bibendum sapien, eget tempor neque elit in tortor
@@ -592,3 +634,5 @@ iab lllorem Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacu
 " Extra user or machine specific settings {{{
 source ~/.vim/user.vim
 " }}}
+
+" vim: fen fdl=0
