@@ -181,6 +181,10 @@ endfunction
 " }}}
 
 " Highlighting {{{
+
+" Syntax coloring lines that are too long just slows down the world
+set synmaxcol=2048
+
 if &t_Co >= 256 || has("gui_running")
     "colorscheme molokai
     "colorscheme inkpot
