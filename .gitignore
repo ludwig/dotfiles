@@ -1,7 +1,3 @@
-# ignore swap & backup files
-.*.swp
-*~
-
 # ignore vim files
 /.vim/tmp
 /.vim/user.vim
