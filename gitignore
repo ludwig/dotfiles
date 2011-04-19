@@ -13,4 +13,6 @@
 # ignore compiled python files
 *.pyc
 
+# ignore noise from OS X
+.DS_Store
 
