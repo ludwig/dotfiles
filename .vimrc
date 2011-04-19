@@ -200,6 +200,20 @@ if &t_Co > 2 || has("gui_running")
     " switch syntax highlighting on, when the terminal has colors
     syntax on
 endif
+
+" Highlighting the 80th column (or relative to 'textwidth')
+" http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns
+" http://vim.wikia.com/wiki/VimTip810
+if 0
+    if exists('+colorcolumn')
+        "set colorcolumn=+0
+        set colorcolumn=80
+    endif
+    "highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+    highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
+    match OverLength /\%81v.\+/
+endif
+
 " }}}
 
 " Shortcut mappings {{{
@@ -383,11 +397,14 @@ let Tlist_Use_Right_Window=1
 
 " Conflict markers {{{
 
-" highlight conflict markers
-match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+" XXX: Do we even use these? See if we can get rid of this section...
+if 0
+    " highlight conflict markers
+    match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
-" shortcut to jump to next conflict marker
-nmap <silent> <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
+    " shortcut to jump to next conflict marker
+    nmap <silent> <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
+endif
 
 " }}}
 
@@ -466,7 +483,7 @@ if has("autocmd")
         " earlier, as it is important)
         autocmd filetype python setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
         autocmd filetype python setlocal textwidth=80
-        autocmd filetype python match ErrorMsg '\%>79v.\+'
+        "autocmd filetype python match ErrorMsg '\%>79v.\+'
 
         " But disable autowrapping as it is super annoying
         autocmd filetype python setlocal formatoptions-=t
@@ -496,7 +513,7 @@ if has("autocmd")
         " Auto-wrap text around 74 chars
         autocmd filetype rst setlocal textwidth=74
         autocmd filetype rst setlocal formatoptions+=nqt
-        autocmd filetype rst match ErrorMsg '\%>73v.\+'
+        "autocmd filetype rst match ErrorMsg '\%>73v.\+'
     augroup end "}}}
 
     augroup css_files "{{{
