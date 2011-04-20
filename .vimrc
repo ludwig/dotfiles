@@ -130,7 +130,7 @@ set backupdir=~/.vim/tmp/backup//,~/tmp//,/tmp//
 set directory=~/.vim/tmp/swp//,~/tmp//,/tmp//
 
 " keep the undo history for our buffers 
-if v:version >= 703
+if 0 && v:version >= 703
     set undofile
     set undodir=~/.vim/tmp/undo//,~/tmp//,/tmp//
 endif
