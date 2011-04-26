@@ -395,6 +395,16 @@ let Tlist_Use_Right_Window=1
 
 " }}}
 
+" Gitv settings {{{
+
+" See https://github.com/gregsexton/gitv
+cabbrev git Git
+cabbrev gitv Gitv
+nmap <leader>gv :Gitv --all<CR>
+nmap <leader>gV :Gitv! --all<CR>
+
+" }}}
+
 " Conflict markers {{{
 
 " XXX: Do we even use these? See if we can get rid of this section...

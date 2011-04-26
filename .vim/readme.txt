@@ -170,6 +170,12 @@ http://github.com/nvie/vim-pyflakes/blob/master/ftplugin/python_pyflakes.vim
 # VimClojure - A filetype, syntax, and indent plugin for Clojure
 http://www.vim.org/scripts/script.php?script_id=2501
 
+# gitv -- like gitk but for vim
+git submodule add git://github.com/gregsexton/gitv.git .vim/bundle/gitv
+https://github.com/gregsexton/gitv
+http://www.gregsexton.org/portfolio/gitv/
+http://www.reddit.com/r/vim/comments/gxmv2/gitk_for_vim/
+
 ###############################################################################
 
 # molokai colorscheme
