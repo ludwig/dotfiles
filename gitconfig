@@ -1,30 +1,107 @@
-[user]
-	name = Luis Armendariz
-	email = luis.armendariz@gmail.com
-
 # http://git.or.cz/gitwiki/Aliases
 # http://betterexplained.com/articles/aha-moments-when-learning-git/
 # http://mislav.uniqpath.com/2010/07/git-tips/
 # http://cheat.errtheblog.com/s/git/
 # http://stackoverflow.com/questions/348170/undo-git-add
-[alias]
-	st = status
-	ci = commit
-	br = branch
-	co = checkout
-	df = diff
-	lg = log -p
-	oneline = log --pretty=oneline
-	la = log --pretty=\"format:%ad %h (%an): %s\" --date=short
-	ll = log --oneline --decorate
-	wd = diff --word-diff
-	ls = ls-files
-    unadd = reset HEAD --
-    unstage = reset HEAD --
-    diff-staged = diff --staged
+# http://stackoverflow.com/questions/267761/what-does-your-gitconfig-contain
+# http://news.ycombinator.com/item?id=2480522
+
+[user]
+	name = Luis Armendariz
+	email = luis.armendariz@gmail.com
+
+[core]
+	excludesfile = ~/.gitignore
+
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
 
 [color]
 	branch = auto
 	diff = auto
 	interactive = auto
 	status = auto
+	ui = true
+	pager = true
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	old = red bold
+	new = green bold
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[alias]
+	st = status -sb
+	ci = commit
+	br = branch
+	co = checkout
+	df = diff
+	ds = diff --stat -M -w
+	dsc = diff --stat --cached -M -w
+	dw = diff --color-words
+	dc = diff --cached
+	ws = show --color-words
+	wd = diff --color-words
+	wd2 = diff --word-diff
+	l = log --pretty='tformat:%h %an (%ar): %s'
+	la = log --pretty='format:%ad %h (%an): %s' --date=short
+	ly = log --pretty='tformat:%h %an (%ar): %s' --since=yesterday
+	lp = log -p
+	ll = log --oneline --decorate
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	lol2 = log --graph --pretty=format:'%C(red)%h%C(reset) %C(yellow)%d%C(reset)%s %C(green)%an %C(bold black)%cr%C(reset)' --abbrev-commit --date=relative
+	oneline = log --pretty=oneline
+	summary = log --oneline
+	changes = log --oneline --reverse
+	view = log --stat -b -p --no-prefix
+	tree = log --graph --oneline --decorate
+	last = log @{1}..
+	rank = shortlog -sn --no-merges
+	ls = ls-files
+	cancel = reset --soft HEAD^
+	oops = reset --soft HEAD^ --
+	unstage = reset HEAD --
+	unadd = reset HEAD --
+	unadd-new = rm --cached
+	staged = diff --staged
+	info = config --list
+	tags = tag -n1 -l
+	cp = cherry-pick
+	pom = push origin master
+	com = checkout master
+	sup = submodule update
+	ri = rebase --interactive --autosquash
+	# usage example: git w -n5
+	w = whatchanged
+	# given any git object, try to show it briefly
+	whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+	# usage example: git whatsnew <other_branch>
+	# show commits that are in the current branch, but not in <other_branch>.
+	whatsnew = !sh -c 'git shortlog --format=\"%h %s\" $1..HEAD' -
+	# search for a given string in all patches and print commit messages
+	searchcommits = "!f() { query=\"$1\"; shift; git log -S\"$query\" \"$@\"; }; f \"$@\""
+
+[url "git://github.com/"]
+	insteadOf = "github:"
+
+[url "git@github.com:"]
+	pushInsteadOf = "github:"
+
+[url "git://gitorious.org/"]
+	insteadOf = "gitorious:"
+
+[url "git@gitorious.org:"]
+	pushInsteadOf = "gitorious:"
+
