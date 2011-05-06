@@ -176,6 +176,10 @@ https://github.com/gregsexton/gitv
 http://www.gregsexton.org/portfolio/gitv/
 http://www.reddit.com/r/vim/comments/gxmv2/gitk_for_vim/
 
+# vim-coffee-script -- CoffeeScript support for vim
+https://github.com/kchmck/vim-coffee-script
+git submodule add git://github.com/kchmck/vim-coffee-script.git .vim/bundle/vim-coffee-script
+
 ###############################################################################
 
 # molokai colorscheme
