@@ -628,6 +628,13 @@ endfunction
 " Don't let cindent muck with ':' in insert-mode.
 set cinkeys-=:
 
+" Disable keyword lookup in normal mode. Note that K will still work in visual mode,
+" using vawK sequence, for example.
+nmap K <nop>
+
+" Program to use for keyword lookups (default is "man -s")
+set keywordprg=man\ -s
+
 " Common abbreviations / misspellings
 source ~/.vim/autocorrect.vim
 
