@@ -7,4 +7,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 # enable bash tab-completion for django-admin.py and ./manage.py
 source ~/dev/django/extras/django_bash_completion
 
+# add bin directory for ruby gems
+export PATH="$PATH:${HOME}/.gem/ruby/1.8/bin"
+
 # vim: syntax=sh
