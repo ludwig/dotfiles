@@ -114,7 +114,7 @@ if [[ $platform == "linux" ]]; then
         PS1="\[\033[00m\]\u@\h\[\033[01;34m\]:\w\[\033[31m\]\$(parse_git_branch)\[\033[00m\]$\[\033[00m\] "
     else
         #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-        PS1="\u@\h:\w(parse_git_branch)\$ "
+        PS1="\u@\h:\w\$(parse_git_branch)\$ "
     fi
     unset color_prompt force_color_prompt
 
