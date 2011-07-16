@@ -4,3 +4,8 @@
 
 " Custom key mapping as I use them with iTerm
 imap <Esc>[H;2~ <C-w>
+
+" Disable folding
+set nofoldenable
+set foldcolumn=0
+
