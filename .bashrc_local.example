@@ -1,11 +1,23 @@
+# ~/.bashrc_local
 
 # set up virtualenvwrapper
-export WORKON_HOME="$HOME/.virtualenvs"
-export VIRTUALENVWRAPPER_PYTHON=$(which python)
-source /usr/local/bin/virtualenvwrapper.sh
+if [ -d ~/.virtualenvs ]; then
+    export WORKON_HOME="$HOME/.virtualenvs"
+    export VIRTUALENVWRAPPER_PYTHON=python2.7
+    export VIRTUALENVWRAPPER_VIRTUALENV=virtualenv-2.7
+    source /path/to/virtualenvwrapper.sh
+fi
 
-# enable bash tab-completion for django-admin.py and ./manage.py
-source ~/dev/django/extras/django_bash_completion
+# enable bash completion for django
+if [ -d ~/dev/django ]; then
+    source ~/dev/django/extras/django_bash_completion
+fi
+
+# enable bash completion for homebrew
+source /usr/local/Library/Contributions/brew_bash_completion.sh
+
+# needed by node.js
+export NODE_PATH="/usr/local/lib/node"
 
 # add bin directory for ruby gems
 export PATH="$PATH:${HOME}/.gem/ruby/1.8/bin"
