@@ -1,0 +1,25 @@
+# ~/.synergy.conf
+#
+# For configuration options, refer to the following page
+# http://synergy2.sourceforge.net/configuration.html
+#
+
+section: screens
+    ket:
+    qed:
+end
+
+section: links
+    ket:
+        right = qed
+        left  = qed
+    qed:
+        left  = ket
+        right = ket
+end
+
+section: aliases
+    ket:
+        ket.local
+end
+
