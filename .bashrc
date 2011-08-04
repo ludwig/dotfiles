@@ -77,6 +77,8 @@ set -o ignoreeof
 # Some more shell options - see bash(1)
 shopt -s cdspell dotglob nocaseglob no_empty_cmd_completion
 
+# Use vi-style command line editing
+set -o vi
 
 ###############################################################################
 # Terminal settings
