@@ -284,6 +284,8 @@ if [ -x /usr/bin/lesspipe ]; then
     eval "$(SHELL=/bin/sh /usr/bin/lesspipe)"
 elif [ -x /opt/local/bin/lesspipe.sh ]; then
     eval "$(SHELL=/bin/sh /opt/local/bin/lesspipe.sh)"
+elif [ -x /usr/local/bin/lesspipe.sh ]; then
+    eval "$(SHELL=/bin/sh /usr/local/bin/lesspipe.sh)"
 fi
 
 
