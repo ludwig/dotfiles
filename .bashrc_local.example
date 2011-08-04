@@ -22,4 +22,12 @@ export NODE_PATH="/usr/local/lib/node"
 # add bin directory for ruby gems
 export PATH="$PATH:${HOME}/.gem/ruby/1.8/bin"
 
+# Load Sencha SDK Tools
+if [ -d /Applications/SenchaSDKTools-1.2.3 ]; then
+    PATH=/Applications/SenchaSDKTools-1.2.3:$PATH
+    PATH=/Applications/SenchaSDKTools-1.2.3/command:$PATH
+    PATH=/Applications/SenchaSDKTools-1.2.3/jsbuilder:$PATH
+    PATH=/Applications/SenchaSDKTools-1.2.3/appbuilder:$PATH
+fi
+
 # vim: syntax=sh
