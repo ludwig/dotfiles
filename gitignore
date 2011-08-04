@@ -16,3 +16,5 @@
 # ignore noise from OS X
 .DS_Store
 
+# ignore noise from sass
+.sass-cache
