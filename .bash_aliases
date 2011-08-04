@@ -90,13 +90,13 @@ elif [[ $platform == 'macosx' ]]; then
     # Emacs daemon on Mac OS X
     # http://www.emacswiki.org/emacs/EmacsAsDaemon
     # http://cubiclemuses.com/cm/articles/2009/08/06/emacs-and-os-x-launchd/
-    alias emacs='/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs'
-    alias emacsclient='/Applications/MacPorts/Emacs.app/Contents/MacOS/bin/emacsclient'
-    alias emacs.daemon='emacs --daemon'
-    alias emacs.killdaemon="emacsclient -e '(kill-emacs)'"
-    alias emacs.new='emacsclient -c -n'
-    alias emacs.open='emacsclient -n'
-    alias emacs.tty='emacsclient -t'
+    #alias emacs='/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs'
+    #alias emacsclient='/Applications/MacPorts/Emacs.app/Contents/MacOS/bin/emacsclient'
+    #alias emacs.daemon='emacs --daemon'
+    #alias emacs.killdaemon="emacsclient -e '(kill-emacs)'"
+    #alias emacs.new='emacsclient -c -n'
+    #alias emacs.open='emacsclient -n'
+    #alias emacs.tty='emacsclient -t'
 fi
 
 
