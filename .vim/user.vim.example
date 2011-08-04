@@ -9,3 +9,6 @@ imap <Esc>[H;2~ <C-w>
 set nofoldenable
 set foldcolumn=0
 
+" Suppress LustyJuggler ruby warning
+let g:LustyJugglerSuppressRubyWarning=1
+

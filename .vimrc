@@ -641,8 +641,9 @@ source ~/.vim/autocorrect.vim
 " Restore cursor position upon reopening files
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
-" Disable gui toolbar
+" Configure graphical vim
 if has("gui_running")
+    " Disable gui toolbar
     set guioptions-=T
 endif
 
