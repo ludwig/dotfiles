@@ -60,9 +60,11 @@ set fileformats="unix,dos,mac"
 nnoremap / /\v
 vnoremap / /\v
 
-" Speed up scrolling of the viewport slightly
-nnoremap <C-e> 2<C-e>
-nnoremap <C-y> 2<C-y>
+" Scroll one line at a time (with CTRL-U / CTRL-D)
+" Luckily, with this change, the key pair (CTRL-E / CTRL-D) is nicely
+" positioned on a regular qwerty keyboard.
+nnoremap <C-u> <C-e>
+nnoremap <C-d> <C-y>
 
 " }}}
 
