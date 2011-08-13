@@ -60,11 +60,10 @@ set fileformats="unix,dos,mac"
 nnoremap / /\v
 vnoremap / /\v
 
-" Scroll one line at a time (with CTRL-U / CTRL-D)
-" Luckily, with this change, the key pair (CTRL-E / CTRL-D) is nicely
-" positioned on a regular qwerty keyboard.
-nnoremap <C-u> <C-e>
-nnoremap <C-d> <C-y>
+" Scroll one line at a time with C-j / C-k, in normal mode.
+" To scroll by half a page, use the usual CTRL-U / CTRL-D.
+nnoremap <C-j> <C-e>
+nnoremap <C-k> <C-y>
 
 " }}}
 
@@ -253,11 +252,11 @@ nnoremap j gj
 nnoremap k gk
 
 " Easy window navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-nnoremap <leader>w <C-w>v<C-w>l
+"map <C-h> <C-w>h
+"map <C-j> <C-w>j
+"map <C-k> <C-w>k
+"map <C-l> <C-w>l
+"nnoremap <leader>w <C-w>v<C-w>l
 
 " Complete whole filenames/lines with a quicker shortcut key in insert mode
 imap <C-f> <C-x><C-f>
@@ -603,16 +602,19 @@ nnoremap <A-j> :m+<cr>
 vnoremap <A-k> :m-2<cr>gv
 vnoremap <A-j> :m'>+<cr>gv
 
-" Window mappings
+" Window mappings 
 set wmh=0
+
 " Adding the control keys to hjkl jump to the window and make it full screen
-nmap <C-j> <C-w>j<C-w>_
-nmap <C-k> <C-w>k<C-w>_
+"nmap <C-j> <C-w>j<C-w>_
+"nmap <C-k> <C-w>k<C-w>_
+
 " Move between windows using arrow keys
 nnoremap <left>  <C-w>h
 nnoremap <right> <C-w>l
 nnoremap <up>    <C-w>k
 nnoremap <down>  <C-w>j
+
 " Move between tabs using shifted arrow keys
 nnoremap <S-left>  gT
 nnoremap <S-right> gt
