@@ -639,6 +639,10 @@ nmap K <nop>
 " Program to use for keyword lookups (default is "man -s")
 set keywordprg=man\ -s
 
+" Load alternate file (swap between header and implementation).
+" Can also use CTRL-^ for this.
+nmap <silent> \s :A<cr>
+
 " Common abbreviations / misspellings
 source ~/.vim/autocorrect.vim
 
