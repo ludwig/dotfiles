@@ -662,6 +662,28 @@ function HorizontalRule()
 endfunction
 nnoremap <silent> <leader>hr :call HorizontalRule()<CR>
 
+" Function for hiding line comments
+" http://www.debian-administration.org/article/616/Hiding_comments_in_configuration_files
+function HideLineComments()
+    set foldmethod=expr
+    set foldexpr=getline(v:lnum)=~'^\\s*//'?1:getline(prevnonblank(v:lnum))=~'^\\s*//'?1:getline(nextnonblank(v:lnum))=~'^\\s*//'?1:0
+    highlight clear Folded
+    highlight link Folded ignore
+    normal zM
+endfunction
+nnoremap <silent> <leader>hc :call HideLineComments()<CR>
+
+" Function for hiding block comments
+" http://www.linuxquestions.org/questions/linux-general-1/vim-plugin-for-hiding-block-comments-466625/
+function HideBlockComments()
+    set foldmethod=marker
+    set foldmarker=/*,*/
+    highlight clear Folded
+    highlight link Folded ignore
+    normal zM
+endfunction
+nnoremap <silent> <leader>hb :call HideBlockComments()<CR>
+
 " Creating underline/overline headings for markup languages
 " Inspired by http://sphinx.pocoo.org/rest.html#sections
 nnoremap <leader>1 yyPVr=jyypVr=
