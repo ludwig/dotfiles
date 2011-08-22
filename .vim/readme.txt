@@ -180,6 +180,11 @@ http://www.reddit.com/r/vim/comments/gxmv2/gitk_for_vim/
 https://github.com/kchmck/vim-coffee-script
 git submodule add git://github.com/kchmck/vim-coffee-script.git .vim/bundle/vim-coffee-script
 
+# CloseTag - Intelligently close HTML tags
+http://mirnazim.org/writings/vim-plugins-i-use/
+https://github.com/docunext/closetag.vim
+git submodule add git://github.com/docunext/closetag.vim.git .vim/bundle/closetag
+
 ###############################################################################
 
 # molokai colorscheme

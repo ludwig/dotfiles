@@ -462,9 +462,9 @@ if has("autocmd")
         autocmd BufNewFile,BufRead *.html,*.htm call s:DetectHTMLVariant()
 
         " Auto-closing of HTML/XML tags
-        let g:closetag_default_xml=1
-        autocmd filetype html,htmldjango let b:closetag_html_style=1
-        autocmd filetype html,xhtml,xml source ~/.vim/scripts/closetag.vim
+        " http://mirnazim.org/writings/vim-plugins-i-use/
+        autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
+        autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag/plugin/closetag.vim
 
         " Enable Sparkup for lightning-fast HTML editing
         let g:sparkupExecuteMapping = '<leader>e'

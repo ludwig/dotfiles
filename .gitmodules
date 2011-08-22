@@ -54,3 +54,7 @@
 	path = .vim/bundle/vim-coffee-script
 	url = git://github.com/kchmck/vim-coffee-script.git
 	ignore=dirty
+[submodule ".vim/bundle/closetag"]
+	path = .vim/bundle/closetag
+	url = git://github.com/docunext/closetag.vim.git
+	ignore=dirty
