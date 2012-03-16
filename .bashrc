@@ -276,6 +276,20 @@ google()
     python -c "import sys, webbrowser, urllib;   webbrowser.open('http://www.google.com/search?' + urllib.urlencode({'q': ' '.join(sys.argv[1:]) }))" $@
 }
 
+# http://tychoish.com/rhizome/9-awesome-ssh-tricks/
+ssh-reagent()
+{
+    for agent in /tmp/ssh-*/agent.*; do
+        export SSH_AUTH_SOCK=$agent
+        if ssh-add -l 2>&1 > /dev/null; then
+            echo "Found working SSH Agent:"
+            ssh-add -l
+            return
+        fi
+    done
+    echo 'Cannot find ssh agent - maybe you should reconnect and forward it?'
+}
+
 # Emacs Tip - Jump to emacs's current directory
 # http://www.reddit.com/r/emacs/comments/hd3jm/from_my_bashrc_jump_to_emacss_current_directory/
 alias jm='cd $(emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
