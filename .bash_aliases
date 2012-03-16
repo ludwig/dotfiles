@@ -16,6 +16,8 @@ alias mk-today='mkdir -p ~/journal/$(date +%Y/%m-%d) && cd ~/journal/$(date +%Y/
 alias mk-month='mkdir -p ~/journal/$(date +%Y/%m) && cd ~/journal/$(date +%Y/%m)'
 alias mk-year='mkdir -p ~/journal/$(date +%Y) && cd ~/journal/$(date +%Y)'
 
+function jj() { cd `journal.py prev`; }
+function kk() { cd `journal.py next`; }
 
 ###############################################################################
 # Other useful aliases
@@ -60,6 +62,8 @@ if [[ $platform == 'linux' ]]; then
     alias mplayer-max='mplayer -fs -zoom -loop 0'
     alias keynote='~/.wine/drive_c/Program\ Files/KeyNote/keynote.exe 2>/dev/null'
 
+    # http://www.masaokitamura.com/2009/02/how-to-get-yesterdays-date-using-bash-shell-scripting/
+    alias cd-yesterday='cd ~/journal/$(date -d "1 day ago" +%Y/%m-%d)'
 
 elif [[ $platform == 'macosx' ]]; then
 
@@ -75,6 +79,10 @@ elif [[ $platform == 'macosx' ]]; then
 
     # this alias needs MacVim
     alias g='mvim --remote-silent'
+
+    # why is date different on OS X????
+    # http://stackoverflow.com/questions/498358/how-do-i-do-date-math-in-a-bash-script-on-os-x-leopard
+    alias cd-yesterday='cd ~/journal/$(date -v -1d +%Y/%m-%d)'
 
     # http://news.ycombinator.com/item?id=1157864
     alias eject='hdiutil eject'
