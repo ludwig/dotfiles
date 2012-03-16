@@ -33,8 +33,10 @@ set copyindent                  " copy the previous indentation on autoindenting
 set showmatch                   " show matching parenthesis
 "set ignorecase                  " ignore case when searching
 set smartcase                   " ignore case if search pattern is all lowercase (case-sensitive otherwise)
-set scrolloff=4                 " keep 4 lines off the edges of the screen when scrolling
-"set virtualedit=all             " allow the cursor to go to "invalid" places
+set scrolloff=1                 " keep N lines off the edges of the screen when scrolling
+set sidescrolloff=0
+"set virtualedit=all             " allow the cursor to go to 'invalid' places
+"set cursorline                  " highlight current line (or not)
 set hlsearch                    " highlight search terms
 set incsearch                   " show search matches as you type
 set gdefault                    " search/replace "globally" (on a line) by default
@@ -55,6 +57,7 @@ set mouse=a
 " specifies what end-of-line formats will be tried when editing a new buffer
 set fileformats="unix,dos,mac"
 
+" Use normal regexes in search (instead of vim's crazy regexes)
 " Thanks to Steve Losh for this liberating tip
 " See http://stevelosh.com/blog/2010/09/coming-home-to-vim
 nnoremap / /\v
@@ -332,9 +335,8 @@ nnoremap <leader>v V`]
 
 " Put focus on the NERD Tree with F3 (tricked by quickly closing it and
 " immediately showing it again, since there is no :NERDTreeFocus command)
-nmap <leader>n :NERDTreeClose<CR>:NERDTreeToggle<CR>
-nmap <leader>m :NERDTreeClose<CR>:NERDTreeFind<CR>
-nmap <leader>N :NERDTreeClose<CR>
+nmap <leader>n :NERDTreeToggle<CR>
+nmap <leader>m :NERDTreeFind<CR>
 
 " Store the bookmarks
 let NERDTreeBookmarksFile=expand("$HOME/.vim/tmp/NERDTreeBookmarks")
@@ -362,7 +364,7 @@ let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
 " }}}
 
 " Managing buffers with LustyJuggler {{{
-map ,b :LustyJuggler<CR>
+"map ,b :LustyJuggler<CR>
 " }}}
 
 " TagList settings {{{
@@ -583,7 +585,7 @@ au filetype vim set formatoptions-=o
 
 " }}}
 
-" Suggestions from Reddit {{{
+" Suggestions from Reddit and HN {{{
 
 " From http://www.reddit.com/r/vim/comments/e341j/time_for_a_vim_tricks_thread_please_search_before/
 
@@ -610,14 +612,32 @@ set wmh=0
 "nmap <C-k> <C-w>k<C-w>_
 
 " Move between windows using arrow keys
-nnoremap <left>  <C-w>h
-nnoremap <right> <C-w>l
-nnoremap <up>    <C-w>k
-nnoremap <down>  <C-w>j
+"nnoremap <left>  <C-w>h
+"nnoremap <right> <C-w>l
+"nnoremap <up>    <C-w>k
+"nnoremap <down>  <C-w>j
 
 " Move between tabs using shifted arrow keys
-nnoremap <S-left>  gT
-nnoremap <S-right> gt
+"nnoremap <S-left>  gT
+"nnoremap <S-right> gt
+
+" Instead, use these arrow key mappings
+nnoremap <left>     B
+nnoremap <right>    E
+nnoremap <up>       {
+nnoremap <down>     }
+
+" Keep search pattern at the center of the screen
+" http://vimbits.com/bits/92
+" XXX: resolve conflicts with nerdtree
+"nnoremap <leader>n nzz
+"nnoremap <leader>N Nzz
+
+" tabnew shortcuts
+" http://www.reddit.com/r/vimcommands/comments/kbheh/tabnew/
+nmap ,, :tabnew<CR>
+nmap ,. :tabnext<CR>
+nmap ., :tabprev<CR>
 
 " What is the syntax name for the thing under my cursor?
 " Useful for debugging syntax highlighting
@@ -625,6 +645,12 @@ nnoremap <S-right> gt
 function! SyntaxItem()
     return synIDattr(synID(line("."),col("."),1),"name")
 endfunction
+
+" How to define custom colored labels (like TODO) in VIM
+" http://dtuite.github.com/define-custom-vim-tags-and-labels.html
+" http://news.ycombinator.com/item?id=3037161
+" TODO: use the above
+
 " }}}
 
 " Miscellaneous settings {{{
