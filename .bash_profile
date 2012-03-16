@@ -4,8 +4,9 @@
 PATH="/opt/local/bin:/opt/local/sbin:${PATH}"
 MANPATH="/opt/local/man:${HOME}/opt/local/man:${MANPATH}"
 
-# Place /usr/local/bin ahead in PATH
-PATH="/usr/local/bin:$PATH"
+# Put the Homebrew /usr/local paths in PATH
+PATH="/usr/local/bin:${PATH}"
+MANPATH="/usr/local/share/man:${MANPATH}"
 
 # Include ~/.bashrc if it exists.
 if [ -f ~/.bashrc ]; then
