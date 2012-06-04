@@ -68,6 +68,12 @@ vnoremap / /\v
 nnoremap <C-j> <C-e>
 nnoremap <C-k> <C-y>
 
+" Similarly for incremental horizontal scrolling (useful with ':set nowrap').
+" Although, is it really a good idea to override CTRL-L, which typically
+" refreshes the screen?
+nnoremap <C-h> 3zh
+nnoremap <C-l> 3zl
+
 " }}}
 
 " Folding rules {{{
