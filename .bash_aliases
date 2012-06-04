@@ -5,7 +5,7 @@
 
 alias rm='rm -i'
 alias mv='mv -i'
-alias cp='cp -i'
+alias cp='cp -ip'
 alias df='df -h'
 alias less='less -r'
 alias vm='vim -X'
