@@ -78,7 +78,7 @@ nnoremap <C-l> 3zl
 
 " Folding rules {{{
 "set foldenable                  " enable folding
-set foldcolumn=2                " add a fold column
+"set foldcolumn=2                " add a fold column
 set foldmethod=marker           " detect triple-{ style fold markers
 set foldlevelstart=0            " start out with everything folded
 
