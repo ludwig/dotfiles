@@ -738,7 +738,9 @@ iab lllorem Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacu
 " }}}
 
 " Extra user or machine specific settings {{{
-source ~/.vim/user.vim
+if filereadable(expand("~/.vim/user.vim"))
+    source ~/.vim/user.vim
+endif
 " }}}
 
 " vim: fen fdl=0
