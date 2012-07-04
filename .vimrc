@@ -370,7 +370,12 @@ let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
 " }}}
 
 " Managing buffers with LustyJuggler {{{
+
 "map ,b :LustyJuggler<CR>
+
+" Disable LustyJuggler warning (default vim not built with ruby)
+let g:LustyJugglerSuppressRubyWarning = 1
+
 " }}}
 
 " TagList settings {{{
