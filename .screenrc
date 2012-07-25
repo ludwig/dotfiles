@@ -1,0 +1,80 @@
+# Must-have settings
+startup_message off
+caption always
+msgwait 15
+msgminwait 2
+defscrollback 5000
+defflow off
+vbell on
+
+# Other settings
+defbce on
+zombie ko
+
+# Configure shell stuff
+shell -$SHELL
+shelltitle '$ |'
+
+# Configure activity string
+activity "Activity in window %n%="
+
+# Configure caption line
+caption splitonly
+caption string "%?%F%{.c.}%?%3n %t%? [%h]%?"
+
+# Configure hardstatus line (refer to /^STRING ESCAPES in 'man screen')
+hardstatus off
+hardstatus alwayslastline " %c | %Y%m%d |  %w"
+
+# Emulate .logout message
+pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:terminated...\n[NO CARRIER]"
+
+# Use the function keys F7 and F8 to cycle backwards/forwards list of existing windows
+bindkey -k k7 prev
+bindkey -k k8 next
+
+# Use the following to switch between regions
+bind w focus down
+bind ^w focus up
+bind s split
+bind o only
+bind Q only
+bind ^h focus bottom
+bind ^j focus down
+bind ^k focus up
+bind ^l focus top
+bind = resize =
+bind + resize +1
+bind - resize -1
+
+# A couple of handy bindings
+bind \\ quit
+bind K kill
+
+# To select screens 10-19 (with cltr-a shift+N)
+bind  ) select 10
+bind  ! select 11
+bind  @ select 12
+bind \# select 13
+bind \$ select 14
+bind  % select 15
+bind \^ select 16
+bind  & select 17
+bind  * select 18
+bind  ) select 19
+
+# other keybindings
+bind ^t time
+bind W windows
+
+# Initial state (startup screens)
+#screen 9
+#screen 8
+#screen 7
+##screen 6
+##screen 5
+##screen 4
+##screen 3
+screen 2
+screen 0
+screen -M 1
