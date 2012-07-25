@@ -30,4 +30,4 @@ if [ -d /Applications/SenchaSDKTools-1.2.3 ]; then
     PATH=/Applications/SenchaSDKTools-1.2.3/appbuilder:$PATH
 fi
 
-# vim: syntax=sh
+# vim: ft=sh

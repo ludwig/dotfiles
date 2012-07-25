@@ -92,8 +92,11 @@ elif [[ $platform == 'macosx' ]]; then
     # needs gitbox - http://gitbox.pierlis.com/
     alias gitbox="open -a Gitbox"
 
+    # Qt console for iPython
+    alias ipython-qt="ipython qtconsole --pylab=inline"
+
     # for sys-setup/scripts
-    alias sd="~/p/linode/sys-setup/scripts/sys-diff.sh"
+    #alias sd="~/p/linode/sys-setup/scripts/sys-diff.sh"
 
     # Emacs daemon on Mac OS X
     # http://www.emacswiki.org/emacs/EmacsAsDaemon
