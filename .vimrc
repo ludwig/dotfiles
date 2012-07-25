@@ -364,8 +364,10 @@ let NERDTreeHighlightCursorline=1
 let NERDTreeMouseMode=2
 
 " Don't display these kinds of files
-let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
-    \ '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$' ]
+let NERDTreeIgnore=[
+    \ '\.pyc$', '\.pyo$', '\.py$', '\.egg$',
+    \ '\.class$', '\.obj$', '\.o$', '\.so$',
+    \ '^\.git$', '^\.svn$' ]
 
 " }}}
 
@@ -616,7 +618,7 @@ vnoremap <A-k> :m-2<cr>gv
 vnoremap <A-j> :m'>+<cr>gv
 
 " Window mappings 
-set wmh=0
+set winminheight=0
 
 " Adding the control keys to hjkl jump to the window and make it full screen
 "nmap <C-j> <C-w>j<C-w>_
@@ -743,4 +745,4 @@ if filereadable(expand("~/.vim/user.vim"))
 endif
 " }}}
 
-" vim: fen fdl=0
+" vim: fen fdl=0 fdm=marker
