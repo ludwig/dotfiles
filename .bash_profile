@@ -5,7 +5,7 @@ PATH="/opt/local/bin:/opt/local/sbin:${PATH}"
 MANPATH="/opt/local/man:${HOME}/opt/local/man:${MANPATH}"
 
 # Put the Homebrew /usr/local paths in PATH
-PATH="/usr/local/bin:/usr/local/share/python:${PATH}"
+PATH="/usr/local/bin:/usr/local/sbin:/usr/local/share/python:${PATH}"
 MANPATH="/usr/local/share/man:${MANPATH}"
 
 # Include ~/.bashrc if it exists.
