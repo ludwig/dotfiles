@@ -1,6 +1,7 @@
 # ignore vim files
-/.vim/tmp
-/.vim/user.vim
-/.vim/.netrwhist
+/vim/tmp
+/vim/user.vim
+/vim/.netrwhist
+/vim/bundle
 tags
 tags-ja
