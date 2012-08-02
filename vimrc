@@ -13,15 +13,6 @@ let mapleader=","
 " -----------------------------------------------------------------------------
 " Plugin Settings
 
-" Pathogen Plugin Manager {{{
-" Use pathogen to easily modify the runtime path to include all plugins
-" under the ~/.vim/bundle directory
-"filetype off                " force reloading *after* pathogen loaded
-"call pathogen#helptags()
-"call pathogen#runtime_append_all_bundles()
-"filetype plugin indent on   " enable detection, plugins and indenting in one step
-" }}}
-
 " Vundle Plugin Manager {{{
 
 " Use vundle to modify the runtime path for including all plugins
@@ -45,20 +36,11 @@ Bundle 'gmarik/vundle'
 Bundle 'ZoomWin'
 
 " Command-T - Fast file navigation for vim
-" Use '<Leader>t' to run :CommandT<CR>
-" Use '<Leader>b' to run :CommandTBuffer<CR>
-" To setup this plugin after installation:
-"   $ cd ~/.vim/bundle/command-t/ruby/command-t
-"   $ ruby extconf.rb
-"   $ make
 " http://www.vim.org/scripts/script.php?script_id=3025
 " https://github.com/wincent/Command-T
 " http://git.wincent.com/command-t.git
 "Bundle 'wincent/Command-T'
 Bundle 'git://git.wincent.com/command-t.git'
-silent! nnoremap <silent> \t :CommandT<CR>
-silent! nnoremap <silent> \b :CommandTBuffer<CR>
-silent! nnoremap <silent> <C-B> :CommandTBuffer<CR>
 
 " space.vim - Smart Space key for vim
 " https://github.com/spiiph/vim-space
@@ -67,11 +49,9 @@ silent! nnoremap <silent> <C-B> :CommandTBuffer<CR>
 "Bundle 'spiiph/vim-space'
 
 " EasyMotion - Vim motions on speed!
-" Use with \\{motion-command} such as \\w, \\f, etc.
 " http://www.vim.org/scripts/script.php?script_id=3526
 " https://github.com/Lokaltog/vim-easymotion
 Bundle 'Lokaltog/vim-easymotion'
-let g:EasyMotion_leader_key = '\\'
 
 " LustyJuggler - Switch very quickly among your active buffers
 " Launch with '<Leader>lj'
@@ -122,6 +102,10 @@ Bundle 'Rykka/colorv.vim'
 " http://www.vim.org/scripts/script.php?script_id=3465
 " https://github.com/majutsushi/tagbar
 Bundle 'majutsushi/tagbar'
+
+" taglist.vim - Source code browser (supports C, C++, java, python, etc.)
+" http://www.vim.org/scripts/script.php?script_id=273
+Bundle 'taglist.vim'
 
 " gitv - gitk for vim
 " http://www.gregsexton.org/portfolio/gitv/
@@ -187,6 +171,8 @@ Bundle 'mileszs/ack.vim'
 Bundle 'gmarik/sudo-gui.vim'
 
 " vim-togglelist - Functions to toggle the [Location List] and the [Quickfix List] windows
+" Use '<Leader>l' to toggle the location list
+" Use '<Leader>q' to toggle the quickfix list
 " https://github.com/milkypostman/vim-togglelist
 Bundle 'milkypostman/vim-togglelist'
 
@@ -234,7 +220,7 @@ Bundle 'Raimondi/delimitMate'
 " Syntastic - Automatic syntax checking
 " http://www.vim.org/scripts/script.php?script_id=2736
 " https://github.com/scrooloose/syntastic
-Bundle 'scrooloose/syntastic'
+"Bundle 'scrooloose/syntastic'
 
 " SuperTab - Do all your insert-mode completion with Tab
 " http://www.vim.org/scripts/script.php?script_id=1643
@@ -389,9 +375,6 @@ Bundle 'tpope/vim-repeat'
 Bundle 'a.vim'
 
 " bufexplorer.zip - Buffer Explorer / Browser
-"   '<Leader>be'  normal open
-"   '<Leader>bs'  horizontal split open
-"   '<Leader>bv'  vertical split open
 " http://www.vim.org/scripts/script.php?script_id=42
 " https://github.com/vim-scripts/bufexplorer.zip
 Bundle 'bufexplorer.zip'
@@ -444,6 +427,7 @@ Bundle 'Conque-Shell'
 Bundle 'zaiste/tmux.vim'
 
 " vimux - effortless vim and tmux interaction
+" To use, run :call RunVimTmuxCommand("ls")
 " http://www.vim.org/scripts/script.php?script_id=4011
 " https://github.com/benmills/vimux
 Bundle 'benmills/vimux'
@@ -470,12 +454,90 @@ filetype plugin indent on
 " }}}
 
 " Configure plugins {{{
+" --- BufExplorer settings {{{
+
+" To use:
+"   '<Leader>be'  normal open
+"   '<Leader>bs'  horizontal split open
+"   '<Leader>bv'  vertical split open
+
+" XXX: figure out how to disable the mappings starting with ,
+"nmap <silent> <unique> \be :BufExplorer<CR>
+"nmap <silent> <unique> \bs :BufExplorerHorizontalSplit<CR>
+"nmap <silent> <unique> \bv :BufExplorerVerticalSplit<CR>
+
+let g:bufExplorerDefaultHelp=0
+"let g:bufExplorerDetailedHelp=1
+"let g:bufExplorerFindActive=0
+let g:bufExplorerShowUnlisted=0
+"let g:bufExplorerSortBy='mru'
+let g:bufExplorerSplitBelow=1
+let g:bufExplorerSplitOutPathName=1
+let g:bufExplorerSplitRight=1
+
+" }}}
+" --- Command-T settings {{{
+
+" To setup this plugin after installation:
+"   $ cd ~/.vim/bundle/command-t/ruby/command-t
+"   $ ruby extconf.rb
+"   $ make
+
+" Use '<Leader>t' to run :CommandT<CR>
+nnoremap <silent> \t :CommandT<CR>
+
+" Use '<Leader>b' to run :CommandTBuffer<CR>
+nnoremap <silent> \b :CommandTBuffer<CR>
+
+" Also use CTRL-B to open the Command-T buffers
+nnoremap <silent> <C-B> :CommandTBuffer<CR>
+
+" }}}
+" --- EasyMotion settings {{{
+
+" Use with \\{motion-command} such as \\w, \\f, etc.
+let g:EasyMotion_leader_key = '\\'
+
+" }}}
+" --- Gitv settings {{{
+
+" See https://github.com/gregsexton/gitv
+
+cabbrev git Git
+cabbrev gitv Gitv
+
+nmap <leader>gv :Gitv --all<CR>
+nmap <leader>gV :Gitv! --all<CR>
+
+" }}}
+" --- IndentGuides settings {{{
+
+" Toggle this plugin with '<Leader>ig' -- runs :IndentGuidesToggle
+let g:indent_guides_color_change_percent = 10
+let g:indent_guides_guide_size = 2
+let g:indent_guides_start_level = 1
+let g:indent_guides_enable_on_vim_startup = 0
+
+" }}}
+" --- LustyJuggler settings {{{
+
+" Use '<Leader>lj' to run :LustyJuggler
+let g:LustyJugglerDefaultMappings = 1
+
+" Disable LustyJuggler warning (default vim not built with ruby)
+"let g:LustyJugglerSuppressRubyWarning = 1
+
+" }}}
+" --- MRU settings {{{
+
+" Open list of most recently used files with ':MRU' or ',m'
+nmap <silent> <Leader>m :MRU<CR>
+
+" }}}
 " --- NERDTree settings {{{
 
-" Put focus on the NERD Tree with F3 (tricked by quickly closing it and
-" immediately showing it again, since there is no :NERDTreeFocus command)
+" Toggle the NERD Tree
 nmap <Leader>n :NERDTreeToggle<CR>
-nmap <leader>m :NERDTreeFind<CR>
 
 " Store the bookmarks
 let NERDTreeBookmarksFile=expand("$HOME/.vim/tmp/NERDTreeBookmarks")
@@ -504,39 +566,28 @@ let NERDTreeIgnore=[
 
 " }}}
 " --- NERDCommenter settings {{{
+
 " Mappings
 "   ',cu'   uncomments
 "   ',cc'   comments out lines
 "   ',cl'   aligns delimiters on left
 "   ',cb'   aligns delimiters on right
 "   ',cs'   uses sexy delimiters
+
 let NERDCommentWholeLinesInVMode=2
+
 let NERDSpaceDelims=0
-" }}}
-" --- BufExplorer settings {{{
-" XXX: figure out how to disable the mappings starting with ,
-" nmap <silent> <unique> \be :BufExplorer<CR>
-" nmap <silent> <unique> \bs :BufExplorerHorizontalSplit<CR>
-" nmap <silent> <unique> \bv :BufExplorerVerticalSplit<CR>
-let g:bufExplorerDefaultHelp=0
-"let g:bufExplorerDetailedHelp=1
-"let g:bufExplorerFindActive=0
-let g:bufExplorerShowUnlisted=1
-"let g:bufExplorerSortBy='mru'
-let g:bufExplorerSplitBelow=1
-let g:bufExplorerSplitOutPathName=1
-let g:bufExplorerSplitRight=1
-" }}}
-" --- Managing buffers with LustyJuggler {{{
 
-" Disable LustyJuggler warning (default vim not built with ruby)
-"let g:LustyJugglerSuppressRubyWarning = 1
-
+" }}}
+" --- scratch.vim settings {{{
+cabbrev scratch Scratch
+cabbrev sscratch Sscratch
+nmap <leader><tab> :Sscratch<CR><C-w>x<C-w><C-j>i
 " }}}
 " --- TagList settings {{{
 
-nmap <leader>l :TlistClose<CR>:TlistToggle<CR>
-nmap <leader>L :TlistClose<CR>
+" Toggle TagList with ',T'
+nmap <silent> <leader>T :TlistToggle<CR>
 
 let Tlist_Exit_OnlyWindow=1         " quit when TagList is the last open window
 let Tlist_GainFocus_On_ToggleOpen=1 " put focus on the TagList window when it opens
@@ -563,12 +614,13 @@ let Tlist_Display_Tag_Scope=0
 let Tlist_Use_Right_Window=1
 
 " }}}
-" --- Gitv settings {{{
-" See https://github.com/gregsexton/gitv
-cabbrev git Git
-cabbrev gitv Gitv
-nmap <leader>gv :Gitv --all<CR>
-nmap <leader>gV :Gitv! --all<CR>
+" --- Tagbar settings {{{
+" Toggle Tagbar with ',t'
+nmap <silent> <Leader>t :TagbarToggle<CR>
+let g:tagbar_width = 40
+let g:tagbar_iconchars = ['▾', '▸']
+let g:tagbar_compact = 1
+let g:tagbar_foldlevel = 99
 " }}}
 " --- Conflict markers {{{
 
@@ -917,9 +969,6 @@ nmap <leader>ac :center<CR>
 
 " Pull word under cursor into LHS of a substitute (for quick search and replace)
 nmap <leader>z :%s#\<<C-r>=expand("<cword>")<CR>\>#
-
-" Scratch (XXX)
-nmap <leader><tab> :Sscratch<CR><C-W>x<C-J>
 
 " Sudo to write
 cmap w!! w !sudo tee % >/dev/null
