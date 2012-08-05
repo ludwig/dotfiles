@@ -180,7 +180,7 @@ Bundle 'milkypostman/vim-togglelist'
 " http://www.vim.org/scripts/script.php?script_id=2032
 " https://github.com/vim-scripts/swap-parameters
 " https://github.com/mutewinter/swap-parameters
-Bundle 'mutewinter/swap-parameters'
+"Bundle 'mutewinter/swap-parameters'
 
 " YankRing.vim - Maintains a history of previous yanks, changes, and deletes
 " http://www.vim.org/scripts/script.php?script_id=1234
@@ -454,6 +454,9 @@ filetype plugin indent on
 " }}}
 
 " Configure plugins {{{
+" --- Ack settings {{{
+cabbrev ack Ack
+" }}}
 " --- BufExplorer settings {{{
 
 " To use:
