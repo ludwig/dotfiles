@@ -45,7 +45,7 @@ export PROMPT_DIRTRIM=2
 # History settings
 
 # http://bradchoate.com/weblog/2006/05/19/daily-history-files-for-bash
-export HISTFILE="~/.history/`date +%Y%m%d`.hist"
+#export HISTFILE="~/.history/`date +%Y%m%d`.hist"
 export HISTFILESIZE=10000
 export HISTSIZE=10000
 
