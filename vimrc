@@ -17,6 +17,18 @@ let mapleader=","
 
 " Use vundle to modify the runtime path for including all plugins
 " under the ~/.vim/bundle/ directory
+"
+" To bootstrap vundle, run:
+"   $ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+"
+" Brief help
+"   :BundleList             - list configured bundles
+"   :BundleInstall(!)       - install (update) bundles
+"   :BundleSearch(!) foo    - search (or refresh cache first) for foo
+"   :BundleClean(!)         - confirm (or auto-approve) removal of unused bundles
+"
+" See ':h vundle' for more details, or wiki for FAQ
+"
 
 filetype off    " required!
 
@@ -184,8 +196,8 @@ Bundle 'milkypostman/vim-togglelist'
 
 " YankRing.vim - Maintains a history of previous yanks, changes, and deletes
 " http://www.vim.org/scripts/script.php?script_id=1234
-" https://github.com/chrismetcalf/vim-yankring
-Bundle 'chrismetcalf/vim-yankring'
+" https://github.com/vim-scripts/YankRing.vim
+Bundle 'YankRing.vim'
 
 " keepcase.vim - Functions for doing case-persistant substitutions
 " http://www.vim.org/scripts/script.php?script_id=6
@@ -205,7 +217,7 @@ Bundle 'mattn/zencoding-vim'
 
 " IndexedSearch - shows 'Nth match out of M' at every search (index of match + total num matches)
 " http://www.vim.org/scripts/script.php?script_id=1682
-Bundle 'IndexedSearch'
+"Bundle 'IndexedSearch'
 
 " session.vim - extended session management for vim
 " http://www.vim.org/scripts/script.php?script_id=3150
@@ -438,22 +450,13 @@ Bundle 'benmills/vimux'
 " must turn on after vundle setup
 filetype plugin indent on
 
-"
-" To bootstrap vundle, run:
-"   $ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-"
-" Brief help
-"   :BundleList             - list configured bundles
-"   :BundleInstall(!)       - install (update) bundles
-"   :BundleSearch(!) foo    - search (or refresh cache first) for foo
-"   :BundleClean(!)         - confirm (or auto-approve) removal of unused bundles
-"
-" See ':h vundle' for more details, or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed...
-
 " }}}
 
 " Configure plugins {{{
+" --- a.vim settings {{{
+nnoremap <silent> \s :A<CR>
+nnoremap <silent> ,s :A<CR>
+" }}}
 " --- Ack settings {{{
 cabbrev ack Ack
 " }}}
@@ -486,14 +489,15 @@ let g:bufExplorerSplitRight=1
 "   $ ruby extconf.rb
 "   $ make
 
-" Use '<Leader>t' to run :CommandT<CR>
+" Use '\t' to run :CommandT<CR>
 nnoremap <silent> \t :CommandT<CR>
 
-" Use '<Leader>b' to run :CommandTBuffer<CR>
+" Use '\b' to run :CommandTBuffer<CR>
 nnoremap <silent> \b :CommandTBuffer<CR>
 
-" Also use CTRL-B to open the Command-T buffers
+" Also use CTRL-B and CTRL-G
 nnoremap <silent> <C-B> :CommandTBuffer<CR>
+nnoremap <silent> <C-G> :CommandT<CR>
 
 " }}}
 " --- EasyMotion settings {{{
@@ -625,6 +629,12 @@ let g:tagbar_iconchars = ['▾', '▸']
 let g:tagbar_compact = 1
 let g:tagbar_foldlevel = 99
 " }}}
+" --- YankRing settings {{{
+
+let g:yankring_history_dir = '$HOME/.vim/tmp'
+nmap <leader>r :YRShow<CR>
+
+" }}}
 " --- Conflict markers {{{
 
 " XXX: Do we even use these? See if we can get rid of this section...
@@ -647,6 +657,7 @@ if has("autocmd")
         function LoadTemplate(file)
             if a:file =~ 'furls$'
                 execute "0r ~/.vim/skeleton/furls"
+                execute "normal Gddgg"
                 set ft=conf
             elseif a:file =~ 'furls2$'
                 execute "0r ~/.vim/skeleton/furls2"
@@ -702,15 +713,11 @@ set listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
 "set listchars+=eol:¬
 
 " Don't add empty newlines at the end of files
-set binary
 set noeol
 
 " when in insert mode, press <F2> to go to paste mode, where you
 " can paste mass data that won't be autoindented
 set pastetoggle=<F2>
-
-" enable using the mouse if terminal emulator supports it (xterm does)
-set mouse=a
 
 " specifies what end-of-line formats will be tried when editing a new buffer
 set fileformats="unix,dos,mac"
@@ -720,6 +727,94 @@ set shortmess=atI
 
 " don't reset cursor to start of line when moving around
 set nostartofline
+
+" don't beep
+set visualbell
+set noerrorbells
+
+" show (partial) command in the last line of the screen.
+" this also shows visual selection info
+set showcmd
+
+" modeline settings (disable mode lines, as security measure)
+set modelines=5
+set modeline
+
+" always use a fast terminal
+set ttyfast
+
+" enable using the mouse if terminal emulator supports it (xterm does)
+set mouse=a
+
+" when on, splitting a window will put the new window right of the current one
+set nosplitright
+
+" when on, splitting a window will put the new window below the current one
+set nosplitbelow
+
+" hide buffers instead of closing them. this means that the current buffer
+" can be put to background without being written; and that marks and undo
+" history are preserved
+set hidden
+
+" }}}
+
+" Vim behaviour {{{
+
+" change the terminal's title
+set title
+
+" reveal already opened files from the quickfix window instead
+" of opening new buffers
+set switchbuf=useopen
+
+" Set this when editing binary files (note: expandtab is turned off!)
+"set binary
+
+" remember more commands and search history
+set history=1000
+set undolevels=1000
+
+" read/write a .viminfo file, don't store more than 80 lines of registers
+set viminfo='20,\"80
+
+" We typically don't want to use the current working directory as a backupdir.
+" Fortunately, we can set it explicitly. See the following Vim FAQ entry:
+" http://vimdoc.sourceforge.net/cgi-bin/vimfaq2html3.pl#7.2
+" See also: http://news.ycombinator.com/item?id=1688068
+set backupdir=~/.vim/tmp//,~/tmp//,/tmp//
+set directory=~/.vim/tmp//,~/tmp//,/tmp//
+
+" keep the undo history for our buffers (disable for now)
+if 0 && exists('+undofile')
+    set undofile
+    set undodir=~/.vim/tmp//,~/tmp//,/tmp//
+endif
+
+" make tab completion for files/buffers act like bash
+set wildmenu
+
+" show a list when pressing tab, and complete first full match
+set wildmode=list:full
+
+" ignore completion for these files
+set wildignore+=*.swp,*.bak,*.pyc,*.class,*.o
+
+" underline the current line, for quick orientation
+"set cursorline
+
+" Tame the quickfix window (open/close using ,f)
+nmap <silent> <leader>f :QFix<CR>
+command! -bang -nargs=? QFix call QFixToggle(<bang>0)
+function! QFixToggle(forced)
+  if exists("g:qfix_win") && a:forced == 0
+    cclose
+    unlet g:qfix_win
+  else
+    copen 10
+    let g:qfix_win = bufnr("$")
+  endif
+endfunction
 
 " }}}
 
@@ -764,82 +859,6 @@ set laststatus=2                " tell VIM to always put a status line in, even 
 set ruler                       " show line and column number of the cursor position
 " }}}
 
-" Vim behaviour {{{
-
-" change the terminal's title
-set title
-
-" don't beep
-set visualbell
-set noerrorbells
-
-" show (partial) command in the last line of the screen.
-" this also shows visual selection info
-set showcmd
-
-" modeline settings (disable mode lines, as security measure)
-set modelines=5
-set modeline
-
-" always use a fast terminal
-set ttyfast
-
-" hide buffers instead of closing them. this means that the current buffer
-" can be put to background without being written; and that marks and undo
-" history are preserved
-set hidden
-
-" reveal already opened files from the quickfix window instead
-" of opening new buffers
-set switchbuf=useopen
-
-" remember more commands and search history
-set history=1000
-set undolevels=1000
-
-" read/write a .viminfo file, don't store more than 80 lines of registers
-set viminfo='20,\"80
-
-" We typically don't want to use the current working directory as a backupdir.
-" Fortunately, we can set it explicitly. See the following Vim FAQ entry:
-" http://vimdoc.sourceforge.net/cgi-bin/vimfaq2html3.pl#7.2
-" See also: http://news.ycombinator.com/item?id=1688068
-set backupdir=~/.vim/tmp//,~/tmp//,/tmp//
-set directory=~/.vim/tmp//,~/tmp//,/tmp//
-
-" keep the undo history for our buffers (disable for now)
-if 0 && exists('+undofile')
-    set undofile
-    set undodir=~/.vim/tmp//,~/tmp//,/tmp//
-endif
-
-" make tab completion for files/buffers act like bash
-set wildmenu
-
-" show a list when pressing tab, and complete first full match
-set wildmode=list:full
-
-" ignore completion for these files
-set wildignore+=*.swp,*.bak,*.pyc,*.class
-
-" underline the current line, for quick orientation
-"set cursorline
-
-" Tame the quickfix window (open/close using ,f)
-nmap <silent> <leader>f :QFix<CR>
-command! -bang -nargs=? QFix call QFixToggle(<bang>0)
-function! QFixToggle(forced)
-  if exists("g:qfix_win") && a:forced == 0
-    cclose
-    unlet g:qfix_win
-  else
-    copen 10
-    let g:qfix_win = bufnr("$")
-  endif
-endfunction
-
-" }}}
-
 " Highlighting {{{
 
 " Syntax coloring lines that are too long just slows down the world
@@ -880,8 +899,8 @@ map <left> <nop>
 map <right> <nop>
 
 " Remap j and k to act as expected when used on long, wrapped lines
-"nnoremap j gj
-"nnoremap k gk
+nnoremap j gj
+nnoremap k gk
 
 " Use normal regexes in search (instead of vim's crazy regexes)
 " Thanks to Steve Losh for this liberating tip
@@ -899,6 +918,9 @@ nnoremap <C-k> <C-y>
 " refreshes the screen?
 nnoremap <C-h> 3zh
 nnoremap <C-l> 3zl
+
+" Use CTRL-C
+map <C-c> <Esc>
 
 " Avoid accidental hits of <F1> while aiming for <Esc>
 map! <F1> <Esc>
@@ -949,13 +971,9 @@ nmap <leader>Y "+yy
 nmap <leader>p "+p
 nmap <leader>P "+P
 
-" YankRing
-let g:yankring_history_dir = '$HOME/.vim/tmp'
-nmap <leader>r :YRShow<CR>
-
 " Edit the vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
+"nmap <silent> <leader>ev :e $MYVIMRC<CR>
+"nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " Clears the search register
 nmap <silent> <leader>/ :nohlsearch<CR>
@@ -966,9 +984,9 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 "inoremap jk <Esc>
 
 " Quick alignment of text
-nmap <leader>al :left<CR>
-nmap <leader>ar :right<CR>
-nmap <leader>ac :center<CR>
+"nmap <leader>al :left<CR>
+"nmap <leader>ar :right<CR>
+"nmap <leader>ac :center<CR>
 
 " Pull word under cursor into LHS of a substitute (for quick search and replace)
 nmap <leader>z :%s#\<<C-r>=expand("<cword>")<CR>\>#
@@ -1214,7 +1232,7 @@ set keywordprg=man\ -s
 
 " Load alternate file (swap between header and implementation).
 " Can also use CTRL-^ for this.
-nmap <silent> \s :A<cr>
+nmap <silent> \s :A<CR>
 
 " Common abbreviations / misspellings
 source ~/.vim/autocorrect.vim
@@ -1229,7 +1247,7 @@ if has("gui_running")
 endif
 
 " Horizontal rule separator (80 characters wide)
-function HorizontalRule()
+function! HorizontalRule()
     let @s = "-------------------------------------------------------------------------------"
     put s
 endfunction
@@ -1237,7 +1255,7 @@ nnoremap <silent> <leader>hr :call HorizontalRule()<CR>
 
 " Function for hiding line comments
 " http://www.debian-administration.org/article/616/Hiding_comments_in_configuration_files
-function HideLineComments()
+function! HideLineComments()
     set foldmethod=expr
     set foldexpr=getline(v:lnum)=~'^\\s*//'?1:getline(prevnonblank(v:lnum))=~'^\\s*//'?1:getline(nextnonblank(v:lnum))=~'^\\s*//'?1:0
     highlight clear Folded
@@ -1248,7 +1266,7 @@ nnoremap <silent> <leader>hc :call HideLineComments()<CR>
 
 " Function for hiding block comments
 " http://www.linuxquestions.org/questions/linux-general-1/vim-plugin-for-hiding-block-comments-466625/
-function HideBlockComments()
+function! HideBlockComments()
     set foldmethod=marker
     set foldmarker=/*,*/
     highlight clear Folded
@@ -1274,6 +1292,16 @@ iab lllorem Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacu
 " }}}
 
 " Extra user or machine specific settings {{{
+
+" disable the substitute commands
+nnoremap s <nop>
+nnoremap S <nop>
+vnoremap s <nop>
+vnoremap S <nop>
+
+" lastly, load up user.vim local overrides.
+" note that user.vim is not kept in the repository, and therefore
+" we can use this file to load machine-specific settings
 if filereadable(expand("~/.vim/user.vim"))
     source ~/.vim/user.vim
 endif
