@@ -31,6 +31,7 @@ if [ -d ~/opt/local ]; then
     # Using the ${varname:+value} trick again.
     LD_LIBRARY_PATH="${HOME}/opt/local/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
     DYLD_LIBRARY_PATH="${HOME}/opt/local/lib${DYLD_LIBRARY_PATH:+:$DYLD_LIBRARY_PATH}"
+    PKG_CONFIG_PATH="${HOME}/opt/local/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
 fi
 
 # Prepend ~/bin to the PATH.
@@ -47,6 +48,7 @@ export LD_LIBRARY_PATH
 export DYLD_LIBRARY_PATH
 #export DYLD_FRAMEWORK_PATH
 
+export PKG_CONFIG_PATH
 #export CLASSPATH
 export MANPATH
 export PATH
