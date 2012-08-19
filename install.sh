@@ -21,4 +21,5 @@ link screenrc
 link tmux.conf
 link urlview
 link vimrc
+link zshrc
 
