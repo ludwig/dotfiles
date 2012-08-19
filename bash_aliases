@@ -42,6 +42,7 @@ alias irb='irb --readline -r irb/completion'
 # cgoban3
 alias cgoban3='javaws http://files.gokgs.com/javaBin/cgoban.jnlp'
 
+alias fact="links -dump randomfunfacts.com | sed -n '/^|/p' | tr -d \|"
 
 ###############################################################################
 # Platform-specific aliases
@@ -112,4 +113,4 @@ fi
 
 
 ###############################################################################
-# vim: syntax=sh
+# vim: ft=sh
