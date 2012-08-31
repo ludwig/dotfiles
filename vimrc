@@ -1210,6 +1210,9 @@ endfunction
 
 " Miscellaneous settings {{{
 
+" Don't let cindent muck with ':' in insert-mode.
+set cinkeys-=:
+
 " when changing a line, don't redisplay, but put a '$' at the end during the change
 set cpoptions+=$
 
@@ -1220,8 +1223,18 @@ set formatoptions-=o
 " so explicitly unset it again
 au filetype vim set formatoptions-=o
 
-" Don't let cindent muck with ':' in insert-mode.
-set cinkeys-=:
+" Program to use for formatting text
+" 'gqip' formats paragraph using external tool specified in 'formatprg'
+" 'gwip' formats paragraph using vim's internal formatting tool
+" see 'par help' at the command line for available options
+" http://vimcasts.org/episodes/formatting-text-with-par/
+set formatprg=par
+"set formatprg=par\ -w50
+"set formatprg=par\ -w50req
+
+" to enable automatic text wrapping use these settings (leave them commented out here)
+"set textwidth=80
+"set formatoptions+=t
 
 " Disable keyword lookup in normal mode. Note that K will still work in visual mode,
 " using vawK sequence, for example.
@@ -1298,6 +1311,9 @@ nnoremap s <nop>
 nnoremap S <nop>
 vnoremap s <nop>
 vnoremap S <nop>
+
+" override the :W! command (defined by sudo-gui.vim to be :SudoWrite!)
+cabbrev W w
 
 " lastly, load up user.vim local overrides.
 " note that user.vim is not kept in the repository, and therefore
