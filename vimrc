@@ -132,6 +132,10 @@ Bundle 'gregsexton/gitv'
 " http://www.vim.org/scripts/script.php?script_id=4026
 "Bundle 'sjl/splice.vim'
 
+" vim-colorschemes - one stop shop for vim colorschemes
+" https://github.com/flazz/vim-colorschemes
+"Bundle 'flazz/vim-colorschemes'
+
 " molokai - a port of the monokai scheme for TextMate
 " http://www.vim.org/scripts/script.php?script_id=2340
 " https://github.com/tomasr/molokai
