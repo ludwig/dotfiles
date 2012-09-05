@@ -145,6 +145,11 @@ Bundle 'sjl/badwolf'
 " https://github.com/altercation/vim-colors-solarized
 Bundle 'altercation/vim-colors-solarized'
 
+" jellybeans.vim - Colorful, dark color scheme
+" http://www.vim.org/scripts/script.php?script_id=2555
+" https://github.com/nanotech/jellybeans.vim
+Bundle 'nanotech/jellybeans.vim'
+
 " }}}
 " --- Commands {{{
 
