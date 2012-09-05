@@ -710,13 +710,13 @@ set sidescrolloff=1             " ditto, for horizontal scrolling
 set hlsearch                    " highlight search terms
 set incsearch                   " show search matches as you type
 set gdefault                    " search/replace 'globally' (on a line) by default
+set cursorline                  " highlight current line, for quick orientation
 
 "set nowrap                      " don't wrap lines
 "set smartindent                 " use smart autoindenting when starting a new line
 "set number                      " always show line numbers
 "set ignorecase                  " ignore case when searching
 "set virtualedit=all             " allow the cursor to go to 'invalid' places
-"set cursorline                  " highlight current line (or not)
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -816,9 +816,6 @@ set wildmode=list:full
 " ignore completion for these files
 set wildignore+=*.swp,*.bak,*.pyc,*.class,*.o
 
-" underline the current line, for quick orientation
-"set cursorline
-
 " Tame the quickfix window (open/close using ,f)
 nmap <silent> <leader>f :QFix<CR>
 command! -bang -nargs=? QFix call QFixToggle(<bang>0)
@@ -893,6 +890,11 @@ if &t_Co > 2 || has("gui_running")
     " switch syntax highlighting on, when the terminal has colors
     syntax on
 endif
+
+" Highlight the current line (use \c to toggle 'cursorline')
+" http://vim.wikia.com/wiki/Highlight_current_line
+highlight CursorLine cterm=NONE ctermbg=222 ctermfg=black guibg=#F1F5FA
+nnoremap <silent> \c :set cursorline!<CR>
 
 " Highlighting the 80th column (or relative to 'textwidth')
 " http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns
