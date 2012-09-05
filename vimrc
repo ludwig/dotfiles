@@ -1245,8 +1245,9 @@ au filetype vim set formatoptions-=o
 " see 'par help' at the command line for available options
 " http://vimcasts.org/episodes/formatting-text-with-par/
 set formatprg=par
-"set formatprg=par\ -w50
-"set formatprg=par\ -w50req
+"set formatprg=par\ w50
+"set formatprg=par\ w50req
+"set formatprg=par\ w72p3qrf
 
 " to enable automatic text wrapping use these settings (leave them commented out here)
 "set textwidth=80
