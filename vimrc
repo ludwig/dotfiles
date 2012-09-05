@@ -141,14 +141,14 @@ Bundle 'tomasr/molokai'
 " https://github.com/sjl/badwolf
 Bundle 'sjl/badwolf'
 
-" vim-colors-solarized - precision color scheme for vim
-" https://github.com/altercation/vim-colors-solarized
-Bundle 'altercation/vim-colors-solarized'
-
 " jellybeans.vim - Colorful, dark color scheme
 " http://www.vim.org/scripts/script.php?script_id=2555
 " https://github.com/nanotech/jellybeans.vim
 Bundle 'nanotech/jellybeans.vim'
+
+" vim-colors-solarized - precision color scheme for vim
+" https://github.com/altercation/vim-colors-solarized
+Bundle 'altercation/vim-colors-solarized'
 
 " }}}
 " --- Commands {{{
@@ -882,8 +882,10 @@ set synmaxcol=2048
 
 if &t_Co >= 256 || has("gui_running")
     " other colorschemes:
-    "   molokai, inkpot, gardener, desert256, calmar256-dark, calmar256-light
-    "   ir_black, herald
+    "   default, molokai, badwolf, jellybeans, herald, inkpot,
+    "   tir_black, gardener, desert256, calmar256-dark, calmar256-light,
+    "   Tomorrow, Tomorrow-Night, Tomorrow-Night-Bright,
+    "   Tomorrow-Night-Eighties
     colorscheme default
 endif
 
