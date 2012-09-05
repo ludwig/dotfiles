@@ -634,6 +634,17 @@ let g:tagbar_iconchars = ['▾', '▸']
 let g:tagbar_compact = 1
 let g:tagbar_foldlevel = 99
 " }}}
+" --- Tabular settings {{{
+
+" http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+"if exists(":Tabularize")
+"    nmap \a= :Tabularize /=<CR>
+"    vmap \a= :Tabularize /=<CR>
+"    nmap \a: :Tabularize /:\zs<CR>
+"    vmap \a: :Tabularize /:\zs<CR>
+"endif
+
+" }}}
 " --- YankRing settings {{{
 
 let g:yankring_history_dir = '$HOME/.vim/tmp'
