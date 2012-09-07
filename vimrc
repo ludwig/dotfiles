@@ -519,6 +519,8 @@ let g:EasyMotion_leader_key = '\\'
 
 " See https://github.com/gregsexton/gitv
 
+let g:Gitv_OpenHorizontal=1
+
 cabbrev git Git
 cabbrev gitv Gitv
 
