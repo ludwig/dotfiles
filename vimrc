@@ -756,7 +756,7 @@ set noerrorbells
 " this also shows visual selection info
 set showcmd
 
-" modeline settings (disable mode lines, as security measure)
+" modeline settings (...should disable mode lines, as security measure)
 set modelines=5
 set modeline
 
@@ -820,53 +820,10 @@ set wildmode=list:full
 " ignore completion for these files
 set wildignore+=*.swp,*.bak,*.pyc,*.class,*.o
 
-" Tame the quickfix window (open/close using ,f)
-nmap <silent> <leader>f :QFix<CR>
-command! -bang -nargs=? QFix call QFixToggle(<bang>0)
-function! QFixToggle(forced)
-  if exists("g:qfix_win") && a:forced == 0
-    cclose
-    unlet g:qfix_win
-  else
-    copen 10
-    let g:qfix_win = bufnr("$")
-  endif
-endfunction
-
-" }}}
-
-" Folding rules {{{
-
-"set foldenable                  " enable folding
-"set foldcolumn=2                " add a fold column
-
-set foldmethod=marker           " detect triple-{ style fold markers
-set foldlevelstart=0            " start out with everything folded
-
-" which commands trigger auto-unfold
-set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
-
-" customize the text displayed for a closed fold
-set foldtext=MyFoldText()
-function! MyFoldText()
-    let line = getline(v:foldstart)
-
-    let nucolwidth = &fdc + &number * &numberwidth
-    let windowwidth = winwidth(0) - nucolwidth - 3
-    let foldedlinecount = v:foldend - v:foldstart
-
-    " expand tabs into spaces
-    let onetab = strpart('          ', 0, &tabstop)
-    let line = substitute(line, '\t', onetab, 'g')
-
-    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
-    let fillcharcount = windowwidth - len(line) - len(foldedlinecount) - 4
-    return line . ' …' . repeat(" ",fillcharcount) . foldedlinecount . ' '
-endfunction
-
 " }}}
 
 " Editor layout {{{
+
 set termencoding=utf-8          " character encoding used for the terminal
 set encoding=utf-8              " character encoding used inside vim
 set lazyredraw                  " don't update the display while executing macros
@@ -874,9 +831,6 @@ set cmdheight=1                 " use a statusbar that is 2 rows high (nevermind
 set showtabline=1               " show tab page labels (0 = never, 1 = when more than one, 2 = always)
 set laststatus=2                " tell VIM to always put a status line in, even if there is only one window
 set ruler                       " show line and column number of the cursor position
-" }}}
-
-" Highlighting {{{
 
 " Syntax coloring lines that are too long just slows down the world
 set synmaxcol=2048
@@ -911,6 +865,37 @@ if 0 && exists('+colorcolumn')
     " see ':help match'
     match OverLength /\%81v.\+/
 endif
+
+" }}}
+
+" Folding rules {{{
+
+"set foldenable                  " enable folding
+"set foldcolumn=2                " add a fold column
+
+set foldmethod=marker           " detect triple-{ style fold markers
+set foldlevelstart=0            " start out with everything folded
+
+" which commands trigger auto-unfold
+set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
+
+" customize the text displayed for a closed fold
+set foldtext=MyFoldText()
+function! MyFoldText()
+    let line = getline(v:foldstart)
+
+    let nucolwidth = &fdc + &number * &numberwidth
+    let windowwidth = winwidth(0) - nucolwidth - 3
+    let foldedlinecount = v:foldend - v:foldstart
+
+    " expand tabs into spaces
+    let onetab = strpart('          ', 0, &tabstop)
+    let line = substitute(line, '\t', onetab, 'g')
+
+    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+    let fillcharcount = windowwidth - len(line) - len(foldedlinecount) - 4
+    return line . ' …' . repeat(" ",fillcharcount) . foldedlinecount . ' '
+endfunction
 
 " }}}
 
@@ -1037,6 +1022,19 @@ nnoremap <leader>a :Ack
 
 " Reselect text that was just pasted with ,v
 nnoremap <leader>v V`]
+
+" Tame the quickfix window (open/close using ,f)
+nmap <silent> <leader>f :QFix<CR>
+command! -bang -nargs=? QFix call QFixToggle(<bang>0)
+function! QFixToggle(forced)
+  if exists("g:qfix_win") && a:forced == 0
+    cclose
+    unlet g:qfix_win
+  else
+    copen 10
+    let g:qfix_win = bufnr("$")
+  endif
+endfunction
 
 " }}}
 
