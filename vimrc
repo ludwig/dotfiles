@@ -851,7 +851,8 @@ endif
 
 " Highlight the current line (use \c to toggle 'cursorline')
 " http://vim.wikia.com/wiki/Highlight_current_line
-highlight CursorLine cterm=NONE ctermbg=222 ctermfg=black guibg=#F1F5FA
+"highlight CursorLine term=standout cterm=standout
+highlight CursorLine term=standout cterm=NONE ctermbg=222 guibg=#F1F5FA
 nnoremap <silent> \c :set cursorline!<CR>
 
 " Highlighting the 80th column (or relative to 'textwidth')
