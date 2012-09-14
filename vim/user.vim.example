@@ -2,13 +2,36 @@
 " This file won't be included in version control and may therefore be used for
 " machine-dependent settings.
 
-" Custom key mapping as I use them with iTerm
-imap <Esc>[H;2~ <C-w>
+" Choose a colorscheme
+"colorscheme jellybeans
 
 " Disable folding
-set nofoldenable
-set foldcolumn=0
+"set nofoldenable
+"set foldcolumn=0
+
+" How much context to keep around
+"set scrolloff=1
 
 " Suppress LustyJuggler ruby warning
-let g:LustyJugglerSuppressRubyWarning=1
+"let g:LustyJugglerSuppressRubyWarning=1
 
+" Load, but turn off delimitMate by default (toggle it back with :DelimitMateSwitch)
+"let delimitMate_offByDefault = 1
+
+" Turn off use of quotes in delimitMate (temporarily, of course)
+"let delimitMate_quotes = ''
+
+" Disable the gj & gk maps
+"nunmap j
+"nunmap k
+
+" Disable the substitute commands
+"nnoremap s <nop>
+"nnoremap S <nop>
+"vnoremap s <nop>
+"vnoremap S <nop>
+
+" Custom key mapping as I use them with iTerm
+"imap <Esc>[H;2~ <C-w>
+
+" vim: ft=vim
