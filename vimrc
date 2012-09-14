@@ -463,11 +463,23 @@ filetype plugin indent on
 
 " Configure plugins {{{
 " --- a.vim settings {{{
-nnoremap <silent> \s :A<CR>
-nnoremap <silent> ,s :A<CR>
+
+" Load alternate file (swap between header and implementation).
+" Can also use CTRL-^ for this.
+nmap <silent> <leader>a :A<CR>
+
+
 " }}}
 " --- Ack settings {{{
+
 cabbrev ack Ack
+
+" Search for a pattern using Ack
+" Note that the trailing space at the end of the ,s mapping is important.
+nnoremap ,s :Ack 
+nnoremap ,S :Ack <C-R>=expand("<cword>")<CR>
+nnoremap \s :Ack <C-R>=expand("<cword>")<CR>
+
 " }}}
 " --- BufExplorer settings {{{
 
@@ -1072,9 +1084,6 @@ vnoremap <Space> za
 " Strip all trailing whitespace from a file, using ,w
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
-" Run Ack fast (mind the trailing space here, wouldya?)
-nnoremap <leader>a :Ack 
-
 " Creating folds for tags in HTML
 "nnoremap <leader>ft Vatzf
 
@@ -1324,12 +1333,10 @@ nmap K <nop>
 " Program to use for keyword lookups (default is "man -s")
 set keywordprg=man\ -s
 
-" Load alternate file (swap between header and implementation).
-" Can also use CTRL-^ for this.
-nmap <silent> \s :A<CR>
-
 " Common abbreviations / misspellings
-source ~/.vim/autocorrect.vim
+if filereadable(expand("~/.vim/autocorrect.vim"))
+    source ~/.vim/autocorrect.vim
+endif
 
 " Restore cursor position upon reopening files
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -1402,6 +1409,7 @@ cabbrev W w
 if filereadable(expand("~/.vim/user.vim"))
     source ~/.vim/user.vim
 endif
+
 " }}}
 
 " vim: fen fdl=0 fdm=marker
