@@ -555,7 +555,7 @@ nmap <silent> <Leader>m :MRU<CR>
 " --- NERDTree settings {{{
 
 " Toggle the NERD Tree
-nmap <Leader>n :NERDTreeToggle<CR>
+nmap <silent> <Leader>n :NERDTreeToggle<CR>
 
 " Store the bookmarks
 let NERDTreeBookmarksFile=expand("$HOME/.vim/tmp/NERDTreeBookmarks")
