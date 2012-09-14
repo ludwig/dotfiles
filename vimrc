@@ -483,7 +483,7 @@ cabbrev ack Ack
 
 let g:bufExplorerDefaultHelp=0
 "let g:bufExplorerDetailedHelp=1
-"let g:bufExplorerFindActive=0
+let g:bufExplorerFindActive=0
 let g:bufExplorerShowUnlisted=0
 "let g:bufExplorerSortBy='mru'
 let g:bufExplorerSplitBelow=1
