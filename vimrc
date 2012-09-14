@@ -509,6 +509,44 @@ nnoremap <silent> <C-B> :CommandTBuffer<CR>
 nnoremap <silent> <C-G> :CommandT<CR>
 
 " }}}
+" --- DelimitMate settings {{{
+
+" See ":help delimitMate" for more options.
+" Use ":DelimitMateTest" to view the current settings.
+
+" Load delimitMate, but decide whether to turn it off (default is 0)
+" You can switch it on/off by using :DelimitMateSwitch
+let delimitMate_offByDefault = 0
+
+" Whether to insert a closing delimiter automagically (default 1)
+let delimitMate_autoclose = 1
+au FileType mail let b:delimitMate_autoclose = 0
+
+" Which characters should be considered matching pairs (default value is &matchpairs)
+let delimitMate_matchpairs = "(:),[:],{:},<:>"
+au FileType vim,html let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
+
+" Which characters should be considered quotes (default value is "\" ' `")
+"let delimitMate_quotes = "\" ' ` *"
+au FileType html let b:delimitMate_quotes = "\" '"
+
+" Enable nesting of quotes (default value is [])
+"let delimitMate_nesting_quotes = ['"','`']
+au FileType python let b:delimitMate_nesting_quotes = ['"']
+
+" Turn on/off the smart quotes feature (default 1)
+let delimitMate_smart_quotes = 1
+
+" Turn on/off the balancing of matching pairs (default 0)
+let delimitMate_balance_matchpairs = 1
+
+" turn off delimitMate on listed regions
+let delimitMate_excluded_regions = "Comment,String"
+
+" turn off delimitMate on listed file types
+let delimitMate_excluded_ft = "mail,txt"
+
+" }}}
 " --- EasyMotion settings {{{
 
 " Use with \\{motion-command} such as \\w, \\f, etc.
