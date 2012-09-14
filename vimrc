@@ -633,12 +633,22 @@ let Tlist_Use_Right_Window=1
 
 " }}}
 " --- Tagbar settings {{{
+
 " Toggle Tagbar with ',t'
 nmap <silent> <Leader>t :TagbarToggle<CR>
+
+let g:tagbar_left = 0
 let g:tagbar_width = 40
-let g:tagbar_iconchars = ['▾', '▸']
+let g:tagbar_sort = 0
 let g:tagbar_compact = 1
+let g:tagbar_singleclick = 1
 let g:tagbar_foldlevel = 99
+let g:tagbar_iconchars = ['▾', '▸']
+
+if filereadable(expand('~/bin/ctags'))
+    let g:tagbar_ctags_bin = expand('~/bin/ctags')
+endif
+
 " }}}
 " --- Tabular settings {{{
 
