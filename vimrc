@@ -475,10 +475,11 @@ filetype plugin indent on
 cabbrev ack Ack
 
 " Search for a pattern using Ack
-" Note that the trailing space at the end of the ,s mapping is important.
+" Note that the trailing spaces are important
 nnoremap ,s :Ack 
+nnoremap \s :Ack 
 nnoremap ,S :Ack <C-R>=expand("<cword>")<CR>
-nnoremap \s :Ack <C-R>=expand("<cword>")<CR>
+nnoremap \S :Ack <C-R>=expand("<cword>")<CR>
 
 " }}}
 " --- BufExplorer settings {{{
