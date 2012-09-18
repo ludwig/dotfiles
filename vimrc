@@ -474,12 +474,13 @@ filetype plugin indent on
 
 cabbrev ack Ack
 
-" Search for a pattern using Ack
-" Note that the trailing spaces are important
-nnoremap ,s :Ack 
-nnoremap \s :Ack 
-nnoremap ,S :Ack <C-R>=expand("<cword>")<CR>
-nnoremap \S :Ack <C-R>=expand("<cword>")<CR>
+" Search for a pattern using Ack (the trailing space is important)
+nnoremap ,s :Ack! 
+nnoremap ,S :Ack! <C-R>=expand("<cword>")<CR>
+
+" Same, but use the location list window instead of the quickfix list window
+nnoremap \s :LAck! 
+nnoremap \S :LAck! <C-R>=expand("<cword>")<CR>
 
 " }}}
 " --- BufExplorer settings {{{
