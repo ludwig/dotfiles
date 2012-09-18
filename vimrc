@@ -653,6 +653,18 @@ let NERDCommentWholeLinesInVMode=2
 let NERDSpaceDelims=0
 
 " }}}
+" --- session.vim settings {{{
+
+" Commands are :SaveSession / :OpenSession / :DeleteSession / :ViewSession
+
+" See ':help session' for more options.
+"let g:session_directory = '~/tmp'
+let g:session_autoload = 'no'
+let g:session_autosave = 'yes'
+let g:session_default_to_last = 1
+let g:session_command_aliases = 1
+
+" }}}
 " --- scratch.vim settings {{{
 cabbrev scratch Scratch
 cabbrev sscratch Sscratch
