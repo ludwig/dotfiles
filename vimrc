@@ -590,11 +590,16 @@ let g:indent_guides_enable_on_vim_startup = 0
 " }}}
 " --- LustyJuggler settings {{{
 
-" Use '<Leader>lj' to run :LustyJuggler
-let g:LustyJugglerDefaultMappings = 1
-
 " Disable LustyJuggler warning (default vim not built with ruby)
 "let g:LustyJugglerSuppressRubyWarning = 1
+
+" Set up own mappings (default mapping ,lj is slow because of existing ,l mapping)
+let g:LustyJugglerDefaultMappings = 0
+nmap <silent> <leader>j :LustyJuggler<CR>
+nmap <silent> <leader>k :LustyJugglePrevious<CR>
+
+" Display the key with the name of the buffer ('a' for alpha chars, 1 for digits)
+let g:LustyJugglerShowKeys = 'a'
 
 " }}}
 " --- MRU settings {{{
