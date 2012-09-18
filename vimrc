@@ -466,7 +466,7 @@ filetype plugin indent on
 
 " Load alternate file (swap between header and implementation).
 " Can also use CTRL-^ for this.
-nmap <silent> <leader>a :A<CR>
+"nmap <silent> <leader>a :A<CR>
 
 
 " }}}
@@ -920,6 +920,7 @@ nnoremap <silent> \c :set cursorline!<CR>
 " Display line numbers (toggle with \a)
 " http://vim.wikia.com/wiki/Display_line_numbers
 nmap <silent> \a :set number!<CR>
+nmap <silent> ,a :set number!<CR>
 set numberwidth=5               " change width of gutter column
 set cpoptions+=n                " use the number column for wrapped lines
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
