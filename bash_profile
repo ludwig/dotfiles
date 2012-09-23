@@ -20,9 +20,9 @@ if [ -d ~/dev/deal.II ]; then
     DYLD_LIBRARY_PATH="${HOME}/dev/deal.II/lib${DYLD_LIBRARY_PATH:+:$DYLD_LIBRARY_PATH}"
 fi
 
-# Look for npm libraries
-if [ -d /usr/local/lib/node_modules ]; then
-    export NODE_PATH="/usr/local/lib/node_modules"
+# Look for npm
+if [ -e /usr/local/bin/npm ]; then
+    PATH="${PATH}:/usr/local/share/npm/bin"
 fi
 
 # Look for ~/opt/local binaries and libraries
