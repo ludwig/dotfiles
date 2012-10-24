@@ -206,7 +206,7 @@ Bundle 'milkypostman/vim-togglelist'
 " YankRing.vim - Maintains a history of previous yanks, changes, and deletes
 " http://www.vim.org/scripts/script.php?script_id=1234
 " https://github.com/vim-scripts/YankRing.vim
-Bundle 'YankRing.vim'
+"Bundle 'YankRing.vim'
 
 " keepcase.vim - Functions for doing case-persistant substitutions
 " http://www.vim.org/scripts/script.php?script_id=6
