@@ -530,7 +530,7 @@ nnoremap <silent> <C-G> :CommandT<CR>
 
 " Load delimitMate, but decide whether to turn it off (default is 0)
 " You can switch it on/off by using :DelimitMateSwitch
-let delimitMate_offByDefault = 0
+let delimitMate_offByDefault = 1
 
 " Whether to insert a closing delimiter automagically (default 1)
 let delimitMate_autoclose = 1
