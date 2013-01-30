@@ -78,6 +78,11 @@ Bundle 'LustyJuggler'
 " https://github.com/kien/ctrlp.vim
 Bundle 'kien/ctrlp.vim'
 
+" clang_complete - use clang for completing C/C++ code
+" http://www.vim.org/scripts/script.php?script_id=3302
+" https://github.com/Rip-Rip/clang_complete
+Bundle 'Rip-Rip/clang_complete'
+
 " }}}
 " --- UI Additions {{{
 
@@ -503,6 +508,34 @@ let g:bufExplorerShowUnlisted=0
 let g:bufExplorerSplitBelow=1
 let g:bufExplorerSplitOutPathName=1
 let g:bufExplorerSplitRight=1
+
+" }}}
+" --- clang_complete settings {{{
+
+" select first entry in menu? (default 0)
+let g:clang_auto_select = 0
+
+" automatically complete after "-> . ::" (default 1)
+let g:clang_complete_auto = 1
+
+" open quickfix window on error (default 0)
+let g:clang_complete_copen = 0
+
+" highlight warnings and errors (default 1)
+let g:clang_hl_errors = 1
+
+" snippets engine (clang_complete, snipmate, ...)
+let g:clang_snippets = 1
+let g:clang_snippets_engine = 'clang_complete'
+
+" automatically close preview window after completion (default 0)
+let g:clang_close_preview = 1
+
+" complete preprocessor macros and constants (default 0)
+let g:clang_complete_macros = 1
+
+" complete code patterns, i.e. loop constructs etc (default 0)
+let g:clang_complete_patterns = 1
 
 " }}}
 " --- Command-T settings {{{
