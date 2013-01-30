@@ -1386,6 +1386,44 @@ nmap K <nop>
 " Program to use for keyword lookups (default is "man -s")
 set keywordprg=man\ -s
 
+" Open man page for word under cursor
+" http://vim.wikia.com/wiki/Open_a_window_with_the_man_page_for_the_word_under_the_cursor
+" http://vimdoc.sourceforge.net/htmldoc/windows.html#special-buffers
+function! ReadManWP(word,pos)
+    " Assign current word under cursor to a script variable
+    let s:man_word = a:word
+    " Open a new window
+    exe ":wincmd n"
+    exe ":wincmd " . a:pos
+    " Make it a scratch buffer
+    exe ":setlocal buftype=nofile"
+    exe ":setlocal bufhidden=hide"
+    exe ":setlocal noswapfile"
+    " Don't list buffer either
+    exe ":setlocal nobuflisted"
+    " Read in the man page for 'man_word' (col -b is for formatting)
+    exe ":r!man " . s:man_word . " | col -b"
+    exe ":set ft=man"
+    " Go to first line and delete it
+    exe ":goto"
+    exe ":delete"
+endfunction
+function! ReadManP(pos)
+    let s:man_word = expand('<cword>')
+    call ReadManWP(s:man_word, a:pos)
+endfunction
+function! ReadMan()
+    call ReadManP('K')
+endfunction
+" Map a key to the ReadMan() function
+map ,kk :call ReadManP('K')<CR>
+map ,kl :call ReadManP('L')<CR>
+map ,kh :call ReadManP('H')<CR>
+map ,kj :call ReadManP('J')<CR>
+map ,ko :call ReadManP('o')<CR>
+map ,K  :call ReadManP('o')<CR>
+
+
 " Common abbreviations / misspellings
 if filereadable(expand("~/.vim/autocorrect.vim"))
     source ~/.vim/autocorrect.vim
