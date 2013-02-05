@@ -106,3 +106,5 @@
 [url "git@gitorious.org:"]
 	pushInsteadOf = "gitorious:"
 
+[mergetool]
+	keepBackup = true
