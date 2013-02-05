@@ -1427,6 +1427,10 @@ map ,kk :<C-U>call _ReadMan(v:count, expand('<cword>'), 'K')<CR>
 map ,kl :<C-U>call _ReadMan(v:count, expand('<cword>'), 'L')<CR>
 map ,kh :<C-U>call _ReadMan(v:count, expand('<cword>'), 'H')<CR>
 map ,kj :<C-U>call _ReadMan(v:count, expand('<cword>'), 'J')<CR>
+command! -nargs=+ Man call ReadMan(<f-args>)
+command! -nargs=+ ManS call ReadManS(<f-args>)
+cabbrev man Man
+cabbrev mans ManS
 
 " Common abbreviations / misspellings
 if filereadable(expand("~/.vim/autocorrect.vim"))
