@@ -319,6 +319,12 @@ elif [ -x /usr/local/bin/lesspipe.sh ]; then
     eval "$(SHELL=/bin/sh /usr/local/bin/lesspipe.sh)"
 fi
 
+# Check if a command exists in your PATH
+# http://stackoverflow.com/questions/592620/check-if-a-program-exists-from-a-bash-script
+command_exists()
+{
+    command -v "$1" >/dev/null 2>&1;
+}
 
 ###############################################################################
 
