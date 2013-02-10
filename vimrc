@@ -460,7 +460,14 @@ Bundle 'benmills/vimux'
 
 " }}}
 
-" enable filetype detection, plugins and indenting in one step.
+" load golang's vim plugins.
+" not quite a bundle, but we need this directory in the runtimepath,
+" and this is the best place to load it.
+if filereadable($GOROOT . "/misc/vim/readme.txt")
+    set rtp+=$GOROOT/misc/vim/
+endif
+
+" finally, enable filetype detection, plugins and indenting in one step.
 " must turn on after vundle setup
 filetype plugin indent on
 
