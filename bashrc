@@ -326,6 +326,11 @@ command_exists()
     command -v "$1" >/dev/null 2>&1;
 }
 
+# Set GOROOT if golang's go is installed
+if command_exists go ; then
+    export GOROOT=$(go env GOROOT)
+fi
+
 ###############################################################################
 
 # Enable programmable completion features (you don't need to enable
