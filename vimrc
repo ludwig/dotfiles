@@ -776,40 +776,14 @@ let g:yankring_history_dir = '$HOME/.vim/tmp'
 nmap <leader>r :YRShow<CR>
 
 " }}}
-" --- Conflict markers {{{
 
-" XXX: Do we even use these? See if we can get rid of this section...
-if 0
-    " highlight conflict markers
-    match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
-    " shortcut to jump to next conflict marker
-    nmap <silent> <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
-endif
 
-" }}}
-" --- Skeleton processing {{{
 
-" See also: http://stackoverflow.com/questions/162617/how-can-i-automatically-add-some-skeleton-code-when-creating-a-new-file-with-vim
 
-if has("autocmd")
 
-    if !exists('*LoadTemplate')
-        function LoadTemplate(file)
-            if a:file =~ 'furls$'
-                execute "0r ~/.vim/skeleton/furls"
-                execute "normal Gddgg"
-                set ft=conf
-            elseif a:file =~ 'furls2$'
-                execute "0r ~/.vim/skeleton/furls2"
-                set ft=conf
-            endif
-        endfunction
-    endif
 
-    autocmd BufNewFile * call LoadTemplate(@%)
 
-endif
 
 " }}}
 " }}}
@@ -1386,6 +1360,44 @@ set formatprg=par
 "set textwidth=80
 "set formatoptions+=t
 
+" --- Conflict markers {{{
+
+" XXX: Do we even use these? See if we can get rid of this section...
+if 0
+    " highlight conflict markers
+    match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
+    " shortcut to jump to next conflict marker
+    nmap <silent> <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
+endif
+
+" }}}
+" --- Skeleton processing {{{
+
+" See also: http://stackoverflow.com/questions/162617/how-can-i-automatically-add-some-skeleton-code-when-creating-a-new-file-with-vim
+
+if has("autocmd")
+
+    if !exists('*LoadTemplate')
+        function LoadTemplate(file)
+            if a:file =~ 'furls$'
+                execute "0r ~/.vim/skeleton/furls"
+                execute "normal Gddgg"
+                set ft=conf
+            elseif a:file =~ 'furls2$'
+                execute "0r ~/.vim/skeleton/furls2"
+                set ft=conf
+            endif
+        endfunction
+    endif
+
+    autocmd BufNewFile * call LoadTemplate(@%)
+
+endif
+
+" }}}
+" --- Man page stuff {{{
+
 " Disable keyword lookup in normal mode. Note that K will still work in visual mode,
 " using vawK sequence, for example.
 nmap K <nop>
@@ -1419,14 +1431,17 @@ function! _ReadMan(man_sec, man_word, winpos)
     exe ":goto"
     exe ":delete"
 endfunction
+
 " Open up 'man <sec> <word>' in same window
 function! ReadManS(sec,word)
     call _ReadMan(a:sec, a:word, 'o')
 endfunction
+
 " Open up 'man <word>' in same window
 function! ReadMan(word)
     call _ReadMan('', a:word, 'o')
 endfunction
+
 " Map a key to the ReadMan() function
 map ,K  :<C-U>call _ReadMan(v:count, expand('<cword>'), 'o')<CR>
 map ,ko :<C-U>call _ReadMan(v:count, expand('<cword>'), 'o')<CR>
@@ -1434,10 +1449,14 @@ map ,kk :<C-U>call _ReadMan(v:count, expand('<cword>'), 'K')<CR>
 map ,kl :<C-U>call _ReadMan(v:count, expand('<cword>'), 'L')<CR>
 map ,kh :<C-U>call _ReadMan(v:count, expand('<cword>'), 'H')<CR>
 map ,kj :<C-U>call _ReadMan(v:count, expand('<cword>'), 'J')<CR>
+
 command! -nargs=+ Man call ReadMan(<f-args>)
 command! -nargs=+ ManS call ReadManS(<f-args>)
+
 cabbrev man Man
 cabbrev mans ManS
+
+" }}}
 
 " Common abbreviations / misspellings
 if filereadable(expand("~/.vim/autocorrect.vim"))
