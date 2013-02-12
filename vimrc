@@ -78,11 +78,6 @@ Bundle 'LustyJuggler'
 " https://github.com/kien/ctrlp.vim
 Bundle 'kien/ctrlp.vim'
 
-" clang_complete - use clang for completing C/C++ code
-" http://www.vim.org/scripts/script.php?script_id=3302
-" https://github.com/Rip-Rip/clang_complete
-Bundle 'Rip-Rip/clang_complete'
-
 " }}}
 " --- UI Additions {{{
 
@@ -243,16 +238,6 @@ Bundle 'xolox/vim-session'
 " https://github.com/Raimondi/delimitMate
 Bundle 'Raimondi/delimitMate'
 
-" Syntastic - Automatic syntax checking
-" http://www.vim.org/scripts/script.php?script_id=2736
-" https://github.com/scrooloose/syntastic
-"Bundle 'scrooloose/syntastic'
-
-" SuperTab - Do all your insert-mode completion with Tab
-" http://www.vim.org/scripts/script.php?script_id=1643
-" https://github.com/ervandew/supertab
-Bundle 'ervandew/supertab'
-
 " MatchTag - MatchParen for HTML tags
 " http://www.vim.org/scripts/script.php?script_id=3818
 " https://github.com/gregsexton/MatchTag
@@ -263,10 +248,38 @@ Bundle 'gregsexton/MatchTag'
 " https://github.com/vim-scripts/closetag.vim
 Bundle 'vim-scripts/closetag.vim'
 
+" Syntastic - Automatic syntax checking
+" http://www.vim.org/scripts/script.php?script_id=2736
+" https://github.com/scrooloose/syntastic
+"Bundle 'scrooloose/syntastic'
+
+" SuperTab - Do all your insert-mode completion with Tab
+" http://www.vim.org/scripts/script.php?script_id=1643
+" https://github.com/ervandew/supertab
+Bundle 'ervandew/supertab'
+
 " neocomplcache - Ultimate auto completion system for vim
 " http://www.vim.org/scripts/script.php?script_id=2620
 " https://github.com/Shougo/neocomplcache
 Bundle 'Shougo/neocomplcache'
+
+" AutoComplPop - Automatically opens popup menu for completions
+" http://www.vim.org/scripts/script.php?script_id=1879
+" https://bitbucket.org/ns9tks/vim-autocomplpop/
+Bundle 'AutoComplPop'
+
+" clang_complete - use clang for completing C/C++ code
+" http://www.vim.org/scripts/script.php?script_id=3302
+" https://github.com/Rip-Rip/clang_complete
+Bundle 'Rip-Rip/clang_complete'
+
+" YouCompleteMe - a fast as-you-type fuzzy-search completion engine for vim
+" http://val.markovic.io/blog/youcompleteme-a-fast-as-you-type-fuzzy-search-code-completion-engine-for-vim
+" http://news.ycombinator.com/item?id=5169062
+" http://valloric.github.com/YouCompleteMe/
+" https://github.com/Valloric/YouCompleteMe
+" This plugin obsoletes clang_complete, AutoComplPop, SuperTab, neocomplcache
+"Bundle 'Valloric/YouCompleteMe'
 
 " }}}
 " --- Snippets {{{
@@ -493,6 +506,34 @@ nnoremap ,S :Ack! <C-R>=expand("<cword>")<CR>
 " Same, but use the location list window instead of the quickfix list window
 nnoremap \s :LAck! 
 nnoremap \S :LAck! <C-R>=expand("<cword>")<CR>
+
+" }}}
+" --- AutoComplPop settings {{{
+
+" if nonzero, auto-popup is enabled at startup (default 1)
+let g:acp_enableAtStartup = 1
+
+" if nonzero, avoid auto-popup by moving cursor in Insert mode (default 0)
+let g:acp_mappingDriven = 0
+
+" ignorecase (default 1)
+let g:acp_ignorecaseOption = 1
+
+" command for keyword completion (default "\<C-n>")
+let g:acp_behaviorKeywordCommand = "\<C-n>"
+
+" keyword chars needed to attempt keyword completion (default 2)
+" if negative, completion is never attempted
+let g:acp_behaviorKeywordLength = 3
+
+" keyword chars needed to attempt python omni-completion (default 0)
+let g:acp_behaviorPythonOmniLength = 0
+
+" keyword chars needed to attempt HTML omni-completion (default 0)
+let g:acp_behaviorHtmlOmniLength = 0
+
+" keyword chars needed to attempt CSS omni-completion for properties
+let g:acp_behaviorCssOmniPropertyLength = 1
 
 " }}}
 " --- BufExplorer settings {{{
@@ -776,14 +817,60 @@ let g:yankring_history_dir = '$HOME/.vim/tmp'
 nmap <leader>r :YRShow<CR>
 
 " }}}
+" --- YouCompleteMe settings {{{
+" For full installation instructions, see
+" https://github.com/Valloric/YouCompleteMe
+"
+" Summary of installation:
+"
+" In ~/.vimrc
+"   Bundle 'Valloric/YouCompleteMe'
+"
+" In shell:
+"   $ cd ~/ycm_build/
+"   $ cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG=ON . ~/.vim/bundle/YouCompleteMe/cpp
+"   $ make ycm_core
+"
+" For an example .ycm_extra_conf.py see
+"   https://github.com/Valloric/YouCompleteMe/blob/master/cpp/ycm/.ycm_extra_conf.py
+"
 
+" number of characters before completion suggestions are triggered (default 2)
+let g:ycm_min_num_of_chars_for_completion = 2
 
+" turn off YCM for these filetypes (default: notes, markdown, text)
+let g:ycm_filetypes_to_completely_ignore = {'notes': 1, 'markdown': 1, 'text': 1}
 
+" turn off YCM semantic completion for these filetypes (default {})
+let g:ycm_filetype_specific_completion_to_disable = {}
 
+" reduce vim's updatetime to 2000 (from 4000)
+let g:ycm_allow_changing_updatetime = 1
 
+" use preview in completeopt (default '0')
+let g:ycm_add_preview_to_completeopt = 0
 
+" autoclose preview window? (default '0')
+let g:ycm_autoclose_preview_window_after_completion = 0
 
+" max number of diagnotistics shown when errors or warnings are detected (default '30')
+let g:ycm_max_diagnostics_to_display = 30
 
+" the completion key (default '<TAB>')
+let g:ycm_key_select_completion = '<TAB>'
+
+" the previous completion key (default '<S-TAB>')
+let g:ycm_key_previous_completion = '<S-TAB>'
+
+" key mapping for semantic completion (default '<C-Space>')
+let g:ycm_key_invoke_completion = '<C-Space>'
+
+" key mapping for full diagnostic test (default '<leader>d')
+let g:ycm_key_detailed_diagnostics = '\d'
+
+" path to global '.ycm_extra_conf.py' (default '')
+" this overrides YCM's searching behaviour (better to leave this alone)
+let g:ycm_global_ycm_extra_conf = ''
 
 " }}}
 " }}}
