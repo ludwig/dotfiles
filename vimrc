@@ -509,32 +509,32 @@ nnoremap \S :LAck! <C-R>=expand("<cword>")<CR>
 
 " }}}
 " --- AutoComplPop settings {{{
+if 1
+    " if nonzero, auto-popup is enabled at startup (default 1)
+    let g:acp_enableAtStartup = 0
 
-" if nonzero, auto-popup is enabled at startup (default 1)
-let g:acp_enableAtStartup = 1
+    " if nonzero, avoid auto-popup by moving cursor in Insert mode (default 0)
+    let g:acp_mappingDriven = 0
 
-" if nonzero, avoid auto-popup by moving cursor in Insert mode (default 0)
-let g:acp_mappingDriven = 0
+    " ignorecase (default 1)
+    let g:acp_ignorecaseOption = 1
 
-" ignorecase (default 1)
-let g:acp_ignorecaseOption = 1
+    " command for keyword completion (default "\<C-n>")
+    let g:acp_behaviorKeywordCommand = "\<C-n>"
 
-" command for keyword completion (default "\<C-n>")
-let g:acp_behaviorKeywordCommand = "\<C-n>"
+    " keyword chars needed to attempt keyword completion (default 2)
+    " if negative, completion is never attempted
+    let g:acp_behaviorKeywordLength = 3
 
-" keyword chars needed to attempt keyword completion (default 2)
-" if negative, completion is never attempted
-let g:acp_behaviorKeywordLength = 3
+    " keyword chars needed to attempt python omni-completion (default 0)
+    let g:acp_behaviorPythonOmniLength = 0
 
-" keyword chars needed to attempt python omni-completion (default 0)
-let g:acp_behaviorPythonOmniLength = 0
+    " keyword chars needed to attempt HTML omni-completion (default 0)
+    let g:acp_behaviorHtmlOmniLength = 0
 
-" keyword chars needed to attempt HTML omni-completion (default 0)
-let g:acp_behaviorHtmlOmniLength = 0
-
-" keyword chars needed to attempt CSS omni-completion for properties
-let g:acp_behaviorCssOmniPropertyLength = 1
-
+    " keyword chars needed to attempt CSS omni-completion for properties
+    let g:acp_behaviorCssOmniPropertyLength = 1
+endif
 " }}}
 " --- BufExplorer settings {{{
 
@@ -657,8 +657,8 @@ let g:Gitv_OpenHorizontal=1
 cabbrev git Git
 cabbrev gitv Gitv
 
-nmap <leader>gv :Gitv --all<CR>
-nmap <leader>gV :Gitv! --all<CR>
+"nmap <leader>gv :Gitv --all<CR>
+"nmap <leader>gV :Gitv! --all<CR>
 
 " }}}
 " --- IndentGuides settings {{{
@@ -689,6 +689,31 @@ let g:LustyJugglerShowKeys = 'a'
 " Open list of most recently used files with ':MRU' or ',m'
 nmap <silent> <Leader>m :MRU<CR>
 
+" }}}
+" --- neocomplcache settings {{{
+if 1
+    " enable at startup (default 0)
+    " can also enable with :NeoComplCacheEnable command
+    let g:neocomplcache_enable_at_startup = 1
+
+    " number of candidates to display (default 100)
+    let g:neocomplcache_max_list = 100
+
+    " indication width of candidats (default 50)
+    let g:neocomplcache_max_keyword_width = 50
+
+    " number of input completion (default 2)
+    let g:neocomplcache_auto_completion_start_length = 2
+
+    " use smartcase
+    let g:neocomplcache_enable_smart_case = 1
+
+    " close popup and save indent on <CR>
+    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+    function! s:my_cr_function()
+        return neocomplcache#smart_close_popup() . "\<CR>"
+    endfunction
+endif
 " }}}
 " --- NERDTree settings {{{
 
@@ -801,21 +826,16 @@ endif
 
 " }}}
 " --- Tabular settings {{{
-
 " http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-"if exists(":Tabularize")
-"    nmap \a= :Tabularize /=<CR>
-"    vmap \a= :Tabularize /=<CR>
-"    nmap \a: :Tabularize /:\zs<CR>
-"    vmap \a: :Tabularize /:\zs<CR>
-"endif
-
+"nmap \a= :Tabularize /=<CR>
+"vmap \a= :Tabularize /=<CR>
+"nmap \a: :Tabularize /:\zs<CR>
+"vmap \a: :Tabularize /:\zs<CR>
 " }}}
 " --- YankRing settings {{{
-
-let g:yankring_history_dir = '$HOME/.vim/tmp'
-nmap <leader>r :YRShow<CR>
-
+" Disabled because it interferes with too many of my keybindings
+"let g:yankring_history_dir = '$HOME/.vim/tmp'
+"nmap <silent> ,r :YRShow<CR>
 " }}}
 " --- YouCompleteMe settings {{{
 " For full installation instructions, see
@@ -834,44 +854,44 @@ nmap <leader>r :YRShow<CR>
 " For an example .ycm_extra_conf.py see
 "   https://github.com/Valloric/YouCompleteMe/blob/master/cpp/ycm/.ycm_extra_conf.py
 "
+if 0
+    " number of characters before completion suggestions are triggered (default 2)
+    let g:ycm_min_num_of_chars_for_completion = 2
 
-" number of characters before completion suggestions are triggered (default 2)
-let g:ycm_min_num_of_chars_for_completion = 2
+    " turn off YCM for these filetypes (default: notes, markdown, text)
+    let g:ycm_filetypes_to_completely_ignore = {'notes': 1, 'markdown': 1, 'text': 1}
 
-" turn off YCM for these filetypes (default: notes, markdown, text)
-let g:ycm_filetypes_to_completely_ignore = {'notes': 1, 'markdown': 1, 'text': 1}
+    " turn off YCM semantic completion for these filetypes (default {})
+    let g:ycm_filetype_specific_completion_to_disable = {}
 
-" turn off YCM semantic completion for these filetypes (default {})
-let g:ycm_filetype_specific_completion_to_disable = {}
+    " reduce vim's updatetime to 2000 (from 4000)
+    let g:ycm_allow_changing_updatetime = 1
 
-" reduce vim's updatetime to 2000 (from 4000)
-let g:ycm_allow_changing_updatetime = 1
+    " use preview in completeopt (default '0')
+    let g:ycm_add_preview_to_completeopt = 0
 
-" use preview in completeopt (default '0')
-let g:ycm_add_preview_to_completeopt = 0
+    " autoclose preview window? (default '0')
+    let g:ycm_autoclose_preview_window_after_completion = 0
 
-" autoclose preview window? (default '0')
-let g:ycm_autoclose_preview_window_after_completion = 0
+    " max number of diagnotistics shown when errors or warnings are detected (default '30')
+    let g:ycm_max_diagnostics_to_display = 30
 
-" max number of diagnotistics shown when errors or warnings are detected (default '30')
-let g:ycm_max_diagnostics_to_display = 30
+    " the completion key (default '<TAB>')
+    let g:ycm_key_select_completion = '<TAB>'
 
-" the completion key (default '<TAB>')
-let g:ycm_key_select_completion = '<TAB>'
+    " the previous completion key (default '<S-TAB>')
+    let g:ycm_key_previous_completion = '<S-TAB>'
 
-" the previous completion key (default '<S-TAB>')
-let g:ycm_key_previous_completion = '<S-TAB>'
+    " key mapping for semantic completion (default '<C-Space>')
+    let g:ycm_key_invoke_completion = '<C-Space>'
 
-" key mapping for semantic completion (default '<C-Space>')
-let g:ycm_key_invoke_completion = '<C-Space>'
+    " key mapping for full diagnostic test (default '<leader>d')
+    let g:ycm_key_detailed_diagnostics = '\d'
 
-" key mapping for full diagnostic test (default '<leader>d')
-let g:ycm_key_detailed_diagnostics = '\d'
-
-" path to global '.ycm_extra_conf.py' (default '')
-" this overrides YCM's searching behaviour (better to leave this alone)
-let g:ycm_global_ycm_extra_conf = ''
-
+    " path to global '.ycm_extra_conf.py' (default '')
+    " this overrides YCM's searching behaviour (better to leave this alone)
+    let g:ycm_global_ycm_extra_conf = ''
+endif
 " }}}
 " }}}
 
@@ -1126,7 +1146,7 @@ map <C-c> <Esc>
 map! <F1> <Esc>
 
 " Quickly close the current window
-nnoremap <leader>q :q<CR>
+"nnoremap <leader>q :q<CR>
 
 " Use Q for formatting the current paragraph (or visual selection)
 vmap Q gq
@@ -1546,9 +1566,9 @@ cabbrev mans ManS
 " }}}
 
 " Common abbreviations / misspellings
-if filereadable(expand("~/.vim/autocorrect.vim"))
-    source ~/.vim/autocorrect.vim
-endif
+"if filereadable(expand("~/.vim/autocorrect.vim"))
+"    source ~/.vim/autocorrect.vim
+"endif
 
 " Restore cursor position upon reopening files
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
