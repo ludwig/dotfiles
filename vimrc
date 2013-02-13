@@ -1244,6 +1244,18 @@ function! QFixToggle(forced)
   endif
 endfunction
 
+" Grep current word under cursor, and list occurrences in quickfix window
+" http://vim.wikia.com/wiki/Search_using_quickfix_to_list_occurrences
+function! GrepQFix(pat)
+    exe ':vimgrep ' . a:pat . ' ' . expand('%')
+    exe ':match Search /' . a:pat . '/'
+    copen
+    "cc
+endfunction
+command! -nargs=1 GREP :call GrepQFix(<f-args>)
+nnoremap ,g :call GrepQFix(expand('<cword>'))<CR>
+nnoremap ,G :GREP 
+
 " }}}
 
 " Filetype specific handling {{{
