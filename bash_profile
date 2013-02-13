@@ -25,6 +25,11 @@ if [ -e /usr/local/bin/npm ]; then
     PATH="${PATH}:/usr/local/share/npm/bin"
 fi
 
+# Set our GOPATH to ~/gocode if it exists
+if [ -d ~/gocode ]; then
+    export GOPATH="${HOME}/gocode${GOPATH:+:$GOPATH}"
+fi
+
 # Look for ~/opt/local binaries and libraries
 if [ -d ~/opt/local ]; then
     PATH="${HOME}/opt/local/bin:${PATH}"
@@ -52,4 +57,3 @@ export PKG_CONFIG_PATH
 #export CLASSPATH
 export MANPATH
 export PATH
-
