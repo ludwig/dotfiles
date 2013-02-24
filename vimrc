@@ -694,7 +694,7 @@ nmap <silent> <Leader>m :MRU<CR>
 if 1
     " enable at startup (default 0)
     " can also enable with :NeoComplCacheEnable command
-    let g:neocomplcache_enable_at_startup = 1
+    let g:neocomplcache_enable_at_startup = 0
 
     " number of candidates to display (default 100)
     let g:neocomplcache_max_list = 100
@@ -713,6 +713,10 @@ if 1
     function! s:my_cr_function()
         return neocomplcache#smart_close_popup() . "\<CR>"
     endfunction
+
+    " define two commands that have easier tab completion
+    command! EnableNeoComplCache :NeoComplCacheEnable
+    command! DisableNeoComplCache :NeoComplCacheDisable
 endif
 " }}}
 " --- NERDTree settings {{{
