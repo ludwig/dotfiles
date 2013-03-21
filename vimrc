@@ -389,6 +389,10 @@ Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
 " https://github.com/zaiste/VimClojure
 Bundle 'zaiste/VimClojure'
 
+" salt-vim - syntax for editing Salt state files (.sls)
+" https://github.com/saltstack/salt-vim
+Bundle 'saltstack/salt-vim'
+
 " }}}
 " --- Libraries {{{
 
