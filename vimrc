@@ -511,6 +511,26 @@ filetype plugin indent on
 " Can also use CTRL-^ for this.
 "nmap <silent> <leader>a :A<CR>
 
+" By default, a.vim alternates to a file that does not exist (default 0)
+let g:alternateNoDefaultAlternate = 1
+
+" Change a.vim's default search path
+"let g:alternateSearchPath = 'sfr:../inc,sfr:../include,sfr:./include,sfr:../src,sfr:./src,sfr:../source'
+
+" By default a.vim does not convert filename to one relative to the current
+" working directory. (default 0)
+let g:alternateRelativeFiles = 1
+
+" Set up alternates for Objective-C source files: .m, .mm -> .h
+let g:alternateExtensions_m = "h"
+let g:alternateExtensions_mm = "h"
+
+" Add Obj-C extensions to the usual C/C++ alternates for .h
+let g:alternateExtensions_h = "c,cc,cpp,cxx,m,mm"
+
+" Set up alternates for C/C++: .hh <--> .cc
+let g:alternateExtensions_cc = "h,hh"
+let g:alternateExtensions_hh = "cc"
 
 " }}}
 " --- Ack settings {{{
