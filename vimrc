@@ -285,6 +285,11 @@ Bundle 'Rip-Rip/clang_complete'
 " This plugin obsoletes clang_complete, AutoComplPop, SuperTab, neocomplcache
 "Bundle 'Valloric/YouCompleteMe'
 
+" unite.vim -- search and display information from arbitrary sources
+" http://www.vim.org/scripts/script.php?script_id=3396
+" https://github.com/Shougo/unite.vim
+"Bundle 'Shougo/unite.vim'
+
 " }}}
 " --- Snippets {{{
 
