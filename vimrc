@@ -393,6 +393,10 @@ Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
 " https://github.com/zaiste/VimClojure
 Bundle 'zaiste/VimClojure'
 
+" vim-cmake - provide a cmake reference and autocompletion
+" https://github.com/jansenm/vim-cmake
+Bundle 'jansenm/vim-cmake'
+
 " salt-vim - syntax for editing Salt state files (.sls)
 " https://github.com/saltstack/salt-vim
 Bundle 'saltstack/salt-vim'
