@@ -407,6 +407,11 @@ Bundle 'jansenm/vim-cmake'
 " https://github.com/saltstack/salt-vim
 Bundle 'saltstack/salt-vim'
 
+" gocode -- golang vim completion
+" https://github.com/nsf/gocode
+" https://bitbucket.org/ludwig1024/golang-vim-completion.git
+Bundle 'https://bitbucket.org/ludwig1024/golang-vim-completion.git'
+
 " }}}
 " --- Libraries {{{
 
