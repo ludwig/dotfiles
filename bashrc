@@ -346,6 +346,12 @@ elif [ -f ~/.bash_completion ]; then
     source ~/.bash_completion
 fi
 
+# Use z to jump around, if present
+# See https://github.com/rupa/z
+if [ -f /usr/local/etc/profile.d/z.sh ]; then
+    source /usr/local/etc/profile.d/z.sh
+fi
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
