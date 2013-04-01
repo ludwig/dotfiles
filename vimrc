@@ -749,9 +749,10 @@ let NERDTreeMouseMode=2
 
 " Don't display these kinds of files
 let NERDTreeIgnore=[
-    \ '\.pyc$', '\.pyo$', '\.py$', '\.egg$',
+    \ '\.pyc$', '\.pyo$', '\.pyd$', '\.egg$',
     \ '\.class$', '\.obj$', '\.o$', '\.so$',
-    \ '^\.git$', '^\.svn$' ]
+    \ '^\.git$', '^\.svn$'
+    \ ]
 
 " }}}
 " --- NERDCommenter settings {{{
