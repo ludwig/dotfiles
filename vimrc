@@ -1084,6 +1084,10 @@ set wildmode=list:full
 " ignore completion for these files
 set wildignore+=*.swp,*.bak,*.pyc,*.class,*.o
 
+" update search path for opening files under cursor
+" http://vim.wikia.com/wiki/Open_file_under_cursor
+set path+=./include,../include
+
 " }}}
 
 " Editor layout {{{
