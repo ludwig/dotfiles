@@ -278,6 +278,7 @@ Bundle 'AutoComplPop'
 Bundle 'Rip-Rip/clang_complete'
 
 " YouCompleteMe - a fast as-you-type fuzzy-search completion engine for vim
+" (obsoletes clang_complete, SuperTab, neocomplcache, AutoComplPop)
 " http://val.markovic.io/blog/youcompleteme-a-fast-as-you-type-fuzzy-search-code-completion-engine-for-vim
 " http://news.ycombinator.com/item?id=5169062
 " http://valloric.github.com/YouCompleteMe/
@@ -588,6 +589,9 @@ let g:clang_complete_copen = 0
 
 " highlight warnings and errors (default 1)
 let g:clang_hl_errors = 1
+
+" periodically update the quickfix window (default 0)
+let g:clang_periodic_quickfix = 0
 
 " snippets engine (clang_complete, snipmate, ...)
 let g:clang_snippets = 1
