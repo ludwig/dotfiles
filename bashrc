@@ -80,6 +80,9 @@ shopt -s cdspell dotglob nocaseglob no_empty_cmd_completion
 # Use vi-style command line editing
 set -o vi
 
+# Enable globstar ** patterns
+shopt -s globstar
+
 ###############################################################################
 # Terminal settings
 
