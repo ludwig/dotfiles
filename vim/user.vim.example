@@ -1,9 +1,10 @@
-" User/machine-specific settings go in here
-" This file won't be included in version control and may therefore be used for
-" machine-dependent settings.
+" The file 'user.vim' is loaded from ~/.vimrc if it exists. It shouldn't be included
+" in version control, so that it can easily be used for host-specific settings.
+" Moreover, it's loaded last, so we get to override any settings here.
 
 " Choose a colorscheme
 "colorscheme jellybeans
+"set nocursorline " in case a colorscheme doesn't play well with cursorline
 
 " Disable folding
 "set nofoldenable
@@ -21,6 +22,9 @@
 " Turn off use of quotes in delimitMate (temporarily, of course)
 "let delimitMate_quotes = ''
 
+" Enable neocomplcache at startup? (can also turn on with :NeoComplCacheEnable)
+"let g:neocomplcache_enable_at_startup = 1
+
 " Disable the gj & gk maps
 "nunmap j
 "nunmap k
@@ -33,5 +37,12 @@
 
 " Custom key mapping as I use them with iTerm
 "imap <Esc>[H;2~ <C-w>
+
+" Other misc settings
+"let g:tagbar_width = 40
+"set foldmethod=syntax
+"set foldlevelstart=100
+"set wildignore+=build
+"nmap <CTRL-^> :A<CR>
 
 " vim: ft=vim
