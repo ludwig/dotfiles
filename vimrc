@@ -86,6 +86,10 @@ Bundle 'kien/ctrlp.vim'
 " https://github.com/scrooloose/nerdtree/
 Bundle 'scrooloose/nerdtree'
 
+" tabman.vim - Tab management for Vim
+" https://github.com/kien/tabman.vim
+Bundle 'kien/tabman.vim'
+
 " Powerline - The ultimate vim statusline utility
 " http://www.vim.org/scripts/script.php?script_id=3881
 " https://github.com/Lokaltog/vim-powerline
@@ -785,6 +789,18 @@ let g:session_command_aliases = 1
 cabbrev scratch Scratch
 cabbrev sscratch Sscratch
 nmap <leader><tab> :Sscratch<CR><C-w>x<C-w><C-j>i
+" }}}
+" --- tabman.vim settings {{{
+" To use tabman, use commands ':TMToggle' and ':TMFocus'
+" set to 1 to disable
+let g:loaded_tabman = 0
+" lots of other settings (see ':help tabman-options')
+let g:tabman_toggle = '\mt'
+let g:tabman_focus = '\mf'
+let g:tabman_width = 25
+let g:tabman_side = 'left'
+let g:tabman_specials = 0
+let g:tabman_number = 1
 " }}}
 " --- TagList settings {{{
 
