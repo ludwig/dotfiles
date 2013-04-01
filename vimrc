@@ -1013,6 +1013,10 @@ set nosplitbelow
 " history are preserved
 set hidden
 
+" turn on omnicompletion
+" http://vim.wikia.com/wiki/Omni_completion
+"set omnifunc=syntaxcomplete#Complete
+
 " }}}
 
 " Vim behaviour {{{
@@ -1412,6 +1416,13 @@ if has("autocmd")
         autocmd filetype textile highlight link frontmatter Comment
     augroup end "}}}
 
+    augroup set_omnifunc "{{{
+        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+    augroup end "}}}
 endif
 
 " }}}
