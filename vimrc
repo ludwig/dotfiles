@@ -1521,9 +1521,9 @@ set winminheight=0
 
 " tabnew shortcuts
 " http://www.reddit.com/r/vimcommands/comments/kbheh/tabnew/
-nmap ,, :tabnew<CR>
-nmap ,. :tabnext<CR>
-nmap ., :tabprev<CR>
+"nmap ,, :tabnew<CR>
+"nmap ,. :tabnext<CR>
+"nmap ., :tabprev<CR>
 
 " What is the syntax name for the thing under my cursor?
 " Useful for debugging syntax highlighting
