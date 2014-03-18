@@ -13,13 +13,6 @@ if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi
 
-# Look for deal.II's shared libraries
-if [ -d ~/dev/deal.II ]; then
-    # It looks funny, but ${varname:+value} evaluates to 'value' if $varname is set,
-    # and to the empty string '' otherwise. We do this to avoid extraneous colon separators.
-    DYLD_LIBRARY_PATH="${HOME}/dev/deal.II/lib${DYLD_LIBRARY_PATH:+:$DYLD_LIBRARY_PATH}"
-fi
-
 # Look for npm
 if [ -e /usr/local/bin/npm ]; then
     PATH="${PATH}:/usr/local/share/npm/bin"
@@ -35,7 +28,7 @@ if [ -d ~/opt/local ]; then
     PATH="${HOME}/opt/local/bin:${PATH}"
     # Using the ${varname:+value} trick again.
     LD_LIBRARY_PATH="${HOME}/opt/local/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
-    DYLD_LIBRARY_PATH="${HOME}/opt/local/lib${DYLD_LIBRARY_PATH:+:$DYLD_LIBRARY_PATH}"
+    #DYLD_LIBRARY_PATH="${HOME}/opt/local/lib${DYLD_LIBRARY_PATH:+:$DYLD_LIBRARY_PATH}"
     PKG_CONFIG_PATH="${HOME}/opt/local/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
 fi
 
@@ -50,7 +43,7 @@ export PAGER='less -r'      # XXX: how does 'lesspipe' work here?
 export LANG='en_US.UTF-8'
 
 export LD_LIBRARY_PATH
-export DYLD_LIBRARY_PATH
+#export DYLD_LIBRARY_PATH
 #export DYLD_FRAMEWORK_PATH
 
 export PKG_CONFIG_PATH
