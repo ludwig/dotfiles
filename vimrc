@@ -221,9 +221,12 @@ Bundle 'keepcase.vim'
 Bundle 'scratch.vim'
 
 " ZenCoding.vim - vim plugins for HTML and CSS hi-speed coding
+" emmet for vim (renamed from ZenCoding)
 " http://www.vim.org/scripts/script.php?script_id=2981
 " https://github.com/mattn/zencoding-vim
-Bundle 'mattn/zencoding-vim'
+" https://github.com/mattn/emmet-vim
+"Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/emmet-vim'
 
 " }}}
 " --- Automatic Helpers {{{
@@ -235,6 +238,7 @@ Bundle 'mattn/zencoding-vim'
 " session.vim - extended session management for vim
 " http://www.vim.org/scripts/script.php?script_id=3150
 " https://github.com/xolox/vim-session
+Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
 
 " delimitMate.vim - Provides auto-balancing and some expansions for parens, quotes, etc.
@@ -299,10 +303,12 @@ Bundle 'Rip-Rip/clang_complete'
 " http://www.vim.org/scripts/script.php?script_id=2540
 " https://github.com/garbas/vim-snipmate
 " https://github.com/honza/snipmate-snippets
+" https://github.com/honza/vim-snippets
 " https://github.com/MarcWeber/vim-addon-mw-utils
 " https://github.com/tomtom/tlib_vim
 Bundle 'garbas/vim-snipmate'
-Bundle 'honza/snipmate-snippets'
+"Bundle 'honza/snipmate-snippets'
+Bundle 'honza/vim-snippets'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 
 " snipmate_for_django - Django snippets for SnipMate
@@ -481,7 +487,9 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 
 " Conque Shell - run interactive commands inside a vim buffer
 " http://www.vim.org/scripts/script.php?script_id=2771
-Bundle 'Conque-Shell'
+" https://github.com/vim-scripts/Conque-Shell
+"Bundle 'Conque-Shell'
+Bundle 'vim-scripts/Conque-Shell'
 
 " tmux.vim - tmux vim syntax
 " http://tmux.svn.sourceforge.net/viewvc/tmux/trunk/examples/tmux.vim?revision=2783&view=markup
