@@ -22,3 +22,20 @@
 
 (set-frame-font "Menlo 16")
 ;(load-theme 'tango)
+
+(setq mac-option-key-is-meta nil
+      mac-command-key-is-meta t
+      mac-command-modifier 'meta
+      mac-option-modifier 'none)
+
+;http://www.emacswiki.org/emacs/ELPA
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+(require 'package)
+(package-initialize)
+
+; http://www.emacswiki.org/emacs/Evil
+; M-x package-install RET evil RET
+(require 'evil)
+(evil-mode 1)
