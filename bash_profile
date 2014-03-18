@@ -26,7 +26,8 @@ fi
 # Look for ~/opt/local binaries and libraries
 if [ -d ~/opt/local ]; then
     PATH="${HOME}/opt/local/bin:${PATH}"
-    # Using the ${varname:+value} trick again.
+    # It looks funny, but ${varname:+value} evaluates to 'value' if $varname is set,
+    # and to the empty string '' otherwise. We do this to avoid extraneous colon separators.
     LD_LIBRARY_PATH="${HOME}/opt/local/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
     #DYLD_LIBRARY_PATH="${HOME}/opt/local/lib${DYLD_LIBRARY_PATH:+:$DYLD_LIBRARY_PATH}"
     PKG_CONFIG_PATH="${HOME}/opt/local/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
