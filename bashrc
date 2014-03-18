@@ -334,6 +334,11 @@ if command_exists go ; then
     export GOROOT=$(go env GOROOT)
 fi
 
+# <hr/> for your terminal
+# https://github.com/LuRsT/hr
+# https://news.ycombinator.com/item?id=7213347
+hr() { printf '\e(0'; printf 'q%.0s' $(seq $(tput cols)); printf '\e(B'; }
+
 ###############################################################################
 
 # Enable programmable completion features (you don't need to enable
