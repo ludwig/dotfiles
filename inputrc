@@ -26,7 +26,15 @@ set completion-ignore-case on
 set convert-meta off
 
 # Initialize readline using key-bindings similar to vi (or emacs).
-#set editing-mode vi
+# https://news.ycombinator.com/item?id=7051091
+set editing-mode vi
+$if mode=vi
+    set keymap vi-command
+    "gg": beginning-of-history
+    "G": end-of-history
+    set keymap vi-insert
+    "jj": vi-movement-mode
+    "\C-p": history-search-backward
 
 # If set to On, tilde expansion is performed when readline attempts word completion.
 set expand-tilde off
