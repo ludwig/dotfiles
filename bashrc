@@ -254,6 +254,13 @@ function ... ()
     done
 }
 
+# Track what you're doing right "now"
+# https://news.ycombinator.com/item?id=7409926
+function now()
+{
+    echo $(date "+%Y-%m-%d %H:%M:%S") - "$@" >> $HOME/.now
+}
+
 # Tip from a comment at http://nflath.com/2009/08/tramp/
 alias edit="emacsclient -t"
 function sedit
