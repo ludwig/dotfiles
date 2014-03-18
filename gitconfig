@@ -6,6 +6,9 @@
 # http://stackoverflow.com/questions/348170/undo-git-add
 # http://stackoverflow.com/questions/267761/what-does-your-gitconfig-contain
 # http://news.ycombinator.com/item?id=2480522
+# https://coderwall.com/p/euwpig
+# https://news.ycombinator.com/item?id=5837920
+# https://news.ycombinator.com/item?id=6641826
 
 [user]
 	name = Luis Armendariz
@@ -48,6 +51,7 @@
 	br = branch
 	co = checkout
 	df = diff
+    df2 = diff --patience --ignore-space-at-eol -b -w --ignore-blank-lines
 	ds = diff --stat -M -w
 	dsc = diff --stat --cached -M -w
 	dw = diff --color-words
@@ -93,6 +97,12 @@
 	whatsnew = !sh -c 'git shortlog --format=\"%h %s\" $1..HEAD' -
 	# search for a given string in all patches and print commit messages
 	searchcommits = "!f() { query=\"$1\"; shift; git log -S\"$query\" \"$@\"; }; f \"$@\""
+	slog = log --pretty=format:"%C(auto,yellow)%h%C(auto)%d\\ %C(auto,reset)%s\\ \\ [%C(auto,blue)%cn%C(auto,reset),\\ %C(auto,cyan)%ar%C(auto,reset)]"
+	glog = log --graph --pretty=format:"%C(auto,yellow)%h%C(auto)%d\\ %C(auto,reset)%s\\ \\ [%C(auto,blue)%cn%C(auto,reset),\\ %C(auto,cyan)%ar%C(auto,reset)]"
+	gflog = log -p --cc --graph --decorate
+	wtf = log --pretty=format:"%C(auto,yellow)%h%C(auto)%d%C(auto,reset)\\ by\\ %C(auto,blue)%cn%C(auto,reset),\\ %C(auto,cyan)%ar%C(auto,reset)%n\\ %s%n" --stat
+	unci = reset HEAD^
+	uncommit = reset HEAD^
 
 [url "git://github.com/"]
 	insteadOf = "github:"
