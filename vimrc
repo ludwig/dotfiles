@@ -1327,6 +1327,17 @@ command! -nargs=1 GREP :call GrepQFix(<f-args>)
 nnoremap ,g :call GrepQFix(expand('<cword>'))<CR>
 nnoremap ,G :GREP 
 
+" Google current word
+" http://www.vim.org/scripts/script.php?script_id=3551
+function GoogleSearch(...)
+    let q = substitute(join(a:000, " "), ' ', "+", "g")
+    "exe '!launch -l https://encrypted.google.com/search?q=' . q
+    exe '!launch -l ''https://www.google.com/search?btnI=1&q=' . q . ''''
+endfunction
+command! -nargs=+ Google call GoogleSearch(<f-args>)
+nnoremap \g :Google <cword><CR><CR>
+nnoremap \G :Google 
+
 " }}}
 
 " Filetype specific handling {{{
