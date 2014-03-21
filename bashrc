@@ -81,7 +81,7 @@ shopt -s cdspell dotglob nocaseglob no_empty_cmd_completion
 set -o vi
 
 # Enable globstar ** patterns
-shopt -s globstar
+[ "$BASH_VERSINFO" -ge "4" ] && shopt -s globstar
 
 ###############################################################################
 # Terminal settings
