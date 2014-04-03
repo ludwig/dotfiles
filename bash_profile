@@ -20,7 +20,7 @@ fi
 
 # Set our GOPATH to ~/gocode if it exists
 if [ -d ~/gocode ]; then
-    export GOPATH="${HOME}/gocode${GOPATH:+:$GOPATH}"
+    export GOPATH="${HOME}/gocode"
 fi
 
 # Look for ~/opt/local binaries and libraries

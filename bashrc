@@ -339,6 +339,7 @@ command_exists()
 # Set GOROOT if golang's go is installed
 if command_exists go ; then
     export GOROOT=$(go env GOROOT)
+    export PATH="${PATH}:${GOROOT}/bin"
 fi
 
 # <hr/> for your terminal
