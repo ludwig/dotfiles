@@ -418,6 +418,10 @@ Bundle 'saltstack/salt-vim'
 " https://bitbucket.org/ludwig1024/golang-vim-completion.git
 Bundle 'https://bitbucket.org/ludwig1024/golang-vim-completion.git'
 
+" rust.vim -- Rust file detection and syntax highlighting
+" https://github.com/wting/rust.vim
+Bundle 'wting/rust.vim'
+
 " }}}
 " --- Libraries {{{
 
