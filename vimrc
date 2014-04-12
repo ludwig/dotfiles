@@ -318,6 +318,10 @@ Bundle 'robhudson/snipmate_for_django'
 " }}}
 " --- Language Additions {{{
 
+" vim-css3-syntax
+" https://github.com/hail2u/vim-css3-syntax
+Bundle 'hail2u/vim-css3-syntax'
+
 " vim-ruby - Vim/Ruby Configuration Files
 " https://github.com/vim-ruby/vim-ruby
 Bundle 'vim-ruby/vim-ruby'
@@ -325,7 +329,7 @@ Bundle 'vim-ruby/vim-ruby'
 " vim-haml - Vim runtime files for Haml, Sass, and Scss
 " http://www.vim.org/scripts/script.php?script_id=1433
 " https://github.com/tpope/vim-haml
-Bundle 'tpope/vim-haml'
+"Bundle 'tpope/vim-haml'
 
 " rails.vim - Ruby on Rails power tools
 " http://www.vim.org/scripts/script.php?script_id=1567
@@ -397,7 +401,7 @@ Bundle 'groenewege/vim-less'
 
 " Better CSS Syntax for Vim
 " https://github.com/ChrisYip/Better-CSS-Syntax-for-Vim
-Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
+"Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
 
 " VimClojure - a filetype, syntax and indent plugin for Clojure
 " http://www.vim.org/scripts/script.php?script_id=2501
@@ -1747,6 +1751,10 @@ vnoremap S <nop>
 
 " override the :W! command (defined by sudo-gui.vim to be :SudoWrite!)
 cabbrev W w
+
+" Temporary fix for syntax issue with sass files (missing groups?)
+" https://github.com/ChrisYip/Better-CSS-Syntax-for-Vim/issues/9
+au BufRead,BufNewFile *.scss set filetype=css
 
 " lastly, load up user.vim local overrides.
 " note that user.vim is not kept in the repository, and therefore
