@@ -426,6 +426,10 @@ Bundle 'https://bitbucket.org/ludwig1024/golang-vim-completion.git'
 " https://github.com/wting/rust.vim
 Bundle 'wting/rust.vim'
 
+" vim-scala -- Vim integration for Scala
+" https://github.com/derekwyatt/vim-scala
+Bundle 'derekwyatt/vim-scala'
+
 " }}}
 " --- Libraries {{{
 
