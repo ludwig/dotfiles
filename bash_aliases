@@ -44,6 +44,9 @@ alias cgoban3='javaws http://files.gokgs.com/javaBin/cgoban.jnlp'
 
 alias fact="links -dump randomfunfacts.com | sed -n '/^|/p' | tr -d \|"
 
+# http://www.reddit.com/r/programming/comments/27gck1/it_happened_git_20_is_here_and_its_full_of_goodies/
+alias gitlearn='cd; rm -rf gitlearn; mkdir gitlearn; cd gitlearn; git init; git commit --allow-empty -m"Add empty, initial commit"'
+
 ###############################################################################
 # Platform-specific aliases
 
