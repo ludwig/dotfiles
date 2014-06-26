@@ -22,10 +22,10 @@ let mapleader=","
 "   $ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 "
 " Brief help
-"   :BundleList             - list configured bundles
-"   :BundleInstall(!)       - install (update) bundles
-"   :BundleSearch(!) foo    - search (or refresh cache first) for foo
-"   :BundleClean(!)         - confirm (or auto-approve) removal of unused bundles
+"   :PluginList             - list configured bundles
+"   :PluginInstall(!)       - install (update) bundles
+"   :PluginSearch(!) foo    - search (or refresh cache first) for foo
+"   :PluginClean(!)         - confirm (or auto-approve) removal of unused bundles
 "
 " See ':h vundle' for more details, or wiki for FAQ
 "
@@ -37,33 +37,33 @@ call vundle#rc()
 
 " let Vundle manage Vundle (required!)
 " https://github.com/gmarik/vundle/
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
-" Plugin Bundles
+" Plugin Plugins
 " --- Navigation {{{
 
 " ZoomWin - Zoom in/out of windows (toggle between one window and multi-window)
 " Use '<C-w>o' to toggle zoom on window
 " http://www.vim.org/scripts/script.php?script_id=508
-Bundle 'ZoomWin'
+Plugin 'ZoomWin'
 
 " Command-T - Fast file navigation for vim
 " http://www.vim.org/scripts/script.php?script_id=3025
 " https://github.com/wincent/Command-T
 " http://git.wincent.com/command-t.git
-"Bundle 'wincent/Command-T'
-Bundle 'git://git.wincent.com/command-t.git'
+"Plugin 'wincent/Command-T'
+Plugin 'git://git.wincent.com/command-t.git'
 
 " space.vim - Smart Space key for vim
 " https://github.com/spiiph/vim-space
 " https://github.com/christoomey/vim-space
 " https://github.com/spiiph/vim-space/blob/master/doc/space.txt
-"Bundle 'spiiph/vim-space'
+"Plugin 'spiiph/vim-space'
 
 " EasyMotion - Vim motions on speed!
 " http://www.vim.org/scripts/script.php?script_id=3526
 " https://github.com/Lokaltog/vim-easymotion
-Bundle 'Lokaltog/vim-easymotion'
+Plugin 'Lokaltog/vim-easymotion'
 
 " LustyJuggler - Switch very quickly among your active buffers
 " Launch with '<Leader>lj'
@@ -71,12 +71,12 @@ Bundle 'Lokaltog/vim-easymotion'
 " https://github.com/sjbach/lusty
 " https://github.com/vim-scripts/LustyJuggler
 " https://github.com/mutewinter/LustyJuggler
-Bundle 'LustyJuggler'
+Plugin 'LustyJuggler'
 
 " ctrlp.vim - Fuzzy file, buffer, mru, tag, ... finder with regexp support
 " http://www.vim.org/scripts/script.php?script_id=3736
 " https://github.com/kien/ctrlp.vim
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 
 " }}}
 " --- UI Additions {{{
@@ -84,79 +84,79 @@ Bundle 'kien/ctrlp.vim'
 " NERDTree - Tree explorer plugin
 " http://www.vim.org/scripts/script.php?script_id=1658
 " https://github.com/scrooloose/nerdtree/
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 
 " tabman.vim - Tab management for Vim
 " https://github.com/kien/tabman.vim
-Bundle 'kien/tabman.vim'
+Plugin 'kien/tabman.vim'
 
 " Powerline - The ultimate vim statusline utility
 " http://www.vim.org/scripts/script.php?script_id=3881
 " https://github.com/Lokaltog/vim-powerline
-Bundle 'Lokaltog/vim-powerline'
+Plugin 'Lokaltog/vim-powerline'
 
 " Indent Guides - A plugin for visually displaying indent levels in Vim
 " http://www.vim.org/scripts/script.php?script_id=3361
 " https://github.com/nathanaelkane/vim-indent-guides
 " https://github.com/mutewinter/vim-indent-guides
 " http://nathanaelkane.imgur.com/indent_guides
-Bundle 'nathanaelkane/vim-indent-guides'
+Plugin 'nathanaelkane/vim-indent-guides'
 
 " colorv.vim - Easier color handling
 " Use with '<Leader>ce'
 " http://www.vim.org/scripts/script.php?script_id=3597
 " https://github.com/Rykka/colorv.vim
-Bundle 'Rykka/colorv.vim'
+Plugin 'Rykka/colorv.vim'
 
 " quickfixsigns - Mark quickfix & location list items with signs
 " http://www.vim.org/scripts/script.php?script_id=2584
 " https://github.com/tomtom/quickfixsigns_vim
-"Bundle 'tomtom/quickfixsigns_vim'
+"Plugin 'tomtom/quickfixsigns_vim'
 
 " tagbar - Vim plugin that displays tags in a window, ordered by class etc.
 " http://majutsushi.github.com/tagbar/
 " http://www.vim.org/scripts/script.php?script_id=3465
 " https://github.com/majutsushi/tagbar
-Bundle 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 
 " taglist.vim - Source code browser (supports C, C++, java, python, etc.)
 " http://www.vim.org/scripts/script.php?script_id=273
-Bundle 'taglist.vim'
+Plugin 'taglist.vim'
 
 " gitv - gitk for vim
 " http://www.gregsexton.org/portfolio/gitv/
 " http://www.vim.org/scripts/script.php?script_id=3574
 " https://github.com/gregsexton/gitv
-Bundle 'gregsexton/gitv'
+Plugin 'gregsexton/gitv'
 
 " splice.vim - plugin for managing three-way merges
 " http://vimeo.com/25764692
 " http://sjl.bitbucket.org/splice.vim/
 " https://github.com/sjl/splice.vim
 " http://www.vim.org/scripts/script.php?script_id=4026
-"Bundle 'sjl/splice.vim'
+"Plugin 'sjl/splice.vim'
 
 " vim-colorschemes - one stop shop for vim colorschemes
 " https://github.com/flazz/vim-colorschemes
-"Bundle 'flazz/vim-colorschemes'
+"Plugin 'flazz/vim-colorschemes'
 
 " molokai - a port of the monokai scheme for TextMate
 " http://www.vim.org/scripts/script.php?script_id=2340
 " https://github.com/tomasr/molokai
-Bundle 'tomasr/molokai'
+Plugin 'tomasr/molokai'
 
 " badwolf - a vim color scheme
 " https://github.com/sjl/badwolf
-Bundle 'sjl/badwolf'
+Plugin 'sjl/badwolf'
 
 " jellybeans.vim - Colorful, dark color scheme
 " http://www.vim.org/scripts/script.php?script_id=2555
 " https://github.com/nanotech/jellybeans.vim
-Bundle 'nanotech/jellybeans.vim'
+Plugin 'nanotech/jellybeans.vim'
 
 " vim-colors-solarized - precision color scheme for vim
 " https://github.com/altercation/vim-colors-solarized
-Bundle 'altercation/vim-colors-solarized'
+Plugin 'altercation/vim-colors-solarized'
 
 " }}}
 " --- Commands {{{
@@ -164,122 +164,122 @@ Bundle 'altercation/vim-colors-solarized'
 " NERDCommenter - Plugin that allows easy commenting of code
 " http://www.vim.org/scripts/script.php?script_id=1218
 " https://github.com/scrooloose/nerdcommenter
-Bundle 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdcommenter'
 
 " surround.vim - quoting/parenthesizing made simple
 " http://www.vim.org/scripts/script.php?script_id=1697
 " https://github.com/tpope/vim-surround
-Bundle 'tpope/vim-surround'
+Plugin 'tpope/vim-surround'
 
 " speeddating.vim - use CTRL-A / CTRL-X to increment dates, times, and more
 " http://www.vim.org/scripts/script.php?script_id=2120
 " https://github.com/tpope/vim-speeddating
-Bundle 'tpope/vim-speeddating'
+Plugin 'tpope/vim-speeddating'
 
 " fugitive.vim - a git wrapper so awesome, it should be illegal
 " http://www.vim.org/scripts/script.php?script_id=2975
 " https://github.com/tpope/vim-fugitive
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 
 " Tabular - Vim script for text filtering and alignment
 " http://www.vim.org/scripts/script.php?script_id=3464
 " https://github.com/godlygeek/tabular
-Bundle 'godlygeek/tabular'
+Plugin 'godlygeek/tabular'
 
 " ack.vim - Plugin for the Perl module / CLI script 'ack'
 " http://www.vim.org/scripts/script.php?script_id=2572
 " https://github.com/mileszs/ack.vim
-Bundle 'mileszs/ack.vim'
+Plugin 'mileszs/ack.vim'
 
 " sudo-gui.vim - sudo GUI for a GUI vim
 " https://github.com/gmarik/sudo-gui.vim
-Bundle 'gmarik/sudo-gui.vim'
+Plugin 'gmarik/sudo-gui.vim'
 
 " vim-togglelist - Functions to toggle the [Location List] and the [Quickfix List] windows
 " Use '<Leader>l' to toggle the location list
 " Use '<Leader>q' to toggle the quickfix list
 " https://github.com/milkypostman/vim-togglelist
-Bundle 'milkypostman/vim-togglelist'
+Plugin 'milkypostman/vim-togglelist'
 
 " swap parameters - swap parameters of a function (requires python)
 " http://www.vim.org/scripts/script.php?script_id=2032
 " https://github.com/vim-scripts/swap-parameters
 " https://github.com/mutewinter/swap-parameters
-"Bundle 'mutewinter/swap-parameters'
+"Plugin 'mutewinter/swap-parameters'
 
 " YankRing.vim - Maintains a history of previous yanks, changes, and deletes
 " http://www.vim.org/scripts/script.php?script_id=1234
 " https://github.com/vim-scripts/YankRing.vim
-"Bundle 'YankRing.vim'
+"Plugin 'YankRing.vim'
 
 " keepcase.vim - Functions for doing case-persistant substitutions
 " http://www.vim.org/scripts/script.php?script_id=6
-Bundle 'keepcase.vim'
+Plugin 'keepcase.vim'
 
 " scratch.vim - plugin to create and use a scratch vim buffer
 " http://www.vim.org/scripts/script.php?script_id=664
-Bundle 'scratch.vim'
+Plugin 'scratch.vim'
 
 " ZenCoding.vim - vim plugins for HTML and CSS hi-speed coding
 " emmet for vim (renamed from ZenCoding)
 " http://www.vim.org/scripts/script.php?script_id=2981
 " https://github.com/mattn/zencoding-vim
 " https://github.com/mattn/emmet-vim
-"Bundle 'mattn/zencoding-vim'
-Bundle 'mattn/emmet-vim'
+"Plugin 'mattn/zencoding-vim'
+Plugin 'mattn/emmet-vim'
 
 " }}}
 " --- Automatic Helpers {{{
 
 " IndexedSearch - shows 'Nth match out of M' at every search (index of match + total num matches)
 " http://www.vim.org/scripts/script.php?script_id=1682
-"Bundle 'IndexedSearch'
+"Plugin 'IndexedSearch'
 
 " session.vim - extended session management for vim
 " http://www.vim.org/scripts/script.php?script_id=3150
 " https://github.com/xolox/vim-session
-Bundle 'xolox/vim-misc'
-Bundle 'xolox/vim-session'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
 
 " delimitMate.vim - Provides auto-balancing and some expansions for parens, quotes, etc.
 " http://www.vim.org/scripts/script.php?script_id=2754
 " https://github.com/Raimondi/delimitMate
-Bundle 'Raimondi/delimitMate'
+Plugin 'Raimondi/delimitMate'
 
 " MatchTag - MatchParen for HTML tags
 " http://www.vim.org/scripts/script.php?script_id=3818
 " https://github.com/gregsexton/MatchTag
-Bundle 'gregsexton/MatchTag'
+Plugin 'gregsexton/MatchTag'
 
 " closetag.vim - Functions and mappings to close open HTML/XML tags
 " http://www.vim.org/scripts/script.php?script_id=13
 " https://github.com/vim-scripts/closetag.vim
-Bundle 'vim-scripts/closetag.vim'
+Plugin 'vim-scripts/closetag.vim'
 
 " Syntastic - Automatic syntax checking
 " http://www.vim.org/scripts/script.php?script_id=2736
 " https://github.com/scrooloose/syntastic
-"Bundle 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 
 " SuperTab - Do all your insert-mode completion with Tab
 " http://www.vim.org/scripts/script.php?script_id=1643
 " https://github.com/ervandew/supertab
-Bundle 'ervandew/supertab'
+Plugin 'ervandew/supertab'
 
 " neocomplcache - Ultimate auto completion system for vim
 " http://www.vim.org/scripts/script.php?script_id=2620
 " https://github.com/Shougo/neocomplcache
-Bundle 'Shougo/neocomplcache'
+Plugin 'Shougo/neocomplcache'
 
 " AutoComplPop - Automatically opens popup menu for completions
 " http://www.vim.org/scripts/script.php?script_id=1879
 " https://bitbucket.org/ns9tks/vim-autocomplpop/
-Bundle 'AutoComplPop'
+Plugin 'AutoComplPop'
 
 " clang_complete - use clang for completing C/C++ code
 " http://www.vim.org/scripts/script.php?script_id=3302
 " https://github.com/Rip-Rip/clang_complete
-Bundle 'Rip-Rip/clang_complete'
+Plugin 'Rip-Rip/clang_complete'
 
 " YouCompleteMe - a fast as-you-type fuzzy-search completion engine for vim
 " (obsoletes clang_complete, SuperTab, neocomplcache, AutoComplPop)
@@ -288,12 +288,12 @@ Bundle 'Rip-Rip/clang_complete'
 " http://valloric.github.com/YouCompleteMe/
 " https://github.com/Valloric/YouCompleteMe
 " This plugin obsoletes clang_complete, AutoComplPop, SuperTab, neocomplcache
-"Bundle 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 
 " unite.vim -- search and display information from arbitrary sources
 " http://www.vim.org/scripts/script.php?script_id=3396
 " https://github.com/Shougo/unite.vim
-"Bundle 'Shougo/unite.vim'
+"Plugin 'Shougo/unite.vim'
 
 " }}}
 " --- Snippets {{{
@@ -306,213 +306,213 @@ Bundle 'Rip-Rip/clang_complete'
 " https://github.com/honza/vim-snippets
 " https://github.com/MarcWeber/vim-addon-mw-utils
 " https://github.com/tomtom/tlib_vim
-Bundle 'garbas/vim-snipmate'
-"Bundle 'honza/snipmate-snippets'
-Bundle 'honza/vim-snippets'
-Bundle 'MarcWeber/vim-addon-mw-utils'
+Plugin 'garbas/vim-snipmate'
+"Plugin 'honza/snipmate-snippets'
+Plugin 'honza/vim-snippets'
+Plugin 'MarcWeber/vim-addon-mw-utils'
 
 " snipmate_for_django - Django snippets for SnipMate
 " https://github.com/robhudson/snipmate_for_django
-Bundle 'robhudson/snipmate_for_django'
+Plugin 'robhudson/snipmate_for_django'
 
 " }}}
 " --- Language Additions {{{
 
 " vim-css3-syntax
 " https://github.com/hail2u/vim-css3-syntax
-Bundle 'hail2u/vim-css3-syntax'
+Plugin 'hail2u/vim-css3-syntax'
 
 " vim-ruby - Vim/Ruby Configuration Files
 " https://github.com/vim-ruby/vim-ruby
-Bundle 'vim-ruby/vim-ruby'
+Plugin 'vim-ruby/vim-ruby'
 
 " vim-haml - Vim runtime files for Haml, Sass, and Scss
 " http://www.vim.org/scripts/script.php?script_id=1433
 " https://github.com/tpope/vim-haml
-"Bundle 'tpope/vim-haml'
+"Plugin 'tpope/vim-haml'
 
 " rails.vim - Ruby on Rails power tools
 " http://www.vim.org/scripts/script.php?script_id=1567
 " https://github.com/tpope/vim-rails
-Bundle 'tpope/vim-rails'
+Plugin 'tpope/vim-rails'
 
 " rake.vim - It's like rails.vim without the rails
 " http://www.vim.org/scripts/script.php?script_id=3669
 " https://github.com/tpope/vim-rake
-Bundle 'tpope/vim-rake'
+Plugin 'tpope/vim-rake'
 
 " vim-javascript - Vastly improved javascript indentation
 " http://www.vim.org/scripts/script.php?script_id=2765
 " https://github.com/pangloss/vim-javascript
-Bundle 'pangloss/vim-javascript'
+Plugin 'pangloss/vim-javascript'
 
 " vim-coffee-script - CoffeeScript support for vim
 " http://www.vim.org/scripts/script.php?script_id=3590
 " https://github.com/kchmck/vim-coffee-script
-Bundle 'kchmck/vim-coffee-script'
+Plugin 'kchmck/vim-coffee-script'
 
 " JSON.vim - A syntax highlighting file for JSON
 " http://www.vim.org/scripts/script.php?script_id=1945
 " https://github.com/leshill/vim-json
-Bundle 'leshill/vim-json'
+Plugin 'leshill/vim-json'
 
 " jQuery - Syntax file for jQuery
 " https://github.com/itspriddle/vim-jquery
 " http://www.vim.org/scripts/script.php?script_id=2416
 " https://github.com/nono/jquery.vim
-Bundle 'nono/jquery.vim'
+Plugin 'nono/jquery.vim'
 
 " Handlebars - Vim syntax for Handlebars
 " http://www.vim.org/scripts/script.php?script_id=3638
 " https://github.com/nono/vim-handlebars
-Bundle 'nono/vim-handlebars'
+Plugin 'nono/vim-handlebars'
 
 " cocoa.vim - Plugin for Cocoa/Objective-C development
 " http://www.vim.org/scripts/script.php?script_id=2674
 " https://github.com/msanders/cocoa.vim
-Bundle 'msanders/cocoa.vim'
+Plugin 'msanders/cocoa.vim'
 
 " taskpaper.vim - syntax file and ftplugin for TaskPaper application
 " http://www.hogbaysoftware.com/products/taskpaper
 " http://www.vim.org/scripts/script.php?script_id=2027
 " https://github.com/davidoc/taskpaper.vim
 " https://github.com/mutewinter/taskpaper.vim
-"Bundle 'davidoc/taskpaper.vim'
+"Plugin 'davidoc/taskpaper.vim'
 
 " nginx.vim - syntax highlighting for nginx.conf and related files
 " http://www.vim.org/scripts/script.php?script_id=1886
 " https://github.com/vim-scripts/nginx.vim
 " https://github.com/mutewinter/nginx.vim
-Bundle 'mutewinter/nginx.vim'
+Plugin 'mutewinter/nginx.vim'
 
 " Textile - Syntax highlighting for Textile
 " http://www.vim.org/scripts/script.php?script_id=2305
 " https://github.com/timcharper/textile.vim
-Bundle 'timcharper/textile.vim'
+Plugin 'timcharper/textile.vim'
 
 " Markdown - Syntax highlighting for Markdown text files
 " http://www.vim.org/scripts/script.php?script_id=2882
 " https://github.com/hallison/vim-markdown
-Bundle 'hallison/vim-markdown'
+Plugin 'hallison/vim-markdown'
 
 " vim-less - vim syntax for LESS (dynamic CSS)
 " https://github.com/groenewege/vim-less
-Bundle 'groenewege/vim-less'
+Plugin 'groenewege/vim-less'
 
 " Better CSS Syntax for Vim
 " https://github.com/ChrisYip/Better-CSS-Syntax-for-Vim
-"Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
+"Plugin 'ChrisYip/Better-CSS-Syntax-for-Vim'
 
 " VimClojure - a filetype, syntax and indent plugin for Clojure
 " http://www.vim.org/scripts/script.php?script_id=2501
 " https://github.com/vim-scripts/VimClojure
 " https://github.com/zaiste/VimClojure
-Bundle 'zaiste/VimClojure'
+Plugin 'zaiste/VimClojure'
 
 " vim-cmake - provide a cmake reference and autocompletion
 " https://github.com/jansenm/vim-cmake
-Bundle 'jansenm/vim-cmake'
+Plugin 'jansenm/vim-cmake'
 
 " salt-vim - syntax for editing Salt state files (.sls)
 " https://github.com/saltstack/salt-vim
-Bundle 'saltstack/salt-vim'
+Plugin 'saltstack/salt-vim'
 
 " gocode -- golang vim completion
 " https://github.com/nsf/gocode
 " https://bitbucket.org/ludwig1024/golang-vim-completion.git
-Bundle 'https://bitbucket.org/ludwig1024/golang-vim-completion.git'
+Plugin 'https://bitbucket.org/ludwig1024/golang-vim-completion.git'
 
 " rust.vim -- Rust file detection and syntax highlighting
 " https://github.com/wting/rust.vim
-Bundle 'wting/rust.vim'
+Plugin 'wting/rust.vim'
 
 " vim-scala -- Vim integration for Scala
 " https://github.com/derekwyatt/vim-scala
-Bundle 'derekwyatt/vim-scala'
+Plugin 'derekwyatt/vim-scala'
 
 " }}}
 " --- Libraries {{{
 
 " L9 - vim-script library
 " http://www.vim.org/scripts/script.php?script_id=3252
-Bundle 'L9'
+Plugin 'L9'
 
 " tlib - some utility functions (needed by 'tomtom/quickfixsigns_vim')
 " http://www.vim.org/scripts/script.php?script_id=1863
 " https://github.com/tomtom/tlib_vim
-Bundle 'tomtom/tlib_vim'
+Plugin 'tomtom/tlib_vim'
 
 " repeat.vim - Use the repeat command (.) with supported plugins
 " http://www.vim.org/scripts/script.php?script_id=2136
 " https://github.com/tpope/vim-repeat
-Bundle 'tpope/vim-repeat'
+Plugin 'tpope/vim-repeat'
 
 " }}}
 " --- Misc {{{
 
 " a.vim - alternate files quickly
 " http://www.vim.org/scripts/script.php?script_id=31
-Bundle 'a.vim'
+Plugin 'a.vim'
 
 " bufexplorer.zip - Buffer Explorer / Browser
 " http://www.vim.org/scripts/script.php?script_id=42
 " https://github.com/vim-scripts/bufexplorer.zip
-Bundle 'bufexplorer.zip'
+Plugin 'bufexplorer.zip'
 
 " mru.vim - manage 'Most Recently Used (MRU)' files
 " http://www.vim.org/scripts/script.php?script_id=521
-Bundle 'mru.vim'
+Plugin 'mru.vim'
 
 " localrc.vim - enable configuration file of each directory
 " http://www.vim.org/scripts/script.php?script_id=3393
 " https://github.com/thinca/vim-localrc
-Bundle 'localrc.vim'
+Plugin 'localrc.vim'
 
 " rest.vim - a reStructuredText syntax mode
 " http://www.vim.org/scripts/script.php?script_id=973
-Bundle 'rest.vim'
+Plugin 'rest.vim'
 
 " matchit.zip - extended % matching for HTML, LaTeX, and many other languages
 " http://www.vim.org/scripts/script.php?script_id=39
-Bundle 'matchit.zip'
+Plugin 'matchit.zip'
 
 " textobj-user - Support for user-defined text objects
 " http://www.vim.org/scripts/script.php?script_id=2100
 " https://github.com/kana/vim-textobj-user
-Bundle 'kana/vim-textobj-user'
+Plugin 'kana/vim-textobj-user'
 
 " vim-indent-object - Text Objects based on Indentation Level
 " http://www.vim.org/scripts/script.php?script_id=3037
 " https://github.com/michaeljsmith/vim-indent-object
-Bundle 'michaeljsmith/vim-indent-object'
+Plugin 'michaeljsmith/vim-indent-object'
 
 " django template textobjects - textobject mappings for the django template language
 " http://www.vim.org/scripts/script.php?script_id=2999
 " https://github.com/mjbrownie/django-template-textobjects
-Bundle 'mjbrownie/django-template-textobjects'
+Plugin 'mjbrownie/django-template-textobjects'
 
 " textobj-rubyblock - A custom text object for selecting ruby blocks
 " http://vimcasts.org/blog/2010/12/a-text-object-for-ruby-blocks/
 " http://www.vim.org/scripts/script.php?script_id=3382
 " https://github.com/nelstrom/vim-textobj-rubyblock
-Bundle 'nelstrom/vim-textobj-rubyblock'
+Plugin 'nelstrom/vim-textobj-rubyblock'
 
 " Conque Shell - run interactive commands inside a vim buffer
 " http://www.vim.org/scripts/script.php?script_id=2771
 " https://github.com/vim-scripts/Conque-Shell
-"Bundle 'Conque-Shell'
-Bundle 'vim-scripts/Conque-Shell'
+"Plugin 'Conque-Shell'
+Plugin 'vim-scripts/Conque-Shell'
 
 " tmux.vim - tmux vim syntax
 " http://tmux.svn.sourceforge.net/viewvc/tmux/trunk/examples/tmux.vim?revision=2783&view=markup
 " https://github.com/zaiste/tmux.vim
-Bundle 'zaiste/tmux.vim'
+Plugin 'zaiste/tmux.vim'
 
 " vimux - effortless vim and tmux interaction
 " To use, run :call RunVimTmuxCommand("ls")
 " http://www.vim.org/scripts/script.php?script_id=4011
 " https://github.com/benmills/vimux
-Bundle 'benmills/vimux'
+Plugin 'benmills/vimux'
 
 " }}}
 
@@ -927,7 +927,7 @@ endif
 " Summary of installation:
 "
 " In ~/.vimrc
-"   Bundle 'Valloric/YouCompleteMe'
+"   Plugin 'Valloric/YouCompleteMe'
 "
 " In shell:
 "   $ cd ~/ycm_build/
