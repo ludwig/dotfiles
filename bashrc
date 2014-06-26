@@ -371,8 +371,14 @@ fi
 
 # Use z to jump around, if present
 # See https://github.com/rupa/z
-if [ -f /usr/local/etc/profile.d/z.sh ]; then
-    source /usr/local/etc/profile.d/z.sh
+#if [ -f /usr/local/etc/profile.d/z.sh ]; then
+#   source /usr/local/etc/profile.d/z.sh
+#fi
+
+# Use fasd, a tool inspired by autojump,z,v
+# https://github.com/clvv/fasd
+if command_exists fasd ; then
+    eval "$(fasd --init auto)"
 fi
 
 # Alias definitions.
