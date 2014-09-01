@@ -417,10 +417,14 @@ Plugin 'jansenm/vim-cmake'
 " https://github.com/saltstack/salt-vim
 Plugin 'saltstack/salt-vim'
 
-" gocode -- golang vim completion
+" gocode -- golang vim completion (use fatih/vim-go instead)
 " https://github.com/nsf/gocode
 " https://bitbucket.org/ludwig1024/golang-vim-completion.git
-Plugin 'https://bitbucket.org/ludwig1024/golang-vim-completion.git'
+"Plugin 'https://bitbucket.org/ludwig1024/golang-vim-completion.git'
+
+" vim-go -- Go development plugin for Vim
+" https://github.com/fatih/vim-go
+Plugin 'fatih/vim-go'
 
 " rust.vim -- Rust file detection and syntax highlighting
 " https://github.com/wting/rust.vim
@@ -914,6 +918,9 @@ endif
 "vmap \a= :Tabularize /=<CR>
 "nmap \a: :Tabularize /:\zs<CR>
 "vmap \a: :Tabularize /:\zs<CR>
+" }}}
+" --- vim-go settings {{{
+let g:go_fmt_autosave = 0
 " }}}
 " --- YankRing settings {{{
 " Disabled because it interferes with too many of my keybindings
