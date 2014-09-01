@@ -527,6 +527,10 @@ Plugin 'zaiste/tmux.vim'
 " https://github.com/benmills/vimux
 Plugin 'benmills/vimux'
 
+" Finally, load up my own vim-scripts (tup syntax, etc.)
+" https://github.com/ludwig/vim-scripts
+Plugin 'ludwig/vim-scripts'
+
 " }}}
 
 " load golang's vim plugins.
