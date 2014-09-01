@@ -271,6 +271,10 @@ Plugin 'ervandew/supertab'
 " https://github.com/Shougo/neocomplcache
 Plugin 'Shougo/neocomplcache'
 
+" neocomplete - Next generation completion framework after neocomplcache
+" https://github.com/Shougo/neocomplete.vim
+"Plugin 'Shougo/neocomplete'
+
 " AutoComplPop - Automatically opens popup menu for completions
 " http://www.vim.org/scripts/script.php?script_id=1879
 " https://bitbucket.org/ns9tks/vim-autocomplpop/
@@ -297,6 +301,11 @@ Plugin 'Rip-Rip/clang_complete'
 
 " }}}
 " --- Snippets {{{
+
+" neosnippet.vim -- neo-snippet plugin contains neocomplcache snippets source
+" https://github.com/Shougo/neosnippet.vim
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
 
 " snipMate - TextMate-style snippets for Vim (and dependencies)
 " http://vimeo.com/3535418
