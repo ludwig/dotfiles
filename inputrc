@@ -21,6 +21,12 @@ set bell-style visible
 # Perform filename matching and completion in a case-insensitive fashion.
 set completion-ignore-case on
 
+# Use 'menu-complete' on Tab (default is 'complete')
+# http://stackoverflow.com/questions/7179642/how-can-i-make-bash-tab-completion-behave-like-vim-tab-completion
+Tab: menu-complete
+"\e[Z": menu-complete-backward
+set menu-complete-display-prefix on
+
 # If set to On, convert characters with the eighth bit set to an ASCII key sequence
 # by stripping the eighth bit and prefixing an escape character.
 set convert-meta off
