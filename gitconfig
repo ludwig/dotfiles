@@ -103,6 +103,7 @@
 	wtf = log --pretty=format:"%C(auto,yellow)%h%C(auto)%d%C(auto,reset)\\ by\\ %C(auto,blue)%cn%C(auto,reset),\\ %C(auto,cyan)%ar%C(auto,reset)%n\\ %s%n" --stat
 	unci = reset HEAD^
 	uncommit = reset HEAD^
+    commit-empty = commit --allow-empty
 
 [url "git://github.com/"]
 	insteadOf = "github:"
