@@ -443,6 +443,10 @@ Plugin 'wting/rust.vim'
 " https://github.com/derekwyatt/vim-scala
 Plugin 'derekwyatt/vim-scala'
 
+" vim-fish -- Vim support for editing fish-shell scripts
+" https://github.com/dag/vim-fish
+Plugin 'dag/vim-fish'
+
 " }}}
 " --- Libraries {{{
 
