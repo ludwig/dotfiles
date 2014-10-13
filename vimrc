@@ -733,6 +733,8 @@ let delimitMate_excluded_ft = "mail,txt"
 
 " Use with \\{motion-command} such as \\w, \\f, etc.
 let g:EasyMotion_leader_key = '\\'
+nmap ,f \\f
+nmap ,F \\F
 
 " }}}
 " --- Gitv settings {{{
@@ -1346,8 +1348,8 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " Reselect text that was just pasted with ,v
 nnoremap <leader>v V`]
 
-" Tame the quickfix window (open/close using ,f)
-nmap <silent> <leader>f :QFix<CR>
+" Tame the quickfix window (open/close using ,f) -- try ,q instead
+"nmap <silent> <leader>f :QFix<CR>
 command! -bang -nargs=? QFix call QFixToggle(<bang>0)
 function! QFixToggle(forced)
   if exists("g:qfix_win") && a:forced == 0
