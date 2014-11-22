@@ -1007,9 +1007,8 @@ endif
 " -----------------------------------------------------------------------------
 " Vim Settings
 
-" Editing behaviour {{{
+" Basic settings {{{
 
-set showmode                    " always show what mode we're currently editing in
 set expandtab                   " expand tabs into spaces by default (overloadable per file type later)
 set tabstop=4                   " a tab is four spaces
 set softtabstop=4               " when hitting <BS>, pretend like a tab is removed, even if spaces
@@ -1018,64 +1017,32 @@ set shiftround                  " use multiple of shiftwidth when indenting with
 set smarttab                    " insert tabs on the start of a line according to shiftwidth, not tabstop
 set autoindent                  " always set autoindenting on
 set copyindent                  " copy the previous indentation on autoindenting
-set showmatch                   " show matching parenthesis
+"set smartindent                 " use smart autoindenting when starting a new line
+set showmatch                   " show matching parentheses
+"set ignorecase                  " ignore case when searching
 set smartcase                   " ignore case if search pattern is all lowercase (case-sensitive otherwise)
-set scrolloff=1                 " keep N lines off the edges of the screen when scrolling
-set sidescrolloff=1             " ditto, for horizontal scrolling
+set gdefault                    " search/replace 'globally' (on a line) by default
 set hlsearch                    " highlight search terms
 set incsearch                   " show search matches as you type
-set gdefault                    " search/replace 'globally' (on a line) by default
-set cursorline                  " highlight current line, for quick orientation
+set scrolloff=1                 " keep N lines off the edges of the screen when scrolling
+set sidescrolloff=1             " ditto, for horizontal scrolling
 
-"set nowrap                      " don't wrap lines
-"set smartindent                 " use smart autoindenting when starting a new line
-"set number                      " always show line numbers
-"set ignorecase                  " ignore case when searching
+" allow the cursor to go to 'invalid' places
 "set virtualedit=all             " allow the cursor to go to 'invalid' places
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-" don't show invisible characters by default, but it is enabled for some filetypes (see later)
-set nolist
-
-" strings to use in 'list' mode for the :list command
-set listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
-"set listchars+=eol:¬
-
-" Don't add empty newlines at the end of files
-set noeol
-
-" when in insert mode, press <F2> to go to paste mode, where you
-" can paste mass data that won't be autoindented
-set pastetoggle=<F2>
-
-" specifies what end-of-line formats will be tried when editing a new buffer
-set fileformats="unix,dos,mac"
-
-" don't show the intro message when starting vim
-set shortmess=atI
-
-" don't reset cursor to start of line when moving around
-set nostartofline
-
-" don't beep
-set visualbell
-set noerrorbells
-
-" show (partial) command in the last line of the screen.
-" this also shows visual selection info
-set showcmd
+" remember more commands and search history
+set history=1000
+set undolevels=1000
 
 " modeline settings (...should disable mode lines, as security measure)
 set modelines=5
 set modeline
 
-" always use a fast terminal
-set ttyfast
-
-" enable using the mouse if terminal emulator supports it (xterm does)
-set mouse=a
+" don't reset cursor to start of line when moving around
+set nostartofline
 
 " when on, splitting a window will put the new window right of the current one
 set nosplitright
@@ -1088,43 +1055,26 @@ set nosplitbelow
 " history are preserved
 set hidden
 
-" turn on omnicompletion
-" http://vim.wikia.com/wiki/Omni_completion
-"set omnifunc=syntaxcomplete#Complete
-
-" }}}
-
-" Vim behaviour {{{
-
-" change the terminal's title
-set title
-
 " reveal already opened files from the quickfix window instead
 " of opening new buffers
 set switchbuf=useopen
 
-" Set this when editing binary files (note: expandtab is turned off!)
+" don't wrap lines
+"set nowrap
+
+" Set this mode when editing binary files (note: expandtab is turned off in this mode!)
 "set binary
 
-" remember more commands and search history
-set history=1000
-set undolevels=1000
+" Set this mode when pasting text
+"set paste
 
-" read/write a .viminfo file, don't store more than 80 lines of registers
-set viminfo='20,\"80
+" when in insert mode, press <F2> to go to paste mode, where you
+" can paste mass data that won't be autoindented
+set pastetoggle=<F2>
 
-" We typically don't want to use the current working directory as a backupdir.
-" Fortunately, we can set it explicitly. See the following Vim FAQ entry:
-" http://vimdoc.sourceforge.net/cgi-bin/vimfaq2html3.pl#7.2
-" See also: http://news.ycombinator.com/item?id=1688068
-set backupdir=~/.vim/tmp//,~/tmp//,/tmp//
-set directory=~/.vim/tmp//,~/tmp//,/tmp//
-
-" keep the undo history for our buffers (disable for now)
-if 0 && exists('+undofile')
-    set undofile
-    set undodir=~/.vim/tmp//,~/tmp//,/tmp//
-endif
+" turn on omnicompletion
+" http://vim.wikia.com/wiki/Omni_completion
+"set omnifunc=syntaxcomplete#Complete
 
 " make tab completion for files/buffers act like bash
 set wildmenu
@@ -1135,25 +1085,83 @@ set wildmode=list:full
 " ignore completion for these files
 set wildignore+=*.swp,*.bak,*.pyc,*.class,*.o
 
+" }}}
+
+" Terminal/file settings {{{
+
+set encoding=utf-8              " character encoding used inside vim
+set termencoding=utf-8          " character encoding used for the terminal
+set title                       " change the terminal's title
+set ttyfast                     " always use a fast terminal (disable if slow)
+
+" don't beep terminal
+set noerrorbells
+set visualbell
+
+" enable using the mouse if terminal emulator supports it (xterm does)
+set mouse=a
+
+" don't add empty newlines at the end of files
+set noeol
+
+" specifies what end-of-line formats will be tried when editing a new buffer
+set fileformats="unix,dos,mac"
+
+" read/write a .viminfo file, don't store more than 80 lines of registers
+set viminfo='20,\"80
+
+" We typically don't want to use the current working directory as a backupdir.
+" Fortunately, we can set it explicitly. See the following Vim FAQ entry:
+" http://vimdoc.sourceforge.net/cgi-bin/vimfaq2html3.pl#7.2
+" The double tailing slash will store files using full paths (so you can edit
+" identically named files with no problems).
+" See also: http://news.ycombinator.com/item?id=1688068
+set backupdir=~/.vim/tmp//,~/tmp//,/tmp//
+set directory=~/.vim/tmp//,~/tmp//,/tmp//
+
+" keep the undo history for our buffers (disable for now)
+if 0 && exists('+undofile')
+    set undofile
+    set undodir=~/.vim/tmp//,~/tmp//,/tmp//
+endif
+
 " update search path for opening files under cursor
 " http://vim.wikia.com/wiki/Open_file_under_cursor
 set path+=./include,../include
 
 " }}}
 
-" Editor layout {{{
+" Layout/UI settings {{{
 
-set termencoding=utf-8          " character encoding used for the terminal
-set encoding=utf-8              " character encoding used inside vim
+set shortmess=atI               " don't show the intro message when starting vim
+
+set showmode                    " always show what mode we're currently editing in
+set showcmd                     " show partial command in the last line of the screen
+set ruler                       " show line and column number of the cursor position
+"set number                      " show line numbers
+set cursorline                  " highlight current line, for quick orientation
+
 set lazyredraw                  " don't update the display while executing macros
-set cmdheight=1                 " use a statusbar that is 2 rows high (nevermind, set it back to 1)
+set cmdheight=1                 " use a statusbar that is N rows high
 set showtabline=1               " show tab page labels (0 = never, 1 = when more than one, 2 = always)
 set laststatus=2                " tell VIM to always put a status line in, even if there is only one window
-set ruler                       " show line and column number of the cursor position
 
-" Syntax coloring lines that are too long just slows down the world
+" don't show invisible characters by default, but it is enabled for some filetypes (see later section)
+set nolist
+
+" strings to use in 'list' mode for the :list command
+set listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
+"set listchars+=eol:¬
+
+" syntax coloring lines that are too long slows down the world, so set a cap
 set synmaxcol=2048
 
+" disable gui toolbar in gvim
+if has("gui_running")
+    set guioptions-=T
+endif
+
+" select a default colorscheme
 if &t_Co >= 256 || has("gui_running")
     " other colorschemes:
     "   default, molokai, badwolf, jellybeans, herald, inkpot,
@@ -1163,8 +1171,8 @@ if &t_Co >= 256 || has("gui_running")
     colorscheme default
 endif
 
+" switch syntax highlighting on, when the terminal has colors
 if &t_Co > 2 || has("gui_running")
-    " switch syntax highlighting on, when the terminal has colors
     syntax on
 endif
 
@@ -1196,11 +1204,10 @@ endif
 
 " }}}
 
-" Folding rules {{{
+" Fold settings {{{
 
 "set foldenable                  " enable folding
 "set foldcolumn=2                " add a fold column
-
 set foldmethod=marker           " detect triple-{ style fold markers
 set foldlevelstart=0            " start out with everything folded
 
@@ -1227,6 +1234,98 @@ endfunction
 
 " }}}
 
+" Misc settings {{{
+
+" Don't let cindent muck with ':' in insert-mode.
+set cinkeys-=:
+
+" when changing a line, don't redisplay, but put a '$' at the end during the change
+set cpoptions+=$
+
+" don't start new lines w/ comment leader on pressing 'o'
+set formatoptions-=o
+
+" somehow, during vim filetype detection, this gets set for vim files,
+" so explicitly unset it again
+au filetype vim set formatoptions-=o
+
+" Program to use for formatting text
+" 'gqip' formats paragraph using external tool specified in 'formatprg'
+" 'gwip' formats paragraph using vim's internal formatting tool
+" see 'par help' at the command line for available options
+" http://vimcasts.org/episodes/formatting-text-with-par/
+set formatprg=par
+"set formatprg=par\ w50
+"set formatprg=par\ w50req
+"set formatprg=par\ w72p3qrf
+
+" to enable automatic text wrapping use these settings (leave these lines commented out)
+"set textwidth=80
+"set formatoptions+=t
+
+" Restore cursor position upon reopening files
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
+" --- Conflict markers {{{
+
+" XXX: Do we even use these? See if we can get rid of this section...
+if 0
+    " highlight conflict markers
+    match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
+    " shortcut to jump to next conflict marker
+    nmap <silent> <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
+endif
+
+" }}}
+" --- Skeleton processing {{{
+
+" See also: http://stackoverflow.com/questions/162617/how-can-i-automatically-add-some-skeleton-code-when-creating-a-new-file-with-vim
+
+if has("autocmd")
+
+    if !exists('*LoadTemplate')
+        function LoadTemplate(file)
+            if a:file =~ 'furls$'
+                execute "0r ~/.vim/skeleton/furls"
+                execute "normal Gddgg"
+                set ft=conf
+            elseif a:file =~ 'furls2$'
+                execute "0r ~/.vim/skeleton/furls2"
+                set ft=conf
+            endif
+        endfunction
+    endif
+
+    autocmd BufNewFile * call LoadTemplate(@%)
+
+endif
+
+" }}}
+" --- Text stuff {{{
+
+" Common abbreviations / misspellings
+"if filereadable(expand("~/.vim/autocorrect.vim"))
+"    source ~/.vim/autocorrect.vim
+"endif
+
+" Creating underline/overline headings for markup languages
+" Inspired by http://sphinx.pocoo.org/rest.html#sections
+nnoremap <leader>1 yyPVr=jyypVr=
+nnoremap <leader>2 yyPVr*jyypVr*
+nnoremap <leader>3 yypVr=
+nnoremap <leader>4 yypVr-
+nnoremap <leader>5 yypVr^
+nnoremap <leader>6 yypVr"
+
+" Filler text
+iab lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit
+iab llorem Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu.  Nulla non quam erat, luctus consequat nisi
+iab lllorem Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu.  Nulla non quam erat, luctus consequat nisi.  Integer hendrerit lacus sagittis erat fermentum tincidunt.  Cras vel dui neque.  In sagittis commodo luctus.  Mauris non metus dolor, ut suscipit dui.  Aliquam mauris lacus, laoreet et consequat quis, bibendum id ipsum.  Donec gravida, diam id imperdiet cursus, nunc nisl bibendum sapien, eget tempor neque elit in tortor
+"   }}}
+
+" }}}
+
 " Mappings and keybindings {{{
 
 " Use the damn hjkl keys already
@@ -1234,6 +1333,12 @@ map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
+
+" disable the substitute commands
+nnoremap s <nop>
+nnoremap S <nop>
+vnoremap s <nop>
+vnoremap S <nop>
 
 " Remap j and k to act as expected when used on long, wrapped lines
 nnoremap j gj
@@ -1256,10 +1361,10 @@ nnoremap <C-k> <C-y>
 nnoremap <C-h> 3zh
 nnoremap <C-l> 3zl
 
-" Use CTRL-C
+" Use CTRL-C as ESC
 map <C-c> <Esc>
 
-" Avoid accidental hits of <F1> while aiming for <Esc>
+" Avoid accidental hits of <F2> while aiming for <Esc>
 map! <F1> <Esc>
 
 " Quickly close the current window
@@ -1348,6 +1453,136 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " Reselect text that was just pasted with ,v
 nnoremap <leader>v V`]
 
+" }}}
+
+" My new commands {{{
+"   Man Page Lookup {{{
+
+" Disable keyword lookup in normal mode. Note that K will still work in visual mode,
+" using vawK sequence, for example.
+nmap K <nop>
+
+" Program to use for keyword lookups (default is "man -s")
+set keywordprg=man\ -s
+
+" Open man page for word under cursor (use '<cword>' to retrieve current word under cursor)
+" http://vim.wikia.com/wiki/Open_a_window_with_the_man_page_for_the_word_under_the_cursor
+" http://vimdoc.sourceforge.net/htmldoc/windows.html#special-buffers
+function! _ReadMan(man_sec, man_word, winpos)
+    " If 'man_sec' is 0, use empty string instead...
+    " we perform this check because v:count is 0 by default
+    let s:man_sec = a:man_sec
+    if s:man_sec == 0
+        let s:man_sec = ''
+    endif
+    " Open a new window
+    exe ":wincmd n"
+    exe ":wincmd " . a:winpos
+    " Make it a scratch buffer
+    exe ":setlocal buftype=nofile"
+    exe ":setlocal bufhidden=hide"
+    exe ":setlocal noswapfile"
+    " Don't list buffer either
+    exe ":setlocal nobuflisted"
+    " Read in the man page for 'man_word' (col -b is for formatting)
+    exe ":r!man " . s:man_sec . " " . a:man_word . " | col -b"
+    exe ":set ft=man"
+    " Go to first line and delete it
+    exe ":goto"
+    exe ":delete"
+endfunction
+
+" Open up 'man <sec> <word>' in same window
+function! ReadManS(sec,word)
+    call _ReadMan(a:sec, a:word, 'o')
+endfunction
+
+" Open up 'man <word>' in same window
+function! ReadMan(word)
+    call _ReadMan('', a:word, 'o')
+endfunction
+
+" Map a key to the ReadMan() function
+map ,K  :<C-U>call _ReadMan(v:count, expand('<cword>'), 'o')<CR>
+map ,ko :<C-U>call _ReadMan(v:count, expand('<cword>'), 'o')<CR>
+map ,kk :<C-U>call _ReadMan(v:count, expand('<cword>'), 'K')<CR>
+map ,kl :<C-U>call _ReadMan(v:count, expand('<cword>'), 'L')<CR>
+map ,kh :<C-U>call _ReadMan(v:count, expand('<cword>'), 'H')<CR>
+map ,kj :<C-U>call _ReadMan(v:count, expand('<cword>'), 'J')<CR>
+
+command! -nargs=+ Man call ReadMan(<f-args>)
+command! -nargs=+ ManS call ReadManS(<f-args>)
+
+cabbrev man Man
+cabbrev mans ManS
+
+"   }}}
+"   Hide Comments {{{
+
+" Function for hiding line comments
+" http://www.debian-administration.org/article/616/Hiding_comments_in_configuration_files
+function! HideLineComments()
+    set foldmethod=expr
+    set foldexpr=getline(v:lnum)=~'^\\s*//'?1:getline(prevnonblank(v:lnum))=~'^\\s*//'?1:getline(nextnonblank(v:lnum))=~'^\\s*//'?1:0
+    highlight clear Folded
+    highlight link Folded ignore
+    normal zM
+endfunction
+nnoremap <silent> <leader>hc :call HideLineComments()<CR>
+
+" Function for hiding block comments
+" http://www.linuxquestions.org/questions/linux-general-1/vim-plugin-for-hiding-block-comments-466625/
+function! HideBlockComments()
+    set foldmethod=marker
+    set foldmarker=/*,*/
+    highlight clear Folded
+    highlight link Folded ignore
+    normal zM
+endfunction
+nnoremap <silent> <leader>hb :call HideBlockComments()<CR>
+
+"   }}}
+"   HorizontalRule() {{{
+
+" Horizontal rule separator (80 characters wide)
+function! HorizontalRule()
+    let @s = "-------------------------------------------------------------------------------"
+    put s
+endfunction
+nnoremap <silent> <leader>hr :call HorizontalRule()<CR>
+
+"   }}}
+"   GrepQFix() {{{
+
+" Grep current word under cursor, and list occurrences in quickfix window
+" http://vim.wikia.com/wiki/Search_using_quickfix_to_list_occurrences
+function! GrepQFix(pat)
+    exe ':vimgrep ' . a:pat . ' ' . expand('%')
+    exe ':match Search /' . a:pat . '/'
+    copen
+    "cc
+endfunction
+command! -nargs=1 GREP :call GrepQFix(<f-args>)
+nnoremap ,g :call GrepQFix(expand('<cword>'))<CR>
+nnoremap ,G :GREP·
+
+"   }}}
+"   GoogleSearch() {{{
+
+" Google current word
+" http://www.vim.org/scripts/script.php?script_id=3551
+function GoogleSearch(...)
+    let q = substitute(join(a:000, " "), ' ', "+", "g")
+    "exe '!launch -l https://encrypted.google.com/search?q=' . q
+    exe '!launch -l ''https://www.google.com/search?btnI=1&q=' . q . ''''
+endfunction
+command! -nargs=+ Google call GoogleSearch(<f-args>)
+nnoremap \g :Google <cword><CR><CR>
+nnoremap \G :Google·
+
+"   }}}
+"   QFix() {{{
+
 " Tame the quickfix window (open/close using ,f) -- try ,q instead
 "nmap <silent> <leader>f :QFix<CR>
 command! -bang -nargs=? QFix call QFixToggle(<bang>0)
@@ -1361,32 +1596,10 @@ function! QFixToggle(forced)
   endif
 endfunction
 
-" Grep current word under cursor, and list occurrences in quickfix window
-" http://vim.wikia.com/wiki/Search_using_quickfix_to_list_occurrences
-function! GrepQFix(pat)
-    exe ':vimgrep ' . a:pat . ' ' . expand('%')
-    exe ':match Search /' . a:pat . '/'
-    copen
-    "cc
-endfunction
-command! -nargs=1 GREP :call GrepQFix(<f-args>)
-nnoremap ,g :call GrepQFix(expand('<cword>'))<CR>
-nnoremap ,G :GREP 
-
-" Google current word
-" http://www.vim.org/scripts/script.php?script_id=3551
-function GoogleSearch(...)
-    let q = substitute(join(a:000, " "), ' ', "+", "g")
-    "exe '!launch -l https://encrypted.google.com/search?q=' . q
-    exe '!launch -l ''https://www.google.com/search?btnI=1&q=' . q . ''''
-endfunction
-command! -nargs=+ Google call GoogleSearch(<f-args>)
-nnoremap \g :Google <cword><CR><CR>
-nnoremap \G :Google 
-
+"   }}}
 " }}}
 
-" Filetype specific handling {{{
+" Load filetype specific settings {{{
 
 " only do this part when compiled with support for autocommands
 if has("autocmd")
@@ -1519,7 +1732,9 @@ endif
 
 " Suggestions from Reddit and HN {{{
 
-" From http://www.reddit.com/r/vim/comments/e341j/time_for_a_vim_tricks_thread_please_search_before/
+" Merge most of these suggestions into the sections above (whenever possible).
+" Also, make sure to include a link to the source of each suggestion.
+"   http://www.reddit.com/r/vim/comments/e341j/time_for_a_vim_tricks_thread_please_search_before/
 
 " Python filter
 vmap gp :!python<CR>
@@ -1585,199 +1800,7 @@ endfunction
 
 " }}}
 
-" Miscellaneous settings {{{
-
-" Don't let cindent muck with ':' in insert-mode.
-set cinkeys-=:
-
-" when changing a line, don't redisplay, but put a '$' at the end during the change
-set cpoptions+=$
-
-" don't start new lines w/ comment leader on pressing 'o'
-set formatoptions-=o
-
-" somehow, during vim filetype detection, this gets set for vim files,
-" so explicitly unset it again
-au filetype vim set formatoptions-=o
-
-" Program to use for formatting text
-" 'gqip' formats paragraph using external tool specified in 'formatprg'
-" 'gwip' formats paragraph using vim's internal formatting tool
-" see 'par help' at the command line for available options
-" http://vimcasts.org/episodes/formatting-text-with-par/
-set formatprg=par
-"set formatprg=par\ w50
-"set formatprg=par\ w50req
-"set formatprg=par\ w72p3qrf
-
-" to enable automatic text wrapping use these settings (leave them commented out here)
-"set textwidth=80
-"set formatoptions+=t
-
-" --- Conflict markers {{{
-
-" XXX: Do we even use these? See if we can get rid of this section...
-if 0
-    " highlight conflict markers
-    match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
-
-    " shortcut to jump to next conflict marker
-    nmap <silent> <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
-endif
-
-" }}}
-" --- Skeleton processing {{{
-
-" See also: http://stackoverflow.com/questions/162617/how-can-i-automatically-add-some-skeleton-code-when-creating-a-new-file-with-vim
-
-if has("autocmd")
-
-    if !exists('*LoadTemplate')
-        function LoadTemplate(file)
-            if a:file =~ 'furls$'
-                execute "0r ~/.vim/skeleton/furls"
-                execute "normal Gddgg"
-                set ft=conf
-            elseif a:file =~ 'furls2$'
-                execute "0r ~/.vim/skeleton/furls2"
-                set ft=conf
-            endif
-        endfunction
-    endif
-
-    autocmd BufNewFile * call LoadTemplate(@%)
-
-endif
-
-" }}}
-" --- Man page stuff {{{
-
-" Disable keyword lookup in normal mode. Note that K will still work in visual mode,
-" using vawK sequence, for example.
-nmap K <nop>
-
-" Program to use for keyword lookups (default is "man -s")
-set keywordprg=man\ -s
-
-" Open man page for word under cursor (use '<cword>' to retrieve current word under cursor)
-" http://vim.wikia.com/wiki/Open_a_window_with_the_man_page_for_the_word_under_the_cursor
-" http://vimdoc.sourceforge.net/htmldoc/windows.html#special-buffers
-function! _ReadMan(man_sec, man_word, winpos)
-    " If 'man_sec' is 0, use empty string instead...
-    " we perform this check because v:count is 0 by default
-    let s:man_sec = a:man_sec
-    if s:man_sec == 0
-        let s:man_sec = ''
-    endif
-    " Open a new window
-    exe ":wincmd n"
-    exe ":wincmd " . a:winpos
-    " Make it a scratch buffer
-    exe ":setlocal buftype=nofile"
-    exe ":setlocal bufhidden=hide"
-    exe ":setlocal noswapfile"
-    " Don't list buffer either
-    exe ":setlocal nobuflisted"
-    " Read in the man page for 'man_word' (col -b is for formatting)
-    exe ":r!man " . s:man_sec . " " . a:man_word . " | col -b"
-    exe ":set ft=man"
-    " Go to first line and delete it
-    exe ":goto"
-    exe ":delete"
-endfunction
-
-" Open up 'man <sec> <word>' in same window
-function! ReadManS(sec,word)
-    call _ReadMan(a:sec, a:word, 'o')
-endfunction
-
-" Open up 'man <word>' in same window
-function! ReadMan(word)
-    call _ReadMan('', a:word, 'o')
-endfunction
-
-" Map a key to the ReadMan() function
-map ,K  :<C-U>call _ReadMan(v:count, expand('<cword>'), 'o')<CR>
-map ,ko :<C-U>call _ReadMan(v:count, expand('<cword>'), 'o')<CR>
-map ,kk :<C-U>call _ReadMan(v:count, expand('<cword>'), 'K')<CR>
-map ,kl :<C-U>call _ReadMan(v:count, expand('<cword>'), 'L')<CR>
-map ,kh :<C-U>call _ReadMan(v:count, expand('<cword>'), 'H')<CR>
-map ,kj :<C-U>call _ReadMan(v:count, expand('<cword>'), 'J')<CR>
-
-command! -nargs=+ Man call ReadMan(<f-args>)
-command! -nargs=+ ManS call ReadManS(<f-args>)
-
-cabbrev man Man
-cabbrev mans ManS
-
-" }}}
-
-" Common abbreviations / misspellings
-"if filereadable(expand("~/.vim/autocorrect.vim"))
-"    source ~/.vim/autocorrect.vim
-"endif
-
-" Restore cursor position upon reopening files
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
-" Configure graphical vim
-if has("gui_running")
-    " Disable gui toolbar
-    set guioptions-=T
-endif
-
-" Horizontal rule separator (80 characters wide)
-function! HorizontalRule()
-    let @s = "-------------------------------------------------------------------------------"
-    put s
-endfunction
-nnoremap <silent> <leader>hr :call HorizontalRule()<CR>
-
-" Function for hiding line comments
-" http://www.debian-administration.org/article/616/Hiding_comments_in_configuration_files
-function! HideLineComments()
-    set foldmethod=expr
-    set foldexpr=getline(v:lnum)=~'^\\s*//'?1:getline(prevnonblank(v:lnum))=~'^\\s*//'?1:getline(nextnonblank(v:lnum))=~'^\\s*//'?1:0
-    highlight clear Folded
-    highlight link Folded ignore
-    normal zM
-endfunction
-nnoremap <silent> <leader>hc :call HideLineComments()<CR>
-
-" Function for hiding block comments
-" http://www.linuxquestions.org/questions/linux-general-1/vim-plugin-for-hiding-block-comments-466625/
-function! HideBlockComments()
-    set foldmethod=marker
-    set foldmarker=/*,*/
-    highlight clear Folded
-    highlight link Folded ignore
-    normal zM
-endfunction
-nnoremap <silent> <leader>hb :call HideBlockComments()<CR>
-
-" Creating underline/overline headings for markup languages
-" Inspired by http://sphinx.pocoo.org/rest.html#sections
-nnoremap <leader>1 yyPVr=jyypVr=
-nnoremap <leader>2 yyPVr*jyypVr*
-nnoremap <leader>3 yypVr=
-nnoremap <leader>4 yypVr-
-nnoremap <leader>5 yypVr^
-nnoremap <leader>6 yypVr"
-
-" Filler text
-iab lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit
-iab llorem Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu.  Nulla non quam erat, luctus consequat nisi
-iab lllorem Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu.  Nulla non quam erat, luctus consequat nisi.  Integer hendrerit lacus sagittis erat fermentum tincidunt.  Cras vel dui neque.  In sagittis commodo luctus.  Mauris non metus dolor, ut suscipit dui.  Aliquam mauris lacus, laoreet et consequat quis, bibendum id ipsum.  Donec gravida, diam id imperdiet cursus, nunc nisl bibendum sapien, eget tempor neque elit in tortor
-
-" }}}
-
-" Extra user or machine specific settings {{{
-
-" disable the substitute commands
-nnoremap s <nop>
-nnoremap S <nop>
-vnoremap s <nop>
-vnoremap S <nop>
+" Extra user settings to load last {{{
 
 " override the :W! command (defined by sudo-gui.vim to be :SudoWrite!)
 cabbrev W w
@@ -1786,13 +1809,13 @@ cabbrev W w
 " https://github.com/ChrisYip/Better-CSS-Syntax-for-Vim/issues/9
 au BufRead,BufNewFile *.scss set filetype=css
 
-" lastly, load up user.vim local overrides.
-" note that user.vim is not kept in the repository, and therefore
-" we can use this file to load machine-specific settings
+" }}}
+
+" lastly, load ~/.vim/user.vim if it exists.
+" note that this file is not kept in the repository, and therefore
+" we can use it to load machine-specific settings
 if filereadable(expand("~/.vim/user.vim"))
     source ~/.vim/user.vim
 endif
-
-" }}}
 
 " vim: fen fdl=0 fdm=marker
