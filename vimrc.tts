@@ -1,0 +1,123 @@
+" ~/.vimrc
+
+" Change the mapleader from \ to ,
+let mapleader=","
+
+" Set up NeoBundle. {{{
+" Refer to |:NeoBundle-examples|.
+" See also: https://github.com/Shougo/neobundle.vim
+
+" Note: Skip initialization for vim-tiny or vim-small
+if !1 | finish | endif
+
+if has('vim_starting')
+    " Use Vim (disable the vi-compatible stuff)
+    set nocompatible
+    " Required!
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+" Required!
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle (required!)
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Use neobundle standard recipes
+NeoBundle 'Shougo/neobundle-vim-recipes'
+
+" Load my bundles here.
+" --- Navigation {{{
+" --- }}}
+" --- UI Additions {{{
+
+" NERDTree - Tree explorer plugin
+" http://www.vim.org/scripts/script.php?script_id=1658
+" https://github.com/scrooloose/nerdtree/
+NeoBundle 'scrooloose/nerdtree'
+
+" --- }}}
+" --- Vim Commands {{{
+
+" NERDCommenter - Plugin that allows easy commenting of code
+" http://www.vim.org/scripts/script.php?script_id=1218
+" https://github.com/scrooloose/nerdcommenter
+NeoBundle 'scrooloose/nerdcommenter'
+
+" --- }}}
+" --- Automatic Helpers {{{
+" --- }}}
+" --- Snippets {{{
+" --- }}}
+" --- Language Additions {{{
+" --- }}}
+" --- Libraries {{{
+" --- }}}
+" --- Misc {{{
+" --- }}}
+
+" Load up my defaults
+NeoBundle 'ludwig/vim-defaults'
+
+" Load up my scripts
+NeoBundle 'ludwig/vim-scripts'
+
+call neobundle#end()
+
+" Required!
+filetype plugin indent on
+
+" Installation check.
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+
+" }}}
+
+" Configure bundles
+" --- NERDTree settings {{{
+
+" Toggle the NERD Tree
+nmap <silent> <Leader>n :NERDTreeToggle<CR>
+
+" Store the bookmarks
+let NERDTreeBookmarksFile=expand("$HOME/.vim/tmp/NERDTreeBookmarks")
+
+" Show the bookmarks table on startup?
+let NERDTreeShowBookmarks=0
+
+" Show hidden files?
+let NERDTreeShowFiles=1
+let NERDTreeShowHidden=1
+
+" Quit on opening files from the tree?
+let NERDTreeQuitOnOpen=0
+
+" Highlight the selected entry in the tree?
+let NERDTreeHighlightCursorline=0
+
+" Use a single click to fold/unfold directories and a double click to open files
+let NERDTreeMouseMode=2
+
+" Don't display these kinds of files
+let NERDTreeIgnore=[
+    \ '\.pyc$', '\.pyo$', '\.pyd$', '\.egg$',
+    \ '\.class$', '\.obj$', '\.o$', '\.so$',
+    \ '^\.git$', '^\.svn$'
+    \ ]
+
+" }}}
+" --- NERDCommenter settings {{{
+
+" Mappings
+"   ',cu'   uncomments
+"   ',cc'   comments out lines
+"   ',cl'   aligns delimiters on left
+"   ',cb'   aligns delimiters on right
+"   ',cs'   uses sexy delimiters
+
+let NERDCommentWholeLinesInVMode=2
+
+let NERDSpaceDelims=0
+
+" }}}
