@@ -705,4 +705,10 @@ let g:go_fmt_autosave = 0
 " }}}
 " }}}
 
+" Lastly, load ~/.vim/user.vim if it exists. We don't keep this file in the
+" repository so that it can be used for loading host-specific settings.
+if filereadable(expand('~/.vim/user.vim'))
+    source ~/.vim/user.vim
+endif
+
 " vim: fdm=marker fdl=1
