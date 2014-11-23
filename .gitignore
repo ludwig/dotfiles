@@ -1,9 +1,12 @@
 # ignore vim files
 /vim/tmp
-/vim/user.vim
 /vim/bundle
 /vim/sessions
+/vim/user.vim
 /vim.tts/bundle
+/vim.tts/tmp
+/vim.tts/sessions
+/vim.tts/user.vim
 .netrwhist
 tags
 tags-ja

@@ -4,10 +4,20 @@
 let mapleader=","
 
 " Set up NeoBundle. {{{
-" Refer to |:NeoBundle-examples|.
-" See also: https://github.com/Shougo/neobundle.vim
+" 
+" Brief help
+"   :NeoBundleList          - list configured bundles
+"   :NeoBundleInstall(!)    - install bundles
+"   :NeoBundleUpdate(!)     - update bundles
+"   :NeoBundle
+"
+" For more details see ':h neobundle'
+" See also https://github.com/Shougo/neobundle.vim
+"
 
-" Note: Skip initialization for vim-tiny or vim-small
+" Initialize neobundle.vim {{{
+
+" Skip initialization for vim-tiny or vim-small
 if !1 | finish | endif
 
 if has('vim_starting')
@@ -20,51 +30,290 @@ endif
 " Required!
 call neobundle#begin(expand('~/.vim/bundle/'))
 
-" Let NeoBundle manage NeoBundle (required!)
+" }}}
+
+" Let NeoBundle manage neobundle.vim (required!)
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Use neobundle standard recipes
 NeoBundle 'Shougo/neobundle-vim-recipes'
 
-" Load my bundles here.
+" Load my favorite bundles
 " --- Navigation {{{
+
+" Command-T - Fast file navigation for vim
+" http://www.vim.org/scripts/script.php?script_id=3025
+" https://github.com/wincent/Command-T
+" http://git.wincent.com/command-t.git
+"NeoBundle 'wincent/Command-T'
+NeoBundle 'git://git.wincent.com/command-t.git'
+
+" ctrlp.vim - Fuzzy file, buffer, mru, tag, ... finder with regexp support
+" http://www.vim.org/scripts/script.php?script_id=3736
+" https://github.com/kien/ctrlp.vim
+NeoBundle 'kien/ctrlp.vim'
+
+" EasyMotion - Vim motions on speed!
+" http://www.vim.org/scripts/script.php?script_id=3526
+" https://github.com/Lokaltog/vim-easymotion
+NeoBundle 'Lokaltog/vim-easymotion'
+
+" LustyJuggler - Switch very quickly among your active buffers
+" Launch with '<Leader>lj'
+" http://www.vim.org/scripts/script.php?script_id=2050
+" https://github.com/sjbach/lusty
+" https://github.com/vim-scripts/LustyJuggler
+" https://github.com/mutewinter/LustyJuggler
+NeoBundle 'LustyJuggler'
+
+" matchit.zip - extended % matching for HTML, LaTeX, and many other languages
+" http://www.vim.org/scripts/script.php?script_id=39
+NeoBundle 'matchit.zip'
+
+" vim-sneak - The missing motion for Vim
+" https://github.com/justinmk/vim-sneak
+" http://www.vim.org/scripts/script.php?script_id=4809
+NeoBundle 'justinmk/vim-sneak'
+
+" ZoomWin - Zoom in/out of windows (toggle between one window and multi-window)
+" Use '<C-w>o' to toggle zoom on window
+" http://www.vim.org/scripts/script.php?script_id=508
+NeoBundle 'ZoomWin'
+
 " --- }}}
 " --- UI Additions {{{
+
+" Yggdroot/indentLine - A vim plugin to display the indention levels with thin vertical lines
+" https://github.com/Yggdroot/indentLine
+"NeoBundle 'Yggdroot/indentLine'
 
 " NERDTree - Tree explorer plugin
 " http://www.vim.org/scripts/script.php?script_id=1658
 " https://github.com/scrooloose/nerdtree/
 NeoBundle 'scrooloose/nerdtree'
 
+" tabman.vim - Tab management for Vim
+" https://github.com/kien/tabman.vim
+NeoBundle 'kien/tabman.vim'
+
+" tagbar - Vim plugin that displays tags in a window, ordered by class etc.
+" http://majutsushi.github.com/tagbar/
+" http://www.vim.org/scripts/script.php?script_id=3465
+" https://github.com/majutsushi/tagbar
+NeoBundle 'majutsushi/tagbar'
+
+" taglist.vim - Source code browser (supports C, C++, java, python, etc.)
+" http://www.vim.org/scripts/script.php?script_id=273
+NeoBundle 'taglist.vim'
+
+" Indent Guides - A plugin for visually displaying indent levels in Vim
+" Use '<Leader>ig' to turn on the guides
+" http://www.vim.org/scripts/script.php?script_id=3361
+" https://github.com/nathanaelkane/vim-indent-guides
+" https://github.com/mutewinter/vim-indent-guides
+" http://nathanaelkane.imgur.com/indent_guides
+NeoBundle 'nathanaelkane/vim-indent-guides'
+
+" Powerline - The ultimate vim statusline utility
+" http://www.vim.org/scripts/script.php?script_id=3881
+" https://github.com/Lokaltog/vim-powerline
+NeoBundle 'Lokaltog/vim-powerline'
+
+" surround.vim - quoting/parenthesizing made simple
+" http://www.vim.org/scripts/script.php?script_id=1697
+" https://github.com/tpope/vim-surround
+NeoBundle 'tpope/vim-surround'
+
 " --- }}}
-" --- Vim Commands {{{
+" --- Commands {{{
+
+" ack.vim - Plugin for the Perl module / CLI script 'ack'
+" http://www.vim.org/scripts/script.php?script_id=2572
+" https://github.com/mileszs/ack.vim
+NeoBundle 'mileszs/ack.vim'
+
+" Emmet — the essential toolkit for web-developers
+" http://emmet.io/
+" https://github.com/mattn/emmet-vim
+NeoBundle 'mattn/emmet-vim'
 
 " NERDCommenter - Plugin that allows easy commenting of code
 " http://www.vim.org/scripts/script.php?script_id=1218
 " https://github.com/scrooloose/nerdcommenter
 NeoBundle 'scrooloose/nerdcommenter'
 
+" scratch.vim - plugin to create and use a scratch vim buffer
+" http://www.vim.org/scripts/script.php?script_id=664
+NeoBundle 'scratch.vim'
+
+" repeat.vim - Use the repeat command (.) with supported plugins
+" http://www.vim.org/scripts/script.php?script_id=2136
+" https://github.com/tpope/vim-repeat
+NeoBundle 'tpope/vim-repeat'
+
+" vim-togglelist - Functions to toggle the [Location List] and the [Quickfix List] windows
+" Use '<Leader>l' to toggle the location list
+" Use '<Leader>q' to toggle the quickfix list
+" https://github.com/milkypostman/vim-togglelist
+NeoBundle 'milkypostman/vim-togglelist'
+
 " --- }}}
 " --- Automatic Helpers {{{
+
+" AutoComplPop - Automatically opens popup menu for completions
+" http://www.vim.org/scripts/script.php?script_id=1879
+" https://bitbucket.org/ns9tks/vim-autocomplpop/
+NeoBundle 'AutoComplPop'
+
+" clang_complete - use clang for completing C/C++ code
+" http://www.vim.org/scripts/script.php?script_id=3302
+" https://github.com/Rip-Rip/clang_complete
+NeoBundle 'Rip-Rip/clang_complete'
+
+" MatchTag - MatchParen for HTML tags
+" http://www.vim.org/scripts/script.php?script_id=3818
+" https://github.com/gregsexton/MatchTag
+NeoBundle 'gregsexton/MatchTag'
+
+" neocomplcache - Ultimate auto completion system for vim
+" http://www.vim.org/scripts/script.php?script_id=2620
+" https://github.com/Shougo/neocomplcache
+"NeoBundle 'Shougo/neocomplcache'
+
+" neocomplete.vim - Next generation completion framework after neocomplcache
+" This needs lua support!
+"   $ brew install vim --with-lua --HEAD
+"   $ brew install macvim --with-cscope --with-lua --HEAD
+" https://github.com/Shougo/neocomplete.vim
+if has('lua')
+    NeoBundle 'Shougo/neocomplete'
+endif
+
+" session.vim - extended session management for vim
+" http://www.vim.org/scripts/script.php?script_id=3150
+" https://github.com/xolox/vim-session
+NeoBundle 'xolox/vim-misc'
+NeoBundle 'xolox/vim-session'
+
+" SuperTab - Do all your insert-mode completion with Tab
+" http://www.vim.org/scripts/script.php?script_id=1643
+" https://github.com/ervandew/supertab
+NeoBundle 'ervandew/supertab'
+
+" unite.vim -- search and display information from arbitrary sources
+" http://www.vim.org/scripts/script.php?script_id=3396
+" https://github.com/Shougo/unite.vim
+NeoBundle 'Shougo/unite.vim'
+
+" fugitive.vim - a git wrapper so awesome, it should be illegal
+" http://www.vim.org/scripts/script.php?script_id=2975
+" https://github.com/tpope/vim-fugitive
+NeoBundle 'tpope/vim-fugitive'
+
 " --- }}}
 " --- Snippets {{{
+
+" neosnippet.vim -- neo-snippet plugin contains neocomplcache snippets source
+" https://github.com/Shougo/neosnippet.vim
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
+
 " --- }}}
 " --- Language Additions {{{
+
+" cocoa.vim - Plugin for Cocoa/Objective-C development
+" http://www.vim.org/scripts/script.php?script_id=2674
+" https://github.com/msanders/cocoa.vim
+NeoBundle 'msanders/cocoa.vim'
+
+" nginx.vim - syntax highlighting for nginx.conf and related files
+" http://www.vim.org/scripts/script.php?script_id=1886
+" https://github.com/vim-scripts/nginx.vim
+" https://github.com/mutewinter/nginx.vim
+NeoBundle 'mutewinter/nginx.vim'
+
+" salt-vim - syntax for editing Salt state files (.sls)
+" https://github.com/saltstack/salt-vim
+NeoBundle 'saltstack/salt-vim'
+
+" rest.vim - a reStructuredText syntax mode
+" http://www.vim.org/scripts/script.php?script_id=973
+NeoBundle 'rest.vim'
+
+" rust.vim -- Rust file detection and syntax highlighting
+" https://github.com/wting/rust.vim
+NeoBundle 'wting/rust.vim'
+
+" vim-cmake - provide a cmake reference and autocompletion
+" https://github.com/jansenm/vim-cmake
+NeoBundle 'jansenm/vim-cmake'
+
+" vim-fish -- Vim support for editing fish-shell scripts
+" https://github.com/dag/vim-fish
+NeoBundle 'dag/vim-fish'
+
+" vim-go -- Go development plugin for Vim
+" https://github.com/fatih/vim-go
+NeoBundle 'fatih/vim-go'
+
+" vim-javascript - Vastly improved javascript indentation
+" http://www.vim.org/scripts/script.php?script_id=2765
+" https://github.com/pangloss/vim-javascript
+NeoBundle 'pangloss/vim-javascript'
+
+" vim-less - vim syntax for LESS (dynamic CSS)
+" https://github.com/groenewege/vim-less
+NeoBundle 'groenewege/vim-less'
+
+" Markdown - Syntax highlighting for Markdown text files
+" http://www.vim.org/scripts/script.php?script_id=2882
+" https://github.com/hallison/vim-markdown
+NeoBundle 'hallison/vim-markdown'
+
+" vim-scala -- Vim integration for Scala
+" https://github.com/derekwyatt/vim-scala
+NeoBundle 'derekwyatt/vim-scala'
+
 " --- }}}
 " --- Libraries {{{
+
+" L9 - vim-script library
+" http://www.vim.org/scripts/script.php?script_id=3252
+NeoBundle 'L9'
+
 " --- }}}
 " --- Misc {{{
+
+" a.vim - alternate files quickly
+" http://www.vim.org/scripts/script.php?script_id=31
+NeoBundle 'a.vim'
+
+" bufexplorer.zip - Buffer Explorer / Browser
+" http://www.vim.org/scripts/script.php?script_id=42
+" https://github.com/vim-scripts/bufexplorer.zip
+NeoBundle 'bufexplorer.zip'
+
+" mru.vim - manage 'Most Recently Used (MRU)' files
+" http://www.vim.org/scripts/script.php?script_id=521
+NeoBundle 'mru.vim'
+
+" localrc.vim - enable configuration file of each directory
+" http://www.vim.org/scripts/script.php?script_id=3393
+" https://github.com/thinca/vim-localrc
+NeoBundle 'localrc.vim'
+
 " --- }}}
 
-" Load up my defaults
-NeoBundle 'ludwig/vim-defaults'
-
-" Load up my scripts
+" Load my vim scripts
 NeoBundle 'ludwig/vim-scripts'
 
-call neobundle#end()
+" Load my default vim settings and mappings
+NeoBundle 'ludwig/vim-defaults'
+
+" Finalize neobundle.vim {{{
 
 " Required!
+call neobundle#end()
 filetype plugin indent on
 
 " Installation check.
@@ -74,7 +323,221 @@ NeoBundleCheck
 
 " }}}
 
-" Configure bundles
+" }}}
+
+" Configure bundles {{{
+" --- a.vim settings {{{
+
+" Load alternate file (swap between header and implementation).
+" Can also use CTRL-^ for this.
+"nmap <silent> <leader>a :A<CR>
+
+" By default, a.vim alternates to a file that does not exist (default 0)
+let g:alternateNoDefaultAlternate = 1
+
+" Change a.vim's default search path
+"let g:alternateSearchPath = 'sfr:../inc,sfr:../include,sfr:./include,sfr:../src,sfr:./src,sfr:../source'
+
+" By default a.vim does not convert filename to one relative to the current
+" working directory. (default 0)
+let g:alternateRelativeFiles = 1
+
+" Set up alternates for Objective-C source files: .m, .mm -> .h
+let g:alternateExtensions_m = "h"
+let g:alternateExtensions_mm = "h"
+
+" Add Obj-C extensions to the usual C/C++ alternates for .h
+let g:alternateExtensions_h = "c,cc,cpp,cxx,m,mm"
+
+" Set up alternates for C/C++: .hh <--> .cc
+let g:alternateExtensions_cc = "h,hh"
+let g:alternateExtensions_hh = "cc"
+
+" }}}
+" --- Ack settings {{{
+
+cabbrev ack Ack
+
+" Search for a pattern using Ack (the trailing space is important)
+nnoremap ,s :Ack! 
+nnoremap ,S :Ack! <C-R>=expand("<cword>")<CR>
+
+" Same, but use the location list window instead of the quickfix list window
+nnoremap \s :LAck! 
+nnoremap \S :LAck! <C-R>=expand("<cword>")<CR>
+
+" }}}
+" --- AutoComplPop settings {{{
+if 1
+    " if nonzero, auto-popup is enabled at startup (default 1)
+    let g:acp_enableAtStartup = 0
+
+    " if nonzero, avoid auto-popup by moving cursor in Insert mode (default 0)
+    let g:acp_mappingDriven = 0
+
+    " ignorecase (default 1)
+    let g:acp_ignorecaseOption = 1
+
+    " command for keyword completion (default "\<C-n>")
+    let g:acp_behaviorKeywordCommand = "\<C-n>"
+
+    " keyword chars needed to attempt keyword completion (default 2)
+    " if negative, completion is never attempted
+    let g:acp_behaviorKeywordLength = 3
+
+    " keyword chars needed to attempt python omni-completion (default 0)
+    let g:acp_behaviorPythonOmniLength = 0
+
+    " keyword chars needed to attempt HTML omni-completion (default 0)
+    let g:acp_behaviorHtmlOmniLength = 0
+
+    " keyword chars needed to attempt CSS omni-completion for properties
+    let g:acp_behaviorCssOmniPropertyLength = 1
+endif
+" }}}
+" --- BufExplorer settings {{{
+
+" To use:
+"   '<Leader>be'  normal open
+"   '<Leader>bs'  horizontal split open
+"   '<Leader>bv'  vertical split open
+
+" XXX: figure out how to disable the mappings starting with ,
+"nmap <silent> <unique> \be :BufExplorer<CR>
+"nmap <silent> <unique> \bs :BufExplorerHorizontalSplit<CR>
+"nmap <silent> <unique> \bv :BufExplorerVerticalSplit<CR>
+
+let g:bufExplorerDefaultHelp=0
+"let g:bufExplorerDetailedHelp=1
+let g:bufExplorerFindActive=0
+let g:bufExplorerShowUnlisted=0
+"let g:bufExplorerSortBy='mru'
+let g:bufExplorerSplitBelow=1
+let g:bufExplorerSplitOutPathName=1
+let g:bufExplorerSplitRight=1
+
+" }}}
+" --- clang_complete settings {{{
+
+" Fix the library path for clang_complete (put this line in user.vim instead)
+"let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/'
+
+" select first entry in menu? (default 0)
+let g:clang_auto_select = 0
+
+" automatically complete after "-> . ::" (default 1)
+let g:clang_complete_auto = 1
+
+" open quickfix window on error (default 0)
+let g:clang_complete_copen = 0
+
+" highlight warnings and errors (default 1)
+let g:clang_hl_errors = 1
+
+" periodically update the quickfix window (default 0)
+let g:clang_periodic_quickfix = 0
+
+" snippets engine (clang_complete, snipmate, ...)
+let g:clang_snippets = 1
+let g:clang_snippets_engine = 'clang_complete'
+
+" automatically close preview window after completion (default 0)
+let g:clang_close_preview = 1
+
+" complete preprocessor macros and constants (default 0)
+let g:clang_complete_macros = 1
+
+" complete code patterns, i.e. loop constructs etc (default 0)
+let g:clang_complete_patterns = 1
+
+" }}}
+" --- Command-T settings {{{
+
+" To setup this plugin after installation:
+"   $ cd ~/.vim/bundle/command-t/ruby/command-t
+"   $ ruby extconf.rb
+"   $ make
+
+" Use '\t' to run :CommandT<CR>
+nnoremap <silent> \t :CommandT<CR>
+
+" Use '\b' to run :CommandTBuffer<CR>
+nnoremap <silent> \b :CommandTBuffer<CR>
+
+" Also use CTRL-B and CTRL-G
+nnoremap <silent> <C-B> :CommandTBuffer<CR>
+nnoremap <silent> <C-G> :CommandT<CR>
+
+" }}}
+" --- EasyMotion settings {{{
+
+" Use with \\{motion-command} such as \\w, \\f, etc.
+let g:EasyMotion_leader_key = '\\'
+nmap ,f \\f
+nmap ,F \\F
+
+" }}}
+" --- Emmet settings {{{
+
+" To expand into html code, use '<C-y>,'
+
+" enable just for html/css
+let g:user_emmet_install_global = 0
+autocmd filetype html,css EmmetInstall
+
+" redefine trigger key (default is <C-Y>)
+let g:user_emmet_leader_key = '<C-Y>'
+
+" }}}
+" --- LustyJuggler settings {{{
+
+" Disable LustyJuggler warning (default vim not built with ruby)
+"let g:LustyJugglerSuppressRubyWarning = 1
+
+" Set up own mappings (default mapping ,lj is slow because of existing ,l mapping)
+let g:LustyJugglerDefaultMappings = 0
+nmap <silent> <leader>j :LustyJuggler<CR>
+nmap <silent> <leader>k :LustyJugglePrevious<CR>
+
+" Display the key with the name of the buffer ('a' for alpha chars, 1 for digits)
+let g:LustyJugglerShowKeys = 'a'
+
+" }}}
+" --- MRU settings {{{
+
+" Open list of most recently used files with ':MRU' or ',m'
+nmap <silent> <Leader>m :MRU<CR>
+
+" }}}
+" --- neocomplcache settings {{{
+if 0
+    " enable at startup (default 0)
+    " can also enable with :NeoComplCacheEnable command
+    let g:neocomplcache_enable_at_startup = 0
+
+    " number of candidates to display (default 100)
+    let g:neocomplcache_max_list = 100
+
+    " indication width of candidats (default 50)
+    let g:neocomplcache_max_keyword_width = 50
+
+    " number of input completion (default 2)
+    let g:neocomplcache_auto_completion_start_length = 2
+
+    " use smartcase
+    let g:neocomplcache_enable_smart_case = 1
+
+    " close popup and save indent on <CR>
+    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+    function! s:my_cr_function()
+        return neocomplcache#smart_close_popup() . "\<CR>"
+    endfunction
+
+    " define two commands that have easier tab completion
+    command! EnableNeoComplCache :NeoComplCacheEnable
+    command! DisableNeoComplCache :NeoComplCacheDisable
+endif
+" }}}
 " --- NERDTree settings {{{
 
 " Toggle the NERD Tree
@@ -121,3 +584,125 @@ let NERDCommentWholeLinesInVMode=2
 let NERDSpaceDelims=0
 
 " }}}
+" --- session.vim settings {{{
+
+" Commands are :SaveSession / :OpenSession / :DeleteSession / :ViewSession
+
+" See ':help session' for more options.
+"let g:session_directory = '~/tmp'
+let g:session_autoload = 'no'
+let g:session_autosave = 'yes'
+let g:session_default_to_last = 1
+let g:session_command_aliases = 1
+
+" }}}
+" --- scratch.vim settings {{{
+cabbrev scratch Scratch
+cabbrev sscratch Sscratch
+nmap <leader><tab> :Sscratch<CR><C-w>x<C-w><C-j>i
+" }}}
+" --- tabman.vim settings {{{
+" To use tabman, use commands ':TMToggle' and ':TMFocus'
+" set to 1 to disable
+let g:loaded_tabman = 0
+" lots of other settings (see ':help tabman-options')
+let g:tabman_toggle = '\mt'
+let g:tabman_focus = '\mf'
+let g:tabman_width = 25
+let g:tabman_side = 'left'
+let g:tabman_specials = 0
+let g:tabman_number = 1
+" }}}
+" --- Tagbar settings {{{
+
+" Toggle Tagbar with ',t'
+nmap <silent> <Leader>t :TagbarToggle<CR>
+
+let g:tagbar_left = 0
+let g:tagbar_width = 40
+let g:tagbar_sort = 0
+let g:tagbar_compact = 1
+let g:tagbar_singleclick = 1
+let g:tagbar_foldlevel = 99
+let g:tagbar_iconchars = ['▾', '▸']
+
+if filereadable(expand('~/bin/ctags'))
+    let g:tagbar_ctags_bin = expand('~/bin/ctags')
+endif
+
+" }}}
+" --- TagList settings {{{
+
+" Toggle TagList with ',T'
+nmap <silent> <leader>T :TlistToggle<CR>
+
+let Tlist_Exit_OnlyWindow=1         " quit when TagList is the last open window
+let Tlist_GainFocus_On_ToggleOpen=1 " put focus on the TagList window when it opens
+"let Tlist_Process_File_Always=1     " process files in the background, even when the TagList window isn't open
+"let Tlist_Show_One_File=1           " only show tags from the current buffer, not all open buffers
+let Tlist_WinWidth=40               " set the width
+let Tlist_Inc_Winwidth=1            " increase window by 1 when growing
+
+" shorten the time it takes to highlight the current tag (default is 4 secs)
+" note that this setting influences Vim's behaviour when saving swap files
+"set updatetime=1000
+
+" the default ctags in /usr/bin on the Mac is GNU ctags, so change it to the
+" exuberant ctags version in /usr/local/bin
+let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+
+" show function/method prototypes in the list
+let Tlist_Display_Prototype=1
+
+" don't show scope info
+let Tlist_Display_Tag_Scope=0
+
+" show TagList window on the right
+let Tlist_Use_Right_Window=1
+
+" }}}
+" --- Unite.vim settings {{{
+" See http://www.codeography.com/2013/06/17/replacing-all-the-things-with-unite-vim.html
+
+" Unite
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+"nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+"nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+"nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+"nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
+"nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+"nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  " Play nice with supertab
+  let b:SuperTabDisabled=1
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction
+
+" }}}
+" --- vim-indent-guides {{{
+" Use this with ':IndentGuidesToggle' or with '<Leader>ig' if mapping is set
+" For more details see ':h indent-guides'
+let g:indent_guides_start_level = 2
+let g:indent_guides_enable_on_vim_startup = 0
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+let g:indent_guides_default_mapping = 1
+" }}}
+" --- vim-go settings {{{
+let g:go_fmt_autosave = 0
+" }}}
+" --- Yggdroot/indentLine {{{
+" can also use one of ¦, ┆, ︙ or │
+"let g:indentLine_char = '¦'
+"let g:indentLine_char = '│'
+"let g:indentLine_char = '┆'
+"let g:indentLine_char = '︙'
+" }}}
+" }}}
+
+" vim: fdm=marker fdl=1

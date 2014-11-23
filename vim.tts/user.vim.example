@@ -1,0 +1,50 @@
+" The file 'user.vim' is automatically loaded last if it exists. By keeping
+" this file out of revision control, we can use it for host-specific settings
+" we may need.
+
+" Choose a colorscheme
+"colorscheme jellybeans
+
+" In case a colorscheme doesn't play well with cursorline
+"set nocursorline
+
+" Disable folding
+"set nofoldenable
+"set foldcolumn=0
+
+" How much context to keep around
+"set scrolloff=1
+
+" Turn off delimitMate
+"let delimitMate_offByDefault = 1
+
+" Turn off use of quotes in delimitMate
+"let delimitMate_quotes = ''
+
+" Do we want to enable neocomplcache at startup?
+"let g:neocomplcache_enable_at_startup = 1
+
+" Fix path for clang_complete
+let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/'
+
+" In case we need to quickly disable loading clang_complete (it crashes on some files)
+"let g:clang_complete_loaded = 1
+
+" Disable the gj & gk maps
+"nunmap j
+"nunmap k
+
+" Disable the substitute commands
+"nnoremap s <nop>
+"nnoremap S <nop>
+"vnoremap s <nop>
+"vnoremap S <nop>
+
+" Other misc settings
+"let g:tagbar_width = 40
+"set foldmethod=syntax
+"set foldlevelstart=100
+"set wildignore+=build
+"nmap <CTRL-^> :A<CR>
+
+" vim: ft=vim
