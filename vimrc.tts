@@ -308,7 +308,7 @@ NeoBundle 'localrc.vim'
 NeoBundle 'ludwig/vim-scripts'
 
 " Load my default vim settings and mappings
-NeoBundle 'ludwig/vim-defaults'
+NeoBundle 'ludwig/vim-defaults', 'master'
 
 " Finalize neobundle.vim {{{
 
