@@ -30,6 +30,9 @@ let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/
 " In case we need to quickly disable loading clang_complete (it crashes on some files)
 "let g:clang_complete_loaded = 1
 
+" Do we want to enable indent-guides?
+"let g:indent_guides_enable_on_vim_startup = 1
+
 " Disable the gj & gk maps
 "nunmap j
 "nunmap k
