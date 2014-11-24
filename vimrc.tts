@@ -9,7 +9,7 @@ let mapleader=","
 "   :NeoBundleList          - list configured bundles
 "   :NeoBundleInstall(!)    - install bundles
 "   :NeoBundleUpdate(!)     - update bundles
-"   :NeoBundle
+"   :NeoBundleClean         - removes unused bundles from the filesystem
 "
 " For more details see ':h neobundle'
 " See also https://github.com/Shougo/neobundle.vim
@@ -161,14 +161,20 @@ NeoBundle 'milkypostman/vim-togglelist'
 " --- Automatic Helpers {{{
 
 " AutoComplPop - Automatically opens popup menu for completions
+" Obsoleted by YouCompleteMe?
 " http://www.vim.org/scripts/script.php?script_id=1879
 " https://bitbucket.org/ns9tks/vim-autocomplpop/
 "NeoBundle 'AutoComplPop'
 
 " clang_complete - use clang for completing C/C++ code
+" Obsoleted by YouCompleteMe?
 " http://www.vim.org/scripts/script.php?script_id=3302
 " https://github.com/Rip-Rip/clang_complete
-NeoBundle 'Rip-Rip/clang_complete'
+"NeoBundle 'Rip-Rip/clang_complete'
+
+" closetag.vim -- Functions and mappings to close open HTML/XML tags
+" http://www.vim.org/scripts/script.php?script_id=13
+NeoBundle 'closetag.vim'
 
 " MatchTag - MatchParen for HTML tags
 " http://www.vim.org/scripts/script.php?script_id=3818
@@ -176,18 +182,10 @@ NeoBundle 'Rip-Rip/clang_complete'
 NeoBundle 'gregsexton/MatchTag'
 
 " neocomplcache - Ultimate auto completion system for vim
+" Obsoleted by YouCompleteMe?
 " http://www.vim.org/scripts/script.php?script_id=2620
 " https://github.com/Shougo/neocomplcache
 "NeoBundle 'Shougo/neocomplcache'
-
-" neocomplete.vim - Next generation completion framework after neocomplcache
-" This needs lua support!
-"   $ brew install vim --with-lua --HEAD
-"   $ brew install macvim --with-cscope --with-lua --HEAD
-" https://github.com/Shougo/neocomplete.vim
-if has('lua')
-    NeoBundle 'Shougo/neocomplete'
-endif
 
 " session.vim - extended session management for vim
 " http://www.vim.org/scripts/script.php?script_id=3150
@@ -196,9 +194,10 @@ NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-session'
 
 " SuperTab - Do all your insert-mode completion with Tab
+" Obsoleted by YouCompleteMe?
 " http://www.vim.org/scripts/script.php?script_id=1643
 " https://github.com/ervandew/supertab
-NeoBundle 'ervandew/supertab'
+"NeoBundle 'ervandew/supertab'
 
 " unite.vim -- search and display information from arbitrary sources
 " http://www.vim.org/scripts/script.php?script_id=3396
@@ -210,13 +209,17 @@ NeoBundle 'Shougo/unite.vim'
 " https://github.com/tpope/vim-fugitive
 NeoBundle 'tpope/vim-fugitive'
 
+" Valloric/YouCompleteMe - A code-completion engine for Vim 
+" https://github.com/Valloric/YouCompleteMe
+NeoBundle 'Valloric/YouCompleteMe'
+
 " --- }}}
 " --- Snippets {{{
 
-" neosnippet.vim -- neo-snippet plugin contains neocomplcache snippets source
-" https://github.com/Shougo/neosnippet.vim
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
+" UltiSnips - The ultimate snippet solution for Vim
+" https://github.com/SirVer/ultisnips
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
 
 " --- }}}
 " --- Language Additions {{{
@@ -278,8 +281,9 @@ NeoBundle 'derekwyatt/vim-scala'
 " --- Libraries {{{
 
 " L9 - vim-script library
+" Used by: AutoComplPop, FuzzyFinder, ...
 " http://www.vim.org/scripts/script.php?script_id=3252
-NeoBundle 'L9'
+"NeoBundle 'L9'
 
 " --- }}}
 " --- Misc {{{
@@ -454,6 +458,9 @@ let g:clang_complete_macros = 1
 let g:clang_complete_patterns = 1
 
 " }}}
+" --- closetag.vim settings {{{
+autocmd filetype html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style = 1
+" }}}
 " --- Command-T settings {{{
 
 " To setup this plugin after installation:
@@ -510,130 +517,6 @@ let g:LustyJugglerShowKeys = 'a'
 
 " Open list of most recently used files with ':MRU' or ',m'
 nmap <silent> <Leader>m :MRU<CR>
-
-" }}}
-" --- neocomplcache settings {{{
-if 0
-    " enable at startup (default 0)
-    " can also enable with :NeoComplCacheEnable command
-    let g:neocomplcache_enable_at_startup = 0
-
-    " number of candidates to display (default 100)
-    let g:neocomplcache_max_list = 100
-
-    " indication width of candidats (default 50)
-    let g:neocomplcache_max_keyword_width = 50
-
-    " number of input completion (default 2)
-    let g:neocomplcache_auto_completion_start_length = 2
-
-    " use smartcase
-    let g:neocomplcache_enable_smart_case = 1
-
-    " close popup and save indent on <CR>
-    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-    function! s:my_cr_function()
-        return neocomplcache#smart_close_popup() . "\<CR>"
-    endfunction
-
-    " define two commands that have easier tab completion
-    command! EnableNeoComplCache :NeoComplCacheEnable
-    command! DisableNeoComplCache :NeoComplCacheDisable
-endif
-" }}}
-" --- neocomplete settings {{{
-" See https://github.com/Shougo/neocomplete.vim#configuration-examples
-
-" Disable AutoComplPop
-let g:acp_enableAtStartup = 0
-
-" Use neocomplete
-let g:neocomplete#enable_at_startup = 1
-
-" Use smartcase
-let g:neocomplete#enable_smart_case = 1
-
-" Set minimum syntax keyword length
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-    \ }
-
-" Define keyword
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings
-inoremap <expr><C-g>    neocomplete#undo_completion()
-inoremap <expr><C-l>    neocomplete#complete_common_string()
-
-" Recommended key-mappings
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-    return neocomplete#close_popup() . "\<CR>"
-    " For no inserting <CR> key
-    "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
-
-" <TAB>: completion
-inoremap <expr><TAB>    pumvisible() ? "\<C-n>" : "\<TAB>"
-
-" <C-h>, <BS>: close popup and delete backword char
-inoremap <expr><C-h>    neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS>     neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>    neocomplete#smart_close_popup()
-inoremap <expr><C-e>    neocomplete#smart_close_popup()
-
-" Close popup by <Space>
-"inoremap <expr><Space>  pumvisible() ? neocomplete#close_popup() : "\<Space>"
-
-" Enable omni completion
-autocmd filetype css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd filetype html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd filetype javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd filetype python setlocal omnifunc=pythoncomplete#Complete
-autocmd filetype xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
-endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-"let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
-" Using with neocomplete?
-" http://stackoverflow.com/questions/12975098/using-neocomplcache-and-clang-complete
-
-" }}}
-" --- neosnippet settings {{{
-" See https://github.com/Shougo/neosnippet.vim
-
-" Plugin key-mappings (<C-k> by default, then use <C-n> and <C-p> to navigate list)
-"imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab-like snippets behavior
-"imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet#expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-"smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet#expand_or_jump)" : "\<TAB>"
-
-" For snippet_complete marker
-"if has('conceal')
-"    set conceallevel=2 concealcursor=i
-"endif
 
 " }}}
 " --- NERDTree settings {{{
@@ -759,6 +642,19 @@ let Tlist_Display_Tag_Scope=0
 let Tlist_Use_Right_Window=1
 
 " }}}
+" --- UltiSnips settings {{{
+" https://github.com/SirVer/ultisnips
+" http://vimcasts.org/episodes/meet-ultisnips/
+
+" Trigger configuration.
+let g:UltiSnipsExpandTrigger = "<TAB>"
+"let g:UltiSnipsJumpForwardTrigger = "<C-b>"
+"let g:UltiSnipsJumpBackwardTrigger = "<C-z>"
+
+" If you want ':UltiSnipsEdit' to split your window
+let g:UltiSnipsEditSplit = "vertical"
+
+" }}}
 " --- Unite.vim settings {{{
 " See http://www.codeography.com/2013/06/17/replacing-all-the-things-with-unite-vim.html
 
@@ -800,6 +696,14 @@ let g:go_fmt_autosave = 0
 "let g:indentLine_char = '│'
 "let g:indentLine_char = '┆'
 "let g:indentLine_char = '︙'
+" }}}
+" --- YouCompleteMe {{{
+" http://www.alexeyshmalko.com/2014/youcompleteme-ultimate-autocomplete-plugin-for-vim/
+" https://github.com/rasendubi/dotfiles/blob/master/.vim/.ycm_extra_conf.py
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+" Let UltiSnips use <TAB>. We can still cycle through the YCM completions with <C-n> and <C-p>
+let g:ycm_key_list_select_completion = []
+let g:ycm_key_list_previous_completion = []
 " }}}
 " }}}
 
