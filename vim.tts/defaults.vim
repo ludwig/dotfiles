@@ -102,7 +102,7 @@ set pastetoggle=<F2>
 
 " turn on omnicompletion
 " http://vim.wikia.com/wiki/Omni_completion
-"set omnifunc=syntaxcomplete#Complete
+set omnifunc=syntaxcomplete#Complete
 
 " make tab completion for files/buffers act like bash
 set wildmenu
@@ -595,7 +595,15 @@ endfunction
 
 " only do this part when compiled with support for autocommands
 if has ('autocmd')
+    augroup omnifunc "{{{
+        autocmd filetype css setlocal omnifunc=csscomplete#CompleteCSS
+        autocmd filetype html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+        autocmd filetype javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+        autocmd filetype python setlocal omnifunc=pythoncomplete#Complete
+        autocmd filetype xml setlocal omnifunc=xmlcomplete#CompleteTags
+    augroup end " }}}
     augroup invisible_chars "{{{
+        " Clear the group with 'autocmd!'
         au!
         " Show invisible characters in all of these files
         autocmd filetype vim setlocal list
