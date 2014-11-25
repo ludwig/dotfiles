@@ -1012,6 +1012,8 @@ endif
 if exists('s:ludwig_loaded_syntastic')
     " Syntax checks are run every time file is saved.
     " Remember to only load syntastic when YouCompleteMe is not loaded!
+    " https://github.com/scrooloose/syntastic
+    " http://blog.thomasupton.com/2012/05/syntastic/
     "
     " See ':help syntastic' for options
     " Use ':Errors' to see the list of errors
@@ -1045,6 +1047,19 @@ if exists('s:ludwig_loaded_syntastic')
 
     " Height of location list (default 10)
     let g:syntastic_loc_list_height = 10
+
+    " Fine tune when automatic syntax checking is done (or not done)
+    " Passive checking happens only when user calls ':SyntasticCheck'
+    let g:syntastic_mode_map = {
+        \ 'mode': 'active',
+        \ 'active_filetypes': [],
+        \ 'passive_filetypes': []
+        \ }
+
+    " Use flake8 for python
+    " http://pep8.readthedocs.org/en/latest/intro.html#error-codes
+    let g:syntastic_python_checkers = ['flake8']
+    let g:syntastic_python_flake8_args = '--ignore="E501,E302,E261,E701,E241,E126,E127,E128,W801"'
 
 endif
 " }}}
