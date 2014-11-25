@@ -6,6 +6,7 @@
 /vim.tts/bundle
 /vim.tts/tmp
 /vim.tts/sessions
+/vim.tts/preload.vim
 /vim.tts/user.vim
 .netrwhist
 tags

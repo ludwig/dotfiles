@@ -3,6 +3,27 @@
 " Change the mapleader from \ to ,
 let mapleader=","
 
+" Decide which autocomplete/snippets engine to load {{{
+"
+" Unfortunately some plugins conflict with each other, so we set up
+" a few flags to load those plugins conditionally.
+"
+" To use AutoComplPop:      let g:ludwig_load_acp = 1
+" To use clang_complete:    let g:ludwig_load_clangcomplete = 1
+" To use neocomplcache:     let g:ludwig_load_neocomplcache = 1
+" To use neocomplete:       let g:ludwig_load_neocomplete = 1
+" To use YouCompleteMe:     let g:ludwig_load_ycm = 1
+"
+" Don't load all the engines all at once, since there are conflicts.
+" By default, we use clang_complete.
+let g:ludwig_load_clangcomplete = 1
+" }}}
+
+" We can initialize settings (flags, paths, etc.) in a preload.vim script
+if filereadable(expand('~/.vim/preload.vim'))
+    source ~/.vim/preload.vim
+endif
+
 " Set up NeoBundle. {{{
 " 
 " Brief help
@@ -40,279 +61,392 @@ NeoBundle 'Shougo/neobundle-vim-recipes'
 
 " Load my favorite bundles
 " --- Navigation {{{
-
-" Command-T - Fast file navigation for vim
+" a.vim - alternate files quickly {{{
+" http://www.vim.org/scripts/script.php?script_id=31
+NeoBundle 'a.vim'
+" }}}
+" bufexplorer.zip - Buffer Explorer / Browser {{{
+" http://www.vim.org/scripts/script.php?script_id=42
+" https://github.com/vim-scripts/bufexplorer.zip
+NeoBundle 'bufexplorer.zip'
+" }}}
+" Command-T - Fast file navigation for vim {{{
 " http://www.vim.org/scripts/script.php?script_id=3025
 " https://github.com/wincent/Command-T
 " http://git.wincent.com/command-t.git
+" https://github.com/Shougo/neobundle.vim/issues/78
 "NeoBundle 'wincent/Command-T'
-NeoBundle 'git://git.wincent.com/command-t.git'
-
-" ctrlp.vim - Fuzzy file, buffer, mru, tag, ... finder with regexp support
+NeoBundle 'git://git.wincent.com/command-t.git', {
+    \   'build' : {
+    \       'mac' : 'sh -c "cd ruby/command-t && ruby extconf.rb && make"'
+    \   }
+    \ }
+" }}}
+" ctrlp.vim - Fuzzy file, buffer, mru, tag, ... finder with regexp support {{{
 " http://www.vim.org/scripts/script.php?script_id=3736
 " https://github.com/kien/ctrlp.vim
 NeoBundle 'kien/ctrlp.vim'
-
-" EasyMotion - Vim motions on speed!
+" }}}
+" EasyMotion - Vim motions on speed! {{{
 " http://www.vim.org/scripts/script.php?script_id=3526
 " https://github.com/Lokaltog/vim-easymotion
 NeoBundle 'Lokaltog/vim-easymotion'
-
-" LustyJuggler - Switch very quickly among your active buffers
+" }}}
+" LustyJuggler - Switch very quickly among your active buffers {{{
 " Launch with '<Leader>lj'
 " http://www.vim.org/scripts/script.php?script_id=2050
 " https://github.com/sjbach/lusty
 " https://github.com/vim-scripts/LustyJuggler
 " https://github.com/mutewinter/LustyJuggler
 NeoBundle 'LustyJuggler'
-
-" matchit.zip - extended % matching for HTML, LaTeX, and many other languages
-" http://www.vim.org/scripts/script.php?script_id=39
-NeoBundle 'matchit.zip'
-
-" vim-sneak - The missing motion for Vim
-" https://github.com/justinmk/vim-sneak
-" http://www.vim.org/scripts/script.php?script_id=4809
-NeoBundle 'justinmk/vim-sneak'
-
-" ZoomWin - Zoom in/out of windows (toggle between one window and multi-window)
-" Use '<C-w>o' to toggle zoom on window
-" http://www.vim.org/scripts/script.php?script_id=508
-NeoBundle 'ZoomWin'
-
-" --- }}}
-" --- UI Additions {{{
-
-" Yggdroot/indentLine - A vim plugin to display the indention levels with thin vertical lines
-" https://github.com/Yggdroot/indentLine
-"NeoBundle 'Yggdroot/indentLine'
-
-" NERDTree - Tree explorer plugin
+" }}}
+" NERDTree - Tree explorer plugin {{{
 " http://www.vim.org/scripts/script.php?script_id=1658
 " https://github.com/scrooloose/nerdtree/
 NeoBundle 'scrooloose/nerdtree'
-
-" tabman.vim - Tab management for Vim
+" }}}
+" matchit.zip - extended % matching for HTML, LaTeX, and many other languages {{{
+" http://www.vim.org/scripts/script.php?script_id=39
+NeoBundle 'matchit.zip'
+" }}}
+" mru.vim - manage 'Most Recently Used (MRU)' files {{{
+" http://www.vim.org/scripts/script.php?script_id=521
+NeoBundle 'mru.vim'
+" }}}
+" tabman.vim - Tab management for Vim {{{
 " https://github.com/kien/tabman.vim
 NeoBundle 'kien/tabman.vim'
-
-" tagbar - Vim plugin that displays tags in a window, ordered by class etc.
+" }}}
+" tagbar - Vim plugin that displays tags in a window, ordered by class etc. {{{
 " http://majutsushi.github.com/tagbar/
 " http://www.vim.org/scripts/script.php?script_id=3465
 " https://github.com/majutsushi/tagbar
 NeoBundle 'majutsushi/tagbar'
-
-" taglist.vim - Source code browser (supports C, C++, java, python, etc.)
+" }}}
+" taglist.vim - Source code browser (supports C, C++, java, python, etc.) {{{
 " http://www.vim.org/scripts/script.php?script_id=273
 NeoBundle 'taglist.vim'
-
-" Indent Guides - A plugin for visually displaying indent levels in Vim
+" }}}
+" vim-sneak - The missing motion for Vim {{{
+" https://github.com/justinmk/vim-sneak
+" http://www.vim.org/scripts/script.php?script_id=4809
+NeoBundle 'justinmk/vim-sneak'
+" }}}
+" ZoomWin - Zoom in/out of windows (toggle between one window and multi-window) {{{
+" Use '<C-w>o' to toggle zoom on window
+" http://www.vim.org/scripts/script.php?script_id=508
+NeoBundle 'ZoomWin'
+" }}}
+" }}}
+" --- UI Additions {{{
+" colorv.vim - Easier color handling {{{
+" Use with '<Leader>ce'
+" http://www.vim.org/scripts/script.php?script_id=3597
+" https://github.com/Rykka/colorv.vim
+NeoBundle 'Rykka/colorv.vim'
+" }}}
+" Indent Guides - A plugin for visually displaying indent levels in Vim {{{
 " Use '<Leader>ig' to turn on the guides
 " http://www.vim.org/scripts/script.php?script_id=3361
 " https://github.com/nathanaelkane/vim-indent-guides
 " https://github.com/mutewinter/vim-indent-guides
 " http://nathanaelkane.imgur.com/indent_guides
-NeoBundle 'nathanaelkane/vim-indent-guides'
-
-" Powerline - The ultimate vim statusline utility
+"NeoBundle 'nathanaelkane/vim-indent-guides'
+" }}}
+" Powerline - The ultimate vim statusline utility {{{
 " http://www.vim.org/scripts/script.php?script_id=3881
 " https://github.com/Lokaltog/vim-powerline
 NeoBundle 'Lokaltog/vim-powerline'
-
-" surround.vim - quoting/parenthesizing made simple
-" http://www.vim.org/scripts/script.php?script_id=1697
-" https://github.com/tpope/vim-surround
-NeoBundle 'tpope/vim-surround'
-
-" --- }}}
-" --- Commands {{{
-
-" ack.vim - Plugin for the Perl module / CLI script 'ack'
-" http://www.vim.org/scripts/script.php?script_id=2572
-" https://github.com/mileszs/ack.vim
-NeoBundle 'mileszs/ack.vim'
-
-" Emmet — the essential toolkit for web-developers
-" http://emmet.io/
-" https://github.com/mattn/emmet-vim
-NeoBundle 'mattn/emmet-vim'
-
-" NERDCommenter - Plugin that allows easy commenting of code
-" http://www.vim.org/scripts/script.php?script_id=1218
-" https://github.com/scrooloose/nerdcommenter
-NeoBundle 'scrooloose/nerdcommenter'
-
-" scratch.vim - plugin to create and use a scratch vim buffer
+" }}}
+" scratch.vim - plugin to create and use a scratch vim buffer {{{
 " http://www.vim.org/scripts/script.php?script_id=664
 NeoBundle 'scratch.vim'
-
-" repeat.vim - Use the repeat command (.) with supported plugins
-" http://www.vim.org/scripts/script.php?script_id=2136
-" https://github.com/tpope/vim-repeat
-NeoBundle 'tpope/vim-repeat'
-
-" vim-togglelist - Functions to toggle the [Location List] and the [Quickfix List] windows
+" }}}
+" vim-togglelist - Functions to toggle the [Location List] and the [Quickfix List] windows {{{
 " Use '<Leader>l' to toggle the location list
 " Use '<Leader>q' to toggle the quickfix list
 " https://github.com/milkypostman/vim-togglelist
 NeoBundle 'milkypostman/vim-togglelist'
-
-" --- }}}
+" }}}
+" Yggdroot/indentLine - A vim plugin to display the indention levels with thin vertical lines {{{
+" https://github.com/Yggdroot/indentLine
+NeoBundle 'Yggdroot/indentLine'
+" }}}
+" }}}
+" --- Commands {{{
+" ack.vim - Plugin for the Perl module / CLI script 'ack' {{{
+" http://www.vim.org/scripts/script.php?script_id=2572
+" https://github.com/mileszs/ack.vim
+NeoBundle 'mileszs/ack.vim'
+" }}}
+" emmet-vim — the essential toolkit for web-developers {{{
+" http://emmet.io/
+" https://github.com/mattn/emmet-vim
+NeoBundle 'mattn/emmet-vim'
+" }}}
+" NERDCommenter - Plugin that allows easy commenting of code {{{
+" http://www.vim.org/scripts/script.php?script_id=1218
+" https://github.com/scrooloose/nerdcommenter
+NeoBundle 'scrooloose/nerdcommenter'
+" }}}
+" surround.vim - quoting/parenthesizing made simple {{{
+" http://www.vim.org/scripts/script.php?script_id=1697
+" https://github.com/tpope/vim-surround
+NeoBundle 'tpope/vim-surround'
+" }}}
+" repeat.vim - Use the repeat command (.) with supported plugins {{{
+" http://www.vim.org/scripts/script.php?script_id=2136
+" https://github.com/tpope/vim-repeat
+NeoBundle 'tpope/vim-repeat'
+" }}}
+" }}}
 " --- Automatic Helpers {{{
-
-" AutoComplPop - Automatically opens popup menu for completions
-" Obsoleted by YouCompleteMe?
-" http://www.vim.org/scripts/script.php?script_id=1879
-" https://bitbucket.org/ns9tks/vim-autocomplpop/
-"NeoBundle 'AutoComplPop'
-
-" clang_complete - use clang for completing C/C++ code
-" Obsoleted by YouCompleteMe?
-" http://www.vim.org/scripts/script.php?script_id=3302
-" https://github.com/Rip-Rip/clang_complete
-"NeoBundle 'Rip-Rip/clang_complete'
-
-" closetag.vim -- Functions and mappings to close open HTML/XML tags
+" closetag.vim -- Functions and mappings to close open HTML/XML tags {{{
 " http://www.vim.org/scripts/script.php?script_id=13
 NeoBundle 'closetag.vim'
-
-" MatchTag - MatchParen for HTML tags
+" }}}
+" MatchTag - MatchParen for HTML tags {{{
 " http://www.vim.org/scripts/script.php?script_id=3818
 " https://github.com/gregsexton/MatchTag
 NeoBundle 'gregsexton/MatchTag'
-
-" neocomplcache - Ultimate auto completion system for vim
-" Obsoleted by YouCompleteMe?
-" http://www.vim.org/scripts/script.php?script_id=2620
-" https://github.com/Shougo/neocomplcache
-"NeoBundle 'Shougo/neocomplcache'
-
-" session.vim - extended session management for vim
+" }}}
+" session.vim - extended session management for vim {{{
 " http://www.vim.org/scripts/script.php?script_id=3150
 " https://github.com/xolox/vim-session
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-session'
-
-" SuperTab - Do all your insert-mode completion with Tab
-" Obsoleted by YouCompleteMe?
-" http://www.vim.org/scripts/script.php?script_id=1643
-" https://github.com/ervandew/supertab
-"NeoBundle 'ervandew/supertab'
-
-" unite.vim -- search and display information from arbitrary sources
-" http://www.vim.org/scripts/script.php?script_id=3396
-" https://github.com/Shougo/unite.vim
-NeoBundle 'Shougo/unite.vim'
-
-" fugitive.vim - a git wrapper so awesome, it should be illegal
+" }}}
+" fugitive.vim - a git wrapper so awesome, it should be illegal {{{
 " http://www.vim.org/scripts/script.php?script_id=2975
 " https://github.com/tpope/vim-fugitive
 NeoBundle 'tpope/vim-fugitive'
-
-" Valloric/YouCompleteMe - A code-completion engine for Vim 
-" https://github.com/Valloric/YouCompleteMe
-NeoBundle 'Valloric/YouCompleteMe'
-
-" --- }}}
-" --- Snippets {{{
-
-" UltiSnips - The ultimate snippet solution for Vim
-" https://github.com/SirVer/ultisnips
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
-
-" --- }}}
+" }}}
+" }}}
 " --- Language Additions {{{
-
-" cocoa.vim - Plugin for Cocoa/Objective-C development
+" cocoa.vim - Plugin for Cocoa/Objective-C development {{{
 " http://www.vim.org/scripts/script.php?script_id=2674
 " https://github.com/msanders/cocoa.vim
 NeoBundle 'msanders/cocoa.vim'
-
-" nginx.vim - syntax highlighting for nginx.conf and related files
+" }}}
+" nginx.vim - syntax highlighting for nginx.conf and related files {{{
 " http://www.vim.org/scripts/script.php?script_id=1886
 " https://github.com/vim-scripts/nginx.vim
 " https://github.com/mutewinter/nginx.vim
 NeoBundle 'mutewinter/nginx.vim'
-
-" salt-vim - syntax for editing Salt state files (.sls)
+" }}}
+" salt-vim - syntax for editing Salt state files (.sls) {{{
 " https://github.com/saltstack/salt-vim
 NeoBundle 'saltstack/salt-vim'
-
-" rest.vim - a reStructuredText syntax mode
+" }}}
+" rest.vim - a reStructuredText syntax mode {{{
 " http://www.vim.org/scripts/script.php?script_id=973
 NeoBundle 'rest.vim'
-
-" rust.vim -- Rust file detection and syntax highlighting
+" }}}
+" rust.vim -- Rust file detection and syntax highlighting {{{
 " https://github.com/wting/rust.vim
 NeoBundle 'wting/rust.vim'
-
-" vim-cmake - provide a cmake reference and autocompletion
+" }}}
+" vim-cmake - provide a cmake reference and autocompletion {{{
 " https://github.com/jansenm/vim-cmake
 NeoBundle 'jansenm/vim-cmake'
-
-" vim-fish -- Vim support for editing fish-shell scripts
+" }}}
+" vim-fish -- Vim support for editing fish-shell scripts {{{
 " https://github.com/dag/vim-fish
 NeoBundle 'dag/vim-fish'
-
-" vim-go -- Go development plugin for Vim
+" }}}
+" vim-go -- Go development plugin for Vim {{{
 " https://github.com/fatih/vim-go
 NeoBundle 'fatih/vim-go'
-
-" vim-javascript - Vastly improved javascript indentation
+" }}}
+" vim-javascript - Vastly improved javascript indentation {{{
 " http://www.vim.org/scripts/script.php?script_id=2765
 " https://github.com/pangloss/vim-javascript
 NeoBundle 'pangloss/vim-javascript'
-
-" vim-less - vim syntax for LESS (dynamic CSS)
+" }}}
+" vim-less - vim syntax for LESS (dynamic CSS) {{{
 " https://github.com/groenewege/vim-less
 NeoBundle 'groenewege/vim-less'
-
-" Markdown - Syntax highlighting for Markdown text files
+" }}}
+" Markdown - Syntax highlighting for Markdown text files {{{
 " http://www.vim.org/scripts/script.php?script_id=2882
 " https://github.com/hallison/vim-markdown
 NeoBundle 'hallison/vim-markdown'
-
-" vim-scala -- Vim integration for Scala
+" }}}
+" vim-scala -- Vim integration for Scala {{{
 " https://github.com/derekwyatt/vim-scala
 NeoBundle 'derekwyatt/vim-scala'
-
-" --- }}}
-" --- Libraries {{{
-
-" L9 - vim-script library
-" Used by: AutoComplPop, FuzzyFinder, ...
-" http://www.vim.org/scripts/script.php?script_id=3252
-"NeoBundle 'L9'
-
-" --- }}}
-" --- Misc {{{
-
-" a.vim - alternate files quickly
-" http://www.vim.org/scripts/script.php?script_id=31
-NeoBundle 'a.vim'
-
-" bufexplorer.zip - Buffer Explorer / Browser
-" http://www.vim.org/scripts/script.php?script_id=42
-" https://github.com/vim-scripts/bufexplorer.zip
-NeoBundle 'bufexplorer.zip'
-
-" mru.vim - manage 'Most Recently Used (MRU)' files
-" http://www.vim.org/scripts/script.php?script_id=521
-NeoBundle 'mru.vim'
-
-" localrc.vim - enable configuration file of each directory
+" }}}
+" }}}
+" --- Shougo Dark Vim Master {{{
+" Unite.vim -- search and display information from arbitrary sources {{{
+" http://www.vim.org/scripts/script.php?script_id=3396
+" https://github.com/Shougo/unite.vim
+NeoBundle 'Shougo/unite.vim'
+" }}}
+" neomru.vim - MRU plugin for unite.vim {{{
+" https://github.com/Shougo/neomru.vim
+NeoBundle 'Shougo/neomru.vim'
+" }}}
+" vimproc.vim - Interactive command execution in vim {{{
+" https://github.com/Shougo/vimproc.vim
+" Needed by vim-marching
+NeoBundle 'Shougo/vimproc.vim', {
+    \   'build' : {
+    \       'windows' : 'tools\\update-dll-mingw',
+    \       'cygwin' : 'make -f make_cygwin.mak',
+    \       'mac' : 'make -f make_mac.mak',
+    \       'linux' : 'make',
+    \       'unix' : 'make',
+    \   },
+    \ }
+" }}}
+" unite-outline - outline plugin for unite.vim {{{
+" https://github.com/h1mesuke/unite-outline
+"NeoBundle 'h1mesuke/unite-outline'
+" }}}
+" }}}
+" --- Miscellaneous {{{
+" abolish.vim - easily search for, substitute, and abbreviate multiple variants of a word {{{
+" https://github.com/tpope/vim-abolish
+NeoBundle 'tpope/vim-abolish'
+" }}}
+" localrc.vim - enable configuration file of each directory {{{
 " http://www.vim.org/scripts/script.php?script_id=3393
 " https://github.com/thinca/vim-localrc
 NeoBundle 'localrc.vim'
+" }}}
+" webapi.vim - vim interface to Web API {{{
+" http://www.vim.org/scripts/script.php?script_id=4019
+" https://github.com/mattn/webapi-vim
+" (Also used by Rykka/colorv.vim)
+NeoBundle 'mattn/webapi-vim'
+" }}}
+" }}}
 
-" --- }}}
+" Load the conditional bundles
+" --- AutoComplPop engine {{{
+if exists('g:ludwig_load_acp') && g:ludwig_load_acp
+    " AutoComplPop - Automatically opens popup menu for completions {{{
+    " Obsoleted by YouCompleteMe?
+    " http://www.vim.org/scripts/script.php?script_id=1879
+    " https://bitbucket.org/ns9tks/vim-autocomplpop/
+    NeoBundle 'AutoComplPop'
+    let s:ludwig_loaded_acp = 1
+    " }}}
+    " SuperTab - Do all your insert-mode completion with Tab {{{
+    " http://www.vim.org/scripts/script.php?script_id=1643
+    " https://github.com/ervandew/supertab
+    NeoBundle 'ervandew/supertab'
+    " }}}
+    " UltiSnips - The ultimate snippet solution for Vim {{{
+    " https://github.com/SirVer/ultisnips
+    NeoBundle 'SirVer/ultisnips'
+    NeoBundle 'honza/vim-snippets'
+    let s:ludwig_loaded_ultisnips = 1
+    " }}}
+    " syntastic - Syntax checking hacks for vim {{{
+    " https://github.com/scrooloose/syntastic
+    NeoBundle 'scrooloose/syntastic'
+    let s:ludwig_loaded_syntastic = 1
+    " }}}
+endif
+" }}}
+" --- clang_complete engine {{{
+if exists('g:ludwig_load_clangcomplete') && g:ludwig_load_clangcomplete
+    " clang_complete - use clang for completing C/C++ code {{{
+    " Obsoleted by YouCompleteMe?
+    " http://www.vim.org/scripts/script.php?script_id=3302
+    " https://github.com/Rip-Rip/clang_complete
+    NeoBundle 'Rip-Rip/clang_complete'
+    let s:ludwig_loaded_clangcomplete = 1
+    " }}}
+    " SuperTab - Do all your insert-mode completion with Tab {{{
+    " http://www.vim.org/scripts/script.php?script_id=1643
+    " https://github.com/ervandew/supertab
+    NeoBundle 'ervandew/supertab'
+    " }}}
+    " syntastic - Syntax checking hacks for vim {{{
+    " https://github.com/scrooloose/syntastic
+    NeoBundle 'scrooloose/syntastic'
+    let s:ludwig_loaded_syntastic = 1
+    " }}}
+endif
+" }}}
+" --- neocomplcache engine {{{
+if exists('g:ludwig_load_neocomplcache') && g:ludwig_load_neocomplcache
+    " neocomplcache - Ultimate auto completion system for vim {{{
+    " Obsoleted by YouCompleteMe?
+    " http://www.vim.org/scripts/script.php?script_id=2620
+    " https://github.com/Shougo/neocomplcache
+    NeoBundle 'Shougo/neocomplcache'
+    let s:ludwig_loaded_neocomplcache = 1
+    " }}}
+    " neosnippet.vim -- neo-snippet plugin contains neocomplcache snippets source {{{
+    " https://github.com/Shougo/neosnippet.vim
+    NeoBundle 'Shougo/neosnippet'
+    NeoBundle 'Shougo/neosnippet-snippets'
+    let s:ludwig_loaded_neosnippet = 1
+    " }}}
+    " syntastic - Syntax checking hacks for vim {{{
+    " https://github.com/scrooloose/syntastic
+    NeoBundle 'scrooloose/syntastic'
+    let s:ludwig_loaded_syntastic = 1
+    " }}}
+endif
+" }}}
+" --- neocomplete engine {{{
+if exists('g:ludwig_load_neocomplete') && g:ludwig_load_neocomplete
+    " neocomplete.vim - Next generation completion framework after neocomplcache {{{
+    " https://github.com/Shougo/neocomplete.vim
+    " This needs lua support!
+    "   $ brew install vim --with-lua --HEAD
+    "   $ brew install macvim --with-cscope --with-lua --HEAD
+    if has('lua')
+        NeoBundle 'Shougo/neocomplete'
+        let s:ludwig_loaded_neocomplete = 1
+    endif
+    " }}}
+    " neosnippet.vim -- neo-snippet plugin contains neocomplcache snippets source {{{
+    " https://github.com/Shougo/neosnippet.vim
+    NeoBundle 'Shougo/neosnippet'
+    NeoBundle 'Shougo/neosnippet-snippets'
+    let s:ludwig_loaded_neosnippet = 1
+    " }}}
+    " syntastic - Syntax checking hacks for vim {{{
+    " https://github.com/scrooloose/syntastic
+    NeoBundle 'scrooloose/syntastic'
+    let s:ludwig_loaded_syntastic = 1
+    " }}}
+    " vim-marching - Async clang code completion {{{
+    " https://github.com/osyo-manga/vim-marching
+    NeoBundle 'osyo-manga/vim-marching'
+    " }}}
+endif
+" }}}
+" --- YouCompleteMe engine {{{
+if exists('g:ludwig_load_ycm') && g:ludwig_load_ycm
+    " SuperTab - Do all your insert-mode completion with Tab {{{
+    " http://www.vim.org/scripts/script.php?script_id=1643
+    " https://github.com/ervandew/supertab
+    NeoBundle 'ervandew/supertab'
+    " }}}
+    " UltiSnips - The ultimate snippet solution for Vim {{{
+    " https://github.com/SirVer/ultisnips
+    NeoBundle 'SirVer/ultisnips'
+    NeoBundle 'honza/vim-snippets'
+    let s:ludwig_loaded_ultisnips = 1
+    " }}}
+    " Valloric/YouCompleteMe - A code-completion engine for Vim {{{
+    " https://github.com/Valloric/YouCompleteMe
+    NeoBundle 'Valloric/YouCompleteMe'
+    let s:ludwig_loaded_ycm = 1
+    " }}}
+endif
+" }}}
 
-" Load my vim scripts
+" Load my own scripts
+" https://github.com/ludwig/vim-scripts
 NeoBundle 'ludwig/vim-scripts'
-
-" Load my default vim settings and mappings
-NeoBundle 'ludwig/vim-defaults', 'master'
 
 " Finalize neobundle.vim {{{
 
@@ -329,6 +463,9 @@ NeoBundleCheck
 
 " }}}
 
+" Load my default vim settings and mappings
+source ~/.vim/defaults.vim
+
 " Configure bundles {{{
 " --- a.vim settings {{{
 
@@ -342,8 +479,7 @@ let g:alternateNoDefaultAlternate = 1
 " Change a.vim's default search path
 "let g:alternateSearchPath = 'sfr:../inc,sfr:../include,sfr:./include,sfr:../src,sfr:./src,sfr:../source'
 
-" By default a.vim does not convert filename to one relative to the current
-" working directory. (default 0)
+" By default a.vim does not convert filename to one relative to the current working directory. (default 0)
 let g:alternateRelativeFiles = 1
 
 " Set up alternates for Objective-C source files: .m, .mm -> .h
@@ -371,34 +507,6 @@ nnoremap \s :LAck!
 nnoremap \S :LAck! <C-R>=expand("<cword>")<CR>
 
 " }}}
-" --- AutoComplPop settings {{{
-if 0
-    " if nonzero, auto-popup is enabled at startup (default 1)
-    let g:acp_enableAtStartup = 0
-
-    " if nonzero, avoid auto-popup by moving cursor in Insert mode (default 0)
-    let g:acp_mappingDriven = 0
-
-    " ignorecase (default 1)
-    let g:acp_ignorecaseOption = 1
-
-    " command for keyword completion (default "\<C-n>")
-    let g:acp_behaviorKeywordCommand = "\<C-n>"
-
-    " keyword chars needed to attempt keyword completion (default 2)
-    " if negative, completion is never attempted
-    let g:acp_behaviorKeywordLength = 3
-
-    " keyword chars needed to attempt python omni-completion (default 0)
-    let g:acp_behaviorPythonOmniLength = 0
-
-    " keyword chars needed to attempt HTML omni-completion (default 0)
-    let g:acp_behaviorHtmlOmniLength = 0
-
-    " keyword chars needed to attempt CSS omni-completion for properties
-    let g:acp_behaviorCssOmniPropertyLength = 1
-endif
-" }}}
 " --- BufExplorer settings {{{
 
 " To use:
@@ -421,41 +529,15 @@ let g:bufExplorerSplitOutPathName=1
 let g:bufExplorerSplitRight=1
 
 " }}}
-" --- clang_complete settings {{{
+" --- colorv.vim settings {{{
+" See ':help colorv' for details.
+" Use with <Leader>ce
 
-" Fix the library path for clang_complete (put this line in user.vim instead)
-"let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/'
+" The leader for colorv's global mapping (default is '<Leader>c')
+let g:colorv_global_leader = '\c'
 
-" Instead of calling clang/clang++ tool use libclang directly
-let g:clang_use_library = 1
-
-" select first entry in menu? (default 0)
-let g:clang_auto_select = 0
-
-" automatically complete after "-> . ::" (default 1)
-let g:clang_complete_auto = 0
-
-" open quickfix window on error (default 0)
-let g:clang_complete_copen = 0
-
-" highlight warnings and errors (default 1)
-let g:clang_hl_errors = 1
-
-" periodically update the quickfix window (default 0)
-let g:clang_periodic_quickfix = 0
-
-" snippets engine (clang_complete, snipmate, ...)
-let g:clang_snippets = 1
-let g:clang_snippets_engine = 'clang_complete'
-
-" automatically close preview window after completion (default 0)
-let g:clang_close_preview = 1
-
-" complete preprocessor macros and constants (default 0)
-let g:clang_complete_macros = 1
-
-" complete code patterns, i.e. loop constructs etc (default 0)
-let g:clang_complete_patterns = 1
+" Alternatively, don't define any global mapping (default 0 -- global mapping is defined)
+let g:colorv_no_global_map = 0
 
 " }}}
 " --- closetag.vim settings {{{
@@ -487,16 +569,25 @@ nmap ,f \\f
 nmap ,F \\F
 
 " }}}
-" --- Emmet settings {{{
-
-" To expand into html code, use '<C-y>,'
+" --- emmet-vim settings {{{
+" To expand the html code, use '<C-y>,'
+" http://docs.emmet.io/
+" https://github.com/mattn/emmet-vim
 
 " enable just for html/css
 let g:user_emmet_install_global = 0
 autocmd filetype html,css EmmetInstall
 
-" redefine trigger key (default is <C-Y>)
-let g:user_emmet_leader_key = '<C-Y>'
+" redefine trigger key (default is <C-y>)
+let g:user_emmet_leader_key = '<C-y>'
+
+" complete tags using omnifunc
+let g:use_emmet_complete_tag = 1
+
+" Expand emmet expression with Tab key (like in Sublime Text)
+" https://github.com/mattn/emmet-vim/issues/168
+" http://bling.github.io/blog/2013/07/21/smart-tab-expansions-in-vim-with-expression-mappings/
+" XXX: get this working later
 
 " }}}
 " --- LustyJuggler settings {{{
@@ -549,6 +640,9 @@ let NERDTreeIgnore=[
     \ '\.class$', '\.obj$', '\.o$', '\.so$',
     \ '^\.git$', '^\.svn$'
     \ ]
+
+" Default key to activate node is 'o'
+let NERDTreeMapActivateNode='<Space>'
 
 " }}}
 " --- NERDCommenter settings {{{
@@ -642,31 +736,25 @@ let Tlist_Display_Tag_Scope=0
 let Tlist_Use_Right_Window=1
 
 " }}}
-" --- UltiSnips settings {{{
-" https://github.com/SirVer/ultisnips
-" http://vimcasts.org/episodes/meet-ultisnips/
-
-" Trigger configuration.
-let g:UltiSnipsExpandTrigger = "<TAB>"
-"let g:UltiSnipsJumpForwardTrigger = "<C-b>"
-"let g:UltiSnipsJumpBackwardTrigger = "<C-z>"
-
-" If you want ':UltiSnipsEdit' to split your window
-let g:UltiSnipsEditSplit = "vertical"
-
-" }}}
 " --- Unite.vim settings {{{
-" See http://www.codeography.com/2013/06/17/replacing-all-the-things-with-unite-vim.html
-
 " Unite
+" https://github.com/Shougo/unite.vim
+" http://www.codeography.com/2013/06/17/replacing-all-the-things-with-unite-vim.html
+" http://bling.github.io/blog/2013/06/02/unite-dot-vim-the-plugin-you-didnt-know-you-need/
+
+" Enable unit-source-history/yank (not defined by default)
 let g:unite_source_history_yank_enable = 1
+
+" Directory for storing unite.vim configurations
+"let g:unite_data_directory = expand('~/.cache/unite')
+
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
-"nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
-"nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
-"nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
-"nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
-"nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
-"nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+nnoremap \t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+nnoremap \f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+nnoremap \r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+"nnoremap \o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
+nnoremap \y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+nnoremap \e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
 
 " Custom mappings for the unite buffer
 autocmd FileType unite call s:unite_settings()
@@ -697,13 +785,388 @@ let g:go_fmt_autosave = 0
 "let g:indentLine_char = '┆'
 "let g:indentLine_char = '︙'
 " }}}
-" --- YouCompleteMe {{{
-" http://www.alexeyshmalko.com/2014/youcompleteme-ultimate-autocomplete-plugin-for-vim/
-" https://github.com/rasendubi/dotfiles/blob/master/.vim/.ycm_extra_conf.py
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-" Let UltiSnips use <TAB>. We can still cycle through the YCM completions with <C-n> and <C-p>
-let g:ycm_key_list_select_completion = []
-let g:ycm_key_list_previous_completion = []
+" }}}
+
+" Configure the conditional bundles (some of these may conflict with each other) {{{
+" --- AutoComplPop settings {{{
+if exists('s:ludwig_loaded_acp')
+    " https://github.com/vim-scripts/AutoComplPop/blob/master/doc/acp.txt
+    " See options with ':help acp'
+
+    " if nonzero, auto-popup is enabled at startup (default 1)
+    let g:acp_enableAtStartup = 1
+
+    " Value set to 'ignorecase' temporarily when auto-popup (default 1)
+    let g:acp_ignorecaseOption = 1
+
+    " Value set to 'complete' temporarily when auto-popup (default '.,w,b,k')
+    "let g:acp_completeOption = &complete
+    let g:acp_completeOption = '.,w,b,u,t,i,k'
+
+    " if nonzero, avoid auto-popup by moving cursor in Insert mode (default 0)
+    let g:acp_mappingDriven = 1
+
+    " command for keyword completion (default "\<C-n>")
+    let g:acp_behaviorKeywordCommand = "\<C-n>"
+
+    " keyword chars needed to attempt keyword completion (default 2)
+    " if negative, completion is never attempted
+    let g:acp_behaviorKeywordLength = 1
+
+    " keyword chars needed to attempt python omni-completion (default 0)
+    let g:acp_behaviorPythonOmniLength = 0
+
+    " keyword chars needed to attempt HTML omni-completion (default 0)
+    let g:acp_behaviorHtmlOmniLength = 0
+
+    " keyword chars needed to attempt CSS omni-completion for properties
+    let g:acp_behaviorCssOmniPropertyLength = 1
+
+endif
+" }}}
+" --- clang_complete settings {{{
+if exists('s:ludwig_loaded_clangcomplete')
+    " clang_complete - Vim plugin that uses clang for completing C/C++ code.
+    " http://www.vim.org/scripts/script.php?script_id=3302
+    " https://github.com/Rip-Rip/clang_complete
+    "
+    " You can use <C-x><C-u> to 'force' a completion
+    " You can add special flags to a file called '.clang_complete' at the root of your project.
+    "
+
+    " Fix the library path for clang_complete (put this line in user.vim instead)
+    "let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/'
+
+    " Instead of calling clang/clang++ tool use libclang directly
+    let g:clang_use_library = 1
+
+    " select first entry in menu? (default 0)
+    let g:clang_auto_select = 0
+
+    " automatically complete after '-> . ::' (default 1)
+    let g:clang_complete_auto = 1
+
+    " open quickfix window on error (default 0)
+    let g:clang_complete_copen = 0
+
+    " highlight warnings and errors (default 1)
+    let g:clang_hl_errors = 1
+
+    " periodically update the quickfix window (default 0)
+    let g:clang_periodic_quickfix = 0
+
+    " snippets engine (clang_complete, snipmate, ultisnips, ...)
+    let g:clang_snippets = 1
+    let g:clang_snippets_engine = 'clang_complete'
+    if exists('s:ludwig_loaded_ultisnips')
+        let g:clang_snippets_engine = 'ultisnips'
+    endif
+
+    " automatically close preview window after completion (default 0)
+    let g:clang_close_preview = 1
+
+    " complete preprocessor macros and constants (default 0)
+    let g:clang_complete_macros = 1
+
+    " complete code patterns, i.e. loop constructs etc (default 0)
+    let g:clang_complete_patterns = 1
+
+endif
+" }}}
+" --- neocomplcache settings {{{
+if exists('s:ludwig_loaded_neocomplcache')
+
+    " Disable AutoComplPop
+    let g:acp_enableAtStartup = 0
+
+    " enable at startup (default 0).
+    " can also enable with :NeoComplCacheEnable command.
+    let g:neocomplcache_enable_at_startup = 0
+
+    " number of candidates to display (default 100)
+    let g:neocomplcache_max_list = 100
+
+    " indication width of candidats (default 50)
+    let g:neocomplcache_max_keyword_width = 50
+
+    " number of input completion (default 2)
+    let g:neocomplcache_auto_completion_start_length = 2
+
+    " use smartcase
+    let g:neocomplcache_enable_smart_case = 1
+
+    " close popup and save indent on <CR>
+    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+    function! s:my_cr_function()
+        return neocomplcache#smart_close_popup() . "\<CR>"
+    endfunction
+
+    " define two commands that have easier tab completion
+    command! EnableNeoComplCache :NeoComplCacheEnable
+    command! DisableNeoComplCache :NeoComplCacheDisable
+
+endif
+" }}}
+" --- neocomplete settings {{{
+if exists('s:ludwig_loaded_neocomplete')
+    " See https://github.com/Shougo/neocomplete.vim#configuration-examples
+
+    " Disable AutoComplPop
+    let g:acp_enableAtStartup = 0
+
+    " Use neocomplete
+    let g:neocomplete#enable_at_startup = 1
+
+    " Use smartcase
+    let g:neocomplete#enable_smart_case = 1
+
+    " Set minimum syntax keyword length
+    let g:neocomplete#sources#syntax#min_keyword_length = 3
+    let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+    " Define dictionary
+    let g:neocomplete#sources#dictionary#dictionaries = {
+        \ 'default' : '',
+        \ 'vimshell' : $HOME.'/.vimshell_hist',
+        \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+    " Define keyword
+    if !exists('g:neocomplete#keyword_patterns')
+        let g:neocomplete#keyword_patterns = {}
+    endif
+    let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+    " Plugin key-mappings
+    inoremap <expr><C-g>    neocomplete#undo_completion()
+    inoremap <expr><C-l>    neocomplete#complete_common_string()
+
+    " Recommended key-mappings
+    " <CR>: close popup and save indent.
+    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+    function! s:my_cr_function()
+        return neocomplete#close_popup() . "\<CR>"
+        " For no inserting <CR> key
+        "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+    endfunction
+
+    " <TAB>: completion
+    inoremap <expr><TAB>    pumvisible() ? "\<C-n>" : "\<TAB>"
+
+    " <C-h>, <BS>: close popup and delete backword char
+    inoremap <expr><C-h>    neocomplete#smart_close_popup()."\<C-h>"
+    inoremap <expr><BS>     neocomplete#smart_close_popup()."\<C-h>"
+    inoremap <expr><C-y>    neocomplete#smart_close_popup()
+    inoremap <expr><C-e>    neocomplete#smart_close_popup()
+
+    " Close popup by <Space>
+    "inoremap <expr><Space>  pumvisible() ? neocomplete#close_popup() : "\<Space>"
+
+    " Enable omni completion
+    autocmd filetype css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd filetype html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd filetype javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd filetype python setlocal omnifunc=pythoncomplete#Complete
+    autocmd filetype xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+    " Enable heavy omni completion.
+    if !exists('g:neocomplete#sources#omni#input_patterns')
+        let g:neocomplete#sources#omni#input_patterns = {}
+    endif
+    let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+    let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+    let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+    " For perlomni.vim setting.
+    " https://github.com/c9s/perlomni.vim
+    "let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+    " Using with neocomplete?
+    " http://stackoverflow.com/questions/12975098/using-neocomplcache-and-clang-complete
+endif
+
+" }}}
+" --- neosnippet settings {{{
+if exists('s:ludwig_loaded_neosnippet')
+    " See https://github.com/Shougo/neosnippet.vim
+
+    " Plugin key-mappings (<C-k> by default, then use <C-n> and <C-p> to navigate list)
+    imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+    " SuperTab-like snippets behavior
+    imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+    smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+    " For snippet_complete marker
+    if has('conceal')
+        set conceallevel=2 concealcursor+=i
+    endif
+endif
+" }}}
+" --- syntastic settings {{{
+if exists('s:ludwig_loaded_syntastic')
+    " Syntax checks are run every time file is saved.
+    " Remember to only load syntastic when YouCompleteMe is not loaded!
+    "
+    " See ':help syntastic' for options
+    " Use ':Errors' to see the list of errors
+    "
+
+    " Do syntax check on open (default 0)
+    let g:syntastic_check_on_open = 0
+
+    " Do syntax checks on :wq (default 1)
+    let g:syntastic_check_on_wq = 0
+
+    " Run all checkers that apply to current filetype (default 0)
+    let g:syntastic_aggregate_errors = 1
+
+    " Use custom syntastic symbols (defaults are '>>' and 'S>')
+    let g:syntastic_enable_signs = 1
+    let g:syntastic_error_symbol = "✗"
+    let g:syntastic_style_error_symbol =  "S✗"
+    let g:syntastic_warning_symbol = "⚠"
+    let g:syntastic_style_warning_symbol = "S⚠"
+
+    " Always place detected errors into location list (default 0)
+    let g:syntastic_always_populate_loc_list = 1
+
+    " Autojump to first error? (0 to disable, 1 to jump to first issue, 2 to jump to first error)
+    let g:syntastic_auto_jump = 2
+
+    " Automatically open location list? (default 2)
+    " (0 won't open or close, 1 auto open with errors, 2 auto close if no errors)
+    let g:syntastic_auto_loc_list = 1
+
+    " Height of location list (default 10)
+    let g:syntastic_loc_list_height = 10
+
+endif
+" }}}
+" --- UltiSnips settings {{{
+if exists('s:ludwig_loaded_ultisnips')
+    " https://github.com/SirVer/ultisnips
+    " http://vimcasts.org/episodes/meet-ultisnips/
+    " http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
+
+    " If you want ':UltiSnipsEdit' to split your window
+    let g:UltiSnipsEditSplit = "vertical"
+
+    " make YCM compatible with UltiSnips (using supertab)
+    if exists('s:ludwig_loaded_ycm')
+        let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+        let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+    endif
+    let g:SuperTabDefaultCompletionType = '<C-n>'
+
+    " better key bindings for UltiSnipsExpandTrigger
+    " (defaults are <tab>, <c-tab>, <c-j>, <c-k>)
+    let g:UltiSnipsExpandTrigger = "<Tab>"
+    let g:UltiSnipsListSnippets = "<C-y>"
+    let g:UltiSnipsJumpForwardTrigger = "<Tab>"
+    let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
+
+endif
+" }}}
+" --- vim-marching settings {{{
+if exists('s:ludwig_loaded_neocomplete')
+    " Refer to ':help marching'
+    " https://github.com/osyo-manga/vim-marching
+    " https://github.com/osyo-manga/vim-marching/blob/master/doc/marching.txt
+
+    " path to clang command
+    let g:marching_clang_command = 'clang'
+
+    " filetype=cpp
+    let g:marching#clang_command#options = {
+    \   'cpp' : '-std=c++11'
+    \ }
+
+    " directory paths to include
+    let g:marching_include_paths = [
+    \   '/usr/local/include',
+    \   $HOME.'/opt/local/include'
+    \ ]
+
+    " cooperate with neocomplete.vim
+    let g:marching_enable_neocomplete = 1
+
+    if !exists('g:neocomplete#force_omni_input_patterns')
+        let g:neocomplete#force_omni_input_patterns = {}
+    endif
+
+    let g:neocomplete#force_omni_input_patterns.cpp =
+        \ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+
+    set updatetime=200
+    imap <buffer> <C-x><C-o> <Plug>(marching_start_omni_complete)
+    imap <buffer> <C-x><C-x><C-o> <Plug>(marching_force_start_omni_complete)
+
+    " This variable controls the process of completion (async vs. sync)
+    let g:marching_backend = "clang_command"
+
+endif
+" }}}
+" --- YouCompleteMe settings {{{
+if exists('s:ludwig_loaded_ycm')
+    " YouCompleteMe
+    " http://valloric.github.io/YouCompleteMe/
+
+    " How many chars for identifier-based completion (default 2)
+    " Use a high value to effectively disable it (leaving only the semantic engine).
+    let g:ycm_min_num_of_chars_for_completion = 1
+
+    " Auto-trigger completion (default 1)
+    " Can still trigger pop with '<C-Space>'.
+    let g:ycm_auto_trigger = 1
+
+    " Whitelist of vim filetypes (default is {'*':1})
+    let g:ycm_filetype_whitelist = { '*': 1 }
+
+    " Diagnostic stuff
+    let g:ycm_show_diagnostics_ui = 1
+    let g:ycm_enable_diagnostic_signs = 1
+    let g:ycm_enable_diagnostic_highlighting = 1
+    let g:ycm_echo_current_diagnostic = 1
+
+    " Diagnostic signs for errors/warnings (default symbol is '>>')
+    let g:ycm_error_symbol = '✗'
+    let g:ycm_warning_symbol = '⚠'
+
+    " Automatically populate location list with diagnostic data (default 0)
+    let g:ycm_always_populate_location_list = 1
+
+    " Automatically open location list when running ':YcmDiags'
+    let g:ycm_open_loclist_on_ycm_diags = 1
+
+    " Show completion menu inside comments and strings? (defaults are 0 and 1)
+    let g:ycm_complete_in_comments = 1
+    let g:ycm_complete_in_strings = 1
+
+    " Key mappings for selecting first completion string. 
+    " NOTE: See settings for UltiSnip for the compatibility values.
+    " Defaults shown in comment below.
+    "let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+    "let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
+
+    " Key mapping to invoke the completion menu for semantic completion (default is '<C-Space>')
+    let g:ycm_key_invoke_completion = '<C-Space>'
+
+    " Specify fallback .ycm_extra_conf.py file for compilation flags
+    " http://www.alexeyshmalko.com/2014/youcompleteme-ultimate-autocomplete-plugin-for-vim/
+    " https://github.com/rasendubi/dotfiles/blob/master/.vim/.ycm_extra_conf.py
+    let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+
+    " Avoid executing malicious files
+    let g:ycm_confirm_extra_conf = 1
+    let g:ycm_extra_conf_globlist = ['~/dev/*', '~/[wtx]/*', '!~/*']
+
+    " By default, YCM queries UltiSnips plugin for possible completions of snippet triggers.
+    let g:ycm_use_ultisnips_completer = 1
+
+endif
 " }}}
 " }}}
 
@@ -713,4 +1176,4 @@ if filereadable(expand('~/.vim/user.vim'))
     source ~/.vim/user.vim
 endif
 
-" vim: fdm=marker fdl=1
+" vim: fdm=marker fdl=1 tw=100
