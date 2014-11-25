@@ -822,6 +822,9 @@ if exists('s:ludwig_loaded_acp')
     " keyword chars needed to attempt CSS omni-completion for properties
     let g:acp_behaviorCssOmniPropertyLength = 1
 
+    " Let the space character close acp's popup-menu (finally fixed!)
+    inoremap <expr><Space>  pumvisible() ? "\<Esc>i\<Space>" : "\<Space>"
+
 endif
 " }}}
 " --- clang_complete settings {{{
