@@ -54,17 +54,9 @@ flags = [
     # relevant for c++ headers.
     # For a C project, you would set this to 'c' instead of 'c++'.
     '-x', 'c++',
-    '-isystem', '../BoostParts',
     # This path will only work on OS X, but extra paths that don't exist are not harmful
     '-isystem', '/System/Library/Frameworks/Python.framework/Headers',
-    '-isystem', '../llvm/include',
-    '-isystem', '../llvm/tools/clang/include',
     '-I', '.',
-    '-I', './ClangCompleter',
-    '-isystem', './tests/gmock/gtest',
-    '-isystem', './tests/gmock/gtest/include',
-    '-isystem', './tests/gmock',
-    '-isystem', './tests/gmock/include',
     '-isystem', '/usr/include',
     '-isystem', '/usr/local/include',
     '-isystem', '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1',
@@ -119,8 +111,9 @@ def MakeRelativePathsInFlagsAbsolute(flags, working_directory):
                 new_flag = path_flag + os.path.join(working_directory, path)
                 break
 
-            if new_flag:
-                new_flags.append(new_flag)
+        if new_flag:
+            new_flags.append(new_flag)
+
     return new_flags
 
 
