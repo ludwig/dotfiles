@@ -153,10 +153,14 @@ NeoBundle 'Rykka/colorv.vim'
 " http://nathanaelkane.imgur.com/indent_guides
 "NeoBundle 'nathanaelkane/vim-indent-guides'
 " }}}
-" Powerline - The ultimate vim statusline utility {{{
-" http://www.vim.org/scripts/script.php?script_id=3881
-" https://github.com/Lokaltog/vim-powerline
-NeoBundle 'Lokaltog/vim-powerline'
+" lightline.vim - A light and configurable statusline/tabline for Vim {{{
+" https://github.com/itchyny/lightline.vim
+NeoBundle 'itchyny/lightline.vim'
+" }}}
+" Powerline - statusline plugin for vim {{{
+" https://github.com/Lokaltog/powerline
+" https://powerline.readthedocs.org/en/latest/
+"NeoBundle 'Lokaltog/powerline'
 " }}}
 " scratch.vim - plugin to create and use a scratch vim buffer {{{
 " http://www.vim.org/scripts/script.php?script_id=664
@@ -228,6 +232,11 @@ NeoBundle 'tpope/vim-fugitive'
 " https://github.com/msanders/cocoa.vim
 NeoBundle 'msanders/cocoa.vim'
 " }}}
+" html5.vim - HTML5 omnicomplete and syntax {{{
+" http://www.vim.org/scripts/script.php?script_id=3236
+" https://github.com/othree/html5.vim
+NeoBundle 'othree/html5.vim'
+" }}}
 " nginx.vim - syntax highlighting for nginx.conf and related files {{{
 " http://www.vim.org/scripts/script.php?script_id=1886
 " https://github.com/vim-scripts/nginx.vim
@@ -250,6 +259,14 @@ NeoBundle 'wting/rust.vim'
 " https://github.com/jansenm/vim-cmake
 NeoBundle 'jansenm/vim-cmake'
 " }}}
+" vim-coffee-script - CoffeeScript support for vim {{{
+" https://github.com/kchmck/vim-coffee-script
+NeoBundle 'kchmck/vim-coffee-script'
+" }}}
+" vim-css3-syntax - Add CSS3 syntax support to vim {{{
+" https://github.com/hail2u/vim-css3-syntax
+NeoBundle 'hail2u/vim-css3-syntax'
+" }}}
 " vim-fish -- Vim support for editing fish-shell scripts {{{
 " https://github.com/dag/vim-fish
 NeoBundle 'dag/vim-fish'
@@ -263,11 +280,15 @@ NeoBundle 'fatih/vim-go'
 " https://github.com/pangloss/vim-javascript
 NeoBundle 'pangloss/vim-javascript'
 " }}}
+" vim-json - A better JSON for Vim (elzr/vim-json) {{{
+" https://github.com/elzr/vim-json
+NeoBundle 'elzr/vim-json'
+" }}}
 " vim-less - vim syntax for LESS (dynamic CSS) {{{
 " https://github.com/groenewege/vim-less
 NeoBundle 'groenewege/vim-less'
 " }}}
-" Markdown - Syntax highlighting for Markdown text files {{{
+" vim-markdown - Syntax highlighting for Markdown text files {{{
 " http://www.vim.org/scripts/script.php?script_id=2882
 " https://github.com/hallison/vim-markdown
 NeoBundle 'hallison/vim-markdown'
@@ -277,7 +298,7 @@ NeoBundle 'hallison/vim-markdown'
 NeoBundle 'derekwyatt/vim-scala'
 " }}}
 " }}}
-" --- Shougo Dark Vim Master {{{
+" --- Plugins by Shougo Dark Vim Master {{{
 " Unite.vim -- search and display information from arbitrary sources {{{
 " http://www.vim.org/scripts/script.php?script_id=3396
 " https://github.com/Shougo/unite.vim
@@ -324,15 +345,8 @@ NeoBundle 'mattn/webapi-vim'
 " }}}
 
 " Load the conditional bundles
-" --- AutoComplPop engine {{{
-if exists('g:ludwig_load_acp') && g:ludwig_load_acp
-    " AutoComplPop - Automatically opens popup menu for completions {{{
-    " Obsoleted by YouCompleteMe?
-    " http://www.vim.org/scripts/script.php?script_id=1879
-    " https://bitbucket.org/ns9tks/vim-autocomplpop/
-    NeoBundle 'AutoComplPop'
-    let s:ludwig_loaded_acp = 1
-    " }}}
+" --- YouCompleteMe engine {{{
+if exists('g:ludwig_load_ycm') && g:ludwig_load_ycm
     " SuperTab - Do all your insert-mode completion with Tab {{{
     " http://www.vim.org/scripts/script.php?script_id=1643
     " https://github.com/ervandew/supertab
@@ -344,10 +358,10 @@ if exists('g:ludwig_load_acp') && g:ludwig_load_acp
     NeoBundle 'honza/vim-snippets'
     let s:ludwig_loaded_ultisnips = 1
     " }}}
-    " syntastic - Syntax checking hacks for vim {{{
-    " https://github.com/scrooloose/syntastic
-    NeoBundle 'scrooloose/syntastic'
-    let s:ludwig_loaded_syntastic = 1
+    " Valloric/YouCompleteMe - A code-completion engine for Vim {{{
+    " https://github.com/Valloric/YouCompleteMe
+    NeoBundle 'Valloric/YouCompleteMe'
+    let s:ludwig_loaded_ycm = 1
     " }}}
 endif
 " }}}
@@ -370,27 +384,11 @@ if exists('g:ludwig_load_clangcomplete') && g:ludwig_load_clangcomplete
     NeoBundle 'scrooloose/syntastic'
     let s:ludwig_loaded_syntastic = 1
     " }}}
-endif
-" }}}
-" --- neocomplcache engine {{{
-if exists('g:ludwig_load_neocomplcache') && g:ludwig_load_neocomplcache
-    " neocomplcache - Ultimate auto completion system for vim {{{
-    " Obsoleted by YouCompleteMe?
-    " http://www.vim.org/scripts/script.php?script_id=2620
-    " https://github.com/Shougo/neocomplcache
-    NeoBundle 'Shougo/neocomplcache'
-    let s:ludwig_loaded_neocomplcache = 1
-    " }}}
-    " neosnippet.vim -- neo-snippet plugin contains neocomplcache snippets source {{{
-    " https://github.com/Shougo/neosnippet.vim
-    NeoBundle 'Shougo/neosnippet'
-    NeoBundle 'Shougo/neosnippet-snippets'
-    let s:ludwig_loaded_neosnippet = 1
-    " }}}
-    " syntastic - Syntax checking hacks for vim {{{
-    " https://github.com/scrooloose/syntastic
-    NeoBundle 'scrooloose/syntastic'
-    let s:ludwig_loaded_syntastic = 1
+    " UltiSnips - The ultimate snippet solution for Vim {{{
+    " https://github.com/SirVer/ultisnips
+    NeoBundle 'SirVer/ultisnips'
+    NeoBundle 'honza/vim-snippets'
+    let s:ludwig_loaded_ultisnips = 1
     " }}}
 endif
 " }}}
@@ -423,8 +421,37 @@ if exists('g:ludwig_load_neocomplete') && g:ludwig_load_neocomplete
     " }}}
 endif
 " }}}
-" --- YouCompleteMe engine {{{
-if exists('g:ludwig_load_ycm') && g:ludwig_load_ycm
+" --- neocomplcache engine {{{
+if exists('g:ludwig_load_neocomplcache') && g:ludwig_load_neocomplcache
+j   " neocomplcache - Ultimate auto completion system for vim {{{
+    " Obsoleted by YouCompleteMe?
+    " http://www.vim.org/scripts/script.php?script_id=2620
+    " https://github.com/Shougo/neocomplcache
+    NeoBundle 'Shougo/neocomplcache'
+    let s:ludwig_loaded_neocomplcache = 1
+    " }}}
+    " neosnippet.vim -- neo-snippet plugin contains neocomplcache snippets source {{{
+    " https://github.com/Shougo/neosnippet.vim
+    NeoBundle 'Shougo/neosnippet'
+    NeoBundle 'Shougo/neosnippet-snippets'
+    let s:ludwig_loaded_neosnippet = 1
+    " }}}
+    " syntastic - Syntax checking hacks for vim {{{
+    " https://github.com/scrooloose/syntastic
+    NeoBundle 'scrooloose/syntastic'
+    let s:ludwig_loaded_syntastic = 1
+    " }}}
+endif
+" }}}
+" --- AutoComplPop engine {{{
+if exists('g:ludwig_load_acp') && g:ludwig_load_acp
+    " AutoComplPop - Automatically opens popup menu for completions {{{
+    " Obsoleted by YouCompleteMe?
+    " http://www.vim.org/scripts/script.php?script_id=1879
+    " https://bitbucket.org/ns9tks/vim-autocomplpop/
+    NeoBundle 'AutoComplPop'
+    let s:ludwig_loaded_acp = 1
+    " }}}
     " SuperTab - Do all your insert-mode completion with Tab {{{
     " http://www.vim.org/scripts/script.php?script_id=1643
     " https://github.com/ervandew/supertab
@@ -436,10 +463,10 @@ if exists('g:ludwig_load_ycm') && g:ludwig_load_ycm
     NeoBundle 'honza/vim-snippets'
     let s:ludwig_loaded_ultisnips = 1
     " }}}
-    " Valloric/YouCompleteMe - A code-completion engine for Vim {{{
-    " https://github.com/Valloric/YouCompleteMe
-    NeoBundle 'Valloric/YouCompleteMe'
-    let s:ludwig_loaded_ycm = 1
+    " syntastic - Syntax checking hacks for vim {{{
+    " https://github.com/scrooloose/syntastic
+    NeoBundle 'scrooloose/syntastic'
+    let s:ludwig_loaded_syntastic = 1
     " }}}
 endif
 " }}}
@@ -779,11 +806,18 @@ let g:indent_guides_default_mapping = 1
 let g:go_fmt_autosave = 0
 " }}}
 " --- Yggdroot/indentLine {{{
-" can also use one of ¦, ┆, ︙ or │
-"let g:indentLine_char = '¦'
-"let g:indentLine_char = '│'
-"let g:indentLine_char = '┆'
-"let g:indentLine_char = '︙'
+" Use ':help indentline' to see full list of options
+
+" enable indentLine by default?
+let g:indentLine_enabled = 1
+
+" Specify a character to be used as indent line (default '|')
+" You can also use one of ¦, ┆, ︙ or │
+let g:indentLine_char = '|'
+
+" Disable plugin for these filetypes (default is [])
+let g:indentLine_fileTypeExclude = ['help']
+
 " }}}
 " }}}
 
@@ -849,14 +883,17 @@ if exists('s:ludwig_loaded_clangcomplete')
     " automatically complete after '-> . ::' (default 1)
     let g:clang_complete_auto = 1
 
+    " if clang should complete preprocessor macros and constants
+    let g:clang_complete_macros = 1
+
     " open quickfix window on error (default 0)
-    let g:clang_complete_copen = 0
+    let g:clang_complete_copen = 1
 
     " highlight warnings and errors (default 1)
     let g:clang_hl_errors = 1
 
     " periodically update the quickfix window (default 0)
-    let g:clang_periodic_quickfix = 0
+    let g:clang_periodic_quickfix = 1
 
     " snippets engine (clang_complete, snipmate, ultisnips, ...)
     let g:clang_snippets = 1
@@ -865,14 +902,26 @@ if exists('s:ludwig_loaded_clangcomplete')
         let g:clang_snippets_engine = 'ultisnips'
     endif
 
+    " use vim's conceal feature to hide the snippet holders
+    if has('conceal')
+        let g:clang_conceal_snippets = 1
+        set conceallevel=2 concealcursor+=inv
+    endif
+
     " automatically close preview window after completion (default 0)
-    let g:clang_close_preview = 1
+    let g:clang_close_preview = 0
+
+    " additional compilation arguments passed to libclang (default '')
+    "let g:clang_user_options = '-std=c++11'
 
     " complete preprocessor macros and constants (default 0)
-    let g:clang_complete_macros = 1
+    let g:clang_complete_macros = 0
 
     " complete code patterns, i.e. loop constructs etc (default 0)
-    let g:clang_complete_patterns = 1
+    let g:clang_complete_patterns = 0
+
+    " let clang_complete set default keymappings (default 1)
+    let g:clang_make_default_keymappings = 1
 
 endif
 " }}}
@@ -963,14 +1012,14 @@ if exists('s:ludwig_loaded_neocomplete')
     inoremap <expr><C-e>    neocomplete#smart_close_popup()
 
     " Close popup by <Space>
-    "inoremap <expr><Space>  pumvisible() ? neocomplete#close_popup() : "\<Space>"
+    inoremap <expr><Space>  pumvisible() ? neocomplete#close_popup()."\<Space>" : "\<Space>"
 
-    " Enable omni completion
-    autocmd filetype css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd filetype html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd filetype javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd filetype python setlocal omnifunc=pythoncomplete#Complete
-    autocmd filetype xml setlocal omnifunc=xmlcomplete#CompleteTags
+    " Enable omni completion (already in defaults.vim)
+    "autocmd filetype css setlocal omnifunc=csscomplete#CompleteCSS
+    "autocmd filetype html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    "autocmd filetype javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    "autocmd filetype python setlocal omnifunc=pythoncomplete#Complete
+    "autocmd filetype xml setlocal omnifunc=xmlcomplete#CompleteTags
 
     " Enable heavy omni completion.
     if !exists('g:neocomplete#sources#omni#input_patterns')
