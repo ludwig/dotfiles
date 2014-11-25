@@ -1,4 +1,10 @@
 " ~/.vimrc
+"
+" To use this file, you'll have to set up neobundle:
+"
+"   $ mkdir -p ~/.vim/bundle
+"   $ git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+"
 
 " Change the mapleader from \ to ,
 let mapleader=","
@@ -1209,11 +1215,11 @@ if exists('s:ludwig_loaded_ycm')
     let g:ycm_open_loclist_on_ycm_diags = 1
 
     " Show completion menu inside comments and strings? (defaults are 0 and 1)
-    let g:ycm_complete_in_comments = 1
+    let g:ycm_complete_in_comments = 0
     let g:ycm_complete_in_strings = 1
 
     " Key mappings for selecting first completion string. 
-    " NOTE: See settings for UltiSnip for the compatibility values.
+    " NOTE: See settings for UltiSnips for the compatibility values.
     " Defaults shown in comment below.
     "let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
     "let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
@@ -1221,14 +1227,20 @@ if exists('s:ludwig_loaded_ycm')
     " Key mapping to invoke the completion menu for semantic completion (default is '<C-Space>')
     let g:ycm_key_invoke_completion = '<C-Space>'
 
+    " Calls ':YcmShowDetailedDiagnostic' on given line
+    let g:ycm_key_detailed_diagnostics = '\d'
+
     " Specify fallback .ycm_extra_conf.py file for compilation flags
     " http://www.alexeyshmalko.com/2014/youcompleteme-ultimate-autocomplete-plugin-for-vim/
     " https://github.com/rasendubi/dotfiles/blob/master/.vim/.ycm_extra_conf.py
     let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 
     " Avoid executing malicious files
-    let g:ycm_confirm_extra_conf = 1
-    let g:ycm_extra_conf_globlist = ['~/dev/*', '~/[wtx]/*', '!~/*']
+    "let g:ycm_confirm_extra_conf = 1
+    "let g:ycm_extra_conf_globlist = ['~/dev/*', '~/[wtx]/*', '~/tmp/*', '!~/*']
+
+    " Disabling this will requery omnicompletion engine on every keypress (default 1)
+    let g:ycm_cache_omnifunc = 0
 
     " By default, YCM queries UltiSnips plugin for possible completions of snippet triggers.
     let g:ycm_use_ultisnips_completer = 1
