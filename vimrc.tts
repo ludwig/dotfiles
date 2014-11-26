@@ -4,6 +4,13 @@
 "
 "   $ mkdir -p ~/.vim/bundle
 "   $ git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+"   $ vim +NeoBundleInstall +qall
+"
+" If you're using YouCompleteMe, you'll also need to run
+"
+"   $ cd ~/.vim/bundle/YouCompleteMe/
+"   $ git submodule update --init --recursive
+"   $ ./install.sh --clang-completer
 "
 
 " Change the mapleader from \ to ,
