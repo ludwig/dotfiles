@@ -1,4 +1,5 @@
 # ignore vim files
+/emacs.d/elpa
 /vim/tmp
 /vim/bundle
 /vim/sessions
