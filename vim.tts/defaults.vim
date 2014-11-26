@@ -151,8 +151,19 @@ set viminfo='20,\"80
 " The double tailing slash will store files using full paths (so you can edit
 " identically named files with no problems).
 " See also: http://news.ycombinator.com/item?id=1688068
+
+set nobackup
+set writebackup
 set backupdir=~/.vim/tmp/backup//,~/tmp//,/tmp//
+if !isdirectory(expand('~/.vim/tmp/backup'))
+    call mkdir(expand('~/.vim/tmp/backup'), 'p')
+endif
+
+set swapfile
 set directory=~/.vim/tmp/swp//,~/tmp//,/tmp//
+if !isdirectory(expand('~/.vim/tmp/swp'))
+    call mkdir(expand('~/.vim/tmp/swp'), 'p')
+endif
 
 " keep the undo history for our buffers (disable for now)
 if 0 && exists('+undofile')
