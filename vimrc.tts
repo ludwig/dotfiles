@@ -206,6 +206,10 @@ NeoBundle 'mattn/emmet-vim'
 " https://github.com/scrooloose/nerdcommenter
 NeoBundle 'scrooloose/nerdcommenter'
 " }}}
+" split-manpage.vim - View any man page in a split vim window {{{
+" https://github.com/ludwig/split-manpage.vim
+NeoBundle 'ludwig/split-manpage.vim', 'master'
+" }}}
 " surround.vim - quoting/parenthesizing made simple {{{
 " http://www.vim.org/scripts/script.php?script_id=1697
 " https://github.com/tpope/vim-surround
