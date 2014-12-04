@@ -245,6 +245,11 @@ NeoBundle 'tpope/vim-fugitive'
 " https://github.com/msanders/cocoa.vim
 NeoBundle 'msanders/cocoa.vim'
 " }}}
+" django.vim - Syntax highlighting for Django templates {{{
+" http://www.vim.org/scripts/script.php?script_id=1487
+" https://github.com/vim-scripts/django.vim
+NeoBundle 'vim-scripts/django.vim'
+" }}}
 " html5.vim - HTML5 omnicomplete and syntax {{{
 " http://www.vim.org/scripts/script.php?script_id=3236
 " https://github.com/othree/html5.vim

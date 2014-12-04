@@ -626,6 +626,25 @@ if has ('autocmd')
         au!
         autocmd filetype css,less setlocal foldmethod=marker foldmarker={,}
     augroup end "}}}
+    augroup html_files "{{{
+        au!
+        " This function detects, based on HTML content, whether this is a
+        " Django template, or a plain HTML file, and sets filetype accordingly
+        function! s:DetectHTMLVariant()
+            let n = 1
+            while n < 50 && n < line('$')
+                " chedk for django file
+                if getline(n) =~ '{%\s*\(extends\|load\|block\|if\|for\|include\|trans\)\>'
+                    set ft=htmldjango.html
+                    return
+                endif
+                let n = n + 1
+            endwhile
+            " go with html
+            set ft=html
+        endfunction
+        autocmd BufNewFile,BufRead *.html,*.htm call s:DetectHTMLVariant()
+    augroup end "}}}
     augroup rst_files "{{{
         au!
         " Auto-wrap text around 74 chars
