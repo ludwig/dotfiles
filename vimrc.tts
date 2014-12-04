@@ -598,7 +598,9 @@ let g:colorv_no_global_map = 0
 
 " }}}
 " --- closetag.vim settings {{{
+" http://mirnazim.org/writings/vim-plugins-i-use/
 autocmd filetype html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style = 1
+"autocmd filetype html,xml,xsl source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
 " }}}
 " --- Command-T settings {{{
 
@@ -694,7 +696,7 @@ let NERDTreeMouseMode=2
 " Don't display these kinds of files
 let NERDTreeIgnore=[
     \ '\.pyc$', '\.pyo$', '\.pyd$', '\.egg$',
-    \ '\.class$', '\.obj$', '\.o$', '\.so$',
+    \ '\.class$', '\.obj$', '\.o$', '\.so$', '\.a$',
     \ '^\.git$', '^\.svn$'
     \ ]
 
@@ -1239,7 +1241,7 @@ if exists('s:ludwig_loaded_ycm')
     let g:ycm_open_loclist_on_ycm_diags = 1
 
     " Show completion menu inside comments and strings? (defaults are 0 and 1)
-    let g:ycm_complete_in_comments = 0
+    let g:ycm_complete_in_comments = 1
     let g:ycm_complete_in_strings = 1
 
     " Key mappings for selecting first completion string. 
@@ -1254,20 +1256,32 @@ if exists('s:ludwig_loaded_ycm')
     " Calls ':YcmShowDetailedDiagnostic' on given line
     let g:ycm_key_detailed_diagnostics = '\d'
 
-    " Specify fallback .ycm_extra_conf.py file for compilation flags
-    " http://www.alexeyshmalko.com/2014/youcompleteme-ultimate-autocomplete-plugin-for-vim/
-    " https://github.com/rasendubi/dotfiles/blob/master/.vim/.ycm_extra_conf.py
-    let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-
-    " Avoid executing malicious files
-    "let g:ycm_confirm_extra_conf = 1
-    "let g:ycm_extra_conf_globlist = ['~/dev/*', '~/[wtx]/*', '~/tmp/*', '!~/*']
-
     " Disabling this will requery omnicompletion engine on every keypress (default 1)
     let g:ycm_cache_omnifunc = 0
 
     " By default, YCM queries UltiSnips plugin for possible completions of snippet triggers.
     let g:ycm_use_ultisnips_completer = 1
+
+    " Collect identifiers from string and comments (default 0)
+    let g:ycm_collect_identifiers_from_comments_and_strings = 0
+
+    " Collect identifiers from tag files (default 0)
+    let g:ycm_collect_identifiers_from_tags_files = 1
+
+    " Seed the identifier database with keywords for the programming language (default 0)
+    let g:ycm_seed_identifiers_with_syntax = 1
+
+    " Specify fallback .ycm_extra_conf.py file for compilation flags
+    " http://www.alexeyshmalko.com/2014/youcompleteme-ultimate-autocomplete-plugin-for-vim/
+    " https://github.com/rasendubi/dotfiles/blob/master/.vim/.ycm_extra_conf.py
+    let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+
+    " Pass extra data to the 'FlagsForFile' function in .ycm_extra_conf.py
+    let g:ycm_extra_conf_vim_data = ['&filetype']
+
+    " Avoid executing potentially malicious files (default 1)
+    let g:ycm_confirm_extra_conf = 1
+    let g:ycm_extra_conf_globlist = ['~/*', '!/*']
 
 endif
 " }}}
