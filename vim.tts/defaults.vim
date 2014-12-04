@@ -245,6 +245,12 @@ endif
 highlight CursorLine term=standout cterm=NONE ctermbg=222 guibg=#F1F5FA
 nnoremap <silent> \c :set cursorline!<CR>
 
+" Hide ^M char at the end of every line. They're still there, however.
+" If you mean to remove them, use ':%s/\r$//g'
+" http://vim.wikia.com/wiki/VimTip26
+" http://vim.1045645.n5.nabble.com/Hiding-M-td1172310.html
+match Ignore /\r$/
+
 " Display line numbers (toggle with \a)
 " http://vim.wikia.com/wiki/Display_line_numbers
 nmap <silent> \a :set number!<CR>
