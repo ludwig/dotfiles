@@ -323,6 +323,10 @@ NeoBundle 'hallison/vim-markdown'
 " https://github.com/derekwyatt/vim-scala
 NeoBundle 'derekwyatt/vim-scala'
 " }}}
+" vim-swift - Adds Swift support to vim. It covers syntax, indenting, and more.{{{
+" https://github.com/toyamarinyon/vim-swift
+NeoBundle 'toyamarinyon/vim-swift'
+" }}}
 " }}}
 " --- Plugins by Shougo Dark Vim Master {{{
 " Unite.vim -- search and display information from arbitrary sources {{{
