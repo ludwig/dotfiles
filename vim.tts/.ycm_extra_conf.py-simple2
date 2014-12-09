@@ -1,0 +1,29 @@
+# Simple .ycm_extra_conf.py
+
+flags = [
+    '-Wall',
+    '-Wextra',
+    '-Werror',
+    '-pedantic',
+    '-I', '.',
+    '-isystem', '/usr/include',
+    '-isystem', '/usr/local/include',
+    '-isystem', '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include'
+    '-isystem', '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/6.0/include',
+    '-isystem', '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1',
+]
+
+def FlagsForFile(filename, **kwargs):
+    data = kwargs['client_data']
+    filetype = data['&filetype']
+    if filetype == 'c':
+        flags.append('-xc')
+    elif filetype == 'cpp':
+        flags.append('-xc++')
+        flags.append('-std=c++11')
+    if filetype == 'objc':
+        flags.append('-ObjC')
+    return {'flags': flags, 'do_cache': True}
+
+# vim:ft=python
+# EOF

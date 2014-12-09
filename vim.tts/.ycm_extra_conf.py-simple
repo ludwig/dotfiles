@@ -1,0 +1,16 @@
+flags = [
+    '-Wall',
+    '-Werror',
+    '-I.',
+    '-isystem', '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1',
+    '-isystem', '/usr/local/include',
+    '-isystem', '/usr/include',
+    '-std=c++11',
+    '-xc++',
+]
+
+def FlagsForFile(filename):
+    return {'flags': flags, 'do_cache': True}
+
+# vim:ft=python
+# EOF
