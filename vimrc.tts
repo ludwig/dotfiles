@@ -694,8 +694,10 @@ let NERDTreeQuitOnOpen=0
 " Highlight the selected entry in the tree?
 let NERDTreeHighlightCursorline=0
 
-" Use a single click to fold/unfold directories and a double click to open files
-let NERDTreeMouseMode=2
+" 1 - Double click to open nodes
+" 2 - Single click to open directories, and double click to open files
+" 3 - Single click to open nodes
+let NERDTreeMouseMode=3
 
 " Don't display these kinds of files
 let NERDTreeIgnore=[
