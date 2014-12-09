@@ -1275,6 +1275,11 @@ if exists('s:ludwig_loaded_ycm')
     " Seed the identifier database with keywords for the programming language (default 0)
     let g:ycm_seed_identifiers_with_syntax = 1
 
+    " Options related to the preview window
+    let g:ycm_add_preview_to_completeopt = 1
+    let g:ycm_autoclose_preview_window_after_completion = 0
+    let g:ycm_autoclose_preview_window_after_insertion = 1
+
     " Specify fallback .ycm_extra_conf.py file for compilation flags
     " http://www.alexeyshmalko.com/2014/youcompleteme-ultimate-autocomplete-plugin-for-vim/
     " https://github.com/rasendubi/dotfiles/blob/master/.vim/.ycm_extra_conf.py
