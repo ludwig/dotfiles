@@ -113,6 +113,9 @@ set wildmode=list:full
 " ignore completion for these files
 set wildignore+=*.swp,*.bak,*.pyc,*.class,*.o
 
+" Set up vim to use the system clipboard
+set clipboard=unnamed
+
 " }}}
 
 " Terminal/file settings {{{
