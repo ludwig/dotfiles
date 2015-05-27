@@ -331,6 +331,12 @@ NeoBundle 'derekwyatt/vim-scala'
 " https://github.com/toyamarinyon/vim-swift
 NeoBundle 'toyamarinyon/vim-swift'
 " }}}
+" vim-erlang-omnicomplete -- Erlang omnicomplete plugin for Vim {{{
+"NeoBundle 'vim-erlang/vim-erlang-omnicomplete'
+" }}}
+" vimerl -- The Erlang plugin for Vim {{{
+NeoBundle 'jimenezrick/vimerl'
+" }}}
 " }}}
 " --- Plugins by Shougo Dark Vim Master {{{
 " Unite.vim -- search and display information from arbitrary sources {{{
@@ -702,7 +708,7 @@ let NERDTreeMouseMode=3
 " Don't display these kinds of files
 let NERDTreeIgnore=[
     \ '\.pyc$', '\.pyo$', '\.pyd$', '\.egg$',
-    \ '\.class$', '\.obj$', '\.o$', '\.so$', '\.a$',
+    \ '\.class$', '\.beam$', '\.obj$', '\.o$', '\.so$', '\.a$',
     \ '^\.git$', '^\.svn$'
     \ ]
 
