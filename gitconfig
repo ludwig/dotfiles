@@ -12,10 +12,10 @@
 
 [user]
 	name = Luis Armendariz
-	email = luis.armendariz@gmail.com
+	email = luis.armendariz@openx.com
 
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = /Users/luis.armendariz/.gitignore_global
 
 [branch "master"]
 	remote = origin
@@ -104,6 +104,7 @@
 	unci = reset HEAD^
 	uncommit = reset HEAD^
     commit-empty = commit --allow-empty
+    empty = commit --allow-empty -m "Initial commit"
 
 [url "git://github.com/"]
 	insteadOf = "github:"
@@ -121,3 +122,9 @@
 	keepBackup = true
 [push]
 	default = simple
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
