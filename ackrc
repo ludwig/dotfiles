@@ -1,0 +1,10 @@
+
+# Always color, even if piping to another program
+--color
+
+# Group matches by filename (usually disabled when piping to another program)
+--group
+
+# Use "less -r" as my pager (does not disable grouping)
+#--pager=less -r
+
