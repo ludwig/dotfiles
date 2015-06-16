@@ -36,6 +36,22 @@ fi
 # Prepend ~/bin to the PATH.
 PATH="${HOME}/bin:${PATH}"
 
+# Set up the GPG Agent
+# http://fvue.nl/wiki/Debian_4.0:_Installing_gpg-agent
+if [ -f ${HOME}/.gpg-agent-info ] && \
+    kill -0 $(cut -d: -f 2 ${HOME}/.gpg-agent-info)
+then
+    # Yes, '.gpg-agent-info' points to valid gpg-agent process;
+    # Indicate gpg-agent process
+    GPG_AGENT_INFO=$(cat ${HOME}/.gpg-agent-info | cut -c 16-)
+else
+    # No, no valid gpg-agent process available;
+    # Start gpg-agent
+    eval $(gpg-agent --daemon --no-grab --write-env-file ${HOME}/.gpg-agent-info)
+fi
+export GPG_TTY=$(tty)
+export GPG_AGENT_INFO
+
 # -----------------------------------------------------------------------------
 # Finally, export our shell variables
 #export PS1='\u@\h:\w\$ '
