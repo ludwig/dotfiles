@@ -4,5 +4,6 @@
 /vim/.netrwhist
 /vim/bundle
 /vim/sessions
+/emacs.d/elpa/
 tags
 tags-ja
