@@ -1,0 +1,53 @@
+# ~/.bashrc_local
+
+# set up virtualenvwrapper
+if [ -d ~/.virtualenvs ]; then
+    export WORKON_HOME="$HOME/.virtualenvs"
+    export VIRTUALENVWRAPPER_PYTHON='/usr/local/bin/python'
+    export VIRTUALENVWRAPPER_VIRTUALENV='/usr/local/bin/virtualenv'
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
+
+# enable bash completion for django
+#source ~/dev/django/extras/django_bash_completion
+
+# set up msgpack
+export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$HOME/opt/msgpack-0.6.0/lib/pkgconfig"
+
+# set up sqlite3 stuff (keg-only package)
+export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$(brew --prefix sqlite3)/lib/pkgconfig"
+
+# set up Qt stuff
+export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/Cellar/qt5/5.2.1/lib/pkgconfig:$HOME/opt/qt-4.8.6/lib/pkgconfig"
+
+# Set up MacTeX
+export PATH="$PATH:/usr/local/texlive/2011/bin/x86_64-darwin"
+
+# Set up Docbook
+export XML_CATALOG_FILES="/usr/local/etc/xml/catalog"
+
+# Set up GLFW man pages
+export MANPATH="$MANPATH:$HOME/dev/glfw/build/docs/man"
+
+# environment variables
+export PATH="$PATH:${HOME}/sloc/build"
+#export PYTHONPATH="$PYTHONPATH:${HOME}/opt/getfem/lib/python2.7/site-packages"
+export MANPATH="$MANPATH:$(brew --prefix erlang)/lib/erlang/man"
+export GPGKEY=528ACDDF
+
+# aliases
+alias pass='cat ~/pass.txt ~/bak/pass.bak | grep --color=always'
+alias cd-getfem='cd ~/t/getfem-ex'
+alias f='vim `journal.py`/furls'
+alias f2='vim `journal.py`/furls2'
+#alias v='/usr/bin/vim'
+
+# Imgur Client ID
+export IMGUR_CLIENT_ID=f61054ebf5690eb
+alias l='launch.py'
+
+# Useful aliases for CodeEval
+alias m='../make.py'
+alias mc='../clean.sh'
+
+# vim: ft=sh
