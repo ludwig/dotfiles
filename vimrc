@@ -106,7 +106,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
 " Use with '<Leader>ce'
 " http://www.vim.org/scripts/script.php?script_id=3597
 " https://github.com/Rykka/colorv.vim
-Plugin 'Rykka/colorv.vim'
+"Plugin 'Rykka/colorv.vim'
 
 " quickfixsigns - Mark quickfix & location list items with signs
 " http://www.vim.org/scripts/script.php?script_id=2584
