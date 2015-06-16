@@ -1,0 +1,51 @@
+# ~/.bashrc_local
+
+# set up virtualenvwrapper
+if [ -d ~/.virtualenvs ]; then
+    export WORKON_HOME="$HOME/.virtualenvs"
+    export VIRTUALENVWRAPPER_PYTHON='/usr/local/bin/python'
+    export VIRTUALENVWRAPPER_VIRTUALENV='/usr/local/bin/virtualenv'
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
+
+# enable bash completion for django
+if [ -d ~/dev/django ]; then
+    source ~/dev/django/extras/django_bash_completion
+fi
+
+# enable bash completion for ninja
+if [ -d ~/dev/ninja ]; then
+    source ~/dev/ninja/misc/bash-completion
+fi
+
+# homebrew-specific initialization and aliases
+if [ -d /usr/local/Cellar ]; then
+    # enable bash completion for homebrew
+    source /usr/local/Library/Contributions/brew_bash_completion.sh
+
+    # emacs alias
+    alias emacs='/usr/local/Cellar/emacs/HEAD/Emacs.app/Contents/MacOS/Emacs -nw'
+fi
+
+# needed by node.js
+export NODE_PATH="/usr/local/lib/node"
+
+# Qt5 is keg-only
+export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/Cellar/qt5/5.2.1/lib/pkgconfig"
+
+# Load Sencha SDK Tools
+#if [ -d /Applications/SenchaSDKTools-1.2.3 ]; then
+#    PATH=$PATH:/Applications/SenchaSDKTools-1.2.3
+#    PATH=$PATH:/Applications/SenchaSDKTools-1.2.3/command
+#    PATH=$PATH:/Applications/SenchaSDKTools-1.2.3/jsbuilder
+#    PATH=$PATH:/Applications/SenchaSDKTools-1.2.3/appbuilder
+#fi
+
+# random convenience aliases
+alias f='vim ~/journal/$(date +%Y/%m-%d)/furls'
+alias f2='vim ~/journal/$(date +%Y/%m-%d)/furls2'
+
+# project-specific aliases
+alias cd-myproject='cd ~/w/dj-myproject/myproject'
+
+# vim: syntax=sh
