@@ -55,7 +55,7 @@ export HISTCONTROL=erasedups:ignorespace
 
 # ignore some boring stuff. The " *" bit ignores all command lines
 # starting with whitespace, useful to selectively avoid the history
-export HISTIGNORE="ls:cd:cd ..:..*: *"
+export HISTIGNORE="ls:cd:cd ..:...*: *"
 
 # ignore these while tab-completing
 export FIGNORE="CVS:.svn:.git"
