@@ -1,0 +1,12 @@
+# ~/.tigrc
+
+# Cursor navigation
+bind generic H  move-first-line
+#bind generic M move-middle-line
+bind generic L  move-last-line
+
+# Scrolling
+bind generic <C-k> scroll-line-up
+bind generic <C-j> scroll-line-down
+
+# vim: ft=conf
