@@ -66,6 +66,7 @@
 	la = log --pretty='format:%ad %h (%an): %s' --date=short
 	ly = log --pretty='tformat:%h %an (%ar): %s' --since=yesterday
 	lp = log -p
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	ll = log --oneline --decorate
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
