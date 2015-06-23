@@ -18,7 +18,7 @@
 	excludesfile = /Users/luis.armendariz/.gitignore_global
 
 [push]
-	default = simple
+	default = current
 
 [branch "master"]
 	remote = origin
