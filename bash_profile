@@ -31,6 +31,15 @@ if [ -d ~/opt/local ]; then
     PKG_CONFIG_PATH="${HOME}/opt/local/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
 fi
 
+# Set up oxbot
+# https://wiki.corp.openx.com/display/TECH/OXbot+Quick+Installation
+export OXBOT_HOME="${HOME}/ox/oxbot"
+export OXBOT_CORE="${OXBOT_HOME}/oxbot-core"
+if [ -d "${OXBOT_CORE}" ]; then
+    PATH="${PATH}:${OXBOT_CORE}/bin"
+    export PYTHONPATH="${OXBOT_CORE}/libraries${PYTHONPATH:+:$PYTHONPATH}"
+fi
+
 # Prepend ~/bin/ to the PATH
 PATH="${HOME}/bin:${PATH}"
 
