@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Don't actually run this. These are just notes.
+exit 1
+
+# First, let's make sure ~/.tmux.conf doesn't exist
+[ -e ~/.tmux.conf ] && exit 2
+
+# Assuming this repo is checked out under ~/w/dotfiles/
+ln -sf ~/w/dotfiles/tmux.conf ~/.tmux.conf
+
+# Need to set up the tmux plugin manager
+# https://github.com/tmux-plugins/tpm
+mkdir -p ~/.tmux/plugins/
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
