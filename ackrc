@@ -8,3 +8,5 @@
 # Use "less -r" as my pager (does not disable grouping)
 #--pager=less -r
 
+# To ignore
+--ignore-dir=docs
