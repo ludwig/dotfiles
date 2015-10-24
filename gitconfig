@@ -109,6 +109,9 @@
 	uncommit = reset HEAD^
     commit-empty = commit --allow-empty
     empty = commit --allow-empty -m "Initial commit"
+    files-since-latest = !git --no-pager diff --name-only latest..master
+    new-filters = !sh -c 'git files-since-latest | grep filters/'
+    latest-commits = log --pretty=format:'%C(yellow)%h%C(reset) %C(green)(%cd)%C(reset) %s %C(blue)<%ae>%C(reset)' latest..master
 
 [url "git://github.com/"]
 	insteadOf = "github:"
