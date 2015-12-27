@@ -273,6 +273,10 @@ NeoBundle 'mutewinter/nginx.vim'
 " https://github.com/saltstack/salt-vim
 NeoBundle 'saltstack/salt-vim'
 " }}}
+" swift.vim - Vim runtime files for Swift {{{
+" https://github.com/keith/swift.vim
+NeoBundle "keith/swift.vim"
+" }}}
 " rest.vim - a reStructuredText syntax mode {{{
 " http://www.vim.org/scripts/script.php?script_id=973
 NeoBundle 'rest.vim'
@@ -326,10 +330,6 @@ NeoBundle 'hallison/vim-markdown'
 " vim-scala -- Vim integration for Scala {{{
 " https://github.com/derekwyatt/vim-scala
 NeoBundle 'derekwyatt/vim-scala'
-" }}}
-" vim-swift - Adds Swift support to vim. It covers syntax, indenting, and more.{{{
-" https://github.com/toyamarinyon/vim-swift
-NeoBundle 'toyamarinyon/vim-swift'
 " }}}
 " vim-erlang-omnicomplete -- Erlang omnicomplete plugin for Vim {{{
 "NeoBundle 'vim-erlang/vim-erlang-omnicomplete'
