@@ -10,3 +10,4 @@
 
 # To ignore
 --ignore-dir=docs
+--ignore-dir=etc
