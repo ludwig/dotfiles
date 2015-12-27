@@ -10,7 +10,7 @@
 "
 "   $ cd ~/.vim/bundle/YouCompleteMe/
 "   $ git submodule update --init --recursive
-"   $ ./install.sh --clang-completer
+"   $ ./install.py --clang-completer
 "
 
 " Change the mapleader from \ to ,
@@ -89,7 +89,7 @@ NeoBundle 'bufexplorer.zip'
 " http://git.wincent.com/command-t.git
 " https://github.com/Shougo/neobundle.vim/issues/78
 "NeoBundle 'wincent/Command-T'
-NeoBundle 'git://git.wincent.com/command-t.git', {
+NeoBundle 'wincent/command-t', {
     \   'build' : {
     \       'mac' : 'sh -c "cd ruby/command-t && ruby extconf.rb && make"'
     \   }
