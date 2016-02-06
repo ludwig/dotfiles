@@ -1,0 +1,23 @@
+
+# Didn't really like this tool, but let's keep this line commented out for now
+#export PATH="${PATH}:/Applications/Araxis Merge.app/Contents/Utilities"
+
+# Just for quickly loading the mcp tool
+export PATH="${PATH}:${HOME}/w/mcp-cli/bin"
+
+# See https://github.corp.openx.com/ed-silva/xhyve-mcp-tools
+export DOCKER_HOST="tcp://192.168.64.2:2375"
+
+# After running 'sudo cpan install Template' and selecting 'lib::local' installation option, this got appended to my ~/.bashrc
+PATH="/Users/luis.armendariz/perl5/bin${PATH+:}${PATH}"; export PATH;
+PERL5LIB="/Users/luis.armendariz/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/luis.armendariz/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/luis.armendariz/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/luis.armendariz/perl5"; export PERL_MM_OPT;
+
+# 2016-02-01: Temporarily increase ulimit so that riak doesn't complain
+ulimit -n 65536 65536
+
+# 2016-02-01: Activate this particular kerl-installed version of erlang (R16B02)
+source ~/erlang/r16b02/activate
+
