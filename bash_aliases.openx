@@ -1,0 +1,80 @@
+
+# Commonly used aliases
+alias x='exit'
+alias ls='ls -GF'
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -ip'
+alias df='df -h'
+alias less='less -r'
+alias grep='grep --color'
+alias mypass='cat ~/pass.txt | grep --color'
+alias kls=ls
+alias ipython=ipython2
+alias units='gunits -v'
+alias p='ipython'
+
+# Useful aliases for adding journal entries
+alias mk-today='mkdir -p ~/journal/$(date +%Y/%m-%d) && cd ~/journal/$(date +%Y/%m-%d)'
+alias mk-month='mkdir -p ~/journal/$(date +%Y/%m) && cd ~/journal/$(date +%Y/%m)'
+alias mk-year='mkdir -p ~/journal/$(date +%Y) && cd ~/journal/$(date +%Y)'
+alias today='echo ~/journal/$(date +%Y/%m-%d)/'
+
+# Some OpenX-specific aliases
+alias ssh='TERM=xterm-256color ssh'
+alias cde='cd ~/cde'
+alias cde-test="ssh greencde.dev 'cd /openx/ox3-api-v2 && nosetests -sxv test'"
+alias ssh-cde='ssh greencde.dev'
+alias ox3-api-v2='cd ~/openx/ox3-api-v2'
+alias green-api='cd ~/green/ox3-api-v2'
+alias cd-api='cd ~/openx/ox3-api-v2'
+alias sqlcache='cd ~/openx/ox3-api-sqlcache'
+alias slack-roles='cd ~/openx/slack-repo-qa/roles'
+alias cde-uwsgi="ssh greencde.dev 'uwsgi --emperor /openx/ox3-api-v2/devtools/cde'"
+alias cde-api-start="ssh root@greencde.dev 'service ox3-api-v2 start'"
+alias cde-api-stop="ssh root@greencde.dev 'service ox3-api-v2 stop'"
+alias mysql-cde='mysql --host=greencde.dev --user=root'
+alias mysql-cde-i10="mysql --host=cde --user=root --prompt='cde-i10 [cache_d8568240_c334_11e2_8b8b_0800200c9a66]> ' cache_d8568240_c334_11e2_8b8b_0800200c9a66"
+alias mysql-cde-i16="mysql --host=cde --user=root --prompt='cde-i16 [cache_a505e730_0b7a_11e3_8ffd_0800200c9a66]> ' cache_a505e730_0b7a_11e3_8ffd_0800200c9a66"
+alias mysql-cde-i17="mysql --host=cde --user=root --prompt='cde-i17 [cache_110d4d80_0c23_11e3_8ffd_0800200c9a66]> ' cache_110d4d80_0c23_11e3_8ffd_0800200c9a66"
+alias mysql-cde-i23="mysql --host=cde --user=root --prompt='cde-i23 [cache_f2386b12_4120_4024_afd1_059a905a260b]> ' cache_f2386b12_4120_4024_afd1_059a905a260b"
+alias mysql-cde-i32="mysql --host=cde --user=root --prompt='cde-i32 [cache_60f6b3f1_7880_4ae1_b724_cd1e8258af07]> ' cache_60f6b3f1_7880_4ae1_b724_cd1e8258af07"
+alias mysql-cde-i59="mysql --host=cde --user=root --prompt='cde-i59 [cache_af2fd08d_7186_4d75_9a06_61d83cb0769b]> ' cache_af2fd08d_7186_4d75_9a06_61d83cb0769b"
+alias mysql-cde-qa-regression-xv="mysql --host=cde --user=root --prompt='cde-qa-regression-xv> ' cache_b56695f4_4e47_4178_a220_3d3ccbda79ec"
+alias mysqladmin-cde='mysqladmin --host=greencde.dev --user=root'
+alias site-packages='cd /usr/local/lib/python2.7/site-packages'
+alias api-clean-pyc-files="find ~/openx/ox3-api-v2 -name '*.pyc' -exec rm {} \;"
+alias api-compare-branches='ksdiff ~/openx/ox3-api-v2 ~/green/ox3-api-v2'
+alias kaleidoscope='open -a Kaleidoscope'
+alias ox-list-machines='ssh jump.openx.org ox-list-machines -f fullname'
+alias tickets-since-latest="git latest-commits | egrep --color '\b\w+\-\d+\b'"
+alias qa-slack="cd ~/openx/slack-repo-prod/roles"
+alias prod-slack="cd ~/openx/slack-repo-qa/roles"
+
+# curl aliases
+#alias curl-beef='curl -s --cookie "openx3_access_token=beef" -H "Content-Type: application/json"'
+alias curl-json='curl -s -H "Content-Type: application/json"'
+alias curl-json-nodebug='curl -s -H "Content-Type: application/json" -H "X-No-Debug: 1"'
+alias curl-beef='curl -s -b "$(cat ~/.openx3_access_token)" -H "Content-Type: application/json"'
+alias curl-ox='curl -s -b ~/.oxlogin.cookies -H "Content-Type: application/json"'
+alias curl-nox='curl-ox -H "X-No-Debug: 1"'
+alias curl-cde-i10='curl -s --cookie "openx3_access_token=536954718" -H "Content-Type: application/json"'
+alias curl-cde-i16='curl -s --cookie "openx3_access_token=536958458" -H "Content-Type: application/json"'
+alias curl-cde-i17='curl -s --cookie "openx3_access_token=536962514" -H "Content-Type: application/json"'
+alias curl-cde-i23='curl -s --cookie "openx3_access_token=1610612943" -H "Content-Type: application/json"'
+alias curl-cde-i23-netadm='curl -s --cookie "openx3_access_token=1610612952" -H "Content-Type: application/json"'
+alias curl-cde-i23-pub='curl -s --cookie "openx3_access_token=1610827749" -H "Content-Type: application/json"'
+alias curl-cde-i32='curl -s --cookie "openx3_access_token=1610745307" -H "Content-Type: application/json"'
+alias curl-cde-i59='curl -s --cookie "openx3_access_token=1610831754" -H "Content-Type: application/json"'
+alias curl-cde-qa-regression-xv='curl -s --cookie "openx3_access_token=537033427" -H "Content-Type: application/json"'
+
+# enable/disable api debug mode
+alias api-debug-enable='/bin/cp -vf ~/devtools-cde-api.ini ~/openx/ox3-api-v2/devtools/cde/api.ini'
+alias api-debug-disable='/bin/cp -vf ~/devtools-cde-api.ini.orig ~/openx/ox3-api-v2/devtools/cde/api.ini'
+
+# show credentials
+alias api-credentials-qa='cat ~/openx/slack-repo-qa/roles/ox3-api-credentials/files/etc/ox/oauth/qa.json | jq . -C'
+alias api-credentials-prod='cat ~/openx/slack-repo-qa/roles/ox3-api-credentials/files/etc/ox/oauth/prod.json | jq . -C'
+alias api-credentials-ldap='cat ~/openx/slack-repo-qa/roles/ox3-api-credentials/files/etc/ox/oauth/ldap.json | jq . -C'
+
+# vim: ft=sh
