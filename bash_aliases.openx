@@ -74,7 +74,8 @@ alias api-debug-disable='/bin/cp -vf ~/devtools-cde-api.ini.orig ~/openx/ox3-api
 
 # show credentials
 alias api-credentials-qa='cat ~/openx/slack-repo-qa/roles/ox3-api-credentials/files/etc/ox/oauth/qa.json | jq . -C'
+alias api-credentials-qa-ldap='cat ~/openx/slack-repo-qa/roles/ox3-api-credentials/files.qa/etc/ox/oauth/ldap.json | jq . -C'
 alias api-credentials-prod='cat ~/openx/slack-repo-qa/roles/ox3-api-credentials/files/etc/ox/oauth/prod.json | jq . -C'
-alias api-credentials-ldap='cat ~/openx/slack-repo-qa/roles/ox3-api-credentials/files/etc/ox/oauth/ldap.json | jq . -C'
+alias api-credentials-prod-ldap='cat ~/openx/slack-repo-qa/roles/ox3-api-credentials/files/etc/ox/oauth/ldap.json | jq . -C'
 
 # vim: ft=sh
