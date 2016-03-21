@@ -16,8 +16,8 @@ PERL_MB_OPT="--install_base \"/Users/luis.armendariz/perl5\""; export PERL_MB_OP
 PERL_MM_OPT="INSTALL_BASE=/Users/luis.armendariz/perl5"; export PERL_MM_OPT;
 
 # 2016-02-01: Temporarily increase ulimit so that riak doesn't complain
-ulimit -n 65536 65536
+#ulimit -n 65536 65536
 
 # 2016-02-01: Activate this particular kerl-installed version of erlang (R16B02)
-source ~/erlang/r16b02/activate
+#source ~/erlang/r16b02/activate
 
