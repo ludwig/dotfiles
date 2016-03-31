@@ -373,15 +373,15 @@ fi
 
 # Use z to jump around, if present
 # See https://github.com/rupa/z
-#if [ -f /usr/local/etc/profile.d/z.sh ]; then
-#   source /usr/local/etc/profile.d/z.sh
-#fi
+if [ -f /usr/local/etc/profile.d/z.sh ]; then
+   source /usr/local/etc/profile.d/z.sh
+fi
 
 # Use fasd, a tool inspired by autojump,z,v
 # https://github.com/clvv/fasd
-if command_exists fasd ; then
-    eval "$(fasd --init auto)"
-fi
+#if command_exists fasd ; then
+#    eval "$(fasd --init auto)"
+#fi
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
