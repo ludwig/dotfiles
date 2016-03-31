@@ -3,21 +3,28 @@
 #export PATH="${PATH}:/Applications/Araxis Merge.app/Contents/Utilities"
 
 # Just for quickly loading the mcp tool
-export PATH="${PATH}:${HOME}/w/mcp-cli/bin"
+#export PATH="${PATH}:${HOME}/w/mcp-cli/bin"
 
 # See https://github.corp.openx.com/ed-silva/xhyve-mcp-tools
 export DOCKER_HOST="tcp://192.168.64.2:2375"
 
 # After running 'sudo cpan install Template' and selecting 'lib::local' installation option, this got appended to my ~/.bashrc
-PATH="/Users/luis.armendariz/perl5/bin${PATH+:}${PATH}"; export PATH;
-PERL5LIB="/Users/luis.armendariz/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/luis.armendariz/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/luis.armendariz/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/luis.armendariz/perl5"; export PERL_MM_OPT;
+#PATH="/Users/luis.armendariz/perl5/bin${PATH+:}${PATH}"; export PATH;
+#PERL5LIB="/Users/luis.armendariz/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
+#PERL_LOCAL_LIB_ROOT="/Users/luis.armendariz/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
+#PERL_MB_OPT="--install_base \"/Users/luis.armendariz/perl5\""; export PERL_MB_OPT;
+#PERL_MM_OPT="INSTALL_BASE=/Users/luis.armendariz/perl5"; export PERL_MM_OPT;
 
 # 2016-02-01: Temporarily increase ulimit so that riak doesn't complain
 #ulimit -n 65536 65536
 
 # 2016-02-01: Activate this particular kerl-installed version of erlang (R16B02)
 #source ~/erlang/r16b02/activate
+
+# Prompt without the user (just the host)
+export PS1="\[\033[00m\]\h\[\033[01;34m\]:\w\[\033[31m\]\$(parse_git_branch)\[\033[00m\]$\[\033[00m\] "
+
+# To generate: https://github.corp.openx.com/settings/tokens/new?scopes=&description=Homebrew
+#export HOMEBREW_GITHUB_API_TOKEN="93f0e1112eeb03565ba24d8deae6b86d2d8106cb"
+export HOMEBREW_GITHUB_API_TOKEN="120a4cdb809430d7aed8933ee7beee655eb0648b"
 
