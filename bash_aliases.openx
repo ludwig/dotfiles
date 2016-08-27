@@ -40,6 +40,7 @@ alias mysql-cde-i17="mysql --host=cde --user=root --prompt='cde-i17 [cache_110d4
 alias mysql-cde-i23="mysql --host=cde --user=root --prompt='cde-i23 [cache_f2386b12_4120_4024_afd1_059a905a260b]> ' cache_f2386b12_4120_4024_afd1_059a905a260b"
 alias mysql-cde-i32="mysql --host=cde --user=root --prompt='cde-i32 [cache_60f6b3f1_7880_4ae1_b724_cd1e8258af07]> ' cache_60f6b3f1_7880_4ae1_b724_cd1e8258af07"
 alias mysql-cde-i59="mysql --host=cde --user=root --prompt='cde-i59 [cache_af2fd08d_7186_4d75_9a06_61d83cb0769b]> ' cache_af2fd08d_7186_4d75_9a06_61d83cb0769b"
+alias mysql-cde-corporate="mysql --host=cde --user=root --prompt='cde-corporate [cache_2da0fc0_c109_4da2_be43_0d72b1d7409f]> ' cache_2da0fc0_c109_4da2_be43_0d72b1d7409f"
 alias mysql-cde-qa-regression-xv="mysql --host=cde --user=root --prompt='cde-qa-regression-xv> ' cache_b56695f4_4e47_4178_a220_3d3ccbda79ec"
 alias mysqladmin-cde='mysqladmin --host=greencde.dev --user=root'
 alias site-packages='cd /usr/local/lib/python2.7/site-packages'
@@ -66,6 +67,8 @@ alias curl-cde-i23-netadm='curl -s --cookie "openx3_access_token=1610612952" -H 
 alias curl-cde-i23-pub='curl -s --cookie "openx3_access_token=1610827749" -H "Content-Type: application/json"'
 alias curl-cde-i32='curl -s --cookie "openx3_access_token=1610745307" -H "Content-Type: application/json"'
 alias curl-cde-i59='curl -s --cookie "openx3_access_token=1610831754" -H "Content-Type: application/json"'
+alias curl-cde-corporate='curl -s --cookie "openx3_access_token=1610612863" -H "Content-Type: application/json"'
+alias curl-cde-workas='curl -s --cookie "openx3_access_token=1610868049" -H "Content-Type: application/json"'
 alias curl-cde-qa-regression-xv='curl -s --cookie "openx3_access_token=537033427" -H "Content-Type: application/json"'
 
 # enable/disable api debug mode
@@ -73,9 +76,25 @@ alias api-debug-enable='/bin/cp -vf ~/devtools-cde-api.ini ~/openx/ox3-api-v2/de
 alias api-debug-disable='/bin/cp -vf ~/devtools-cde-api.ini.orig ~/openx/ox3-api-v2/devtools/cde/api.ini'
 
 # show credentials
-alias api-credentials-qa='cat ~/openx/slack-repo-qa/roles/ox3-api-credentials/files/etc/ox/oauth/qa.json | jq . -C'
-alias api-credentials-qa-ldap='cat ~/openx/slack-repo-qa/roles/ox3-api-credentials/files.qa/etc/ox/oauth/ldap.json | jq . -C'
-alias api-credentials-prod='cat ~/openx/slack-repo-qa/roles/ox3-api-credentials/files/etc/ox/oauth/prod.json | jq . -C'
-alias api-credentials-prod-ldap='cat ~/openx/slack-repo-qa/roles/ox3-api-credentials/files/etc/ox/oauth/ldap.json | jq . -C'
+alias api-credentials-qa='cat ~/openx/slack-repo-qa/roles/ox3-api-credentials/files/etc/ox/oauth/qa.json | jq .'
+alias api-credentials-qa-ldap='cat ~/openx/slack-repo-qa/roles/ox3-api-credentials/files.qa/etc/ox/oauth/ldap.json | jq .'
+alias api-credentials-prod='cat ~/openx/slack-repo-qa/roles/ox3-api-credentials/files/etc/ox/oauth/prod.json | jq .'
+alias api-credentials-prod-ldap='cat ~/openx/slack-repo-qa/roles/ox3-api-credentials/files/etc/ox/oauth/ldap.json | jq .'
+
+# See https://github.com/justone/dockviz
+alias dockviz='docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz'
+
+# docker commands
+alias docker-inspect='docker inspect'
+alias docker-history='docker history -H --no-trunc'
+alias docker-clean-volumes='docker volume ls -qf dangling=true | xargs docker volume rm'
+alias docker-clean-images='docker images | grep '"'"'<none>'"'"' | awk '"'"'{print $3}'"'"' | xargs docker rmi'
+alias docker-clean='docker ps -aq -f status=exited | xargs docker rm'
+alias docker-list-exited-containers='docker ps -aq -f status=exited'
+alias docker-list-dangling-volumes='docker volume ls -qf dangling=true'
+alias docker-list-networks='docker network ls'
+alias docker-list-all-images='dockviz images --tree'
+alias docker-run-it='docker run -it --rm'
+
 
 # vim: ft=sh
