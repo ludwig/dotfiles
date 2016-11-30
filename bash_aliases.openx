@@ -95,6 +95,11 @@ alias docker-list-dangling-volumes='docker volume ls -qf dangling=true'
 alias docker-list-networks='docker network ls'
 alias docker-list-all-images='dockviz images --tree'
 alias docker-run-it='docker run -it --rm'
+alias docker-search='curl -s -X GET http://docker.openx.org/v1/search | jq .'
 
+# more aliases
+alias oxlm='ox-list-machines'
+alias oxmh='ox-map-hosts'
+alias oxssh='ox-map-hosts -n 1 --ssh'
 
 # vim: ft=sh
