@@ -10,7 +10,7 @@
 "
 "   $ cd ~/.vim/bundle/YouCompleteMe/
 "   $ git submodule update --init --recursive
-"   $ ./install.sh --clang-completer
+"   $ ./install.py --clang-completer
 "
 
 " Change the mapleader from \ to ,
@@ -89,7 +89,7 @@ NeoBundle 'bufexplorer.zip'
 " http://git.wincent.com/command-t.git
 " https://github.com/Shougo/neobundle.vim/issues/78
 "NeoBundle 'wincent/Command-T'
-NeoBundle 'git://git.wincent.com/command-t.git', {
+NeoBundle 'wincent/command-t', {
     \   'build' : {
     \       'mac' : 'sh -c "cd ruby/command-t && ruby extconf.rb && make"'
     \   }
@@ -273,6 +273,10 @@ NeoBundle 'mutewinter/nginx.vim'
 " https://github.com/saltstack/salt-vim
 NeoBundle 'saltstack/salt-vim'
 " }}}
+" swift.vim - Vim runtime files for Swift {{{
+" https://github.com/keith/swift.vim
+NeoBundle "keith/swift.vim"
+" }}}
 " rest.vim - a reStructuredText syntax mode {{{
 " http://www.vim.org/scripts/script.php?script_id=973
 NeoBundle 'rest.vim'
@@ -327,9 +331,11 @@ NeoBundle 'hallison/vim-markdown'
 " https://github.com/derekwyatt/vim-scala
 NeoBundle 'derekwyatt/vim-scala'
 " }}}
-" vim-swift - Adds Swift support to vim. It covers syntax, indenting, and more.{{{
-" https://github.com/toyamarinyon/vim-swift
-NeoBundle 'toyamarinyon/vim-swift'
+" vim-erlang-omnicomplete -- Erlang omnicomplete plugin for Vim {{{
+"NeoBundle 'vim-erlang/vim-erlang-omnicomplete'
+" }}}
+" vimerl -- The Erlang plugin for Vim {{{
+NeoBundle 'jimenezrick/vimerl'
 " }}}
 " }}}
 " --- Plugins by Shougo Dark Vim Master {{{
@@ -702,7 +708,7 @@ let NERDTreeMouseMode=3
 " Don't display these kinds of files
 let NERDTreeIgnore=[
     \ '\.pyc$', '\.pyo$', '\.pyd$', '\.egg$',
-    \ '\.class$', '\.obj$', '\.o$', '\.so$', '\.a$',
+    \ '\.class$', '\.beam$', '\.obj$', '\.o$', '\.so$', '\.a$',
     \ '^\.git$', '^\.svn$'
     \ ]
 
