@@ -1,10 +1,6 @@
-# ~/.bash_profile: executed by bash(1) for login shells.
+# ~/.bash_profile: executed by bash(1) for login shells
 
-# Put the MacPorts /opt/local paths ahead in PATH
-PATH="/opt/local/bin:/opt/local/sbin:${PATH}"
-MANPATH="/opt/local/man:${HOME}/opt/local/man:${MANPATH}"
-
-# Put the Homebrew /usr/local paths in PATH
+# Put the Homebrew /usr/local paths ahead in PATH
 PATH="/usr/local/bin:/usr/local/sbin:${PATH}"
 MANPATH="/usr/local/share/man:${MANPATH}"
 
@@ -21,6 +17,11 @@ fi
 # Set our GOPATH to ~/gocode if it exists
 if [ -d ~/gocode ]; then
     export GOPATH="${HOME}/gocode"
+fi
+
+# Add path for erlang man pages to MANPATH
+if [ -d /usr/local/lib/erlang ]; then
+    MANPATH="${MANPATH}:/usr/local/lib/erlang/man"
 fi
 
 # Look for ~/opt/local binaries and libraries
