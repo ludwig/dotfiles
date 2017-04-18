@@ -222,9 +222,15 @@ set listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
 " syntax coloring lines that are too long slows down the world, so set a cap
 set synmaxcol=2048
 
-" disable gui toolbar in gvim
 if has('gui_running')
+    " disable gui toolbar in gvim
     set guioptions-=T
+
+    " disable scrollbar settings
+    set guioptions-=rL
+
+    " enable autoselect for copy operations
+    set guioptions+=a
 endif
 
 " select a default colorscheme
