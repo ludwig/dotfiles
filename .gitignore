@@ -1,14 +1,10 @@
 # ignore vim files
 /emacs.d/elpa
-/vim/tmp
-/vim/bundle
-/vim/sessions
-/vim/user.vim
-/vim.tts/bundle
-/vim.tts/tmp
-/vim.tts/sessions
-/vim.tts/preload.vim
-/vim.tts/user.vim
+/vim.*/bundle
+/vim.*/tmp
+/vim.*/sessions
+/vim.*/preload.vim
+/vim.*/user.vim
 .netrwhist
 tags
 tags-ja
