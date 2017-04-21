@@ -76,6 +76,7 @@ alias api-debug-enable='/bin/cp -vf ~/devtools-cde-api.ini ~/openx/ox3-api-v2/de
 alias api-debug-disable='/bin/cp -vf ~/devtools-cde-api.ini.orig ~/openx/ox3-api-v2/devtools/cde/api.ini'
 
 # show credentials
+alias api-credentials-devint-ldap='cat ~/openx/slack-repo-qa/roles/ox3-api-credentials/files.devint/etc/ox/oauth/ldap.json | jq .'
 alias api-credentials-qa='cat ~/openx/slack-repo-qa/roles/ox3-api-credentials/files/etc/ox/oauth/qa.json | jq .'
 alias api-credentials-qa-ldap='cat ~/openx/slack-repo-qa/roles/ox3-api-credentials/files.qa/etc/ox/oauth/ldap.json | jq .'
 alias api-credentials-prod='cat ~/openx/slack-repo-qa/roles/ox3-api-credentials/files/etc/ox/oauth/prod.json | jq .'
@@ -96,6 +97,7 @@ alias docker-list-networks='docker network ls'
 alias docker-list-all-images='dockviz images --tree'
 alias docker-run-it='docker run -it --rm'
 alias docker-search='curl -s -X GET http://docker.openx.org/v1/search | jq .'
+alias docker-check-qcow='ls -lh ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2'
 
 # more aliases
 alias oxlm='ox-list-machines'
