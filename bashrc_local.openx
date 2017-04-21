@@ -1,4 +1,13 @@
 
+# Set up oxbot
+# https://wiki.corp.openx.com/display/TECH/OXbot+Quick+Installation
+export OXBOT_HOME="${HOME}/ox/oxbot"
+export OXBOT_CORE="${OXBOT_HOME}/oxbot-core"
+if [[ -d ${OXBOT_CORE} ]]; then
+    PATH="${PATH}:${OXBOT_CORE}/bin"
+    export PYTHONPATH="${OXBOT_CORE}/libraries${PYTHONPATH:+:$PYTHONPATH}"
+fi
+
 # Didn't really like this tool, but let's keep this line commented out for now
 #export PATH="${PATH}:/Applications/Araxis Merge.app/Contents/Utilities"
 
@@ -6,7 +15,7 @@
 #export PATH="${PATH}:${HOME}/w/mcp-cli/bin"
 
 # See https://github.corp.openx.com/ed-silva/xhyve-mcp-tools
-export DOCKER_HOST="tcp://192.168.64.2:2375"
+#export DOCKER_HOST="tcp://192.168.64.2:2375"
 
 # After running 'sudo cpan install Template' and selecting 'lib::local' installation option, this got appended to my ~/.bashrc
 #PATH="/Users/luis.armendariz/perl5/bin${PATH+:}${PATH}"; export PATH;
@@ -27,4 +36,20 @@ export PS1="\[\033[00m\]\h\[\033[01;34m\]:\w\[\033[31m\]\$(parse_git_branch)\[\0
 # To generate: https://github.corp.openx.com/settings/tokens/new?scopes=&description=Homebrew
 #export HOMEBREW_GITHUB_API_TOKEN="93f0e1112eeb03565ba24d8deae6b86d2d8106cb"
 export HOMEBREW_GITHUB_API_TOKEN="120a4cdb809430d7aed8933ee7beee655eb0648b"
+export GITHUB_ACCESS_TOKEN='a7b9ee874c5407baf09e451991708ad0c3cb3f14'
 
+# openx corporate stuff
+export OPENX_CORPORATE_EMAIL='luis.armendariz@openx.com'
+#export OPENX_CORPORATE_PASS='ieH6aimuieH6aimu'
+export OPENX_CORPORATE_PASS='pXKPWVP9Sjmv'
+
+# whether to load test-xhyve
+#eval $(docker-machine env vbox-test)
+#eval $(docker-machine env xhyve-test)
+
+alias vi=vim
+
+#export PYTHONPATH="${PYTHONPATH}:${HOME}/scratch/tmp-gocd-scripts/setup"
+
+# Add current directory's node_modules to $PATH
+#export PATH="${PATH}:./node_modules/.bin"

@@ -396,3 +396,9 @@ fi
 if [ -f ~/.bashrc_local ]; then
     source ~/.bashrc_local
 fi
+
+# Use pyenv and pyenv-virtualenv
+#export PYENV_ROOT="/usr/local/var/pyenv"
+#if which pyenv > /dev/null; then eval "$(pyenv init -)"; export PATH="${PYENV_ROOT}/bin:${PATH}"; fi
+#if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+

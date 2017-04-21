@@ -12,6 +12,7 @@ fi
 # Look for npm
 if [ -e /usr/local/bin/npm ]; then
     PATH="${PATH}:/usr/local/share/npm/bin"
+    PATH="${PATH}:./node_modules/.bin"
 fi
 
 # Set our GOPATH to ~/gocode if it exists
@@ -29,15 +30,6 @@ if [ -d ~/opt/local ]; then
     PATH="${HOME}/opt/local/bin:${PATH}"
     LD_LIBRARY_PATH="${HOME}/opt/local/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
     PKG_CONFIG_PATH="${HOME}/opt/local/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
-fi
-
-# Set up oxbot
-# https://wiki.corp.openx.com/display/TECH/OXbot+Quick+Installation
-export OXBOT_HOME="${HOME}/ox/oxbot"
-export OXBOT_CORE="${OXBOT_HOME}/oxbot-core"
-if [ -d "${OXBOT_CORE}" ]; then
-    PATH="${PATH}:${OXBOT_CORE}/bin"
-    export PYTHONPATH="${OXBOT_CORE}/libraries${PYTHONPATH:+:$PYTHONPATH}"
 fi
 
 # Prepend ~/bin/ to the PATH
@@ -69,3 +61,5 @@ export LANG='en_US.UTF-8'
 export PKG_CONFIG_PATH
 export PATH
 export MANPATH
+export AUTO_CONFIG=/Users/luis.armendariz/auto_config.config
+export PATH="/usr/local/opt/node@6/bin:$PATH"

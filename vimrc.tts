@@ -269,6 +269,14 @@ NeoBundle 'othree/html5.vim'
 " https://github.com/mutewinter/nginx.vim
 NeoBundle 'mutewinter/nginx.vim'
 " }}}
+" python.vim - Enhanced version of the python syntax highlighting script {{{
+" http://www.vim.org/scripts/script.php?script_id=790
+NeoBundle 'python.vim'
+" }}}
+" robotframework-vim - Some vim scripts for use with the Robot framework {{{
+" https://github.com/mfukar/robotframework-vim
+NeoBundle 'mfukar/robotframework-vim'
+" }}}
 " salt-vim - syntax for editing Salt state files (.sls) {{{
 " https://github.com/saltstack/salt-vim
 NeoBundle 'saltstack/salt-vim'

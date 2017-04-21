@@ -12,9 +12,13 @@
 
 # ignore compiled python files
 *.pyc
+*.egg-info
 
 # ignore noise from OS X
 .DS_Store
 
 # ignore noise from sass
 .sass-cache
+
+# ignore IDE stuff
+.idea

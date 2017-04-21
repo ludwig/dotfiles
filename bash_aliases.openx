@@ -103,5 +103,6 @@ alias docker-check-qcow='ls -lh ~/Library/Containers/com.docker.docker/Data/com.
 alias oxlm='ox-list-machines'
 alias oxmh='ox-map-hosts'
 alias oxssh='ox-map-hosts -n 1 --ssh'
+alias ssh-test='ssh cabb-i47.ca.dc.openx.org'
 
 # vim: ft=sh
