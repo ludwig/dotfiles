@@ -846,6 +846,10 @@ let g:indent_guides_enable_on_vim_startup = 0
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 let g:indent_guides_default_mapping = 1
 " }}}
+" --- vim-json settings {{{
+" Disable the vim conceal feature for the json syntax highlighting
+let g:vim_json_syntax_conceal = 0
+" }}}
 " --- vim-go settings {{{
 let g:go_fmt_autosave = 0
 " }}}
