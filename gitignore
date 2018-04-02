@@ -12,6 +12,8 @@
 
 # ignore compiled python files
 *.pyc
+__pycache__
+.ipynb_checkpoints
 
 # ignore noise from OS X
 .DS_Store
