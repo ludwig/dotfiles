@@ -10,7 +10,7 @@
 "
 "   $ cd ~/.vim/bundle/YouCompleteMe/
 "   $ git submodule update --init --recursive
-"   $ ./install.py --clang-completer
+"   $ python3 install.py --clang-completer
 "
 
 " Change the mapleader from \ to ,
@@ -318,6 +318,10 @@ NeoBundle 'pangloss/vim-javascript'
 " https://github.com/elzr/vim-json
 NeoBundle 'elzr/vim-json'
 " }}}
+" vim-jsx - Syntax highlighting and indenting for JSX {{{
+" https://github.com/mxw/vim-jsx
+NeoBundle 'mxw/vim-jsx'
+" }}}
 " vim-less - vim syntax for LESS (dynamic CSS) {{{
 " https://github.com/groenewege/vim-less
 NeoBundle 'groenewege/vim-less'
@@ -330,6 +334,9 @@ NeoBundle 'hallison/vim-markdown'
 " vim-scala -- Vim integration for Scala {{{
 " https://github.com/derekwyatt/vim-scala
 NeoBundle 'derekwyatt/vim-scala'
+" }}}
+" vim-terraform -- basic vim/terraform integration {{{
+NeoBundle 'hashivim/vim-terraform'
 " }}}
 " vim-erlang-omnicomplete -- Erlang omnicomplete plugin for Vim {{{
 "NeoBundle 'vim-erlang/vim-erlang-omnicomplete'
