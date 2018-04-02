@@ -9,9 +9,10 @@ if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi
 
-# Look for npm
-if [ -e /usr/local/bin/npm ]; then
-    PATH="${PATH}:/usr/local/share/npm/bin"
+# Look for nvm
+if [ -e /usr/local/opt/nvm/ ]; then
+    export NVM_DIR="${HOME}/.nvm"
+    source /usr/local/opt/nvm/nvm.sh
 fi
 
 # Set our GOPATH to ~/gocode if it exists
