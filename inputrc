@@ -31,7 +31,8 @@ $if mode=vi
     "G": end-of-history
     "jj": vi-movement-mode
     set keymap vi-insert
-    "\C-p": history-search-backward
+    #"\C-p": history-search-backward
+$endif
 
 # If set to On, tilde expansion is performed when readline attempts word completion.
 set expand-tilde off
