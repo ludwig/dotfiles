@@ -35,6 +35,16 @@ if [ -d ~/opt/local ]; then
     PKG_CONFIG_PATH="${HOME}/opt/local/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
 fi
 
+# Look for pyenv
+# https://github.com/pyenv/pyenv
+# https://github.com/pyenv/pyenv-virtualenvwrapper
+#if [ -e /usr/local/bin/pyenv ]; then
+#    export PYENV_ROOT="${HOME}/.pyenv"
+#    export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+#    PATH="${PYENV_ROOT}/bin:${PATH}"
+#    eval "$(pyenv init -)"
+#fi
+
 # Prepend ~/bin to the PATH.
 PATH="${HOME}/bin:${PATH}"
 
