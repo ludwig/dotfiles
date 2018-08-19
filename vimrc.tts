@@ -156,7 +156,7 @@ NeoBundle 'ZoomWin'
 " Use with '<Leader>ce'
 " http://www.vim.org/scripts/script.php?script_id=3597
 " https://github.com/Rykka/colorv.vim
-NeoBundle 'Rykka/colorv.vim'
+"NeoBundle 'Rykka/colorv.vim'
 " }}}
 " Indent Guides - A plugin for visually displaying indent levels in Vim {{{
 " Use '<Leader>ig' to turn on the guides

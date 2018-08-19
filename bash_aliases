@@ -11,6 +11,8 @@ alias less='less -r'
 alias vm='vim -X'
 alias x='exit'
 
+alias activate='source venv/bin/activate'
+
 # Useful aliases for adding journal entries
 alias mk-today='mkdir -p ~/journal/$(date +%Y/%m-%d) && cd ~/journal/$(date +%Y/%m-%d)'
 alias mk-month='mkdir -p ~/journal/$(date +%Y/%m) && cd ~/journal/$(date +%Y/%m)'
