@@ -45,6 +45,14 @@ fi
 #    eval "$(pyenv init -)"
 #fi
 
+# Set up homebrew ruby
+if [ -d /usr/local/opt/ruby ]; then
+    PATH="/usr/local/opt/ruby/bin:$PATH"
+    RUBY_LDFLAGS="-L/usr/local/opt/ruby/lib"
+    #RUBY_CPPFLAGS="-L/usr/local/opt/ruby/include"
+    #RUBY_PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
+fi
+
 # Prepend ~/bin to the PATH.
 PATH="${HOME}/bin:${PATH}"
 
