@@ -390,6 +390,9 @@ fi
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
+if [ -f ~/.bash_aliases2 ]; then
+    source ~/.bash_aliases2
+fi
 
 # Local bashrc file.
 # Use this for machine-specific initializations (e.g. sourcing virtualenvwrapper.sh)
