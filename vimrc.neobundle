@@ -90,8 +90,9 @@ NeoBundle 'bufexplorer.zip'
 " https://github.com/Shougo/neobundle.vim/issues/78
 "NeoBundle 'wincent/Command-T'
 NeoBundle 'wincent/command-t', {
-    \   'build' : {
-    \       'mac' : 'sh -c "cd ruby/command-t && ruby extconf.rb && make"'
+    \   'build_commands': ['make', 'ruby'],
+    \   'build': {
+    \      'unix': 'sh -c "cd ruby/command-t/ext/command-t && ( make clean; ruby extconf.rb && make )"'
     \   }
     \ }
 " }}}
