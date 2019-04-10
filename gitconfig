@@ -17,6 +17,12 @@
 [core]
 	excludesfile = ~/.gitignore
 
+# https://chris.beams.io/posts/git-commit/
+# https://robots.thoughtbot.com/better-commit-messages-with-a-gitmessage-template
+# https://gist.github.com/ludwig/f598d9cb3d43dabdf502170d125d2778
+[commit]
+	template = ~/.gitmessage
+
 [branch "master"]
 	remote = origin
 	merge = refs/heads/master
