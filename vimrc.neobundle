@@ -876,8 +876,8 @@ nmap <Leader>C :ClangFormatAutoToggle<CR>
 "let g:flake8_cmd="python3 -m flake8"
 "let g:flake8_cmd="python2.7 -m flake8"
 "let g:flake8_quickfix_location="topleft"
-"let g:flake8_quickfix_height=7
-"let g:flake8_show_quickfix=1
+let g:flake8_quickfix_height=7
+let g:flake8_show_quickfix=1
 "let g:flake8_show_in_gutter=1
 "let g:flake8_show_in_file=1
 "let g:flake8_max_markers=500
