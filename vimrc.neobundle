@@ -245,10 +245,6 @@ NeoBundle 'tpope/vim-fugitive'
 " }}}
 " }}}
 " --- Language Additions {{{
-" vim-clang-format - Plugin for clang-format {{{
-" https://github.com/rhysd/vim-clang-format
-NeoBundle 'rhysd/vim-clang-format'
-" }}}
 " cocoa.vim - Plugin for Cocoa/Objective-C development {{{
 " http://www.vim.org/scripts/script.php?script_id=2674
 " https://github.com/msanders/cocoa.vim
@@ -290,6 +286,10 @@ NeoBundle 'rest.vim'
 " https://github.com/wting/rust.vim
 NeoBundle 'wting/rust.vim'
 " }}}
+" vim-clang-format - Plugin for clang-format {{{
+" https://github.com/rhysd/vim-clang-format
+NeoBundle 'rhysd/vim-clang-format'
+" }}}
 " vim-cmake - provide a cmake reference and autocompletion {{{
 " https://github.com/jansenm/vim-cmake
 NeoBundle 'jansenm/vim-cmake'
@@ -305,6 +305,9 @@ NeoBundle 'hail2u/vim-css3-syntax'
 " vim-fish -- Vim support for editing fish-shell scripts {{{
 " https://github.com/dag/vim-fish
 NeoBundle 'dag/vim-fish'
+" }}}
+" vim-flake8 -- Python source code checker via flake8 {{{
+NeoBundle 'nvie/vim-flake8'
 " }}}
 " vim-glsl - Vim runtime files for OpenGL Shading Language {{{
 " https://github.com/tikhomirov/vim-glsl
@@ -348,9 +351,6 @@ NeoBundle 'hashivim/vim-terraform'
 " }}}
 " vimerl -- The Erlang plugin for Vim {{{
 NeoBundle 'jimenezrick/vimerl'
-" }}}
-" vim-flake8 -- Python source code checker via flake8 {{{
-NeoBundle 'nvie/vim-flake8'
 " }}}
 " }}}
 " --- Plugins by Shougo Dark Vim Master {{{
@@ -853,7 +853,7 @@ function! s:unite_settings()
 endfunction
 
 " }}}
-" --- vim-clang-format {{{
+" --- vim-clang-format settings {{{
 
 " map to <Leader>cf in C++ code
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
@@ -866,7 +866,7 @@ autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 nmap <Leader>C :ClangFormatAutoToggle<CR>
 
 " }}}
-" --- vim-flake8 {{{
+" --- vim-flake8 settings {{{
 
 " Documentation of options:
 " https://github.com/nvie/vim-flake8
