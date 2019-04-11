@@ -349,6 +349,9 @@ NeoBundle 'hashivim/vim-terraform'
 " vimerl -- The Erlang plugin for Vim {{{
 NeoBundle 'jimenezrick/vimerl'
 " }}}
+" vim-flake8 -- Python source code checker via flake8 {{{
+NeoBundle 'nvie/vim-flake8'
+" }}}
 " }}}
 " --- Plugins by Shougo Dark Vim Master {{{
 " Unite.vim -- search and display information from arbitrary sources {{{
@@ -861,6 +864,24 @@ autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 
 " Toggle auto formatting:
 nmap <Leader>C :ClangFormatAutoToggle<CR>
+
+" }}}
+" --- vim-flake8 {{{
+
+" Documentation of options:
+" https://github.com/nvie/vim-flake8
+" http://flake8.pycqa.org/en/latest/user/configuration.html
+"
+"autocmd FileType python map <buffer> <F7> :call flake8#Flake8()<CR>
+"let g:flake8_cmd="python3 -m flake8"
+"let g:flake8_cmd="python2.7 -m flake8"
+"let g:flake8_quickfix_location="topleft"
+"let g:flake8_quickfix_height=7
+"let g:flake8_show_quickfix=1
+"let g:flake8_show_in_gutter=1
+"let g:flake8_show_in_file=1
+"let g:flake8_max_markers=500
+autocmd BufWritePost *.py call flake8#Flake8()
 
 " }}}
 " --- vim-indent-guides {{{
