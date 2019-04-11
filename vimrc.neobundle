@@ -286,6 +286,10 @@ NeoBundle 'rest.vim'
 " https://github.com/wting/rust.vim
 NeoBundle 'wting/rust.vim'
 " }}}
+" vim-autopep8 - Plugin to apply autopep8 to current file {{{
+" https://github.com/tell-k/vim-autopep8
+NeoBundle 'tell-k/vim-autopep8'
+" }}}
 " vim-clang-format - Plugin for clang-format {{{
 " https://github.com/rhysd/vim-clang-format
 NeoBundle 'rhysd/vim-clang-format'
@@ -851,6 +855,29 @@ function! s:unite_settings()
   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
 endfunction
+
+" }}}
+" --- vim-flake8 settings {{{
+
+" Documentation of options:
+" https://github.com/tell-k/vim-autopep8
+" https://github.com/hhatto/autopep8
+
+"let g:autopep8_ignore="E226,E24,W6"
+"let g:autopep8_select="E501,W293"
+
+let g:autopep8_pep8_passes=100
+let g:autopep8_max_line_length=79
+
+"let g:autopep8_aggressive=1
+"let g:autopep8_aggressive=2
+
+"let g:autopep8_disable_show_diff=1
+"let g:autopep8_diff_type='horizontal'
+
+"let g:autopep8_on_save=1
+
+autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
 
 " }}}
 " --- vim-clang-format settings {{{
