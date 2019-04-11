@@ -222,6 +222,9 @@ set listchars=tab:▸\ ,trail:·,extends:#,nbsp:·
 " syntax coloring lines that are too long slows down the world, so set a cap
 set synmaxcol=2048
 
+" showing the signcolumn
+set signcolumn=auto
+
 if has('gui_running')
     " disable gui toolbar in gvim
     set guioptions-=T
@@ -470,6 +473,10 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 " Reselect text that was just pasted with ,v
 nnoremap <leader>v V`]
+
+" Clear the signcolumn
+" https://superuser.com/questions/713285/how-to-remove-sign-column-after-doing-grep-in-vim
+nmap <silent> <leader>u :sign unplace *<CR>
 
 " }}}
 
