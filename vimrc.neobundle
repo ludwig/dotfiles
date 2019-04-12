@@ -857,7 +857,7 @@ function! s:unite_settings()
 endfunction
 
 " }}}
-" --- vim-flake8 settings {{{
+" --- vim-autopep8 settings {{{
 
 " Documentation of options:
 " https://github.com/tell-k/vim-autopep8
