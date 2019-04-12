@@ -72,7 +72,6 @@ export PKG_CONFIG_PATH
 export MANPATH
 export PATH
 
-if false; then
 # added by Anaconda3 2019.03 installer
 # >>> conda init >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -89,4 +88,3 @@ else
 fi
 unset __conda_setup
 # <<< conda init <<<
-fi
