@@ -345,7 +345,7 @@ fi
 # Add ruby gem's bin directory to our PATH
 # http://guides.rubygems.org/faqs/#user-install
 if command_exists ruby && command_exists gem ; then
-    gem_user_dir="$(ruby -rubygems -e 'puts Gem.user_dir')"
+    gem_user_dir="$(ruby -r rubygems -e 'puts Gem.user_dir')"
     export PATH="${PATH}:${gem_user_dir}/bin"
 fi
 
