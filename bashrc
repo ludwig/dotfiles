@@ -397,5 +397,8 @@ if [ -f ~/.bashrc_local ]; then
     source ~/.bashrc_local
 fi
 
+# From torch
+#. /home/luis/torch/install/bin/torch-activate
+
 # added by Miniconda3 installer
 export PATH="/home/luis/miniconda3/bin:$PATH"
