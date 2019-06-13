@@ -10,3 +10,4 @@
 
 # Ignore these directories
 --ignore-dir=.ipynb_checkpoints
+--ignore-dir=_attic
