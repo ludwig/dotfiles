@@ -728,11 +728,16 @@ let NERDTreeMouseMode=3
 let NERDTreeIgnore=[
     \ '\.pyc$', '\.pyo$', '\.pyd$', '\.egg$',
     \ '\.class$', '\.beam$', '\.obj$', '\.o$', '\.so$', '\.a$',
-    \ '^\.git$', '^\.svn$'
+    \ '^\.git$', '^\.svn$',
+    \ '^__pycache__$'
     \ ]
 
 " Default key to activate node is 'o'
 let NERDTreeMapActivateNode='<Space>'
+
+" See https://superuser.com/questions/184844/hide-certain-files-in-nerdtree
+"set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.*
+"let NERDTreeRespectWildIgnore=1
 
 " }}}
 " --- NERDCommenter settings {{{
