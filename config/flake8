@@ -3,4 +3,5 @@
 [flake8]
 # http://flake8.pycqa.org/en/latest/user/error-codes.html
 # F401: `module` imported but unused
-ignore = F401
+# W503: line break before binary operator
+ignore = F401,W503
