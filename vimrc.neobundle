@@ -729,7 +729,7 @@ let NERDTreeIgnore=[
     \ '\.pyc$', '\.pyo$', '\.pyd$', '\.egg$',
     \ '\.class$', '\.beam$', '\.obj$', '\.o$', '\.so$', '\.a$',
     \ '^\.git$', '^\.svn$',
-    \ '^__pycache__$'
+    \ '^__pycache__$', '^.ipynb_checkpoints$', '^.pytest_cache$'
     \ ]
 
 " Default key to activate node is 'o'
