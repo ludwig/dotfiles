@@ -153,6 +153,11 @@ NeoBundle 'ZoomWin'
 " }}}
 " }}}
 " --- UI Additions {{{
+" vim-airline - lean & mean status/tabline for vim that's light as air {{{
+" https://github.com/vim-airline/vim-airline
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
+" }}}
 " colorv.vim - Easier color handling {{{
 " Use with '<Leader>ce'
 " http://www.vim.org/scripts/script.php?script_id=3597
