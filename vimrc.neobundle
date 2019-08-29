@@ -939,7 +939,8 @@ let g:indentLine_enabled = 1
 
 " Specify a character to be used as indent line (default '|')
 " You can also use one of ¦, ┆, ︙ or │
-let g:indentLine_char = '|'
+"let g:indentLine_char = '|'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " Disable plugin for these filetypes (default is [])
 let g:indentLine_fileTypeExclude = ['help']
