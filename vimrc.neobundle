@@ -366,11 +366,11 @@ NeoBundle 'jimenezrick/vimerl'
 " Unite.vim -- search and display information from arbitrary sources {{{
 " http://www.vim.org/scripts/script.php?script_id=3396
 " https://github.com/Shougo/unite.vim
-NeoBundle 'Shougo/unite.vim'
+"NeoBundle 'Shougo/unite.vim'
 " }}}
 " neomru.vim - MRU plugin for unite.vim {{{
 " https://github.com/Shougo/neomru.vim
-NeoBundle 'Shougo/neomru.vim'
+"NeoBundle 'Shougo/neomru.vim'
 " }}}
 " vimproc.vim - Interactive command execution in vim {{{
 " https://github.com/Shougo/vimproc.vim
@@ -842,29 +842,29 @@ let Tlist_Use_Right_Window=1
 " http://www.codeography.com/2013/06/17/replacing-all-the-things-with-unite-vim.html
 " http://bling.github.io/blog/2013/06/02/unite-dot-vim-the-plugin-you-didnt-know-you-need/
 
-" Enable unit-source-history/yank (not defined by default)
-let g:unite_source_history_yank_enable = 1
-
-" Directory for storing unite.vim configurations
-"let g:unite_data_directory = expand('~/.cache/unite')
-
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap \t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
-nnoremap \f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
-nnoremap \r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
-"nnoremap \o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
-nnoremap \y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
-nnoremap \e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
-
-" Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-  " Play nice with supertab
-  let b:SuperTabDisabled=1
-  " Enable navigation with control-j and control-k in insert mode
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-endfunction
+"" Enable unit-source-history/yank (not defined by default)
+"let g:unite_source_history_yank_enable = 1
+"
+"" Directory for storing unite.vim configurations
+""let g:unite_data_directory = expand('~/.cache/unite')
+"
+"call unite#filters#matcher_default#use(['matcher_fuzzy'])
+"nnoremap \t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+"nnoremap \f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+"nnoremap \r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+""nnoremap \o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
+"nnoremap \y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+"nnoremap \e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+"
+"" Custom mappings for the unite buffer
+"autocmd FileType unite call s:unite_settings()
+"function! s:unite_settings()
+"  " Play nice with supertab
+"  let b:SuperTabDisabled=1
+"  " Enable navigation with control-j and control-k in insert mode
+"  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+"  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+"endfunction
 
 " }}}
 " --- vim-autopep8 settings {{{
