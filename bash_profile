@@ -53,6 +53,14 @@ if [ -d /usr/local/opt/ruby ]; then
     #RUBY_PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 fi
 
+# Prepend python's `site.USER_BASE` bin directory to the PATH.
+# On Linux, it should be ~/.local/bin
+# On MacOS, it should be something like ~/Library/Python/3.7/bin
+py3_user_base=$(python3 -m site --user-base)
+if [[ -d ${py3_user_base} ]]; then
+    PATH="${PATH}:${py3_user_base}/bin"
+fi
+
 # Prepend ~/bin to the PATH.
 PATH="${HOME}/bin:${PATH}"
 
