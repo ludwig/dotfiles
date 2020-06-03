@@ -1,0 +1,18 @@
+" The file 'user.vim' is automatically loaded last if it exists. By keeping
+" this file out of revision control, we can use it for host-specific settings
+" we may need.
+
+" Choose a colorscheme
+"colorscheme jellybeans
+
+" In case a colorscheme doesn't play well with cursorline
+"set nocursorline
+
+" Disable folding
+"set nofoldenable
+"set foldcolumn=0
+
+" How much context to keep around
+"set scrolloff=1
+
+" vim: ft=vim
