@@ -1,0 +1,10 @@
+[user]
+	name = Luis Armendariz
+	email = luis.armendariz@gmail.com
+
+[alias]
+	st = status -sb
+	ci = commit
+	br = branch
+	co = checkout
+	df = diff
