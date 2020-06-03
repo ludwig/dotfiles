@@ -1,0 +1,23 @@
+# Run one of these if you want to use ~/.gitignore
+#   (1) git config core.excludesfile ~/.gitignore
+#   (2) git config --global core.excludesfile ~/.gitignore
+#
+
+# ignore swap & backup files
+.*.swp
+*~
+
+# ignore objects and archives, anywhere in the tree
+*.[oa]
+
+# ignore compiled python files
+*.pyc
+__pycache__
+.ipynb_checkpoints
+
+# ignore noise from OS X
+.DS_Store
+*.dSYM
+
+# ignore noise from sass
+.sass-cache
