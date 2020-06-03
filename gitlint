@@ -1,0 +1,6 @@
+[general]
+ignore-fixup-commits=false
+ignore-squash-commits=false
+
+[title-must-not-contain-word]
+words=WIP,FIXUP,SQUASH
