@@ -3,21 +3,25 @@
 #   (2) git config --global core.excludesfile ~/.gitignore
 #
 
-# ignore swap & backup files
+# Ignore swap & backup files
 .*.swp
 *~
 
-# ignore objects and archives, anywhere in the tree
+# Ignore objects and archives, anywhere in the tree
 *.[oa]
 
-# ignore compiled python files
+# Ignore compiled python files
 *.pyc
-__pycache__
-.ipynb_checkpoints
+__pycache__/
+.ipynb_checkpoints/
+.pytest_cache/
 
-# ignore noise from OS X
+# Ignore noise from OS X
 .DS_Store
 *.dSYM
 
-# ignore noise from sass
+# Ignore noise from sass
 .sass-cache
+
+# Leave these commented out (usually).
+/tmp
