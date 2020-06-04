@@ -8,3 +8,6 @@
 	br = branch
 	co = checkout
 	df = diff
+
+[core]
+	excludesfile = ~/.gitignore
