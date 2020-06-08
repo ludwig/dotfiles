@@ -16,6 +16,9 @@ call plug#begin('~/.vim/plugged')
 
 " Install Plugins {{{
 
+" BufExplorer Plugin for Vim
+Plug 'jlanzarotta/bufexplorer'
+
 " NERDTree
 Plug 'preservim/nerdtree'
 
@@ -29,6 +32,23 @@ source ~/.vim/defaults.vim
 
 " Configure Plugins {{{
 
+" --- BufExplorer settings {{{
+
+" To use:
+"   '<Leader>be'  normal open
+"   '<Leader>bs'  horizontal split open
+"   '<Leader>bv'  vertical split open
+
+let g:bufExplorerDefaultHelp=0
+"let g:bufExplorerDetailedHelp=1
+let g:bufExplorerFindActive=0
+let g:bufExplorerShowUnlisted=0
+"let g:bufExplorerSortBy='mru'
+let g:bufExplorerSplitBelow=1
+let g:bufExplorerSplitOutPathName=1
+let g:bufExplorerSplitRight=1
+
+" }}}
 " --- NERDTree settings {{{
 
 " Toggle the NERD Tree
