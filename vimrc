@@ -16,6 +16,9 @@ call plug#begin('~/.vim/plugged')
 
 " Install Plugins {{{
 
+" ack.vim - Plugin for the Perl module / CLI script 'ack'
+Plug 'mileszs/ack.vim'
+
 " BufExplorer Plugin for Vim
 Plug 'jlanzarotta/bufexplorer'
 
@@ -32,6 +35,19 @@ source ~/.vim/defaults.vim
 
 " Configure Plugins {{{
 
+" --- Ack settings {{{
+
+cabbrev ack Ack
+
+" Search for a pattern using Ack (the trailing space is important)
+nnoremap ,s :Ack! 
+nnoremap ,S :Ack! <C-R>=expand("<cword>")<CR>
+
+" Same, but use the location list window instead of the quickfix list window
+nnoremap \s :LAck! 
+nnoremap \S :LAck! <C-R>=expand("<cword>")<CR>
+
+" }}}
 " --- BufExplorer settings {{{
 
 " To use:
