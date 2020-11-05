@@ -18,6 +18,9 @@ if [[ -d ${py3_user_base} ]]; then
     PATH="${PATH}:${py3_user_base}/bin"
 fi
 
+# Prepend sbin directory to PATH.
+PATH="/usr/local/sbin:${PATH}"
+
 # ----------------------------------------------------------------------------
 # Finally, export our shell variables
 
