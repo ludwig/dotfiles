@@ -137,8 +137,7 @@ let g:syntastic_mode_map = {
     \   'active_filetypes': [],
     \   'passive_filetypes': []}
 
-
-" --- }}}
+" }}}
 " --- vim-clang-format settings {{{
 
 "let g:clang_format#style_options = {
@@ -156,6 +155,8 @@ autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
 
 " Toggle auto formatting:
 nmap <Leader>C :ClangFormatAutoToggle<CR>
+
+" }}}
 
 " }}}
 
