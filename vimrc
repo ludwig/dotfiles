@@ -25,6 +25,9 @@ Plug 'jlanzarotta/bufexplorer'
 " NERDTree
 Plug 'preservim/nerdtree'
 
+"Syntax checking hacks for vim
+Plug 'vim-syntastic/syntastic'
+
 " Plugin for clang-format
 Plug 'rhysd/vim-clang-format'
 
@@ -113,7 +116,30 @@ let NERDTreeMapActivateNode='<Space>'
 "let NERDTreeRespectWildIgnore=1
 
 " }}}
-" --- vim-clang-format settings
+" --- Syntastic settings {{{
+" See also
+"   :help syntastic
+"   :help syntastic-commands
+"   :SyntasticToggleMode
+"   :SyntasticCheck
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+
+let g:syntastic_mode_map = {
+    \   'mode': 'passive',
+    \   'active_filetypes': [],
+    \   'passive_filetypes': []}
+
+
+" --- }}}
+" --- vim-clang-format settings {{{
 
 "let g:clang_format#style_options = {
 "    \ "AccessModifierOffset" : -4,
