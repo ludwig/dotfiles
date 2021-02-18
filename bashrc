@@ -62,6 +62,9 @@ if [[ -r /usr/local/etc/profile.d/bash_completion.sh ]]; then
     source /usr/local/etc/profile.d/bash_completion.sh
 fi
 
+# Set up bash completion and key bindings for fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
