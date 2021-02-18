@@ -25,6 +25,12 @@ Plug 'jlanzarotta/bufexplorer'
 " NERDTree
 Plug 'preservim/nerdtree'
 
+" Plugin for clang-format
+Plug 'rhysd/vim-clang-format'
+
+" Plugin for defining operators easily
+Plug 'kana/vim-operator-user'
+
 " }}}
 
 " Initialize plugin system
@@ -107,6 +113,23 @@ let NERDTreeMapActivateNode='<Space>'
 "let NERDTreeRespectWildIgnore=1
 
 " }}}
+" --- vim-clang-format settings
+
+"let g:clang_format#style_options = {
+"    \ "AccessModifierOffset" : -4,
+"    \ "AllowShortIfStatementsOnASingleLine" : "true",
+"    \ "AlwaysBreakTemplateDeclarations" : "true",
+"    \ "Standard" : "C++11"}
+
+" Map to <Leader>cf in C++ code
+autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+
+" If you install vim-operator-user
+autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
+
+" Toggle auto formatting:
+nmap <Leader>C :ClangFormatAutoToggle<CR>
 
 " }}}
 
