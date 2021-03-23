@@ -22,6 +22,10 @@ Plug 'mileszs/ack.vim'
 " BufExplorer Plugin for Vim
 Plug 'jlanzarotta/bufexplorer'
 
+" Plugin for the fzf fuzzy finder
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+
 " NERDTree
 Plug 'preservim/nerdtree'
 
@@ -72,6 +76,12 @@ let g:bufExplorerShowUnlisted=0
 let g:bufExplorerSplitBelow=1
 let g:bufExplorerSplitOutPathName=1
 let g:bufExplorerSplitRight=1
+
+" }}}
+" --- fzf.vim settings {{{
+
+"nmap <C-P> :FZF<CR>
+nmap <C-G> :FZF<CR>
 
 " }}}
 " --- NERDTree settings {{{
