@@ -21,6 +21,11 @@ fi
 # Prepend sbin directory to PATH.
 PATH="/usr/local/sbin:${PATH}"
 
+# Some systems don't use /usr/local for homebrew.
+if [[ -d /opt/homebrew ]]; then
+    eval $(/opt/homebrew/bin/brew shellenv)
+fi
+
 # ----------------------------------------------------------------------------
 # Finally, export our shell variables
 
