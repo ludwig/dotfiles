@@ -1,10 +1,10 @@
 # ~/.bashrc_local
 
 # set up virtualenvwrapper
-if [ -d ~/.virtualenvs ]; then
-    export WORKON_HOME="$HOME/.virtualenvs"
-    export VIRTUALENVWRAPPER_PYTHON='/usr/bin/python'
-    export VIRTUALENVWRAPPER_VIRTUALENV='/usr/bin/virtualenv'
-    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
-fi
+#if [ -d ~/.virtualenvs ]; then
+#    export WORKON_HOME="$HOME/.virtualenvs"
+#    export VIRTUALENVWRAPPER_PYTHON='/usr/bin/python'
+#    export VIRTUALENVWRAPPER_VIRTUALENV='/usr/bin/virtualenv'
+#    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+#fi
 

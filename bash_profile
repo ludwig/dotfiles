@@ -33,6 +33,12 @@ if [ -d ~/opt/local ]; then
     PKG_CONFIG_PATH="${HOME}/opt/local/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
 fi
 
+# For pip's user installed binaries.
+PATH="${HOME}/.local/bin:${PATH}"
+
+# CUDA
+PATH="/usr/local/cuda/bin:${PATH}"
+
 # Prepend ~/bin to the PATH.
 PATH="${HOME}/bin:${PATH}"
 
