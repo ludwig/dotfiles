@@ -1,0 +1,6 @@
+/autoload/plug.vim
+/plugged/
+/sessions/
+/tmp/
+.netrwhist
+user.vim

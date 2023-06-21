@@ -1,46 +1,24 @@
 " ~/.vimrc
-"
-" Plugin Manager: https://github.com/junegunn/vim-plug
-"
-" To install, run this command
-"
-"   curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"
-" -----------------------------------------------------------------------------
+" Plugin manager: vim-plug
 
 " Change the mapleader from \ to ,
-let mapleader=","
+let mapleader = ","
 
-" Specify a directory for plugins
-call plug#begin('~/.vim/plugged')
+" Let vim-plug do its thing.
+" After adding new plugins, reload, and then use :PlugInstall
+call plug#begin()
 
 " Install Plugins {{{
-
-" ack.vim - Plugin for the Perl module / CLI script 'ack'
-Plug 'mileszs/ack.vim'
 
 " BufExplorer Plugin for Vim
 Plug 'jlanzarotta/bufexplorer'
 
-" Plugin for the fzf fuzzy finder
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-
 " NERDTree
 Plug 'preservim/nerdtree'
 
-"Syntax checking hacks for vim
-Plug 'vim-syntastic/syntastic'
-
-" Plugin for clang-format
-Plug 'rhysd/vim-clang-format'
-
-" Plugin for defining operators easily
-Plug 'kana/vim-operator-user'
-
 " }}}
 
-" Initialize plugin system
+" Initialize the plugin system
 call plug#end()
 
 " Load some default settings
@@ -48,21 +26,7 @@ source ~/.vim/defaults.vim
 
 " Configure Plugins {{{
 
-" --- Ack settings {{{
-
-cabbrev ack Ack
-
-" Search for a pattern using Ack (the trailing space is important)
-nnoremap ,s :Ack! 
-nnoremap ,S :Ack! <C-R>=expand("<cword>")<CR>
-
-" Same, but use the location list window instead of the quickfix list window
-nnoremap \s :LAck! 
-nnoremap \S :LAck! <C-R>=expand("<cword>")<CR>
-
-" }}}
 " --- BufExplorer settings {{{
-
 " To use:
 "   '<Leader>be'  normal open
 "   '<Leader>bs'  horizontal split open
@@ -77,11 +41,6 @@ let g:bufExplorerSplitBelow=1
 let g:bufExplorerSplitOutPathName=1
 let g:bufExplorerSplitRight=1
 
-" }}}
-" --- fzf.vim settings {{{
-
-"nmap <C-P> :FZF<CR>
-nmap <C-G> :FZF<CR>
 
 " }}}
 " --- NERDTree settings {{{
@@ -120,52 +79,6 @@ let NERDTreeIgnore=[
 
 " Default key to activate node is 'o'
 let NERDTreeMapActivateNode='<Space>'
-
-" See https://superuser.com/questions/184844/hide-certain-files-in-nerdtree
-"set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.*
-"let NERDTreeRespectWildIgnore=1
-
-" }}}
-" --- Syntastic settings {{{
-" See also
-"   :help syntastic
-"   :help syntastic-commands
-"   :SyntasticToggleMode
-"   :SyntasticCheck
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-
-let g:syntastic_mode_map = {
-    \   'mode': 'passive',
-    \   'active_filetypes': [],
-    \   'passive_filetypes': []}
-
-" }}}
-" --- vim-clang-format settings {{{
-
-"let g:clang_format#style_options = {
-"    \ "AccessModifierOffset" : -4,
-"    \ "AllowShortIfStatementsOnASingleLine" : "true",
-"    \ "AlwaysBreakTemplateDeclarations" : "true",
-"    \ "Standard" : "C++11"}
-
-" Map to <Leader>cf in C++ code
-autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
-
-" If you install vim-operator-user
-autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
-
-" Toggle auto formatting:
-nmap <Leader>C :ClangFormatAutoToggle<CR>
-
 " }}}
 
 " }}}
@@ -181,5 +94,4 @@ if filereadable(expand("~/.vim/user.vim"))
     source ~/.vim/user.vim
 endif
 
-" -----------------------------------------------------------------------------
 " vim: fen fdl=0 fdm=marker
