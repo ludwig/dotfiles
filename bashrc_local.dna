@@ -1,0 +1,29 @@
+# ~/.bashrc_local
+
+alias code=code-insiders
+
+# Set up z jumper
+source "/usr/local/etc/profile.d/z.sh"
+
+# Set up nvm
+export NVM_DIR="${HOME}/.nvm"
+if [ -s "/usr/local/opt/nvm/nvm.sh" ]; then
+    source "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+fi
+if [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ]; then
+    source "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
+fi
+
+# Set up go
+# Alternative: go env -w GOBIN=$HOME/bin
+export PATH="${PATH}:${HOME}/go/bin"
+
+# Set up docker
+#export PATH="${HOME}/.docker/bin:${PATH}"
+#export DOCKER_BUILDKIT=1
+#export COMPOSE_DOCKER_CLI_BUILD=1
+
+# Set up workspaces
+#export DASH_WS="${HOME}/dash-ws"
+
+# vim: ft=bash
