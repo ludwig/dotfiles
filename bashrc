@@ -58,6 +58,14 @@ set -o vi
 
 # ----------------------------------------------------------------------------
 
+function mk-today() {
+    local dir="${HOME}/journal/$(date +%Y)/$(date +%m-%d)"
+    mkdir -p "${dir}"
+    cd "${dir}"
+}
+
+# ----------------------------------------------------------------------------
+
 if [[ -r /usr/local/etc/profile.d/bash_completion.sh ]]; then
     source /usr/local/etc/profile.d/bash_completion.sh
 elif [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]]; then
