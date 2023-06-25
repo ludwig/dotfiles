@@ -58,6 +58,12 @@ set -o vi
 
 # ----------------------------------------------------------------------------
 
+function mkcd() {
+    local dir="$1"
+    mkdir -p "${dir}"
+    cd "${dir}"
+}
+
 function mk-today() {
     local dir="${HOME}/journal/$(date +%Y)/$(date +%m-%d)"
     mkdir -p "${dir}"
