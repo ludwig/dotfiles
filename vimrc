@@ -1,5 +1,12 @@
 " ~/.vimrc
 " Plugin manager: vim-plug
+"
+" See installation instructions:
+" https://github.com/junegunn/vim-plug#unix
+"
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"
 
 " Change the mapleader from \ to ,
 let mapleader = ","
