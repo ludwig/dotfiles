@@ -70,6 +70,68 @@ function mk-today() {
     cd "${dir}"
 }
 
+function mk-prev () {
+  local yday=$(gdate -d "yesterday" +%Y/%m-%d)
+  local dir="${HOME}/journal/${yday}"
+  if [ -d "${dir}" ]; then
+    cd "${dir}"
+  else
+    echo "Directory for previous day does not exist."
+  fi
+}
+
+function mk-next () {
+  local tmrw=$(gdate -d "tomorrow" +%Y/%m-%d)
+  local dir="${HOME}/journal/${tmrw}"
+  if [ -d "${dir}" ]; then
+    cd "${dir}"
+  else
+    echo "Directory for next day does not exist."
+  fi
+}
+
+# ----------------------------------------------------------------------------
+
+cd-prev() {
+  local current_dir=$(pwd)
+  local year="${current_dir##*/journal/}"
+  year="${year%%/*}"
+  local month_day="${current_dir##*/}"
+  local target="${year}-${month_day}"
+  local counter=0
+  while [ $counter -lt 1000 ]; do
+    target=$(gdate -d "${target} - 1 day" +%Y-%m-%d)
+    local formatted_target="${target:0:4}/${target:5}"
+    local dir="${HOME}/journal/${formatted_target}"
+    if [ -d "${dir}" ]; then
+      cd "${dir}"
+      return
+    fi
+    counter=$((counter + 1))
+  done
+  echo "Reached iteration limit. Stopped looking on ${target}"
+}
+
+cd-next() {
+  local current_dir=$(pwd)
+  local year="${current_dir##*/journal/}"
+  year="${year%%/*}"
+  local month_day="${current_dir##*/}"
+  local target="${year}-${month_day}"
+  local counter=0
+  while [ $counter -lt 1000 ]; do
+    target=$(gdate -d "${target} + 1 day" +%Y-%m-%d)
+    local formatted_target="${target:0:4}/${target:5}"
+    local dir="${HOME}/journal/${formatted_target}"
+    if [ -d "${dir}" ]; then
+      cd "${dir}"
+      return
+    fi
+    counter=$((counter + 1))
+  done
+  echo "Reached iteration limit. Stopped looking on ${target}"
+}
+
 # ----------------------------------------------------------------------------
 
 if [[ -r /usr/local/etc/profile.d/bash_completion.sh ]]; then
