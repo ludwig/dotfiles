@@ -2,6 +2,10 @@
 
 alias ls='ls --color -F'
 
+if [ -f ~/w/z/z.sh ]; then
+    source ~/w/z/z.sh
+fi
+
 # CUDA paths
 # https://docs.nvidia.com/cuda/cuda-quick-start-guide/
 export PATH="/usr/local/cuda/bin${PATH:+:${PATH}}"
