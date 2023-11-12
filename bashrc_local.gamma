@@ -2,9 +2,14 @@
 
 alias ls='ls --color -F'
 
+# Configure the z directory jumper
 if [ -f ~/w/z/z.sh ]; then
     source ~/w/z/z.sh
 fi
+
+# Configure Go
+export GOPATH=${HOME}/go
+export PATH="${PATH}:${GOPATH}/bin"
 
 # CUDA paths
 # https://docs.nvidia.com/cuda/cuda-quick-start-guide/
