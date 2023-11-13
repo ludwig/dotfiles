@@ -14,4 +14,5 @@ alias ls='ls -GF'
 # Other random aliases
 alias cam='conda activate lab'
 alias dockviz="docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
+alias dockviz-images-tree="dockviz images --tree"
 alias lzd="docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v ~/.config/lazydocker:/.config/jesseduffield/lazydocker lazyteam/lazydocker"
