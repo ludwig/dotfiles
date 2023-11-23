@@ -70,7 +70,7 @@ function mk-today() {
     cd "${dir}"
 }
 
-function mk-prev () {
+function mk-prev() {
   local yday=$(gdate -d "yesterday" +%Y/%m-%d)
   local dir="${HOME}/journal/${yday}"
   if [ -d "${dir}" ]; then
@@ -80,7 +80,7 @@ function mk-prev () {
   fi
 }
 
-function mk-next () {
+function mk-next() {
   local tmrw=$(gdate -d "tomorrow" +%Y/%m-%d)
   local dir="${HOME}/journal/${tmrw}"
   if [ -d "${dir}" ]; then
@@ -88,6 +88,15 @@ function mk-next () {
   else
     echo "Directory for next day does not exist."
   fi
+}
+
+function mk-week() {
+    local year=$(date +%Y)
+    local week=$(date +%V)
+    local week_dir="${year}-W${week}"
+    local dir="${HOME}/blogs/weekly/${week_dir}"
+    mkdir -p "${dir}"
+    cd "${dir}"
 }
 
 # ----------------------------------------------------------------------------
