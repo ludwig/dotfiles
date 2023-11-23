@@ -12,7 +12,7 @@ export GOPATH=${HOME}/go
 export PATH="${PATH}:${GOPATH}/bin"
 
 # Configure keychain
-eval $(keychain --eval --agents ssh id_rsa)
+#eval $(keychain --eval --agents ssh id_rsa)
 
 # CUDA paths
 # https://docs.nvidia.com/cuda/cuda-quick-start-guide/
