@@ -13,6 +13,7 @@ alias ls='ls -GF'
 
 # Conda aliases
 alias cam='conda activate ham'
+alias cab='conda activate lab'
 
 # Other random aliases
 alias dockviz="docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
