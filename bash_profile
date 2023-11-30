@@ -1,5 +1,10 @@
 # ~/.bash_profile: executed by bash(1) for login shells.
 
+# Some systems don't use /usr/local for homebrew.
+if [[ -d /opt/homebrew ]]; then
+    eval $(/opt/homebrew/bin/brew shellenv)
+fi
+
 # Include ~/.bashrc if it exists
 if [ -f ~/.bashrc ]; then
     source ~/.bashrc
@@ -20,11 +25,6 @@ fi
 
 # Prepend sbin directory to PATH.
 PATH="/usr/local/sbin:${PATH}"
-
-# Some systems don't use /usr/local for homebrew.
-if [[ -d /opt/homebrew ]]; then
-    eval $(/opt/homebrew/bin/brew shellenv)
-fi
 
 # ----------------------------------------------------------------------------
 # Finally, export our shell variables
