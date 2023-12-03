@@ -1,5 +1,6 @@
 # ~/.bash_aliases: This file is meant to be sourced from ~/.bashrc
 
+# The usual
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -ip'
@@ -15,7 +16,12 @@ alias ls='ls -GF'
 alias cam='conda activate ham'
 alias cab='conda activate lab'
 
-# Other random aliases
+# Aliases for docker
 alias dockviz="docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
 alias dockviz-images-tree="dockviz images --tree"
 alias lzd="docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v ~/.config/lazydocker:/.config/jesseduffield/lazydocker lazyteam/lazydocker"
+
+# Hugo likes this format for its date field
+alias hugo-now="gdate '+%Y-%m-%dT%H:%M:%S%:z'"
+
+# EOF
