@@ -1,18 +1,52 @@
 # ~/.bashrc_local
+# vim: ft=bash
+
+alias code=code-insiders
 
 source "/opt/homebrew/etc/profile.d/z.sh"
 
+source ~/.invoke-completion.sh
 
+# Hugo stuff
+alias cd-blog='cd ~/blogs/hugo'
+alias cd-themes='cd ~/themes/hugo'
+alias cd-videolog='cd ~/blogs/videolog'
+source ~/blogs/profile.sh
+
+# Setup nvm
 export NVM_DIR="${HOME}/.nvm"
-
 if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
     source "/opt/homebrew/opt/nvm/nvm.sh"
 fi
-
 if [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ]; then
     source "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 fi
 
-alias code=code-insiders
+# Setup java
+export PATH="/opt/homebrew/opt/openjdk/bin:${PATH}"
 
-# vim: ft=bash
+# STB: AWS stuff
+source ~/security/aws/profile.sh
+
+# STB: Location of PKI for the helix private CA
+export EASYRSA_PKI="${HOME}/security/easy-rsa/pki"
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/luis/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/luis/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/Users/luis/miniforge3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/luis/miniforge3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/Users/luis/miniforge3/etc/profile.d/mamba.sh" ]; then
+    . "/Users/luis/miniforge3/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
