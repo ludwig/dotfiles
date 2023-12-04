@@ -13,6 +13,7 @@ alias x='exit'
 alias ls='ls -GF'
 
 # Conda aliases
+alias cde='conda deactivate'
 alias cam='conda activate ham'
 alias cab='conda activate lab'
 
