@@ -3,9 +3,13 @@
 
 alias code=code-insiders
 
+# Set up z jumper
 source "/opt/homebrew/etc/profile.d/z.sh"
 
-source ~/.invoke-completion.sh
+# Invoke completion
+if [ -f ~/.invoke-completion.sh ]; then
+    source ~/.invoke-completion.sh
+fi
 
 # Hugo stuff
 alias cd-blog='cd ~/blogs/hugo'
