@@ -1,9 +1,15 @@
 # ~/.bashrc_local
+# vim: ft=bash
 
 alias code=code-insiders
 
 # Set up z jumper
 source "/usr/local/etc/profile.d/z.sh"
+
+# Invoke completion
+if [ -f ~/.invoke-completion.sh ]; then
+    source ~/.invoke-completion.sh
+fi
 
 # Set up nvm
 export NVM_DIR="${HOME}/.nvm"
@@ -26,4 +32,21 @@ export PATH="${PATH}:${HOME}/go/bin"
 # Set up workspaces
 #export DASH_WS="${HOME}/dash-ws"
 
-# vim: ft=bash
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/luis/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/luis/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/Users/luis/miniforge3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/luis/miniforge3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/Users/luis/miniforge3/etc/profile.d/mamba.sh" ]; then
+    . "/Users/luis/miniforge3/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
