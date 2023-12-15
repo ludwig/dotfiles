@@ -1,11 +1,13 @@
 # ~/.bashrc_local
 # vim: ft=bash
 
-# Helix aliases
+# Helix-specific aliases
 alias code=code-insiders
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
-alias cd-wikipedia='cd ~/active/links/wikipedia/'
 alias today='mkcd ~/active/$(gdate +%Y/%m-%d)/'
+alias cd-wikipedia='cd ~/active/links/wikipedia/'
+alias cd-webstream='cd ~/blogs/videolog/webstream'
+alias cd-watchq='cd ~/blogs/videolog/watchq'
 
 # Set up z jumper
 source "/opt/homebrew/etc/profile.d/z.sh"
