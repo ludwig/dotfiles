@@ -8,6 +8,7 @@ alias today='mkcd ~/active/$(gdate +%Y/%m-%d)/'
 alias cd-wikipedia='cd ~/active/links/wikipedia/'
 alias cd-webstream='cd ~/blogs/videolog/webstream'
 alias cd-watchq='cd ~/blogs/videolog/watchq'
+alias cd-awesome-links='cd ~/w/awesome-links/'
 
 # Set up z jumper
 source "/opt/homebrew/etc/profile.d/z.sh"
