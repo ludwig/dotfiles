@@ -6,8 +6,6 @@ alias code=code-insiders
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 alias today='mkcd ~/active/$(gdate +%Y/%m-%d)/'
 alias cd-wikipedia='cd ~/active/links/wikipedia/'
-alias cd-webstream='cd ~/blogs/videolog/webstream'
-alias cd-watchq='cd ~/blogs/videolog/watchq'
 alias cd-awesome-links='cd ~/w/awesome-links/'
 
 # Set up z jumper
@@ -21,7 +19,9 @@ fi
 # Hugo stuff
 alias cd-blog='cd ~/blogs/hugo'
 alias cd-themes='cd ~/themes/hugo'
-alias cd-videolog='cd ~/blogs/videolog'
+alias cd-videolog='cd ~/blogs/hugo/sites/videolog'
+alias cd-webstream='cd ~/blogs/hugo/vault/webstream'
+alias cd-watchq='cd ~/blogs/hugo/vault/watchq'
 source ~/blogs/profile.sh
 
 # Setup nvm
