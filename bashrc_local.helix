@@ -8,6 +8,8 @@ alias today='mkcd ~/active/$(gdate +%Y/%m-%d)/'
 alias cd-wikipedia='cd ~/active/links/wikipedia/'
 alias cd-awesome-links='cd ~/w/awesome-links/'
 
+alias cd-finetuning='cd ~/genai/tts-finetuning/'
+
 # Set up z jumper
 source "/opt/homebrew/etc/profile.d/z.sh"
 
