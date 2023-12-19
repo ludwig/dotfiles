@@ -14,8 +14,9 @@ alias ls='ls -GF'
 
 # Conda aliases
 alias cde='conda deactivate'
-alias cam='conda activate ham'
 alias cab='conda activate lab'
+alias cam='conda activate ham'
+alias clam='conda activate lam'
 
 # Aliases for docker
 alias dockviz="docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
