@@ -15,7 +15,8 @@ alias ls='ls -GF'
 # Conda aliases
 alias cde='conda deactivate'
 alias cab='conda activate lab'
-alias cam='conda activate ham'
+alias cam='conda activate mony'
+alias cham='conda activate ham'
 alias clam='conda activate lam'
 
 # Aliases for docker
