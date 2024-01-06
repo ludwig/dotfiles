@@ -7,6 +7,7 @@ alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 alias today='mkcd ~/active/$(gdate +%Y/%m-%d)/'
 alias cd-wikipedia='cd ~/active/links/wikipedia/'
 alias cd-awesome-links='cd ~/w/awesome-links/'
+alias cd-active-workspace='cd ~/Desktop/active-workspace/'
 
 alias cd-finetuning='cd ~/genai/tts-finetuning/'
 
