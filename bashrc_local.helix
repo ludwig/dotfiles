@@ -45,6 +45,11 @@ source ~/security/aws/profile.sh
 # STB: Location of PKI for the helix private CA
 export EASYRSA_PKI="${HOME}/security/easy-rsa/pki"
 
+# Mojo
+if [ -d ~/.modular ]; then
+    export MODULAR_HOME="${HOME}/.modular"
+    export PATH="${MODULAR_HOME}/pkg/packages.modular.com_mojo/bin:${PATH}"
+fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
