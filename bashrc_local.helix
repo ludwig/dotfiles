@@ -5,19 +5,14 @@
 alias code=code-insiders
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 alias today='mkcd ~/active/$(gdate +%Y/%m-%d)/'
+
+# Helix-specific directories
 alias cd-wikipedia='cd ~/active/links/wikipedia/'
 alias cd-awesome-links='cd ~/w/awesome-links/'
 alias cd-active-workspace='cd ~/Desktop/active-workspace/'
-
 alias cd-finetuning='cd ~/genai/tts-finetuning/'
-
-# Set up z jumper
-source "/opt/homebrew/etc/profile.d/z.sh"
-
-# Invoke completion
-if [ -f ~/.invoke-completion.sh ]; then
-    source ~/.invoke-completion.sh
-fi
+alias cd-ex='cd ~/active/ex'
+alias cd-stb='cd ~/active/stb'
 
 # Hugo stuff
 alias cd-blog='cd ~/blogs/hugo'
@@ -26,6 +21,14 @@ alias cd-videolog='cd ~/blogs/hugo/sites/videolog'
 alias cd-webstream='cd ~/blogs/hugo/vault/webstream'
 alias cd-watchq='cd ~/blogs/hugo/vault/watchq'
 source ~/blogs/profile.sh
+
+# Set up z jumper
+source "/opt/homebrew/etc/profile.d/z.sh"
+
+# Invoke completion
+if [ -f ~/.invoke-completion.sh ]; then
+    source ~/.invoke-completion.sh
+fi
 
 # Setup nvm
 export NVM_DIR="${HOME}/.nvm"
@@ -45,7 +48,7 @@ source ~/security/aws/profile.sh
 # STB: Location of PKI for the helix private CA
 export EASYRSA_PKI="${HOME}/security/easy-rsa/pki"
 
-# Mojo
+# Setup mojo
 if [ -d ~/.modular ]; then
     export MODULAR_HOME="${HOME}/.modular"
     export PATH="${MODULAR_HOME}/pkg/packages.modular.com_mojo/bin:${PATH}"
