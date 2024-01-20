@@ -12,7 +12,7 @@ parse_git_branch() {
 export PS1="\[\033[00m\]\u@\h\[\033[01;34m\]:\w\[\033[31m\]\$(parse_git_branch)\[\033[00m\]$\[\033[00m\] "
 
 # Number of trailing components to retain when expanding \w and \W
-export PROMPT_DIRTRIM=2
+export PROMPT_DIRTRIM=3
 
 # ----------------------------------------------------------------------------
 # History settings
