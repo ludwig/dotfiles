@@ -23,6 +23,7 @@ alias clam='conda activate lam'
 alias dockviz="docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
 alias dockviz-images-tree="dockviz images --tree"
 alias lzd="docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v ~/.config/lazydocker:/.config/jesseduffield/lazydocker lazyteam/lazydocker"
+alias dc='docker compose'
 
 # Hugo likes this format for its date field
 alias hugo-now="gdate '+%Y-%m-%dT%H:%M:%S%:z'"
