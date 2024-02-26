@@ -32,6 +32,18 @@ export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PAT
 export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
 export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
 
+# bash completions from brew commands
+if [ -d "/home/linuxbrew/.linuxbrew/etc/bash_completion.d" ]; then
+  for bcfile in /home/linuxbrew/.linuxbrew/etc/bash_completion.d/* ; do
+    . ${bcfile}
+  done
+fi
+
+# Configure nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/luis/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
