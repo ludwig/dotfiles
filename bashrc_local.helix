@@ -5,6 +5,7 @@
 alias code=code-insiders
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 alias today='mkcd ~/active/$(gdate +%Y/%m-%d)/'
+alias caf='conda activate fastapi'
 
 # Helix-specific directories
 alias cd-wikipedia='cd ~/active/links/wikipedia/'
@@ -50,9 +51,18 @@ export EASYRSA_PKI="${HOME}/security/easy-rsa/pki"
 
 # Setup mojo
 if [ -d ~/.modular ]; then
+    #
     export MODULAR_HOME="${HOME}/.modular"
     export PATH="${MODULAR_HOME}/pkg/packages.modular.com_mojo/bin:${PATH}"
+    # https://docs.modular.com/mojo/manual/python/#python-environment
+    #export MOJO_PYTHON_LIBRARY="$(find $CONDA_PREFIX/lib -iname 'libpython*.[s,d]*' | sort -r | head -n 1)"
+    #export MOJO_PYTHON_LIBRARY=/Users/luis/miniforge3/envs/lam/lib/libpython3.11.dylib
+    # https://www.modular.com/blog/using-mojo-with-python
+    # Hmmm...it's better to edit the line `python_lib =` inside `~/.modular/modular.cfg`
 fi
+
+# https://support.apple.com/kb/HT208050
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
