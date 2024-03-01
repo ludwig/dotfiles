@@ -23,6 +23,9 @@ fi
 #    PATH="${PATH}:${py3_user_base}/bin"
 #fi
 
+# Add ~/.local/bin to the PATH
+PATH="$PATH:${HOME}/.local/bin"
+
 # Prepend sbin directory to PATH.
 PATH="/usr/local/sbin:${PATH}"
 
