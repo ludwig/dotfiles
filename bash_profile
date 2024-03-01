@@ -18,10 +18,10 @@ fi
 # Prepend python's `site.USER_BASE` bin directory to the PATH.
 # On Linux, it should be ~/.local/bin
 # On MacOS, it should be something like ~/Library/Python/3.7/bin
-py3_user_base=$(python3 -m site --user-base)
-if [[ -d ${py3_user_base} ]]; then
-    PATH="${PATH}:${py3_user_base}/bin"
-fi
+#py3_user_base=$(python3 -m site --user-base)
+#if [[ -d ${py3_user_base} ]]; then
+#    PATH="${PATH}:${py3_user_base}/bin"
+#fi
 
 # Prepend sbin directory to PATH.
 PATH="/usr/local/sbin:${PATH}"
