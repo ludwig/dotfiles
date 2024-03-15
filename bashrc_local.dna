@@ -6,11 +6,6 @@ alias code=code-insiders
 # Set up z jumper
 source "/usr/local/etc/profile.d/z.sh"
 
-# Invoke completion
-if [ -f ~/.invoke-completion.sh ]; then
-    source ~/.invoke-completion.sh
-fi
-
 # Set up nvm
 export NVM_DIR="${HOME}/.nvm"
 if [ -s "/usr/local/opt/nvm/nvm.sh" ]; then

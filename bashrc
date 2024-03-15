@@ -152,6 +152,11 @@ fi
 # Set up bash completion and key bindings for fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# Invoke completion
+if [ -f ~/.invoke-completion.sh ]; then
+    source ~/.invoke-completion.sh
+fi
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.

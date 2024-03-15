@@ -26,11 +26,6 @@ source ~/blogs/profile.sh
 # Set up z jumper
 source "/opt/homebrew/etc/profile.d/z.sh"
 
-# Invoke completion
-if [ -f ~/.invoke-completion.sh ]; then
-    source ~/.invoke-completion.sh
-fi
-
 # Setup nvm
 export NVM_DIR="${HOME}/.nvm"
 if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then

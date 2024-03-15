@@ -7,11 +7,6 @@ if [ -f ~/w/z/z.sh ]; then
     source ~/w/z/z.sh
 fi
 
-# Invoke completion
-if [ -f ~/.invoke-completion.sh ]; then
-    source ~/.invoke-completion.sh
-fi
-
 # Configure Go
 export GOPATH=${HOME}/go
 export PATH="${PATH}:${GOPATH}/bin"
