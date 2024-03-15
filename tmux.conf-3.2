@@ -81,6 +81,7 @@ set -g set-titles on
 
 # wm window title string (uses statusbar variables)
 #set -g set-titles-string "tmux.#I.#W"
+set -g set-titles-string "#{session_name} - #{host}"
 
 # don't close windows. just deactivate them. use respawn-window to reactivate.
 #setw -g remain-on-exit on
