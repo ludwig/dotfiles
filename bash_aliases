@@ -15,6 +15,7 @@ alias ls='ls -GF'
 # These aliases have been useful on many systems
 alias today='mkcd ~/active/$(gdate +%Y/%m-%d)/'
 alias cd-ex='cd ~/active/ex'
+alias cd-poc='cd ~/active/poc'
 
 # Aliases for conda
 alias cde='conda deactivate'

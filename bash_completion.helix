@@ -1,0 +1,13 @@
+# ~/.bash_completion
+
+# Let's load some basics. Start with the poc stuff.
+[ -f ~/active/poc/bashes/profile.sh ] && source ~/active/poc/bashes/profile.sh
+
+# Now load the rest of the meat.
+if [[ -d ~/local/etc/bash_completion.d/ ]]; then
+    for file in ~/local/etc/bash_completion.d/*; do
+        if [[ -f "${file}" ]]; then
+            source "${file}"
+        fi
+    done
+fi

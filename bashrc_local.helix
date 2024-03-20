@@ -10,10 +10,11 @@ alias caf='conda activate fastapi'
 # Helix-specific directories
 alias cd-wikipedia='cd ~/active/links/wikipedia/'
 alias cd-awesome-links='cd ~/w/awesome-links/'
-alias cd-active-workspace='cd ~/Desktop/active-workspace/'
+alias cd-desktop='cd ~/Desktop/active-workspace/'
 alias cd-finetuning='cd ~/genai/tts-finetuning/'
-alias cd-ex='cd ~/active/ex'
 alias cd-stb='cd ~/active/stb'
+alias cd-seeds='cd ~/active/seeds'
+alias cd-hub='cd ~/active/poc/hub'
 
 # Hugo stuff
 alias cd-blog='cd ~/blogs/hugo'
