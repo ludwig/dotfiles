@@ -15,6 +15,7 @@
 __pycache__/
 .ipynb_checkpoints/
 .pytest_cache/
+.ruff_cache/
 
 # Ignore noise from OS X
 .DS_Store
