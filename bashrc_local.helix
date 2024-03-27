@@ -41,6 +41,9 @@ fi
 # Setup java
 export PATH="/opt/homebrew/opt/openjdk/bin:${PATH}"
 
+# Setup modules
+[ -d /opt/homebrew/opt/modules/init ] && source /opt/homebrew/opt/modules/init/bash
+
 # STB: AWS stuff
 source ~/security/aws/profile.sh
 
