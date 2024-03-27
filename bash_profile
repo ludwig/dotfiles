@@ -25,6 +25,7 @@ fi
 
 # Add ~/.local/bin to the PATH
 PATH="$PATH:${HOME}/.local/bin"
+PATH="$PATH:${HOME}/local/bin"
 
 # Prepend sbin directory to PATH.
 PATH="/usr/local/sbin:${PATH}"
