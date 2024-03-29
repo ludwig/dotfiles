@@ -36,6 +36,10 @@ alias ans='ansible'
 alias anp='ansible-playbook'
 alias anv='ansible-vault'
 
+# Aliases for granted
+# https://docs.commonfate.io/granted/internals/shell-alias
+alias assume="source assume"
+
 # Hugo likes this format for its date field
 alias hugo-now="gdate '+%Y-%m-%dT%H:%M:%S%:z'"
 
