@@ -6,6 +6,7 @@ alias code=code-insiders
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 alias today='mkcd ~/active/$(gdate +%Y/%m-%d)/'
 alias caf='conda activate fastapi'
+alias ave='aws-vault exec'
 
 # Helix-specific directories
 alias cd-wikipedia='cd ~/active/links/wikipedia/'
@@ -17,6 +18,7 @@ alias cd-zoo='cd ~/active/zoo'
 alias cd-seeds='cd ~/active/seeds'
 alias cd-chats='cd ~/active/chats'
 alias cd-hub='cd ~/active/poc/hub'
+alias cd-upwork='cd ~/active/upwork/'
 
 # Hugo stuff
 alias cd-blog='cd ~/blogs/hugo'
