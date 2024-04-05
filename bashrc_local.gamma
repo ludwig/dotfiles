@@ -2,6 +2,9 @@
 
 alias ls='ls --color -F'
 
+# Configure Ansible
+export ANSIBLE_CONFIG="${HOME}/ops/ansible/ansible.cfg"
+
 # Configure the z directory jumper
 if [ -f ~/w/z/z.sh ]; then
     source ~/w/z/z.sh
@@ -28,6 +31,7 @@ export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
 export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
 
 # bash completions from brew commands
+# TODO: Generalize with $(brew --prefix)
 if [ -d "/home/linuxbrew/.linuxbrew/etc/bash_completion.d" ]; then
   for bcfile in /home/linuxbrew/.linuxbrew/etc/bash_completion.d/* ; do
     . ${bcfile}
