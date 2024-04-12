@@ -6,7 +6,6 @@ alias code=code-insiders
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 alias today='mkcd ~/active/$(gdate +%Y/%m-%d)/'
 alias caf='conda activate fastapi'
-alias ave='aws-vault exec'
 
 # Helix-specific directories
 alias cd-wikipedia='cd ~/active/links/wikipedia/'
@@ -18,13 +17,22 @@ alias cd-zoo='cd ~/active/zoo'
 alias cd-seeds='cd ~/active/seeds'
 alias cd-chats='cd ~/active/chats'
 alias cd-hub='cd ~/active/poc/hub'
+alias cd-webstream='cd ~/active/webstream/'
 alias cd-upwork='cd ~/active/upwork/'
+alias cd-books='cd ~/active/books/'
+
+# AWS stuff
+alias ave='aws-vault exec'
+alias tf='terraform'
+alias tg='terragrunt'
+alias sandbox-sso-login='aws sso login --profile sandbox-admin'
+alias sandbox-caller-identity='aws sts get-caller-identity --profile sandbox-admin'
 
 # Hugo stuff
 alias cd-blog='cd ~/blogs/hugo'
 alias cd-themes='cd ~/themes/hugo'
 alias cd-videolog='cd ~/blogs/hugo/sites/videolog'
-alias cd-webstream='cd ~/blogs/hugo/vault/webstream'
+alias cd-blog-webstream='cd ~/blogs/hugo/vault/webstream'
 alias cd-watchq='cd ~/blogs/hugo/vault/watchq'
 source ~/blogs/profile.sh
 
