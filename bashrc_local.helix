@@ -1,6 +1,15 @@
 # ~/.bashrc_local
 # vim: ft=bash
 
+# Set up powerline-shell prompt
+# See https://github.com/b-ryan/powerline-shell
+function _update_ps1() {
+    export PS1=$(powerline-shell $?)
+}
+if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
+
 # Helix-specific aliases
 alias code=code-insiders
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'

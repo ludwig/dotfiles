@@ -10,6 +10,7 @@ parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 export PS1="\[\033[00m\]\u@\h\[\033[01;34m\]:\w\[\033[31m\]\$(parse_git_branch)\[\033[00m\]$\[\033[00m\] "
+# NOTE: We might override PS1 and PROMPT_COMMAND in our ~/.bashrc_local
 
 # Number of trailing components to retain when expanding \w and \W
 export PROMPT_DIRTRIM=3

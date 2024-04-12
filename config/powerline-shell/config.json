@@ -1,0 +1,32 @@
+{
+  "segments": [
+    "set_term_title",
+    "virtual_env",
+    "aws_profile",
+    "~/.config/powerline-shell/segments/userhost.py",
+    "ssh",
+    "cwd",
+    "git",
+    "git_stash",
+    "time",
+    "newline",
+    "root"
+  ],
+  "cwd": {
+    "mode": "plain",
+    "max_depth": 6,
+    "max_dir_size": 40,
+    "full_cwd": true
+  },
+  "hostname": {
+    "colorize": true
+  },
+  "time": {
+    "format": "%Y-%m-%d %H:%M:%S"
+  },
+  "vcs": {
+    "show_symbol": true
+  },
+  "theme": "~/.config/powerline-shell/themes/helix.py",
+  "mode": "patched"
+}
