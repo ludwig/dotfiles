@@ -1,0 +1,62 @@
+{
+  "comment": "This file is used to copy/paste info into config.json",
+  "themes": [
+      "default", "basic",
+      "washed", "gruvbox",
+      "solarized_dark", "solarized_light",
+      "~/.config/powerline-shell/themes/helix.py"
+  ],
+  "mode": [
+    "patched", "compatible", "flat"
+  ],
+  "cwd_mode": [
+    "plain", "dironly"
+  ],
+  "time_format": [
+      "%Y-%m-%d %H:%M:%S",
+      "%b %d %H:%M:%S"
+  ],
+  "segments_two_lines": [
+    "set_term_title",
+    "newline",
+    "time",
+    "virtual_env",
+    "aws_profile",
+    "ssh",
+    "~/.config/powerline-shell/segments/userhost.py",
+    "newline",
+    "hostname",
+    "cwd",
+    "git",
+    "git_stash",
+    "newline",
+    "root"
+  ],
+  "segments_single_line": [
+    "set_term_title",
+    "newline",
+    "virtual_env",
+    "aws_profile",
+    "~/.config/powerline-shell/segments/userhost.py",
+    "ssh",
+    "cwd",
+    "git",
+    "git_stash",
+    "time",
+    "newline",
+    "root"
+  ],
+  "segments_basic": [
+    "set_term_title",
+    "virtual_env",
+    "aws_profile",
+    "username",
+    "hostname",
+    "ssh",
+    "cwd",
+    "git",
+    "git_stash",
+    "newline",
+    "root"
+  ]
+}

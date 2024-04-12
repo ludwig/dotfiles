@@ -1,0 +1,120 @@
+# This is a made up format so we can generate the powerline-shell
+# configuration files.  Use the following command to assemble the
+# final `config.json` file:
+# 
+#   yq -o json powerline.yaml | jq .config > config.json
+#
+
+# ------------------------------------------------------------------------------
+# Collection of named segments
+segments:
+  two_lines: &segments_two_lines
+    - set_term_title
+    - newline
+    - time
+    - virtual_env
+    - aws_profile
+    - ssh
+    - ~/.config/powerline-shell/segments/userhost.py
+    - newline
+    - hostname
+    - cwd
+    - git
+    - git_stash
+    - newline
+    - root
+  one_line: &segments_one_line
+    - set_term_title
+    - virtual_env
+    - aws_profile
+    - ~/.config/powerline-shell/segments/userhost.py
+    - ssh
+    - cwd
+    - git
+    - git_stash
+    - time
+    - newline
+    - root
+  basic: &segments_basic
+    - set_term_title
+    - virtual_env
+    - aws_profile
+    - username
+    - hostname
+    - ssh
+    - cwd
+    - git
+    - git_stash
+    - newline
+    - root
+
+# ------------------------------------------------------------------------------
+# Collection of named options
+options:
+  simple: &options_simple
+    mode: patched
+    theme: washed
+    cwd:
+      mode: plain
+    hostname:
+      colorize: true
+    vcs:
+      show_symbol: true
+  main: &options_main
+    cwd:
+      mode: plain
+      max_depth: 6
+      max_dir_size: 40
+      full_cwd: true
+    hostname:
+      colorize: true
+    time:
+      format: '%Y-%m-%d %H:%M:%S'
+    vcs:
+      show_symbol: true
+    theme: ~/.config/powerline-shell/themes/helix.py
+    mode: patched
+
+
+#-------------------------------------------------------------------------------
+# Collection of named configs
+configs:
+  basic: &config_basic
+    segments: *segments_basic
+    <<: *options_main
+    theme: gruvbox
+    mode: flat
+  single_line: &config_single_line
+    segments: *segments_one_line
+    <<: *options_main
+  two_lines: &config_two_lines
+    segments: *segments_two_lines
+    <<: *options_main
+
+
+#-------------------------------------------------------------------------------
+# List of allowed values for each option
+enums:
+  mode:
+    - patched
+    - compatible
+    - plain
+  cwd_mode:
+    - plain
+    - dironly
+  segments:
+    - userhost.py
+  themes:
+    - default
+    - basic
+    - solarized_dark
+    - solarized_light
+    - gruvbox
+    - washed
+    - ~/.config/powerline-shell/themes/nord.py
+
+#-------------------------------------------------------------------------------
+# Assemble the actual config we want to use!
+config:
+  <<: *config_single_line
+  mode: patched
