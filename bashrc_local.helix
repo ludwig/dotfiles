@@ -64,6 +64,9 @@ export PATH="/opt/homebrew/opt/openjdk/bin:${PATH}"
 [ -d /opt/homebrew/opt/modules/init ] && source /opt/homebrew/opt/modules/init/bash
 export MODULEPATH="${HOME}/modulefiles:${MODULEPATH}"
 
+# STB: Load poc bash scripts
+source ~/active/poc/bashes/profile.sh
+
 # STB: AWS stuff
 source ~/security/aws/profile.sh
 
