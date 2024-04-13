@@ -29,6 +29,7 @@ alias cd-hub='cd ~/active/poc/hub'
 alias cd-webstream='cd ~/active/webstream/'
 alias cd-upwork='cd ~/active/upwork/'
 alias cd-books='cd ~/active/books/'
+alias cd-yum='cd ~/active/yum/'
 
 # AWS stuff
 alias ave='aws-vault exec'
