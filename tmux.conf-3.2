@@ -73,15 +73,22 @@ set -g default-terminal "screen-256color"
 # xterm-style function key sequences
 setw -g xterm-keys on
 
-# control automatic window renaming
-setw -g automatic-rename off
-
-# enable wm window titles
+# dynamically update iTerm tab and window titles
 set -g set-titles on
 
-# wm window title string (uses statusbar variables)
+# but don't change tmux's own window titles
+setw -g automatic-rename off
+
+# window title string (uses statusbar variables)
+# Codes -- see FORMATS section of `man tmux`
+#   #T   = standard window title (last command)
+#   #h   = short hostname
+#   #S   = session name
+#   #W   = tmux window name
 #set -g set-titles-string "tmux.#I.#W"
-set -g set-titles-string "#{session_name} - #{host}"
+#set -g set-titles-string "#{session_name} - #{host}"
+#set -g set-titles-string "#S / #W"
+#set -g set-titles-string "#T : #h > #S > #W"
 
 # don't close windows. just deactivate them. use respawn-window to reactivate.
 #setw -g remain-on-exit on
@@ -262,6 +269,9 @@ set -g status-keys vi
 # amount of time for which status line messages and other indicators
 # are displayed. time is in milliseconds.
 set -g display-time 2000
+
+# refresh interval for status bar
+set -g status-interval 30
 
 # default statusbar colors
 set -g status-style fg=white,bg=default
