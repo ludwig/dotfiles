@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import shutil
+import sys
 from pathlib import Path
 
 import typer
@@ -8,6 +10,9 @@ from rich.console import Console
 app = typer.Typer()
 console = Console()
 
+
+def is_powerline_shell_installed():
+    return shutil.which("powerline-shell") is not None
 
 def unexpanduser(path: Path) -> Path:
     return Path(str(path).replace(str(Path.home()), "~"))
@@ -57,6 +62,16 @@ def link_path(source: Path, target: Path):
 def install_links():
     script_dir = Path(__file__).resolve().parent
     target_dir = Path("~/.config/powerline-shell").expanduser()
+
+    # Before we install anything, let's make sure powerline-shell
+    # has been installed.
+    if not is_powerline_shell_installed():
+        msg = (
+            "[red]Could not find [bold]powerline-shell[/bold] in PATH[/red]\n"
+            "Use '[bold]pipx install powerline-shell[/bold]' to install it."
+        )
+        console.print(msg)
+        sys.exit(-1)
 
     if not target_dir.exists():
         target_dir.mkdir(parents=True, exist_ok=True)
