@@ -49,7 +49,10 @@ shopt -s checkwinsize
 set -o ignoreeof
 
 # Some more shell options - see bash(1)
-shopt -s cdspell dotglob nocaseglob no_empty_cmd_completion
+shopt -s dotglob nocaseglob no_empty_cmd_completion
+
+# Correct any minor spelling errors in the directory name, for the cd command>
+#shopt -s cdspell
 
 # Use vi-style command line editing
 set -o vi
