@@ -25,6 +25,7 @@ alias cam='conda activate mony'
 alias cham='conda activate ham'
 alias clam='conda activate lam'
 alias clam-python='conda run -n lam --no-capture-output python'
+alias ipython-lam='ipython --profile=lam'
 
 # Aliases for docker
 alias dockviz="docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
