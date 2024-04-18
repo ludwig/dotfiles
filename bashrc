@@ -15,6 +15,11 @@ export PS1="\[\033[00m\]\u@\h\[\033[01;34m\]:\w\[\033[31m\]\$(parse_git_branch)\
 # Number of trailing components to retain when expanding \w and \W
 export PROMPT_DIRTRIM=3
 
+# Let's use nvimpager if it's installed
+if command -v nvimpager &>/dev/null; then
+    export PAGER=nvimpager
+fi
+
 # ----------------------------------------------------------------------------
 # History settings
 

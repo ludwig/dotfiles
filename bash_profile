@@ -34,7 +34,7 @@ PATH="/usr/local/sbin:${PATH}"
 # Finally, export our shell variables
 
 export EDITOR='vim'
-export PAGER='less -r'
+export PAGER="${PAGER:-less -R}"
 export LC_ALL='en_US.UTF-8'
 export LANG='en_US.UTF-8'
 
