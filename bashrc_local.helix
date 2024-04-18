@@ -34,6 +34,7 @@ alias cd-yum='cd ~/active/yum/'
 # AWS stuff
 alias ave='aws-vault exec'
 alias tf='terraform'
+alias tf-apply-auto='terraform apply -auto-approve'
 alias tg='terragrunt'
 alias sandbox-sso-login='aws sso login --profile sandbox-admin'
 alias sandbox-caller-identity='aws sts get-caller-identity --profile sandbox-admin'
