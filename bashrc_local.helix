@@ -38,6 +38,8 @@ alias tf-apply-auto='terraform apply -auto-approve'
 alias tg='terragrunt'
 alias sandbox-sso-login='aws sso login --profile sandbox-admin'
 alias sandbox-caller-identity='aws sts get-caller-identity --profile sandbox-admin'
+alias billing-sso-login='aws sso login --profile billing'
+alias billing-caller-identity='aws sts get-caller-identity --profile billing'
 
 # Hugo stuff
 alias cd-blog='cd ~/blogs/hugo'
