@@ -39,6 +39,13 @@ alias ans='ansible'
 alias anp='ansible-playbook'
 alias anv='ansible-vault'
 
+# AWS stuff
+alias ave='aws-vault exec'
+alias tf='terraform'
+alias tf-apply-auto='terraform apply -auto-approve'
+alias tg='terragrunt'
+alias get-caller-identity='aws sts get-caller-identity'
+
 # Aliases for granted
 # https://docs.commonfate.io/granted/internals/shell-alias
 alias assume="source assume"

@@ -32,14 +32,8 @@ alias cd-books='cd ~/active/books/'
 alias cd-yum='cd ~/active/yum/'
 
 # AWS stuff
-alias ave='aws-vault exec'
-alias tf='terraform'
-alias tf-apply-auto='terraform apply -auto-approve'
-alias tg='terragrunt'
 alias sandbox-sso-login='aws sso login --profile sandbox-admin'
-alias sandbox-caller-identity='aws sts get-caller-identity --profile sandbox-admin'
-alias billing-sso-login='aws sso login --profile billing'
-alias billing-caller-identity='aws sts get-caller-identity --profile billing'
+alias billing-sso-login='aws sso login --profile billing-admin'
 
 # Hugo stuff
 alias cd-blog='cd ~/blogs/hugo'
