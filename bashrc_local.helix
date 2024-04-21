@@ -15,6 +15,7 @@ alias code=code-insiders
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 alias today='mkcd ~/active/$(gdate +%Y/%m-%d)/'
 alias caf='conda activate fastapi'
+alias less='nvimpager'
 
 # Helix-specific directories
 alias cd-wikipedia='cd ~/active/links/wikipedia/'
