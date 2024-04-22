@@ -152,6 +152,17 @@ cd-next() {
 
 # ----------------------------------------------------------------------------
 
+ssh-eval-keychain() {
+    if ! command -v keychain &> /dev/null; then
+        echo "Error: keychain command not found"
+        echo "Install with homebrew or from https://www.funtoo.org/Keychain"
+        return 1
+    fi
+    eval $(keychain --eval id_rsa)
+}
+
+# ----------------------------------------------------------------------------
+
 if [[ -r /usr/local/etc/profile.d/bash_completion.sh ]]; then
     source /usr/local/etc/profile.d/bash_completion.sh
 elif [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]]; then
