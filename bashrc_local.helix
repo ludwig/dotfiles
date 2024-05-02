@@ -35,6 +35,7 @@ alias cd-yum='cd ~/active/yum/'
 # AWS stuff
 alias sandbox-sso-login='aws sso login --profile sandbox-admin'
 alias billing-sso-login='aws sso login --profile billing-admin'
+alias infra-sso-login='aws sso login --profile prod-infra'
 
 # Hugo stuff
 alias cd-blog='cd ~/blogs/hugo'
