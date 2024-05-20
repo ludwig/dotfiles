@@ -18,6 +18,7 @@ alias cd-active='cd ~/active'
 alias cd-scratch='cd ~/active/scratch'
 alias cd-ex='cd ~/active/ex'
 alias cd-poc='cd ~/active/poc'
+alias cd-hot='cd ~/hot'
 alias lg='lazygit'
 
 # Aliases for conda
