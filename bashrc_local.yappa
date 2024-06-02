@@ -1,5 +1,21 @@
 # ~/.bashrc_local
 
+# Homebrew (from `/home/linuxbrew/.linuxbrew/bin/brew shellenv`)
+export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
+export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar";
+export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew";
+export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}";
+export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
+
+# bash completions from brew commands
+# TODO: Generalize with $(brew --prefix)
+if [ -d "/home/linuxbrew/.linuxbrew/etc/bash_completion.d" ]; then
+  for bcfile in /home/linuxbrew/.linuxbrew/etc/bash_completion.d/* ; do
+    . ${bcfile}
+  done
+fi
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/luis/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
