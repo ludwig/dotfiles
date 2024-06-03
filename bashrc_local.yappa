@@ -1,4 +1,10 @@
 # ~/.bashrc_local
+# vim: ft=bash
+
+alias ls='ls --color -F'
+
+
+# -----------------------------------------------------------------------------
 
 # Homebrew (from `/home/linuxbrew/.linuxbrew/bin/brew shellenv`)
 export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
@@ -9,12 +15,27 @@ export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
 export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
 
 # bash completions from brew commands
-# TODO: Generalize with $(brew --prefix)
-if [ -d "/home/linuxbrew/.linuxbrew/etc/bash_completion.d" ]; then
-  for bcfile in /home/linuxbrew/.linuxbrew/etc/bash_completion.d/* ; do
+if [ -d "${HOMEBREW_PREFIX}/etc/bash_completion.d" ]; then
+  for bcfile in "${HOMEBREW_PREFIX}"/etc/bash_completion.d/* ; do
     . ${bcfile}
   done
 fi
+
+# -----------------------------------------------------------------------------
+
+# Set up z jumper
+source "${HOMEBREW_PREFIX}/etc/profile.d/z.sh"
+
+# Set up nvm
+export NVM_DIR="${HOME}/.nvm"
+if [ -s "${HOMEBREW_PREFIX}/opt/nvm/nvm.sh" ]; then
+    source "${HOMEBREW_PREFIX}/opt/nvm/nvm.sh"
+fi
+if [ -s "${HOMEBREW_PREFIX}/opt/nvm/etc/bash_completion.d/nvm" ]; then
+    source "${HOMEBREW_PREFIX}/opt/nvm/etc/bash_completion.d/nvm"
+fi
+
+# -----------------------------------------------------------------------------
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
