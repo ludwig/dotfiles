@@ -61,8 +61,8 @@ fi
 export PATH="/opt/homebrew/opt/openjdk/bin:${PATH}"
 
 # Setup modules
-[ -d /opt/homebrew/opt/modules/init ] && source /opt/homebrew/opt/modules/init/bash
-export MODULEPATH="${HOME}/modulefiles:${MODULEPATH}"
+#[ -d /opt/homebrew/opt/modules/init ] && source /opt/homebrew/opt/modules/init/bash
+#export MODULEPATH="${HOME}/modulefiles:${MODULEPATH}"
 
 # STB: Load poc bash scripts
 source ~/active/poc/bashes/profile.sh
