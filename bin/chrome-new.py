@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+"""Open a new Chrome window with the selected profile.
+
+This CLI utility exists because Chrome keeps switching workspaces
+on macOS when opening a new window on a different profile. It's
+a more systemic problem with macOS, hence this workaround.
+"""
 
 import json
 import shlex
@@ -129,6 +135,10 @@ def do_open(
         None,
         help="Profile index to open",
     ),
+    url: Optional[str] = typer.Argument(
+        None,
+        help="URL to open in the new Chrome window",
+    ),
     list_profiles: bool = typer.Option(
         False,
         "--list",
@@ -160,6 +170,10 @@ def do_open(
         "--new-window",
         f"--profile-directory={profile_name}",
     ]
+
+    # Add URL to the command if provided
+    if url:
+        cmd.append(url)
 
     # For debugging
     cmd_str = shlex.join(cmd)
