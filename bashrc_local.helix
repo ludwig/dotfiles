@@ -43,7 +43,7 @@ alias cd-themes='cd ~/themes/hugo'
 alias cd-videolog='cd ~/blogs/hugo/sites/videolog'
 alias cd-blog-webstream='cd ~/blogs/hugo/vault/webstream'
 alias cd-watchq='cd ~/blogs/hugo/vault/watchq'
-source ~/blogs/profile.sh
+#source ~/blogs/profile.sh
 
 # Set up z jumper
 source "/opt/homebrew/etc/profile.d/z.sh"
@@ -65,7 +65,7 @@ export PATH="/opt/homebrew/opt/openjdk/bin:${PATH}"
 #export MODULEPATH="${HOME}/modulefiles:${MODULEPATH}"
 
 # STB: Load poc bash scripts
-source ~/active/poc/bashes/profile.sh
+#source ~/active/poc/bashes/profile.sh
 
 # STB: AWS stuff
 source ~/security/aws/profile.sh

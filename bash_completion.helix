@@ -1,13 +1,20 @@
 # ~/.bash_completion
 
 # Let's load some basics. Start with the poc stuff.
-[ -f ~/active/poc/bashes/profile.sh ] && source ~/active/poc/bashes/profile.sh
+#[ -f ~/active/poc/bashes/profile.sh ] && source ~/active/poc/bashes/profile.sh
 
 # Now load the rest of the meat.
-if [[ -d ~/local/etc/bash_completion.d/ ]]; then
-    for file in ~/local/etc/bash_completion.d/*; do
-        if [[ -f "${file}" ]]; then
-            source "${file}"
-        fi
-    done
-fi
+#if [[ -d ~/local/etc/bash_completion.d/ ]]; then
+#    for file in ~/local/etc/bash_completion.d/*; do
+#        if [[ -f "${file}" ]]; then
+#            source "${file}"
+#        fi
+#    done
+#fi
+
+#source ~/completions/aws.sh
+##source ~/completions/ngrok.sh
+#source ~/completions/terraform.sh
+source ~/completions/jorb.sh
+source ~/completions/orbit.sh
+
