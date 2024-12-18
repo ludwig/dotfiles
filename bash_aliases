@@ -23,6 +23,9 @@ alias cd-notes='cd ~/active/notes'
 alias cd-jobs='cd ~/active/jobs'
 alias lg='lazygit'
 alias ncdu-skip-library='ncdu --exclude ~/Library'
+alias chrome-new="open -na 'Google Chrome' --args --new-window --profile-directory='Default'"
+alias chrome-ludwig="open -na 'Google Chrome' --args --new-window --profile-directory='Profile 3'"
+alias chrome-mac-list="ls -d ~/Library/Application\ Support/Google/Chrome/* | grep 'Profile\|Default'"
 
 # Aliases for conda
 alias cde='conda deactivate'
