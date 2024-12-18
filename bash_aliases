@@ -20,6 +20,7 @@ alias cd-ex='cd ~/active/ex'
 alias cd-poc='cd ~/active/poc'
 alias cd-hot='cd ~/hot'
 alias cd-notes='cd ~/active/notes'
+alias cd-jobs='cd ~/active/jobs'
 alias lg='lazygit'
 alias ncdu-skip-library='ncdu --exclude ~/Library'
 
