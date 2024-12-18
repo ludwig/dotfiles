@@ -80,9 +80,7 @@ def load_preferences(profile: str) -> dict:
 
 
 def get_profile_name(profile: str) -> str:
-    chrome_path = get_chrome_path()
-    profile_dir = chrome_path / profile
-    prefs = load_preferences(profile_dir)
+    prefs = load_preferences(profile)
     return prefs["profile"]["name"]
 
 
