@@ -21,6 +21,7 @@ alias cd-poc='cd ~/active/poc'
 alias cd-hot='cd ~/hot'
 alias cd-notes='cd ~/active/notes'
 alias lg='lazygit'
+alias ncdu-skip-library='ncdu --exclude ~/Library'
 
 # Aliases for conda
 alias cde='conda deactivate'
