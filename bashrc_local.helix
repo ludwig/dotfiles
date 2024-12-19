@@ -16,7 +16,8 @@ alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 alias today='mkcd ~/active/$(gdate +%Y/%m-%d)/'
 alias caf='conda activate fastapi'
 alias less='nvimpager'
-alias lofi-loft="open -a VLC ~/active/lofi-loft/lofi-loft.m3u"
+alias lofi-loft="vlc.sh ~/active/music/lofi-loft/lofi-loft.m3u"
+alias naxatras="vlc.sh ~/active/music/naxatras/'Mix - Naxatras.m3u'"
 
 # Helix-specific directories
 alias cd-wikipedia='cd ~/active/links/wikipedia/'
