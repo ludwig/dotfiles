@@ -34,6 +34,7 @@ alias chrome-list='chrome-new.py list'
 alias chrome='chrome-new.py open'
 
 # Aliases for conda
+alias cd-miniforge3='cd ~/miniforge3/envs'
 alias cde='conda deactivate'
 alias cab='conda activate lab'
 alias cam='conda activate mony'
