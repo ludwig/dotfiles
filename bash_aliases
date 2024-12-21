@@ -23,6 +23,12 @@ alias cd-notes='cd ~/active/notes'
 alias cd-jobs='cd ~/active/jobs'
 alias lg='lazygit'
 alias ncdu-skip-library='ncdu --exclude ~/Library'
+
+# Aliases for yt-dlp
+alias yt-dlp-mp4='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"'
+alias yt-dlp-mp3='yt-dlp --extract-audio --audio-format mp3'
+
+# Aliases for chrome
 alias chrome-default="open -na 'Google Chrome' --args --new-window --profile-directory='Default'"
 alias chrome-list='chrome-new.py list'
 alias chrome='chrome-new.py open'
