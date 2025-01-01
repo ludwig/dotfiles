@@ -35,6 +35,9 @@ if [ -s "${HOMEBREW_PREFIX}/opt/nvm/etc/bash_completion.d/nvm" ]; then
     source "${HOMEBREW_PREFIX}/opt/nvm/etc/bash_completion.d/nvm"
 fi
 
+# Set up CUDA
+export PATH="${PATH}:/usr/local/cuda/bin"
+
 # -----------------------------------------------------------------------------
 
 # >>> conda initialize >>>
