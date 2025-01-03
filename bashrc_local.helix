@@ -19,7 +19,8 @@ alias less='nvimpager'
 
 # Playlists
 alias lofi-loft="vlc.sh ~/active/music/lofi-loft/lofi-loft.m3u"
-alias naxatras="vlc.sh ~/active/music/naxatras/'Mix - Naxatras.m3u'"
+alias naxatras="vlc.sh ~/active/music/naxatras/naxatras.m3u"
+alias causa-sui="vlc.sh ~/active/music/causa-sui/causa-sui.m3u"
 alias hemi-sync="vlc.sh ~/Music/hemi-sync-30mins.m4a"
 
 # Helix-specific directories
