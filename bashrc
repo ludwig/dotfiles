@@ -150,6 +150,18 @@ cd-next() {
   echo "Reached iteration limit. Stopped looking on ${target}"
 }
 
+cd-env() {
+    # TODO: Pass environment as argument to function.
+    # TODO: Tab completion for the environment name argument (just one arg)
+    local env_dir
+    env_dir=$(conda info --json | jq -r .active_prefix)
+    if [[ -n "${env_dir}" && "${env_dir}" != "null" ]]; then
+        cd "${env_dir}" || echo "Failed to cd into active conda env directory."
+    else
+        echo "$(tput setaf 1)No Conda environment is currently active.$(tput sgr0)"
+    fi
+}
+
 # ----------------------------------------------------------------------------
 
 ssh-eval-keychain() {
