@@ -1,0 +1,24 @@
+# ~/.bashrc_local
+# vim: ft=bash
+
+alias ls='ls --color -F'
+
+
+# -----------------------------------------------------------------------------
+
+# Homebrew (from `/home/linuxbrew/.linuxbrew/bin/brew shellenv`)
+export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
+export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar";
+export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew";
+export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}";
+export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
+
+# bash completions from brew commands
+if [ -d "${HOMEBREW_PREFIX}/etc/bash_completion.d" ]; then
+  for bcfile in "${HOMEBREW_PREFIX}"/etc/bash_completion.d/* ; do
+    . ${bcfile}
+  done
+fi
+
+# -----------------------------------------------------------------------------
