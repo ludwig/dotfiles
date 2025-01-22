@@ -6,8 +6,11 @@
 function _update_ps1() {
     export PS1=$(powerline-shell $?)
 }
+
+# Uncomment the following line while upgrading powerline-shell
+#command -v powerline-shell &>/dev/null &&
 if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
 # Helix-specific aliases
