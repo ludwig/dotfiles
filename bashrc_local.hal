@@ -26,12 +26,17 @@ fi
 # Set up z jumper
 source "${HOMEBREW_PREFIX}/etc/profile.d/z.sh"
 
-# Configure Go
+# Set up Go
 export GOPATH="${HOME}/go"
 export PATH="${PATH}:${GOPATH}/bin"
 
 # Set up modular
 export PATH="${PATH}:${HOME}/.modular/bin"
+
+# Set up nvm
+export NVM_DIR="${HOME}/.nvm"
+[ -s "${NVM_DIR}/nvm.sh" ] && source "${NVM_DIR}/nvm.sh"
+[ -s "${NVM_DIR}/bash_completion" ] && source "${NVM_DIR}/bash_completion"
 
 # -----------------------------------------------------------------------------
 
