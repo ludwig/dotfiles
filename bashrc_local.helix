@@ -84,16 +84,7 @@ export EASYRSA_PKI="${HOME}/security/easy-rsa/pki"
 
 # Setup mojo
 if [ -d ~/.modular ]; then
-    #
-    #export MODULAR_HOME="${HOME}/.modular"
     export PATH="$PATH:/Users/luis/.modular/bin"
-
-    # These are older entries I commented out earlier too. Check if they still mean anything.
-    # https://docs.modular.com/mojo/manual/python/#python-environment
-    #export MOJO_PYTHON_LIBRARY="$(find $CONDA_PREFIX/lib -iname 'libpython*.[s,d]*' | sort -r | head -n 1)"
-    #export MOJO_PYTHON_LIBRARY=/Users/luis/miniforge3/envs/lam/lib/libpython3.11.dylib
-    # https://www.modular.com/blog/using-mojo-with-python
-    # Hmmm...it's better to edit the line `python_lib =` inside `~/.modular/modular.cfg`
 fi
 
 # https://support.apple.com/kb/HT208050
