@@ -22,8 +22,12 @@ if [ -d "${HOMEBREW_PREFIX}/etc/bash_completion.d" ]; then
 fi
 
 # -----------------------------------------------------------------------------
+
 # Set up z jumper
 source "${HOMEBREW_PREFIX}/etc/profile.d/z.sh"
+
+# Set up modular
+export PATH="${PATH}:${HOME}/.modular/bin"
 
 # -----------------------------------------------------------------------------
 
