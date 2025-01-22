@@ -26,6 +26,10 @@ fi
 # Set up z jumper
 source "${HOMEBREW_PREFIX}/etc/profile.d/z.sh"
 
+# Configure Go
+export GOPATH="${HOME}/go"
+export PATH="${PATH}:${GOPATH}/bin"
+
 # Set up modular
 export PATH="${PATH}:${HOME}/.modular/bin"
 
