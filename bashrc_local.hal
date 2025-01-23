@@ -18,22 +18,9 @@ alias ls='ls --color -F'
 
 # -----------------------------------------------------------------------------
 
-# Homebrew (from `/home/linuxbrew/.linuxbrew/bin/brew shellenv`)
-export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
-export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar";
-export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew";
-export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}";
-export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
-export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
-
-# bash completions from brew commands
-if [ -d "${HOMEBREW_PREFIX}/etc/bash_completion.d" ]; then
-  for bcfile in "${HOMEBREW_PREFIX}"/etc/bash_completion.d/* ; do
-    . ${bcfile}
-  done
-fi
-
-# -----------------------------------------------------------------------------
+# Homebrew setup
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+[[ -d "${HOMEBREW_PREFIX}/etc/bash_completion.d" ]] && for bc in "${HOMEBREW_PREFIX}"/etc/bash_completion.d/*; do source "${bc}"; done
 
 # Set up z jumper
 source "${HOMEBREW_PREFIX}/etc/profile.d/z.sh"
@@ -51,7 +38,6 @@ export NVM_DIR="${HOME}/.nvm"
 [ -s "${NVM_DIR}/bash_completion" ] && source "${NVM_DIR}/bash_completion"
 
 # -----------------------------------------------------------------------------
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/luis/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
