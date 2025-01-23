@@ -13,6 +13,7 @@ if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
 PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
+# -----------------------------------------------------------------------------
 # Helix-specific aliases
 alias code=code-insiders
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
@@ -52,11 +53,14 @@ alias cd-themes='cd ~/themes/hugo'
 alias cd-videolog='cd ~/blogs/hugo/sites/videolog'
 alias cd-blog-webstream='cd ~/blogs/hugo/vault/webstream'
 alias cd-watchq='cd ~/blogs/hugo/vault/watchq'
+
+# -----------------------------------------------------------------------------
+
 #source ~/blogs/profile.sh
 
 # Set up z jumper
 source "/opt/homebrew/etc/profile.d/z.sh"
-
+-
 # Setup nvm
 export NVM_DIR="${HOME}/.nvm"
 if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
@@ -90,6 +94,7 @@ fi
 # https://support.apple.com/kb/HT208050
 #export BASH_SILENCE_DEPRECATION_WARNING=1
 
+# -----------------------------------------------------------------------------
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/luis/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
