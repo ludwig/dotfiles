@@ -6,12 +6,18 @@
 function _update_ps1() {
     export PS1=$(powerline-shell $?)
 }
+# Uncomment the following line while upgrading powerline-shell
+#command -v powerline-shell &>/dev/null &&
 if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+   PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
+
+# -----------------------------------------------------------------------------
 
 # dna-specific aliases
 alias code=code-insiders
+
+# -----------------------------------------------------------------------------
 
 # Set up z jumper
 source "/usr/local/etc/profile.d/z.sh"
@@ -37,6 +43,7 @@ export PATH="${PATH}:${HOME}/go/bin"
 # Set up workspaces
 #export DASH_WS="${HOME}/dash-ws"
 
+# -----------------------------------------------------------------------------
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/luis/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
