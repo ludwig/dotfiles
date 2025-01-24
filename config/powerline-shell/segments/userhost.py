@@ -27,7 +27,7 @@ class Segment(BasicSegment):
             user = os.getenv("USER")
             host = hostname.split(".")[0]
             userhost_prompt = " (%s@%s) " % (user, host)
-        
+
         # user_fg = powerline.theme.USERNAME_FG
         # user_bg = self.get_user_bgcolor()
         powerline.append(userhost_prompt, fg, bg)
