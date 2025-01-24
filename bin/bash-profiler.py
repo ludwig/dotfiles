@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-"""Profile the bash startup time.
+"""Utility to convert bash trace files into Perfetto-compatible JSON traces.
 
-# Initial setup
-To setup the profiling, modify your `~/.bash_profile` to use `BASH_XTRACEFD`
+---
+# Profiling your bash initialization
+
+To setup profiling, modify your `~/.bash_profile` to use `BASH_XTRACEFD`
 
 ```bash
-# Enable profiling
-exec {BASH_XTRACEFD}>/tmp/bash-trace.log
+# Enable profiling at the start of ~/.bash_profile
+exec {BASH_XTRACEFD}>/tmp/bash_profile.trace
 PS4='+ $(date "+%s.%N") ${BASH_SOURCE}:${LINENO}: '
 set -x
 
@@ -17,21 +19,29 @@ fi
 
 # ... other stuff ...
 
-# Teardown profiling
-if [[ -n "${BASH_XTRACEFD}:-" ]]; then
-    set +x
-    exec {BASH_XTRACEFD}>&-
-    unset BASH_XTRACEFD
-fi
+# Teardown profiling at the end of ~/.bash_profile
+set +x
+exec {BASH_XTRACEFD}>&-
 ```
 
-# Converting the profile
+Note that on macOS you may need to use `gdate` instead of `date`
+to interpret the nanoseconds %N format code. Also, since homebrew
+paths aren't set up yet, it's best to use the full path to `gdate`.
+Install it using `brew install coreutils`.
+
+For example, use this PS4 line instead:
+```bash
+PS4='+ $(/opt/homebrew/bin/gdate "+%s.%N") ${BASH_SOURCE}:${LINENO}: '
+```
+
+---
+# Converting the bash trace into the Chrome Trace Event format
 
 Now we use this script to convert the profile into the Chrome Trace Event
 format that we can load into `chrome://tracing` or into the Perfetto UI.
 
 ```bash
-bash-profiler.py -i /tmp/bash-trace.log -o /tmp/bash-trace.json
+./bash-profiler.py -i /tmp/bash_profile.trace -o /tmp/bash_profile.trace.json
 ```
 """
 
@@ -66,18 +76,15 @@ def parse_trace_line(line):
 
 
 def parse_trace_lines(lines):
-    """Parses the raw trace lines into a structured hierarchy with nesting levels.
-
-    Returns a list of parsed commands, each with start time, duration, and children.
-    """
+    """Parses the raw trace lines into a structured hierarchy with nesting levels."""
     # Stack to manage nested contexts
     stack = []
     parsed_commands = []
 
     line_pattern = re.compile(r"(\++\s)(\d+\.\d+) (.+?):(\d+): (.+)")
+    fallback_duration = 0.1  # 100ms default
 
     num_lines = len(lines)
-    fallback_duration = 0.1  # 100ms default
     for i, line in enumerate(lines):
         match = line_pattern.match(line)
         if not match:
@@ -93,7 +100,7 @@ def parse_trace_lines(lines):
             "file": filename,
             "lineno": int(lineno),
             "start": timestamp,
-            "duration": 0,  # Placeholder, to be calculated later
+            "duration": 0,  # Placeholder, to be adjusted later
             "children": [],
         }
 
@@ -124,6 +131,31 @@ def parse_trace_lines(lines):
             parsed_commands.append(current_command)
 
     return parsed_commands
+
+
+def adjust_parent_durations(command):
+    """Adjusts the duration of the parent command to include all its children."""
+    if not command["children"]:
+        # No children, duration is already correct
+        command["end"] = command["start"] + command["duration"]
+        return command["end"]
+
+    # Recursively process children to compute their end times
+    last_child_end = max(
+        adjust_parent_durations(child) for child in command["children"]
+    )
+
+    # Update the parent's end time to include all its children
+    command_end = max(command["start"] + command["duration"], last_child_end)
+    command["end"] = command_end
+    command["duration"] = command_end - command["start"]
+    return command_end
+
+
+def adjust_all_durations(parsed_commands):
+    """Post-process all parsed commands to adjust durations."""
+    for cmd in parsed_commands:
+        adjust_parent_durations(cmd)
 
 
 def generate_perfetto_events(parsed_commands, pid=PID, tid=1):
@@ -181,7 +213,10 @@ def convert_to_perfetto(input_file: Path, output_file: Path):
     # Step 1: Parse the trace lines into a structured hierarchy
     parsed_commands = parse_trace_lines(lines)
 
-    # Step 2: Generate Perfetto trace events from the parsed structure
+    # Step 2: Adjust durations to include child activity
+    adjust_all_durations(parsed_commands)
+
+    # Step 3: Generate Perfetto trace events from the parsed structure
     events = generate_perfetto_events(parsed_commands)
 
     # Wrap events in the Chrome Trace Event format
