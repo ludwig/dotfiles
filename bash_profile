@@ -1,5 +1,16 @@
 # ~/.bash_profile: executed by bash(1) for login shells.
 
+# ----------------------------------------------------------------------------
+# Set up profiling at the beginning of ~/.bash_profile
+# Uncomment the lines below to enable profiling. Pick one form for PS4.
+# Use `brew install coreutils` to install gdate on macOS, and use full path.
+#exec {BASH_XTRACEFD}>/tmp/bash_profile.trace
+#PS4='+ $(/opt/homebrew/bin/gdate "+%s.%N") ${BASH_SOURCE}:${LINENO}: '
+#PS4='+ $(date "+%s.%N") ${BASH_SOURCE}:${LINENO}: '
+#set -x
+
+# ----------------------------------------------------------------------------
+
 # Some systems don't use /usr/local for homebrew.
 if [[ -d /opt/homebrew ]]; then
     eval $(/opt/homebrew/bin/brew shellenv)
@@ -40,4 +51,9 @@ export LANG='en_US.UTF-8'
 
 export PATH
 
+# ----------------------------------------------------------------------------
+# Teardown profiling at the end of ~/.bash_profile
+# Disable tracing and close file descriptor
+#set +x
+#exec {BASH_XTRACEFD}>&-
 # ----------------------------------------------------------------------------
