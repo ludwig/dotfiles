@@ -1,6 +1,9 @@
 # ~/.bashrc_local
 # vim: ft=bash
 
+# For our "Home LAN" certificate authority
+export REQUESTS_CA_BUNDLE="${HOME}/config/etc/ca-certs/home-lan.crt"
+
 # Set up powerline-shell prompt
 # See https://github.com/b-ryan/powerline-shell
 function _update_ps1() {
