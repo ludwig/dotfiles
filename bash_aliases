@@ -34,6 +34,9 @@ alias chrome-default="open -na 'Google Chrome' --args --new-window --profile-dir
 alias chrome-list='chrome-new.py list'
 alias chrome='chrome-new.py open'
 
+# Aliases for python dev
+alias devpi-login='devpi login ludwig --password=$(cat ~/security/devpi/ludwig.yaml | yq -r .password)'
+
 # Aliases for conda
 alias cd-miniforge3='cd ~/miniforge3/envs'
 alias cde='conda deactivate'
