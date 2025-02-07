@@ -15,6 +15,7 @@
 #source ~/completions/aws.sh
 ##source ~/completions/ngrok.sh
 #source ~/completions/terraform.sh
-source ~/completions/jorb.sh
-source ~/completions/orbit.sh
+
+##source ~/completions/jorb.sh
+##source ~/completions/orbit.sh
 
