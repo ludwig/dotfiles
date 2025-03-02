@@ -21,6 +21,11 @@ if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi
 
+# Initialize conda
+if [ -f ~/.conda-init.sh ]; then
+    source ~/.conda-init.sh
+fi
+
 # Prepend ~/bin to the PATH
 if [ -d ~/bin ]; then
     PATH="${HOME}/bin:${PATH}"
