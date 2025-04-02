@@ -162,6 +162,21 @@ cd-env() {
     fi
 }
 
+cd-random() {
+    local dirs
+    IFS=$'\n' read -r -d '' -a dirs < <(find . -mindepth 1 -maxdepth 1 -type d -printf '%P\n' && printf '\0')
+
+    if [[ ${#dirs[@]} -eq 0 ]]; then
+        echo "No subdirectories found."
+        return 1
+    fi
+
+    local random_index=$(( RANDOM % ${#dirs[@]} ))
+    local target="${dirs[$random_index]}"
+
+    cd "$target"
+}
+
 # ----------------------------------------------------------------------------
 
 ssh-eval-keychain() {
