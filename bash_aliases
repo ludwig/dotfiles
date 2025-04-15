@@ -58,6 +58,7 @@ alias dc='docker compose'
 alias ans='ansible'
 alias anp='ansible-playbook'
 alias anv='ansible-vault'
+alias sops-age-keys='age-keygen -y < ~/.config/sops/age/keys.txt'
 
 # AWS stuff
 alias ave='aws-vault exec'
