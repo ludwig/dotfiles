@@ -91,9 +91,6 @@ fi
 # STB: AWS stuff
 source ~/security/aws/profile.sh
 
-# STB: Location of PKI for the helix private CA
-export EASYRSA_PKI="${HOME}/security/easy-rsa/pki"
-
 # Setup mojo
 if [ -d ~/.modular ]; then
     export PATH="$PATH:/Users/luis/.modular/bin"
