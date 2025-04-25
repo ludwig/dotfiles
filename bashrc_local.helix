@@ -83,11 +83,6 @@ export PATH="/opt/homebrew/opt/openjdk/bin:${PATH}"
 # STB: Load poc bash scripts
 #source ~/active/poc/bashes/profile.sh
 
-if [ -d ~/config ]; then
-    # Loads custom ANSIBLE_CONFIG
-    source ~/config/profiles.d/ansible.sh
-fi
-
 # STB: AWS stuff
 source ~/security/aws/profile.sh
 
@@ -98,5 +93,13 @@ fi
 
 # https://support.apple.com/kb/HT208050
 #export BASH_SILENCE_DEPRECATION_WARNING=1
+
+if [ -d ~/config ]; then
+    # Loads custom ANSIBLE_CONFIG
+    source ~/config/profiles.d/ansible.sh
+
+    # The final profile
+    source ~/config/profiles.d/helix.sh
+fi
 
 # -----------------------------------------------------------------------------
