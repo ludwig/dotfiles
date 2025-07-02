@@ -26,8 +26,10 @@ alias lg='lazygit'
 alias ncdu-skip-library='ncdu --exclude ~/Library'
 
 # Aliases for yt-dlp
-alias yt-dlp-mp4='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"'
 alias yt-dlp-mp3='yt-dlp --extract-audio --audio-format mp3'
+alias yt-dlp-mp4='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"'
+alias yt-dlp-mp4-720p='yt-dlp -f "bestvideo[ext=mp4][height<=720]+bestaudio[ext=m4a]/best[ext=mp4][height<=720]/best[height<=720]"'
+alias yt-dlp-mp4-480p='yt-dlp -f "bestvideo[ext=mp4][height<=480]+bestaudio[ext=m4a]/best[ext=mp4][height<=480]/best[height<=480]"'
 
 # Aliases for chrome
 alias chrome-default="open -na 'Google Chrome' --args --new-window --profile-directory='Default'"
