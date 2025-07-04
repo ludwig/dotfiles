@@ -73,6 +73,12 @@ function mkcd() {
     cd "${dir}"
 }
 
+function mkcd-today() {
+    local dir="./$(date +%Y-%m-%d)"
+    mkdir -p "${dir}"
+    cd "${dir}"
+}
+
 function mk-today() {
     local dir="${HOME}/journal/$(date +%Y)/$(date +%m-%d)"
     mkdir -p "${dir}"
