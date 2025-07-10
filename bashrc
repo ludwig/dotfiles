@@ -73,6 +73,12 @@ function mkcd() {
     cd "${dir}"
 }
 
+function mkcd-month() {
+    local dir="./$(date +%Y-%m)"
+    mkdir -p "${dir}"
+    cd "${dir}"
+}
+
 function mkcd-today() {
     local dir="./$(date +%Y-%m-%d)"
     mkdir -p "${dir}"
