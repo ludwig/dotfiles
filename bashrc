@@ -162,6 +162,111 @@ cd-next() {
   echo "Reached iteration limit. Stopped looking on ${target}"
 }
 
+prev-dir() {
+    local current_dir
+    current_dir="$(basename -- "$(pwd)")"
+
+    if [[ ! ${current_dir} =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+        echo "Current directory name '${current_dir}' does not match YYYY-MM-DD"
+        return 1
+    fi
+
+    local parent
+    parent="$(dirname -- "$(pwd)")"
+
+    # Collect sibling date-dirs via globbing (no ls; robust against aliases)
+    local -a dirs=()
+    local d name
+    shopt -s nullglob
+    for d in "${parent}"/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]; do
+        [[ -d ${d} ]] || continue
+        name="$(basename -- "${d}")"
+        dirs+=("${name}")
+    done
+    shopt -u nullglob
+
+    if (( ${#dirs[@]} == 0 )); then
+        echo "No sibling YYYY-MM-DD directories found in '${parent}'."
+        return 1
+    fi
+
+    # Sort lexicographically (works for YYYY-MM-DD)
+    local sorted
+    sorted="$(printf '%s\n' "${dirs[@]}" | LC_ALL=C sort)"
+    dirs=()
+    while IFS= read -r name; do
+        [[ -n ${name} ]] && dirs+=("${name}")
+    done <<< "${sorted}"
+
+    # Find current index
+    local idx=-1 i
+    for i in "${!dirs[@]}"; do
+        if [[ ${dirs[${i}]} == "${current_dir}" ]]; then
+            idx=${i}
+            break
+        fi
+    done
+
+    if (( idx <= 0 )); then
+        echo "No previous directory found before '${current_dir}'."
+        return 1
+    fi
+
+    cd -- "${parent}/${dirs[$((idx-1))]}"
+}
+
+next-dir() {
+    local current_dir
+    current_dir="$(basename -- "$(pwd)")"
+
+    if [[ ! ${current_dir} =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+        echo "Current directory name '${current_dir}' does not match YYYY-MM-DD"
+        return 1
+    fi
+
+    local parent
+    parent="$(dirname -- "$(pwd)")"
+
+    local -a dirs=()
+    local d name
+    shopt -s nullglob
+    for d in "${parent}"/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]; do
+        [[ -d ${d} ]] || continue
+        name="$(basename -- "${d}")"
+        dirs+=("${name}")
+    done
+    shopt -u nullglob
+
+    if (( ${#dirs[@]} == 0 )); then
+        echo "No sibling YYYY-MM-DD directories found in '${parent}'."
+        return 1
+    fi
+
+    local sorted
+    sorted="$(printf '%s\n' "${dirs[@]}" | LC_ALL=C sort)"
+    dirs=()
+    while IFS= read -r name; do
+        [[ -n ${name} ]] && dirs+=("${name}")
+    done <<< "${sorted}"
+
+    local idx=-1 i
+    for i in "${!dirs[@]}"; do
+        if [[ ${dirs[${i}]} == "${current_dir}" ]]; then
+            idx=${i}
+            break
+        fi
+    done
+
+    if (( idx < 0 || idx >= ${#dirs[@]} - 1 )); then
+        echo "No next directory found after '${current_dir}'."
+        return 1
+    fi
+
+    cd -- "${parent}/${dirs[$((idx+1))]}"
+}
+
+# ----------------------------------------------------------------------------
+
 cd-env() {
     # TODO: Pass environment as argument to function.
     # TODO: Tab completion for the environment name argument (just one arg)
