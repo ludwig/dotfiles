@@ -17,6 +17,8 @@ fi
 
 alias ls='ls --color -F'
 
+alias code='code-insiders'
+
 # -----------------------------------------------------------------------------
 
 # Homebrew (from `/home/linuxbrew/.linuxbrew/bin/brew shellenv`)
