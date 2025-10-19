@@ -53,7 +53,7 @@ alias infra-sso-login='aws sso login --profile prod-infra'
 # Hugo stuff
 alias cd-blog='cd ~/blogs/hugo'
 alias cd-themes='cd ~/themes/hugo'
-alias cd-videolog='cd ~/blogs/hugo/sites/videolog'
+alias cd-videolog='cd ~/active/videolog'
 alias cd-blog-webstream='cd ~/blogs/hugo/vault/webstream'
 alias cd-watchq='cd ~/blogs/hugo/vault/watchq'
 
