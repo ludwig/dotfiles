@@ -123,43 +123,126 @@ function mk-week() {
 # ----------------------------------------------------------------------------
 
 cd-prev() {
-  local current_dir=$(pwd)
-  local year="${current_dir##*/journal/}"
-  year="${year%%/*}"
-  local month_day="${current_dir##*/}"
-  local target="${year}-${month_day}"
-  local counter=0
-  while [ $counter -lt 1000 ]; do
-    target=$(gdate -d "${target} - 1 day" +%Y-%m-%d)
-    local formatted_target="${target:0:4}/${target:5}"
-    local dir="${HOME}/journal/${formatted_target}"
-    if [ -d "${dir}" ]; then
-      cd "${dir}"
-      return
+    local cwd
+    cwd="$(pwd)"
+    # Validate we're inside $HOME/journal/YYYY/MM-DD and extract year and month-day
+    local _year
+    _year="$(_journal_get_year "${cwd}")"
+    if [[ $? -ne 0 ]]; then
+        echo "cd-prev: not inside ${HOME}/journal/YYYY/MM-DD" >&2
+        return 1
     fi
-    counter=$((counter + 1))
-  done
-  echo "Reached iteration limit. Stopped looking on ${target}"
+    local _month_day
+    _month_day="$(_journal_get_month_day "${cwd}")"
+    if [[ $? -ne 0 ]]; then
+        echo "cd-prev: not inside ${HOME}/journal/YYYY/MM-DD" >&2
+        return 1
+    fi
+
+    local target="${_year}-${_month_day}"
+    local counter=0
+    while [ $counter -lt 1000 ]; do
+        target=$(gdate -d "${target} - 1 day" +%Y-%m-%d)
+        if [[ $? -ne 0 ]]; then
+            echo "cd-prev: date computation failed for '${target}'" >&2
+            return 1
+        fi
+        local formatted_target="${target:0:4}/${target:5}"
+        local dir="${HOME}/journal/${formatted_target}"
+        if [ -d "${dir}" ]; then
+            cd "${dir}" || return 1
+            return 0
+        fi
+        counter=$((counter + 1))
+    done
+    echo "cd-prev: reached iteration limit. Stopped looking on ${target}" >&2
+    return 1
 }
 
 cd-next() {
-  local current_dir=$(pwd)
-  local year="${current_dir##*/journal/}"
-  year="${year%%/*}"
-  local month_day="${current_dir##*/}"
-  local target="${year}-${month_day}"
-  local counter=0
-  while [ $counter -lt 1000 ]; do
-    target=$(gdate -d "${target} + 1 day" +%Y-%m-%d)
-    local formatted_target="${target:0:4}/${target:5}"
-    local dir="${HOME}/journal/${formatted_target}"
-    if [ -d "${dir}" ]; then
-      cd "${dir}"
-      return
+    local cwd
+    cwd="$(pwd)"
+
+    # Validate we're inside $HOME/journal/YYYY/MM-DD and extract year and month-day
+    local _year
+    _year="$(_journal_get_year "${cwd}")"
+    if [[ $? -ne 0 ]]; then
+        echo "cd-next: not inside ${HOME}/journal/YYYY/MM-DD" >&2
+        return 1
     fi
-    counter=$((counter + 1))
-  done
-  echo "Reached iteration limit. Stopped looking on ${target}"
+    local _month_day
+    _month_day="$(_journal_get_month_day "${cwd}")"
+    if [[ $? -ne 0 ]]; then
+        echo "cd-next: not inside ${HOME}/journal/YYYY/MM-DD" >&2
+        return 1
+    fi
+
+    local target="${_year}-${_month_day}"
+    local counter=0
+    while [ $counter -lt 1000 ]; do
+        target=$(gdate -d "${target} + 1 day" +%Y-%m-%d)
+        if [[ $? -ne 0 ]]; then
+            echo "cd-next: date computation failed for '${target}'" >&2
+            return 1
+        fi
+        local formatted_target="${target:0:4}/${target:5}"
+        local dir="${HOME}/journal/${formatted_target}"
+        if [ -d "${dir}" ]; then
+            cd "${dir}" || return 1
+            return 0
+        fi
+        counter=$((counter + 1))
+    done
+    echo "cd-next: reached iteration limit. Stopped looking on ${target}" >&2
+    return 1
+}
+
+## Internal helper: return the year component from a journal path
+## Usage: _journal_get_year <cwd>
+## Echoes the year (e.g. 2025) on success, returns non-zero on failure
+_journal_get_year() {
+    local cwd="$1"
+    if [[ -z "${cwd}" ]]; then
+        echo "" >&2
+        return 1
+    fi
+    local journal_prefix="${HOME}/journal/"
+    if [[ "${cwd}" != "${journal_prefix}"* ]]; then
+        echo "" >&2
+        return 1
+    fi
+    local rel="${cwd#${journal_prefix}}"
+    local year="${rel%%/*}"
+    if [[ ! ${year} =~ ^[0-9]{4}$ ]]; then
+        echo "" >&2
+        return 1
+    fi
+    printf '%s' "${year}"
+    return 0
+}
+
+## Internal helper: return the month-day (MM-DD) component from a journal path
+## Usage: _journal_get_month_day <cwd>
+## Echoes the month-day (e.g. 10-20) on success, returns non-zero on failure
+_journal_get_month_day() {
+    local cwd="$1"
+    if [[ -z "${cwd}" ]]; then
+        echo "" >&2
+        return 1
+    fi
+    local journal_prefix="${HOME}/journal/"
+    if [[ "${cwd}" != "${journal_prefix}"* ]]; then
+        echo "" >&2
+        return 1
+    fi
+    local md
+    md="$(basename -- "${cwd}")"
+    if [[ ! ${md} =~ ^[0-9]{2}-[0-9]{2}$ ]]; then
+        echo "" >&2
+        return 1
+    fi
+    printf '%s' "${md}"
+    return 0
 }
 
 prev-dir() {
