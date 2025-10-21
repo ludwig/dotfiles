@@ -16,6 +16,8 @@ fi
 
 # dna-specific aliases
 alias code=code-insiders
+alias spotlight-index-size='echo "Spotlight index size:"; sudo du -sh /System/Volumes/Data/.Spotlight-V100 2>/dev/null || echo "Not found"'
+alias spotlight-activity='sudo fs_usage -w -f filesystem | grep -E "mds|mdworker"'
 
 # -----------------------------------------------------------------------------
 
