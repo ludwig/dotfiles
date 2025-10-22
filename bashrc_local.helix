@@ -63,6 +63,7 @@ alias spotlight-activity='sudo fs_usage -w -f filesystem | grep -E "mds|mdworker
 alias spotlight-volumeconfig='sudo plutil -p /System/Volumes/Data/.Spotlight-V100/VolumeConfiguration.plist'
 alias spotlight-workers='ps aux | egrep "mds|mdworker"'
 alias spotlight-status='mdutil -a -s'
+alias spotlight-reindex='sudo mdutil -E / && sudo mdutil -E /System/Volumes/Data'
 
 # -----------------------------------------------------------------------------
 
