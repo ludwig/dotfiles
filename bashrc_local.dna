@@ -16,8 +16,41 @@ fi
 
 # dna-specific aliases
 alias code=code-insiders
+
 alias spotlight-index-size='echo "Spotlight index size:"; sudo du -sh /System/Volumes/Data/.Spotlight-V100 2>/dev/null || echo "Not found"'
 alias spotlight-activity='sudo fs_usage -w -f filesystem | grep -E "mds|mdworker"'
+alias spotlight-volumeconfig='sudo plutil -p /System/Volumes/Data/.Spotlight-V100/VolumeConfiguration.plist'
+alias spotlight-exclude-cwd='touch .metadata_never_index'
+alias spotlight-workers='ps aux | egrep "mds|mdworker"'
+alias spotlight-status='mdutil -a -s'
+
+spotlight-exclude() {
+    # Disable Spotlight indexing by creating .metadata_never_index in each given directory
+    # Usage: spotlight-exclude <dir1> [dir2 ...]
+    if [ $# -eq 0 ]; then
+        echo "Usage: spotlight-exclude <dir1> [dir2 ...]" >&2
+        return 1
+    fi
+
+    for d in "$@"; do
+        local marker="$d/.metadata_never_index"
+
+        if [ ! -d "$d" ]; then
+            echo "❌ Skipping: $d (not a directory)"
+            continue
+        fi
+
+        if [ -e "$marker" ]; then
+            echo "✅ Already excluded: $d ($marker exists)"
+        else
+            if touch "$marker" 2>/dev/null; then
+                echo "🆕 Created exclusion marker: $marker"
+            else
+                echo "⚠️  Failed to create marker in $d (permission issue?)"
+            fi
+        fi
+    done
+}
 
 # -----------------------------------------------------------------------------
 
