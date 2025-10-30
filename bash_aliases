@@ -20,8 +20,12 @@ alias cd-ex='cd ~/active/ex'
 alias cd-poc='cd ~/active/poc'
 alias cd-hot='cd ~/hot'
 alias cd-notes='cd ~/active/notes'
+alias cd-webstream='cd ~/active/webstream/'
+alias cd-videolog='cd ~/active/videolog/'
 alias cd-jobs='cd ~/active/jorb-data'
 alias cd-crucible='cd ~/Desktop/crucible'
+alias cd-runbooks='cd ~/infra/runbooks/'
+
 alias lg='lazygit'
 alias ncdu-skip-library='ncdu --exclude ~/Library'
 
