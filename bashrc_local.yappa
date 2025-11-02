@@ -16,6 +16,7 @@ fi
 # -----------------------------------------------------------------------------
 
 alias ls='ls --color -F'
+alias gdate='date'
 
 alias code='code-insiders'
 
