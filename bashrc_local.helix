@@ -30,7 +30,10 @@ alias naxatras="vlc.sh ~/active/music/naxatras/naxatras.m3u"
 alias causa-sui="vlc.sh ~/active/music/causa-sui/causa-sui.m3u"
 alias hemi-sync="vlc.sh ~/Music/hemi-sync-30mins.m4a"
 
-# Helix-specific directories
+# Useful directories (macOS)
+alias cd-obsidian='cd ~/Documents/ObsidianVaults/'
+
+# Helix-specific directories (experiments)
 alias cd-wikipedia='cd ~/active/links/wikipedia/'
 alias cd-awesome-links='cd ~/w/awesome-links/'
 alias cd-desktop='cd ~/Desktop/active-workspace/'
@@ -40,7 +43,6 @@ alias cd-zoo='cd ~/active/zoo'
 alias cd-seeds='cd ~/active/seeds'
 alias cd-chats='cd ~/active/chats'
 alias cd-hub='cd ~/active/poc/hub'
-alias cd-webstream='cd ~/active/webstream/'
 alias cd-upwork='cd ~/active/upwork/'
 alias cd-books='cd ~/active/books/'
 alias cd-yum='cd ~/active/yum/'
@@ -53,7 +55,6 @@ alias infra-sso-login='aws sso login --profile prod-infra'
 # Hugo stuff
 alias cd-blog='cd ~/blogs/hugo'
 alias cd-themes='cd ~/themes/hugo'
-alias cd-videolog='cd ~/active/videolog'
 alias cd-blog-webstream='cd ~/blogs/hugo/vault/webstream'
 alias cd-watchq='cd ~/blogs/hugo/vault/watchq'
 
