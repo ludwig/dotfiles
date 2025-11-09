@@ -408,6 +408,9 @@ fi
 # https://iterm2.com/documentation-shell-integration.html
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
+# Prevent ranger from loading default configs: rc.conf, rifle.conf, commands.py
+export RANGER_LOAD_DEFAULT_RC=false
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
