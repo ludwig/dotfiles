@@ -404,6 +404,7 @@ if [ -f ~/.invoke-completion.sh ]; then
     source ~/.invoke-completion.sh
 fi
 
+# Set up iTerm2 shell integration if available
 # https://iterm2.com/documentation-shell-integration.html
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 

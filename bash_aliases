@@ -26,6 +26,8 @@ alias cd-jobs='cd ~/active/jorb-data'
 alias cd-crucible='cd ~/Desktop/crucible'
 alias cd-runbooks='cd ~/infra/runbooks/'
 
+# Useful utilities
+alias mc='ranger'
 alias lg='lazygit'
 alias ncdu-skip-library='ncdu --exclude ~/Library'
 
