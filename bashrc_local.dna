@@ -29,6 +29,11 @@ alias spotlight-status='mdutil -a -s'
 alias spotlight-reindex='sudo mdutil -E / && sudo mdutil -E /System/Volumes/Data'
 
 # -----------------------------------------------------------------------------
+# Temporary section for aliases that change more (change these around)
+
+alias l='ls -lh'
+
+# -----------------------------------------------------------------------------
 
 # Set up z jumper
 source "/usr/local/etc/profile.d/z.sh"
