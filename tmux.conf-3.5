@@ -1,27 +1,5 @@
 # ~/.tmux.conf
-#
-# You will need the following to use this ~/.tmux.conf file on OS X
-#
-#   brew install reattach-to-user-namespace
-#
-# See the following files:
-#
-#   /opt/local/share/doc/tmux/t-williams.conf
-#   /opt/local/share/doc/tmux/screen-keys.conf
-#   /opt/local/share/doc/tmux/vim-keys.conf
-#   /opt/homebrew/opt/tmux/share/tmux/example_tmux.conf
-#
-# URLs to read:
-#
-#   http://blog.yjl.im/2009/11/migrating-to-tmux-from-gnuscreen.html
-#   http://blog.hawkhost.com/2010/06/28/tmux-the-terminal-multiplexer/
-#   http://blog.hawkhost.com/2010/07/02/tmux-%E2%80%93-the-terminal-multiplexer-part-2/
-#   http://www.dayid.org/os/notes/tm.html
-#
-# Other sample tmux.conf files
-#
-#   http://www.mindfuzz.net/?p=178
-#
+# vim: set ft=tmux.conf
 # -----------------------------------------------------------------------------
 
 
@@ -65,11 +43,6 @@ set -g bell-action any
 
 # start window indexing at zero (default)
 set -g base-index 0
-
-# tell tmux to use 256 colour terminal
-#set -g default-terminal "xterm-256color"
-#set -g default-terminal "screen-256color"
-#set -g default-terminal "tmux-256color"
 
 # xterm-style function key sequences
 setw -g xterm-keys on
@@ -144,23 +117,6 @@ bind-key -r J swap-pane -D
 bind-key -r K swap-pane -U
 ##bind-key -r { swap-pane -U
 ##bind-key -r } swap-pane -D
-
-# kill current pane/window
-##bind-key q confirm-before kill-pane
-##bind-key Q confirm-before kill-window
-####bind-key C-q confirm-before kill-pane
-#bind-key x kill-pane
-#bind-key X kill-window
-
-# window layouts (emacs-like)
-#bind-key 1 break-pane
-#bind-key 2 select-layout even-vertical
-#bind-key 3 select-layout even-horizontal
-#bind-key o select-pane -U
-
-# specific window layouts
-#bind o select-layout "active-only"
-#bind O select-layout "main-vertical"
 
 # cycle to the next pane layout (default key is 'Space')
 bind -r y next-layout
@@ -302,45 +258,11 @@ set -g allow-passthrough on
 set -g default-terminal "xterm-256color"
 
 # -----------------------------------------------------------------------------
-## From /opt/homebrew/opt/tmux/share/tmux/example_tmux.conf
+## Reference file: /opt/homebrew/opt/tmux/share/tmux/example_tmux.conf
 ## TODO: Take lines from here and move them above.
-##
-# Some tweaks to the status line
-## set -g status-right "%H:%M"
-## set -g window-status-current-style "underscore"
-##
+
 # If running inside tmux ($TMUX is set), then change the status line to red
 %if #{TMUX}
 set -g status-bg red
 %endif
 
-# Enable RGB colour if running in xterm(1)
-#set-option -sa terminal-overrides ",xterm*:Tc"
-
-## # Change the default $TERM to tmux-256color
-## set -g default-terminal "tmux-256color"
-
-## # No bells at all
-## set -g bell-action none
-##
-## # Keep windows around after they exit
-## set -g remain-on-exit on
-##
-## # Change the prefix key to C-a
-## set -g prefix C-a
-## unbind C-b
-## bind C-a send-prefix
-##
-## # Turn the mouse on, but without copy mode dragging
-## set -g mouse on
-## unbind -n MouseDrag1Pane
-## unbind -Tcopy-mode MouseDrag1Pane
-##
-##
-## # A key to toggle between smallest and largest sizes if a window is visible in
-## # multiple places
-## bind F set -w window-size
-##
-## # Keys to toggle monitoring activity in a window and the synchronize-panes option
-## bind m set monitor-activity
-## bind y set synchronize-panes\; display 'synchronize-panes #{?synchronize-panes,on,off}'
