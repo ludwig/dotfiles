@@ -1,6 +1,9 @@
 # ~/.bashrc_local
 # vim: ft=bash
 
+# Comment/uncomment as necessary
+#eval $(keychain --eval id_rsa)
+
 # For our "Home LAN" certificate authority
 #export REQUESTS_CA_BUNDLE="${HOME}/config/etc/ca-certs/home-lan.crt"
 
@@ -65,6 +68,21 @@ alias spotlight-volumeconfig='sudo plutil -p /System/Volumes/Data/.Spotlight-V10
 alias spotlight-workers='ps aux | egrep "mds|mdworker"'
 alias spotlight-status='mdutil -a -s'
 alias spotlight-reindex='sudo mdutil -E / && sudo mdutil -E /System/Volumes/Data'
+
+# -----------------------------------------------------------------------------
+# Temporary section (update it often)
+
+alias l='ls -lh'
+
+# Commonly used directories
+alias cd-psyche='mkcd ~/Desktop/buckets-psyche/'
+alias cd-reddit='mkcd ~/active/reddit/'
+alias cd-imgur='mkcd ~/active/imgur/'
+
+alias cd-psyche-today='mkcd ~/Desktop/buckets-psyche/$(date +%Y-%m-%d)'
+alias cd-reddit-today='mkcd ~/active/reddit/$(date +%Y-%m-%d)'
+alias cd-imgur-today='mkcd ~/active/imgur/$(date +%Y-%m-%d)'
+alias cd-webstream-today='mkcd ~/active/webstream/$(date +%Y)/$(date +%Y-%m-%d)'
 
 # -----------------------------------------------------------------------------
 
