@@ -27,6 +27,7 @@ alias spotlight-volumeconfig='sudo plutil -p /System/Volumes/Data/.Spotlight-V10
 alias spotlight-workers='ps aux | egrep "mds|mdworker"'
 alias spotlight-status='mdutil -a -s'
 alias spotlight-reindex='sudo mdutil -E / && sudo mdutil -E /System/Volumes/Data'
+alias search='spotlight-search.sh'
 
 # -----------------------------------------------------------------------------
 # Temporary section for aliases that change more (change these around)
