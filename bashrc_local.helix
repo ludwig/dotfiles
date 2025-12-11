@@ -121,6 +121,9 @@ fi
 # https://support.apple.com/kb/HT208050
 #export BASH_SILENCE_DEPRECATION_WARNING=1
 
+# Added by Antigravity
+export PATH="/Users/luis/.antigravity/antigravity/bin:$PATH"
+
 if [ -d ~/config ]; then
     # Loads custom ANSIBLE_CONFIG
     source ~/config/profiles.d/ansible.sh
