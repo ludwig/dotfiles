@@ -49,6 +49,7 @@ alias cd-hub='cd ~/active/poc/hub'
 alias cd-upwork='cd ~/active/upwork/'
 alias cd-books='cd ~/active/books/'
 alias cd-yum='cd ~/active/yum/'
+alias cd-wsdata='cd ~/Desktop/buckets-wsdata/'
 
 # AWS stuff
 alias sandbox-sso-login='aws sso login --profile sandbox-admin'
