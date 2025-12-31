@@ -10,7 +10,7 @@ import json
 import shlex
 import subprocess
 from pathlib import Path
-from typing import Optional
+from typing import Optional, List
 
 import rich
 import typer
@@ -80,6 +80,65 @@ def get_profile_directory(index: Optional[int]) -> Path:
     return profile_dir
 
 
+def find_matching_profiles(name: str) -> List[str]:
+    """Return profile directory names matching `*name*`
+
+    This performs a case-insensitive substring match against
+    both the directory name and the profile display name.
+    """
+    if not name:
+        return []
+
+    pattern = name.lower()
+    matches: List[str] = []
+    for profile in get_profiles():
+        # Try to get display name, but ignore failures and fall back to dir name
+        try:
+            display = get_profile_name(profile)
+        except Exception:
+            display = ""
+
+        if pattern in profile.lower() or pattern in display.lower():
+            matches.append(profile)
+
+    return matches
+
+
+def resolve_profile_directory(profile_idx: Optional[int], name: Optional[str]) -> Path:
+    """Resolve a profile directory by index or name.
+
+    If `profile_idx` is provided it takes precedence; if `name` is provided
+    but `profile_idx` is also given, emit a warning that the name is ignored.
+    If only `name` is provided, perform a `*name*` match and use the first
+    matching profile, warning if there are multiple matches.
+    """
+    # If an index is explicitly provided, use it (and ignore name)
+    if profile_idx is not None:
+        if name:
+            console.print(
+                f"[yellow]Name match '{name}' ignored "
+                "because profile index provided[/yellow]"
+            )
+        return get_profile_directory(profile_idx)
+
+    # If a name was supplied, attempt to match profiles by name
+    if name:
+        matches = find_matching_profiles(name)
+        if not matches:
+            console.print(f"[red]No profiles matched name '{name}'[/red]")
+            raise typer.Abort()
+        if len(matches) > 1:
+            console.print(
+                f"[yellow]Multiple profiles matched name '{name}'; "
+                f"using first match: {matches[0]}[/yellow]"
+            )
+        chrome_path = get_chrome_path()
+        return chrome_path / matches[0]
+
+    # Fallback to default behaviour (index None -> first profile)
+    return get_profile_directory(profile_idx)
+
+
 def load_preferences(profile: str) -> dict:
     chrome_path = get_chrome_path()
     profile_dir = chrome_path / profile
@@ -115,6 +174,7 @@ def HelpOption(help=None):
         help=help,
     )
 
+
 @app.command(name="ls", hidden=True)
 @app.command(name="list")
 def do_list_profiles():
@@ -142,6 +202,12 @@ def do_open(
         None,
         help="Profile index to open",
     ),
+    name: Optional[str] = typer.Option(
+        None,
+        "-n",
+        "--name",
+        help="Profile name to match (glob *<name>*)",
+    ),
     url: Optional[str] = typer.Argument(
         None,
         help="URL to open in the new Chrome window",
@@ -159,8 +225,8 @@ def do_open(
         do_list_profiles()
         raise typer.Exit()
 
-    # Quick sanity check.
-    profile_dir = get_profile_directory(profile_idx)
+    # Quick sanity check / resolve profile directory.
+    profile_dir = resolve_profile_directory(profile_idx, name)
     if not profile_dir.exists():
         console.print("[red]Profile directory not found[/red]")
         raise typer.Abort()
