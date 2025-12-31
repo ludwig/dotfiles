@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/Users/luis/miniforge3/envs/lam/bin/python3
 """Open a new Chrome window with the selected profile.
 
 This CLI utility exists because Chrome keeps switching workspaces
