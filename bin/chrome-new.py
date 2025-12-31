@@ -214,6 +214,12 @@ def do_open(
         "--name",
         help="Profile name to match (glob *<name>*)",
     ),
+    new_window: bool = typer.Option(
+        True,
+        "-w/-W",
+        "--new-window/--existing-window",
+        help="Open in a new window (default) or existing window",
+    ),
     incognito: bool = typer.Option(
         False,
         "-i",
@@ -248,9 +254,10 @@ def do_open(
         "-na",
         "Google Chrome",
         "--args",
-        "--new-window",
         f"--profile-directory={profile_name}",
     ]
+    if new_window:
+        cmd.append("--new-window")
     if incognito:
         cmd.append("--incognito")
 
