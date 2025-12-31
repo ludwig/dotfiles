@@ -198,8 +198,14 @@ def do_list_profiles():
 
 @app.command(name="open")
 def do_open(
-    profile_idx: Optional[int] = typer.Argument(
+    url: Optional[str] = typer.Argument(
         None,
+        help="URL to open in the new Chrome window",
+    ),
+    profile_idx: Optional[int] = typer.Option(
+        None,
+        "-p",
+        "--profile-index",
         help="Profile index to open",
     ),
     name: Optional[str] = typer.Option(
@@ -207,10 +213,6 @@ def do_open(
         "-n",
         "--name",
         help="Profile name to match (glob *<name>*)",
-    ),
-    url: Optional[str] = typer.Argument(
-        None,
-        help="URL to open in the new Chrome window",
     ),
     list_profiles: bool = typer.Option(
         False,
