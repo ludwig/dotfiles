@@ -214,6 +214,12 @@ def do_open(
         "--name",
         help="Profile name to match (glob *<name>*)",
     ),
+    incognito: bool = typer.Option(
+        False,
+        "-i",
+        "--incognito",
+        help="Open in incognito mode",
+    ),
     list_profiles: bool = typer.Option(
         False,
         "--list",
@@ -245,6 +251,8 @@ def do_open(
         "--new-window",
         f"--profile-directory={profile_name}",
     ]
+    if incognito:
+        cmd.append("--incognito")
 
     # Add URL to the command if provided
     if url:
