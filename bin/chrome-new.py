@@ -115,7 +115,7 @@ def HelpOption(help=None):
         help=help,
     )
 
-
+@app.command(name="ls", hidden=True)
 @app.command(name="list")
 def do_list_profiles():
     """List available Chrome profiles."""
