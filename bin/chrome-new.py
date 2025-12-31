@@ -18,7 +18,14 @@ from rich.console import Console
 from rich.table import Table
 
 
-app = typer.Typer()
+app = typer.Typer(
+    name="chrome-new",
+    help="Open a new Chrome window with the selected profile",
+    context_settings={"help_option_names": ["-h", "--help"]},
+    no_args_is_help=True,
+    pretty_exceptions_enable=False,
+    add_completion=False,
+)
 console = Console()
 
 # NOTE: This is macOS specific.
