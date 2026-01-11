@@ -41,4 +41,7 @@ export PATH="/Users/luis/.antigravity/antigravity/bin:$PATH"
 # Load macOS aliases
 source ~/dotfiles/bash_aliases.macos
 
+# Load dna profile
+[ -d ~/config ] && source ~/config/profiles.d/dna.sh
+
 # -----------------------------------------------------------------------------
