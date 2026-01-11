@@ -1,5 +1,5 @@
 
-# Alias for GNU date
+alias open='xdg-open'
 alias gdate='date'
 
 # vim: ft=bash
