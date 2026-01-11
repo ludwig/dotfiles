@@ -7,26 +7,12 @@ alias cp='cp -ip'
 alias df='df -h'
 alias less='less -r'
 alias vm='vim -X'
+alias ls='ls --color -F'
+alias l='ls -lh'
 alias x='exit'
 
-# The -G option works on macos (linux uses --color)
-alias ls='ls -GF'
-
-# These aliases have been useful on many systems
-alias today='mkcd ~/active/$(gdate +%Y/%m-%d)/'
-alias cd-active='cd ~/active'
-alias cd-scratch='cd ~/active/scratch'
-alias cd-ex='cd ~/active/ex'
-alias cd-poc='cd ~/active/poc'
-alias cd-hot='cd ~/hot'
-alias cd-notes='cd ~/active/notes'
-alias cd-webstream='cd ~/active/webstream/'
-alias cd-videolog='cd ~/active/videolog/'
-alias cd-jobs='cd ~/active/jorb-data'
-alias cd-crucible='cd ~/Desktop/crucible'
-alias cd-runbooks='cd ~/infra/runbooks/'
-
 # Useful utilities
+alias code='code-insiders'
 alias mc='ranger'
 alias lg='lazygit'
 alias ncdu-skip-library='ncdu --exclude ~/Library'
@@ -41,9 +27,6 @@ alias yt-dlp-mp4-480p='yt-dlp -f "bestvideo[ext=mp4][height<=480]+bestaudio[ext=
 alias chrome-default="open -na 'Google Chrome' --args --new-window --profile-directory='Default'"
 alias chrome-list='chrome-new.py list'
 alias chrome='chrome-new.py open'
-
-# Aliases for python dev
-alias devpi-login='devpi login ludwig --password=$(cat ~/security/devpi/ludwig.yaml | yq -r .password)'
 
 # Aliases for conda
 alias cd-miniforge3='cd ~/miniforge3/envs'
@@ -82,4 +65,4 @@ alias assume="source assume"
 # Hugo likes this format for its date field
 alias hugo-now="gdate '+%Y-%m-%dT%H:%M:%S%:z'"
 
-# EOF
+# vim: ft=bash

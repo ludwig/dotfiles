@@ -14,11 +14,6 @@ fi
 
 # -----------------------------------------------------------------------------
 
-alias ls='ls --color -F'
-alias cd-runbook='cd ~/infra/runbooks/hal/'
-
-# -----------------------------------------------------------------------------
-
 # Homebrew setup
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 [[ -d "${HOMEBREW_PREFIX}/etc/bash_completion.d" ]] && for bc in "${HOMEBREW_PREFIX}"/etc/bash_completion.d/*; do source "${bc}"; done
@@ -37,5 +32,8 @@ export PATH="${PATH}:${HOME}/.modular/bin"
 export NVM_DIR="${HOME}/.nvm"
 [ -s "${NVM_DIR}/nvm.sh" ] && source "${NVM_DIR}/nvm.sh"
 [ -s "${NVM_DIR}/bash_completion" ] && source "${NVM_DIR}/bash_completion"
+
+# Load linux aliases
+source ~/dotfiles/bash_aliases.linux
 
 # -----------------------------------------------------------------------------

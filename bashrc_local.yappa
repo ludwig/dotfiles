@@ -15,13 +15,6 @@ fi
 
 # -----------------------------------------------------------------------------
 
-alias ls='ls --color -F'
-alias gdate='date'
-
-alias code='code-insiders'
-
-# -----------------------------------------------------------------------------
-
 # Homebrew (from `/home/linuxbrew/.linuxbrew/bin/brew shellenv`)
 export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
 export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar";
@@ -50,5 +43,8 @@ fi
 if [ -s "${HOMEBREW_PREFIX}/opt/nvm/etc/bash_completion.d/nvm" ]; then
     source "${HOMEBREW_PREFIX}/opt/nvm/etc/bash_completion.d/nvm"
 fi
+
+# Load linux aliases
+source ~/dotfiles/bash_aliases.linux
 
 # -----------------------------------------------------------------------------

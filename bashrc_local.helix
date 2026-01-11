@@ -1,12 +1,6 @@
 # ~/.bashrc_local
 # vim: ft=bash
 
-# Comment/uncomment as necessary
-#eval $(keychain --eval id_rsa)
-
-# For our "Home LAN" certificate authority
-#export REQUESTS_CA_BUNDLE="${HOME}/config/etc/ca-certs/home-lan.crt"
-
 # Set up powerline-shell prompt
 # See https://github.com/b-ryan/powerline-shell
 function _update_ps1() {
@@ -19,76 +13,6 @@ if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
 fi
 
 # -----------------------------------------------------------------------------
-# Helix-specific aliases
-
-alias code=code-insiders
-alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
-alias today='mkcd ~/active/$(gdate +%Y/%m-%d)/'
-alias caf='conda activate fastapi'
-alias less='nvimpager'
-
-# Playlists
-alias lofi-loft="vlc.sh ~/active/music/lofi-loft/lofi-loft.m3u"
-alias naxatras="vlc.sh ~/active/music/naxatras/naxatras.m3u"
-alias causa-sui="vlc.sh ~/active/music/causa-sui/causa-sui.m3u"
-alias hemi-sync="vlc.sh ~/Music/hemi-sync-30mins.m4a"
-
-# Useful directories (macOS)
-alias cd-obsidian='cd ~/Documents/ObsidianVaults/'
-
-# Helix-specific directories (experiments)
-alias cd-wikipedia='cd ~/active/links/wikipedia/'
-alias cd-awesome-links='cd ~/w/awesome-links/'
-alias cd-desktop='cd ~/Desktop/active-workspace/'
-alias cd-finetuning='cd ~/genai/tts-finetuning/'
-alias cd-stb='cd ~/active/stb'
-alias cd-zoo='cd ~/active/zoo'
-alias cd-seeds='cd ~/active/seeds'
-alias cd-chats='cd ~/active/chats'
-alias cd-hub='cd ~/active/poc/hub'
-alias cd-upwork='cd ~/active/upwork/'
-alias cd-books='cd ~/active/books/'
-alias cd-yum='cd ~/active/yum/'
-alias cd-wsdata='cd ~/Desktop/buckets-wsdata/'
-
-# AWS stuff
-alias sandbox-sso-login='aws sso login --profile sandbox-admin'
-alias billing-sso-login='aws sso login --profile billing-admin'
-alias infra-sso-login='aws sso login --profile prod-infra'
-
-# Hugo stuff
-alias cd-blog='cd ~/blogs/hugo'
-alias cd-themes='cd ~/themes/hugo'
-alias cd-blog-webstream='cd ~/blogs/hugo/vault/webstream'
-alias cd-watchq='cd ~/blogs/hugo/vault/watchq'
-
-# Spotlight
-alias spotlight-index-size='echo "Spotlight index size:"; sudo du -sh /System/Volumes/Data/.Spotlight-V100 2>/dev/null || echo "Not found"'
-alias spotlight-activity='sudo fs_usage -w -f filesystem | grep -E "mds|mdworker"'
-alias spotlight-volumeconfig='sudo plutil -p /System/Volumes/Data/.Spotlight-V100/VolumeConfiguration.plist'
-alias spotlight-workers='ps aux | egrep "mds|mdworker"'
-alias spotlight-status='mdutil -a -s'
-alias spotlight-reindex='sudo mdutil -E / && sudo mdutil -E /System/Volumes/Data'
-alias search='spotlight-search.sh'
-
-# -----------------------------------------------------------------------------
-# Temporary section (update it often)
-
-alias l='ls -lh'
-
-# Commonly used directories
-alias cd-psyche='mkcd ~/Desktop/buckets-psyche/'
-alias cd-reddit='mkcd ~/active/reddit/'
-alias cd-imgur='mkcd ~/active/imgur/'
-
-alias cd-psyche-today='mkcd ~/Desktop/buckets-psyche/$(date +%Y-%m-%d)'
-alias cd-reddit-today='mkcd ~/active/reddit/$(date +%Y-%m-%d)'
-alias cd-imgur-today='mkcd ~/active/imgur/$(date +%Y-%m-%d)'
-alias cd-webstream-today='mkcd ~/active/webstream/$(date +%Y)/$(date +%Y-%m-%d)'
-
-# -----------------------------------------------------------------------------
-
-#source ~/blogs/profile.sh
 
 # Set up z jumper
 source "/opt/homebrew/etc/profile.d/z.sh"
@@ -109,29 +33,21 @@ export PATH="/opt/homebrew/opt/openjdk/bin:${PATH}"
 #[ -d /opt/homebrew/opt/modules/init ] && source /opt/homebrew/opt/modules/init/bash
 #export MODULEPATH="${HOME}/modulefiles:${MODULEPATH}"
 
-# STB: Load poc bash scripts
-#source ~/active/poc/bashes/profile.sh
-
-# STB: AWS stuff
-source ~/security/aws/profile.sh
-
 # Setup mojo
 if [ -d ~/.modular ]; then
     export PATH="$PATH:/Users/luis/.modular/bin"
 fi
 
-# https://support.apple.com/kb/HT208050
-#export BASH_SILENCE_DEPRECATION_WARNING=1
-
 # Added by Antigravity
 export PATH="/Users/luis/.antigravity/antigravity/bin:$PATH"
 
-if [ -d ~/config ]; then
-    # Loads custom ANSIBLE_CONFIG
-    source ~/config/profiles.d/ansible.sh
+# https://support.apple.com/kb/HT208050
+#export BASH_SILENCE_DEPRECATION_WARNING=1
 
-    # The final profile
-    source ~/config/profiles.d/helix.sh
-fi
+# Load macOS aliases
+source ~/dotfiles/bash_aliases.macos
+
+# Load helix profile
+[ -d ~/config ] && source ~/config/profiles.d/helix.sh
 
 # -----------------------------------------------------------------------------

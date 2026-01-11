@@ -1,0 +1,14 @@
+
+# Spotlight
+alias spotlight-index-size='echo "Spotlight index size:"; sudo du -sh /System/Volumes/Data/.Spotlight-V100 2>/dev/null || echo "Not found"'
+alias spotlight-activity='sudo fs_usage -w -f filesystem | grep -E "mds|mdworker"'
+alias spotlight-volumeconfig='sudo plutil -p /System/Volumes/Data/.Spotlight-V100/VolumeConfiguration.plist'
+alias spotlight-workers='ps aux | egrep "mds|mdworker"'
+alias spotlight-status='mdutil -a -s'
+alias spotlight-reindex='sudo mdutil -E / && sudo mdutil -E /System/Volumes/Data'
+alias search='spotlight-search.sh'
+
+# Apps
+alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
+
+# vim: ft=bash
