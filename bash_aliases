@@ -36,7 +36,8 @@ alias cam='conda activate mony'
 alias cram='conda activate ram'
 alias cham='conda activate ham'
 alias clam='conda activate lam'
-alias clam-python='conda run -n lam --no-capture-output python'
+alias vam='conda activate vam'
+alias python-lam='conda run -n lam --live-stream python -u'
 alias ipython-lam='ipython --profile=lam'
 
 # Aliases for docker
