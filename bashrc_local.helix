@@ -41,6 +41,9 @@ fi
 # Added by Antigravity
 export PATH="/Users/luis/.antigravity/antigravity/bin:$PATH"
 
+# Added by kiro to ~/.bashrc
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path bash)"
+
 # https://support.apple.com/kb/HT208050
 #export BASH_SILENCE_DEPRECATION_WARNING=1
 
