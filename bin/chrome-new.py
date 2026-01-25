@@ -8,15 +8,16 @@ a more systemic problem with macOS, hence this workaround.
 
 import json
 import shlex
+import shutil
 import subprocess
+from datetime import datetime
 from pathlib import Path
-from typing import Optional, List
+from typing import List, Optional
 
 import rich
 import typer
 from rich.console import Console
 from rich.table import Table
-
 
 app = typer.Typer(
     name="chrome-new",
@@ -185,9 +186,9 @@ def print_profile_name(profile_idx: Optional[int], name: Optional[str]):
                 "because profile index provided[/]"
             )
     elif name is not None:
-        console.print(f"Using profile name match: [cyan]{name}[/]")
+        console.print(f"[dim]Using profile name match:[/] [cyan]{name}[/]")
     else:
-        console.print("Using default profile index: [cyan]0[/]")
+        console.print("[dim]Using default profile index:[/] [cyan]0[/]")
 
 
 @app.command(name="ls", hidden=True)
@@ -252,6 +253,12 @@ def do_print_bookmarks_file(
         "--name",
         help="Profile name to match (glob *<name>*)",
     ),
+    snapshot: bool = typer.Option(
+        False,
+        "-s",
+        "--snapshot",
+        help="Save snapshot copy of bookmarks file to current directory",
+    ),
     help: bool = HelpOption(),
 ):
     """Print the path to the bookmarks file for the selected profile."""
@@ -267,7 +274,13 @@ def do_print_bookmarks_file(
         raise typer.Abort()
 
     file_str = shlex.quote(str(bookmarks_file))
-    rich.print(f"Found [b]Bookmarks[/] File:\n[cyan]{file_str}[/]")
+    rich.print(f"[dim]Found [b]Bookmarks[/] File:[/]\n[cyan]{file_str}[/]")
+
+    if snapshot:
+        timestamp = datetime.now().strftime("%Y_%m_%d__%H_%M_%S")
+        snapshot_file = Path(f"Bookmarks-{timestamp}.json")
+        shutil.copy2(bookmarks_file, snapshot_file)
+        rich.print(f"Snapshot saved to: [cyan]{snapshot_file}[/]")
 
 
 @app.command(name="open")
