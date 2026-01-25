@@ -116,7 +116,7 @@ def resolve_profile_directory(profile_idx: Optional[int], name: Optional[str]) -
     if profile_idx is not None:
         if name:
             console.print(
-                f"[yellow]Name match '{name}' ignored "
+                f"[yellow]Name match argument [b]{name}[/] ignored "
                 "because profile index provided[/]"
             )
         return get_profile_directory(profile_idx)
@@ -175,6 +175,21 @@ def HelpOption(help=None):
     )
 
 
+def print_profile_name(profile_idx: Optional[int], name: Optional[str]):
+    """Show profile_idx or name information when set."""
+    if profile_idx is not None:
+        console.print(f"Using profile index: [cyan]{profile_idx}[/]")
+        if name:
+            console.print(
+                f"[yellow]Name match argument [b]{name}[/] ignored "
+                "because profile index provided[/]"
+            )
+    elif name is not None:
+        console.print(f"Using profile name match: [cyan]{name}[/]")
+    else:
+        console.print("Using default profile index: [cyan]0[/]")
+
+
 @app.command(name="ls", hidden=True)
 @app.command(name="list")
 def do_list_profiles():
@@ -194,6 +209,65 @@ def do_list_profiles():
         table.add_row(str(idx), profile, profile_name)
 
     console.print(table)
+
+
+@app.command(name="dir")
+def do_get_profile_dir(
+    profile_idx: Optional[int] = typer.Option(
+        None,
+        "-p",
+        "--profile-index",
+        help="Profile index to get directory for",
+    ),
+    name: Optional[str] = typer.Option(
+        None,
+        "-n",
+        "--name",
+        help="Profile name to match (glob *<name>*)",
+    ),
+    help: bool = HelpOption(),
+):
+    """Get the profile directory path."""
+    print_profile_name(profile_idx, name)
+    profile_dir = resolve_profile_directory(profile_idx, name)
+    if not profile_dir.exists():
+        console.print("[red]Profile directory not found[/]")
+        raise typer.Abort()
+
+    dir_str = shlex.quote(str(profile_dir))
+    rich.print(f"Profile Directory: [cyan]{dir_str}[/]")
+
+
+@app.command(name="bookmarks")
+def do_print_bookmarks_file(
+    profile_idx: Optional[int] = typer.Option(
+        None,
+        "-p",
+        "--profile-index",
+        help="Profile index to get bookmarks for",
+    ),
+    name: Optional[str] = typer.Option(
+        None,
+        "-n",
+        "--name",
+        help="Profile name to match (glob *<name>*)",
+    ),
+    help: bool = HelpOption(),
+):
+    """Print the path to the bookmarks file for the selected profile."""
+    print_profile_name(profile_idx, name)
+    profile_dir = resolve_profile_directory(profile_idx, name)
+    if not profile_dir.exists():
+        console.print("[red]Profile directory not found[/]")
+        raise typer.Abort()
+
+    bookmarks_file = profile_dir / "Bookmarks"
+    if not bookmarks_file.exists():
+        console.print("[red][b]Bookmarks[/] file not found[/]")
+        raise typer.Abort()
+
+    file_str = shlex.quote(str(bookmarks_file))
+    rich.print(f"Found [b]Bookmarks[/] File:\n[cyan]{file_str}[/]")
 
 
 @app.command(name="open")
