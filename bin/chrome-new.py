@@ -72,7 +72,7 @@ def get_profile_directory(index: Optional[int]) -> Path:
     if index is None:
         index = 0
     if not (0 <= index < len(profiles)):
-        console.print("[red]Invalid profile index[/red]")
+        console.print("[red]Invalid profile index[/]")
         raise typer.Abort()
     chrome_path = get_chrome_path()
     profile = profiles[index]
@@ -117,7 +117,7 @@ def resolve_profile_directory(profile_idx: Optional[int], name: Optional[str]) -
         if name:
             console.print(
                 f"[yellow]Name match '{name}' ignored "
-                "because profile index provided[/yellow]"
+                "because profile index provided[/]"
             )
         return get_profile_directory(profile_idx)
 
@@ -125,12 +125,12 @@ def resolve_profile_directory(profile_idx: Optional[int], name: Optional[str]) -
     if name:
         matches = find_matching_profiles(name)
         if not matches:
-            console.print(f"[red]No profiles matched name '{name}'[/red]")
+            console.print(f"[red]No profiles matched name '{name}'[/]")
             raise typer.Abort()
         if len(matches) > 1:
             console.print(
                 f"[yellow]Multiple profiles matched name '{name}'; "
-                f"using first match: {matches[0]}[/yellow]"
+                f"using first match: {matches[0]}[/]"
             )
         chrome_path = get_chrome_path()
         return chrome_path / matches[0]
@@ -144,7 +144,7 @@ def load_preferences(profile: str) -> dict:
     profile_dir = chrome_path / profile
     preferences = profile_dir / "Preferences"
     if not preferences.exists():
-        console.print("[red]Preferences file not found[/red]")
+        console.print("[red]Preferences file not found[/]")
         raise typer.Abort()
     with preferences.open() as f:
         prefs_dict = json.load(f)
@@ -181,7 +181,7 @@ def do_list_profiles():
     """List available Chrome profiles."""
     profiles = get_profiles()
     if not profiles:
-        console.print("[red]No profiles found[/red]")
+        console.print("[red]No profiles found[/]")
         raise typer.Exit(1)
 
     table = Table(title="Chrome Profiles")
@@ -242,7 +242,7 @@ def do_open(
     # Quick sanity check / resolve profile directory.
     profile_dir = resolve_profile_directory(profile_idx, name)
     if not profile_dir.exists():
-        console.print("[red]Profile directory not found[/red]")
+        console.print("[red]Profile directory not found[/]")
         raise typer.Abort()
 
     # Chrome wants only the directory name.
@@ -275,7 +275,7 @@ def do_open(
     try:
         subprocess.run(cmd, check=True)
     except subprocess.CalledProcessError as e:
-        console.print(f"[red]Error opening Chrome: {e}[/red]")
+        console.print(f"[red]Error opening Chrome: {e}[/]")
         raise typer.Abort()
 
 
