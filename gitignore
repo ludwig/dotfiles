@@ -17,12 +17,13 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 
+# LLM tooling
+.claude/settings.local.json
+.omc/
+
 # Ignore noise from OS X
 .DS_Store
 *.dSYM
-
-# Ignore noise from sass
-.sass-cache
 
 # Leave these commented out (usually).
 /tmp
