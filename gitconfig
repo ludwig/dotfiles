@@ -9,6 +9,7 @@
 	co = checkout
 	df = diff
 	ig = status --ignored --short
+	ai = "!ai-msg.py -v"
 
 [core]
 	excludesfile = ~/.gitignore
