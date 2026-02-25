@@ -1,7 +1,6 @@
 # Run one of these if you want to use ~/.gitignore
 #   (1) git config core.excludesfile ~/.gitignore
 #   (2) git config --global core.excludesfile ~/.gitignore
-#
 
 # Ignore swap & backup files
 .*.swp
@@ -20,6 +19,11 @@ __pycache__/
 # LLM tooling
 .claude/settings.local.json
 .omc/
+*.local.md
+*.local.json
+.mcp.json
+.mcp.yaml
+.playwright-mcp/
 
 # Ignore noise from OS X
 .DS_Store
