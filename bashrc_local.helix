@@ -33,6 +33,9 @@ export PATH="/opt/homebrew/opt/openjdk/bin:${PATH}"
 #[ -d /opt/homebrew/opt/modules/init ] && source /opt/homebrew/opt/modules/init/bash
 #export MODULEPATH="${HOME}/modulefiles:${MODULEPATH}"
 
+# heroku autocomplete setup
+HEROKU_AC_BASH_SETUP_PATH=/Users/luis/Library/Caches/heroku/autocomplete/bash_setup && test -f $HEROKU_AC_BASH_SETUP_PATH && source $HEROKU_AC_BASH_SETUP_PATH;
+
 # Setup mojo
 if [ -d ~/.modular ]; then
     export PATH="$PATH:/Users/luis/.modular/bin"
