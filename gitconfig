@@ -23,6 +23,8 @@
 	prompt = false
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool "vscode"]
+	cmd = code --wait --diff \"$LOCAL\" \"$REMOTE\"
 
 [merge]
 	tool = Kaleidoscope
@@ -31,6 +33,9 @@
 	prompt = false
 [mergetool "Kaleidoscope"]
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustexitcode = true
+[mergetool "vscode"]
+	cmd = code --wait --merge \"$LOCAL\" \"$REMOTE\" \"$BASE\" --output \"$MERGED\"
 	trustexitcode = true
 
 [filter "lfs"]
