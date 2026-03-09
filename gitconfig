@@ -18,7 +18,7 @@
 	default = current
 
 [diff]
-	tool = Kaleidoscope
+	tool = vscode
 [difftool]
 	prompt = false
 [difftool "Kaleidoscope"]
@@ -27,7 +27,7 @@
 	cmd = code --wait --diff \"$LOCAL\" \"$REMOTE\"
 
 [merge]
-	tool = Kaleidoscope
+	tool = vscode
 [mergetool]
 	keepBackup = true
 	prompt = false
@@ -35,7 +35,7 @@
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustexitcode = true
 [mergetool "vscode"]
-	cmd = code --wait --merge \"$LOCAL\" \"$REMOTE\" \"$BASE\" --output \"$MERGED\"
+	cmd = code --wait --merge \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
 	trustexitcode = true
 
 [filter "lfs"]
