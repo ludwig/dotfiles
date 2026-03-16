@@ -15,6 +15,7 @@ __pycache__/
 .ipynb_checkpoints/
 .pytest_cache/
 .ruff_cache/
+.mypy_cache/
 
 # LLM tooling
 .claude/settings.local.json
@@ -28,6 +29,10 @@ __pycache__/
 # Ignore noise from OS X
 .DS_Store
 *.dSYM
+
+# Bumo temp dirs
+extra-flows/
+flow-screenshots/
 
 # Leave these commented out (usually).
 /tmp
