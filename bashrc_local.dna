@@ -15,7 +15,9 @@ fi
 # -----------------------------------------------------------------------------
 
 # Set up z jumper
-source "/usr/local/etc/profile.d/z.sh"
+#source "/usr/local/etc/profile.d/z.sh"
+# Use zoxide instead of z jumper
+eval "$(zoxide init bash)"
 
 # Set up nvm
 export NVM_DIR="${HOME}/.nvm"
