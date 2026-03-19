@@ -12,7 +12,7 @@ alias l='ls -lh'
 alias x='exit'
 
 # Useful utilities
-alias code='code-insiders'
+#alias code='code-insiders'
 alias mc='ranger'
 alias lg='lazygit'
 alias ncdu-skip-library='ncdu --exclude ~/Library'
