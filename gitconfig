@@ -16,6 +16,8 @@
 
 [push]
 	default = current
+[pull]
+	ff = only
 
 [diff]
 	tool = vscode
