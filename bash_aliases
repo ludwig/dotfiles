@@ -12,7 +12,7 @@ alias l='ls -lh'
 alias x='exit'
 
 # Useful utilities
-#alias code='code-insiders'
+alias codei='code-insiders'
 alias mc='ranger'
 alias lg='lazygit'
 alias ncdu-skip-library='ncdu --exclude ~/Library'
@@ -28,11 +28,15 @@ alias chrome-default="open -na 'Google Chrome' --args --new-window --profile-dir
 alias chrome-list='chrome-new.py list'
 alias chrome='chrome-new.py open'
 
+# Aliases for venv
+alias wvenv='source .venv/bin/activate'
+alias mvenv='source ~/mony/.venv/bin/activate'
+
 # Aliases for conda
 alias cd-miniforge3='cd ~/miniforge3/envs'
 alias cde='conda deactivate'
 #alias cab='conda activate lab'
-alias cam='conda activate mony'
+#alias cam='conda activate mony'
 alias cram='conda activate ram'
 alias cham='conda activate ham'
 alias clam='conda activate lam'
