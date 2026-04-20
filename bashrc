@@ -379,6 +379,19 @@ cd-random() {
 
 # ----------------------------------------------------------------------------
 
+# Switch to a tmux session if it exists, otherwise attach to it.
+# Usage: tm <session-name>
+tm() {
+    local target="$1"
+    if [ -n "$TMUX" ]; then
+        tmux switch-client -t "$target"
+    else
+        tmux attach -t "$target"
+    fi
+}
+
+# ----------------------------------------------------------------------------
+
 ssh-eval-keychain() {
     if ! command -v keychain &> /dev/null; then
         echo "Error: keychain command not found"
