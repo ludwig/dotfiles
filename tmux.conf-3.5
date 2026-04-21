@@ -262,7 +262,16 @@ set -g default-terminal "xterm-256color"
 ## TODO: Take lines from here and move them above.
 
 # If running inside tmux ($TMUX is set), then change the status line to red
-%if #{TMUX}
-set -g status-bg red
-%endif
+#%if #{TMUX}
+#set -g status-bg red
+#%endif
 
+
+# -----------------------------------------------------------------------------
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'kristijan/fzf-pane-switch.tmux'
+# To find panel use "prefix + s"
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
