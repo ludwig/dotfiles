@@ -412,6 +412,9 @@ fi
 # Set up bash completion and key bindings for fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# Set up zoxide as our z-jump tool
+[ -f ~/.zoxide.bash ] && source ~/.zoxide.bash
+
 # Invoke completion
 if [ -f ~/.invoke-completion.sh ]; then
     source ~/.invoke-completion.sh
