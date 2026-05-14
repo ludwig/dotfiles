@@ -15,6 +15,7 @@ from powerline_shell.colortrans import rgb2short
 # For example, the `yappa`` userhost segment was unreadable.
 host_color_lut = {
     "yappa": (255, 131),  # from (96, 131)
+    "axiom": (255, 28),   # from (29, 101)
 }
 
 
