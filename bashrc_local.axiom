@@ -1,0 +1,64 @@
+# ~/.bashrc_local
+# vim: ft=bash
+
+# Set up powerline-shell prompt
+# See https://github.com/b-ryan/powerline-shell
+function _update_ps1() {
+    export PS1=$(powerline-shell $?)
+}
+# Uncomment the following line while upgrading powerline-shell
+#command -v powerline-shell &>/dev/null &&
+if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
+
+# -----------------------------------------------------------------------------
+
+# Set up z jumper
+# source "/opt/homebrew/etc/profile.d/z.sh"
+# Use zoxide instead of z jumper
+#eval "$(zoxide init bash)"
+
+# Setup nvm
+export NVM_DIR="${HOME}/.nvm"
+if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
+    source "/opt/homebrew/opt/nvm/nvm.sh"
+fi
+if [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ]; then
+    source "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+fi
+
+# Setup java
+#export PATH="/opt/homebrew/opt/openjdk/bin:${PATH}"
+
+# Setup modules
+#[ -d /opt/homebrew/opt/modules/init ] && source /opt/homebrew/opt/modules/init/bash
+#export MODULEPATH="${HOME}/modulefiles:${MODULEPATH}"
+
+# heroku autocomplete setup
+HEROKU_AC_BASH_SETUP_PATH=/Users/luis/Library/Caches/heroku/autocomplete/bash_setup && test -f $HEROKU_AC_BASH_SETUP_PATH && source $HEROKU_AC_BASH_SETUP_PATH;
+
+# Setup GOBIN
+export PATH="${PATH}:${HOME}/go/bin"
+
+# Setup mojo
+if [ -d ~/.modular ]; then
+    export PATH="$PATH:/Users/luis/.modular/bin"
+fi
+
+# Added by Antigravity
+#export PATH="/Users/luis/.antigravity/antigravity/bin:$PATH"
+
+# Added by kiro to ~/.bashrc
+#[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path bash)"
+
+# https://support.apple.com/kb/HT208050
+#export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# Load macOS aliases
+source ~/dotfiles/bash_aliases.macos
+
+# Load axiom profile
+[ -d ~/config ] && source ~/config/profiles.d/axiom.sh
+
+# -----------------------------------------------------------------------------
