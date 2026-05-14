@@ -28,6 +28,9 @@ if [ -f ~/.conda-init.sh ]; then
     source ~/.conda-init.sh
 fi
 
+# Initialize rust
+[ -d ~/.cargo ] && source ~/.cargo/env
+
 # Prepend ~/bin to the PATH
 if [ -d ~/bin ]; then
     PATH="${HOME}/bin:${PATH}"
