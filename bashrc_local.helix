@@ -53,6 +53,14 @@ export PATH="/Users/luis/.antigravity/antigravity/bin:$PATH"
 # Added by kiro to ~/.bashrc
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path bash)"
 
+# --- Gas Town Integration (managed by gt) ---
+[[ -f "/Users/luis/.config/gastown/shell-hook.sh" ]] && source "/Users/luis/.config/gastown/shell-hook.sh"
+# --- End Gas Town ---
+export GASTOWN_DISABLE_OFFER_ADD=1
+
+# opencode
+export PATH=/Users/luis/.opencode/bin:$PATH
+
 # https://support.apple.com/kb/HT208050
 #export BASH_SILENCE_DEPRECATION_WARNING=1
 
