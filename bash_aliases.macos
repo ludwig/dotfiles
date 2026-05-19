@@ -15,4 +15,7 @@ alias spots='spotlight-search.sh'
 # Apps
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 
+# Disable macOS extended attributes (tar files)
+export COPYFILE_DISABLE=1
+
 # vim: ft=bash
