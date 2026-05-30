@@ -32,6 +32,9 @@ __pycache__/
 extra-flows/
 flow-screenshots/
 
+# Specific config files
+.linear.toml
+
 # Claude
 .claude/worktrees/
 .claude/settings.local.json
