@@ -173,6 +173,20 @@ bind-key x delete-buffer
 #unbind -t vi-copy Enter
 #bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
 
+# copy-mode-vi selection/scroll reference (all defaults, re-set here just for lookup)
+bind-key -T copy-mode-vi v                 send-keys -X begin-selection
+bind-key -T copy-mode-vi o                 send-keys -X other-end
+bind-key -T copy-mode-vi Enter             send-keys -X copy-selection-and-cancel
+bind-key -T copy-mode-vi Escape            send-keys -X cancel
+bind-key -T copy-mode-vi k                 send-keys -X cursor-up
+bind-key -T copy-mode-vi j                 send-keys -X cursor-down
+bind-key -T copy-mode-vi C-u               send-keys -X halfpage-up
+bind-key -T copy-mode-vi C-d               send-keys -X halfpage-down
+bind-key -T copy-mode-vi C-b               send-keys -X page-up
+bind-key -T copy-mode-vi C-f               send-keys -X page-down
+bind-key -T copy-mode-vi g                 send-keys -X history-top
+bind-key -T copy-mode-vi G                 send-keys -X history-bottom
+
 # }}}
 # Screen-like key bindings {{{
 
