@@ -32,6 +32,9 @@ fi
 # Alternative: go env -w GOBIN=$HOME/bin
 export PATH="${PATH}:${HOME}/go/bin"
 
+# Setup cargo
+source "$HOME/.cargo/env"
+
 # Set up docker
 #export PATH="${HOME}/.docker/bin:${PATH}"
 #export DOCKER_BUILDKIT=1
