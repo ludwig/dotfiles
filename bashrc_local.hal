@@ -30,8 +30,14 @@ export PATH="${PATH}:${HOME}/.modular/bin"
 
 # Set up nvm
 export NVM_DIR="${HOME}/.nvm"
-[ -s "${NVM_DIR}/nvm.sh" ] && source "${NVM_DIR}/nvm.sh"
-[ -s "${NVM_DIR}/bash_completion" ] && source "${NVM_DIR}/bash_completion"
+if [ -s "${HOMEBREW_PREFIX}/opt/nvm/nvm.sh" ]; then
+    source "${HOMEBREW_PREFIX}/opt/nvm/nvm.sh"
+fi
+if [ -s "${HOMEBREW_PREFIX}/opt/nvm/etc/bash_completion.d/nvm" ]; then
+    source "${HOMEBREW_PREFIX}/opt/nvm/etc/bash_completion.d/nvm"
+fi
+
+
 
 # Load linux aliases
 source ~/dotfiles/bash_aliases.linux
