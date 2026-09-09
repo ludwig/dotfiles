@@ -41,10 +41,15 @@ with open(path, "rb") as f:
 active = prefs.setdefault("FinderActive", {})
 order = prefs.setdefault("FinderOrdering", {})
 status = prefs.setdefault("NSServicesStatus", {})
+# Apple stores these as integers; a stray `defaults write` with a plist
+# literal can leave strings behind, so normalise before touching anything.
+for d in (active, order):
+    for k, v in list(d.items()):
+        d[k] = int(v)
 for title in titles:
     key = f"(null) - {title} - runWorkflowAsService"
     active[key] = 1
-    order.setdefault(key, (max(order.values(), default=-1) + 1))
+    order.setdefault(key, max(order.values(), default=-1) + 1)
     entry = status.setdefault(key, {})
     entry["enabled_context_menu"] = 1
     entry["enabled_services_menu"] = 1
