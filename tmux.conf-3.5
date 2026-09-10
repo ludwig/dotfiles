@@ -237,7 +237,8 @@ bind-key -r = resize-pane -D 3
 # Statusbar settings {{{
 
 # toggle statusbar
-bind-key s set status
+# dead: fzf-pane-switch rebinds prefix+s to its pane picker (loaded later, wins)
+#bind-key s set status
 
 # use vi-style key bindings in the status line
 set -g status-keys vi
@@ -248,6 +249,9 @@ set -g display-time 2000
 
 # refresh interval for status bar
 set -g status-interval 30
+
+# room for agent-radar's "[agents - N]" badge (default 10 truncates it)
+set -g status-left-length 40
 
 # default statusbar colors
 set -g status-style fg=white,bg=default
@@ -294,9 +298,16 @@ set -g @plugin 'vieitesss/agent-radar'
 # agent-radar's default working-pattern only matches the braille spinner
 # (U+2800-28FF). Claude Code 2.x animates the sparkle family instead, so the
 # pane latched to "stopped" forever and the window stayed red while busy.
-# Same default plus one alternative anchored on the spinner's elapsed-time
-# counter ("Thinking... (1m 58s"), which only renders during a live turn.
-set -g @agent-radar-working-pattern "\342[\240-\243]|(\342\226\240|\342\254\235){4,}|msg=interrupt|\342\200\246 [(][0-9]+[ms][ ]"
+# Override with the upstream's non-braille alternatives plus one anchored on
+# the spinner's elapsed-time counter ("Thinking... (1m 58s"), which only
+# renders during a live turn. The braille byte range is deliberately left
+# out: the plugin reads this option back via `show-option -v`, and tmux
+# escapes any lone non-UTF-8 byte as octal ("\342"), which grep -E then
+# rejects as an invalid back reference, killing detection entirely.
+set -g @agent-radar-working-pattern "(■|⬝){4,}|msg=interrupt|… [(][0-9]+[ms][ ]"
+# No red window highlight for unseen-stopped agents; the [agents - N] badge in
+# status-left still says which sessions have one. Set to a color to re-enable.
+set -g @agent-radar-window-color default
 set -g @plugin 'hiroppy/tmux-agent-sidebar'
 # To find panel use "prefix + s"
 
