@@ -291,6 +291,12 @@ set -g default-terminal "xterm-256color"
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'kristijan/fzf-pane-switch.tmux'
 set -g @plugin 'vieitesss/agent-radar'
+# agent-radar's default working-pattern only matches the braille spinner
+# (U+2800-28FF). Claude Code 2.x animates the sparkle family instead, so the
+# pane latched to "stopped" forever and the window stayed red while busy.
+# Same default plus one alternative anchored on the spinner's elapsed-time
+# counter ("Thinking... (1m 58s"), which only renders during a live turn.
+set -g @agent-radar-working-pattern "\342[\240-\243]|(\342\226\240|\342\254\235){4,}|msg=interrupt|\342\200\246 [(][0-9]+[ms][ ]"
 set -g @plugin 'hiroppy/tmux-agent-sidebar'
 # To find panel use "prefix + s"
 
