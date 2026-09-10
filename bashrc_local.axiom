@@ -1,6 +1,14 @@
 # ~/.bashrc_local
 # vim: ft=bash
 
+# The following lines were added by Docker Desktop to add commands to your PATH.
+#export PATH="$PATH:/Users/luis/.docker/bin"
+# End of Docker Desktop section.
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init.bash 2>/dev/null || :
+
 # Set up powerline-shell prompt
 # See https://github.com/b-ryan/powerline-shell
 function _update_ps1() {
@@ -57,6 +65,9 @@ fi
 
 # Load macOS aliases
 source ~/dotfiles/bash_aliases.macos
+
+# Hermes Agent — ensure ~/.local/bin is on PATH
+export PATH="$HOME/.local/bin:$PATH"
 
 # Load axiom profile
 [ -d ~/config ] && source ~/config/profiles.d/axiom.sh
