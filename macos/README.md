@@ -25,8 +25,9 @@ It is safe to re-run.
 
 ### If the item still does not appear
 
-Do the tick by hand once. This is the step that unblocked it on the
-first machine, and the installer replicates what it writes:
+The installer alone was verified sufficient on macOS 26.5: it writes
+the same preferences that ticking the box in System Settings does. If a
+future macOS changes that shape, tick it by hand once:
 
 1. System Settings > General > Login Items & Extensions.
 2. Scroll to Extensions, click the info button next to **Finder**.
