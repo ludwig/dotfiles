@@ -50,10 +50,16 @@ for title in titles:
     key = f"(null) - {title} - runWorkflowAsService"
     active[key] = 1
     order.setdefault(key, max(order.values(), default=-1) + 1)
+    # Mirror exactly what System Settings > Extensions > Finder writes when
+    # you tick the box. Observed on macOS 26.5; older guesses with
+    # enabled_context_menu / enabled_services_menu did NOT make Finder
+    # show the item.
     entry = status.setdefault(key, {})
-    entry["enabled_context_menu"] = 1
-    entry["enabled_services_menu"] = 1
-    entry["presentation_modes"] = {"ContextMenu": 1, "ServicesMenu": 1}
+    entry.pop("enabled_context_menu", None)
+    entry.pop("enabled_services_menu", None)
+    entry["presentation_modes"] = {
+        "ContextMenu": 1, "FinderPreview": 1, "ServicesMenu": 1, "TouchBar": 0,
+    }
     print(f"enabled  {title}")
 with open(path, "wb") as f:
     plistlib.dump(prefs, f)
