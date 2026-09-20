@@ -313,8 +313,8 @@ set -g @agent-radar-working-pattern "(■|⬝){4,}|msg=interrupt|… [(][0-9]+[m
 set -g @agent-radar-window-color default
 
 # https://hiroppy.github.io/tmux-agent-sidebar/reference/tmux-options/
-#set -g @@sidebar_auto_create off
-#set -g @plugin 'hiroppy/tmux-agent-sidebar'
+set -g @sidebar_auto_create off
+set -g @plugin 'hiroppy/tmux-agent-sidebar'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
