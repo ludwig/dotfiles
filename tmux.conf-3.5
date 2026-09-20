@@ -293,7 +293,10 @@ set -g default-terminal "xterm-256color"
 # -----------------------------------------------------------------------------
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
+
+# To find panel use "prefix + s"
 set -g @plugin 'kristijan/fzf-pane-switch.tmux'
+
 set -g @plugin 'vieitesss/agent-radar'
 # agent-radar's default working-pattern only matches the braille spinner
 # (U+2800-28FF). Claude Code 2.x animates the sparkle family instead, so the
@@ -308,8 +311,10 @@ set -g @agent-radar-working-pattern "(■|⬝){4,}|msg=interrupt|… [(][0-9]+[m
 # No red window highlight for unseen-stopped agents; the [agents - N] badge in
 # status-left still says which sessions have one. Set to a color to re-enable.
 set -g @agent-radar-window-color default
-set -g @plugin 'hiroppy/tmux-agent-sidebar'
-# To find panel use "prefix + s"
+
+# https://hiroppy.github.io/tmux-agent-sidebar/reference/tmux-options/
+#set -g @@sidebar_auto_create off
+#set -g @plugin 'hiroppy/tmux-agent-sidebar'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
