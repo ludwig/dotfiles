@@ -307,7 +307,8 @@ set -g @plugin 'vieitesss/agent-radar'
 # out: the plugin reads this option back via `show-option -v`, and tmux
 # escapes any lone non-UTF-8 byte as octal ("\342"), which grep -E then
 # rejects as an invalid back reference, killing detection entirely.
-set -g @agent-radar-working-pattern "(■|⬝){4,}|msg=interrupt|… [(][0-9]+[ms][ ]"
+#set -g @agent-radar-working-pattern "(■|⬝){4,}|msg=interrupt|… [(][0-9]+[ms][ ]"
+
 # No red window highlight for unseen-stopped agents; the [agents - N] badge in
 # status-left still says which sessions have one. Set to a color to re-enable.
 set -g @agent-radar-window-color default
