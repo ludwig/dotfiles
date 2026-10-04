@@ -42,4 +42,7 @@ fi
 # Load linux aliases
 source ~/dotfiles/bash_aliases.linux
 
+# Load hal profile
+[ -d ~/config ] && source ~/config/profiles.d/hal.sh
+
 # -----------------------------------------------------------------------------
