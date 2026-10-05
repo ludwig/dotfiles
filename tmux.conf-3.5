@@ -280,6 +280,9 @@ set -g allow-passthrough on
 # Use xterm-256color inside tmux
 set -g default-terminal "xterm-256color"
 
+# Pass modified keys (Shift+Enter etc.) through to apps that request them
+set -s extended-keys on
+
 # -----------------------------------------------------------------------------
 ## Reference file: /opt/homebrew/opt/tmux/share/tmux/example_tmux.conf
 ## TODO: Take lines from here and move them above.
