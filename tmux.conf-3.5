@@ -250,7 +250,11 @@ set -g display-time 2000
 # refresh interval for status bar
 set -g status-interval 30
 
-# room for agent-radar's "[agents - N]" badge (default 10 truncates it)
+# agent-radar appends its "[agents - N]" badge to status-left unless status-left
+# already names agent-radar-status, and no option turns the badge off. Name it
+# here, before tpm loads the plugin: the script still runs (it is what marks an
+# agent seen for the prefix+a popup), but its output goes to /dev/null.
+set -g status-left "[#{session_name}] #(~/.tmux/plugins/agent-radar/scripts/agent-radar-status '#S' >/dev/null)"
 set -g status-left-length 40
 
 # default statusbar colors
