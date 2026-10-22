@@ -47,4 +47,7 @@ fi
 # Load linux aliases
 source ~/dotfiles/bash_aliases.linux
 
+# Load yappa profile
+[ -d ~/config ] && source ~/config/profiles.d/yappa.sh
+
 # -----------------------------------------------------------------------------
