@@ -304,9 +304,11 @@ set -g @plugin 'kristijan/fzf-pane-switch.tmux'
 # forked ~270 processes/s and drove a macOS kernel leak in data.kalloc.1024
 # (10.4 GB wired on helix after 19 days). See hub journal/2026-10-23.
 
+# tmux-agent-sidebar disabled 2026-10-23, with its Claude Code plugin
+# (tmux-agent-sidebar@hiroppy in ~/.claude/settings.json). Uncomment both to restore.
 # https://hiroppy.github.io/tmux-agent-sidebar/reference/tmux-options/
-set -g @sidebar_auto_create off
-set -g @plugin 'hiroppy/tmux-agent-sidebar'
+#set -g @sidebar_auto_create off
+#set -g @plugin 'hiroppy/tmux-agent-sidebar'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
