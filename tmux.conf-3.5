@@ -250,11 +250,7 @@ set -g display-time 2000
 # refresh interval for status bar
 set -g status-interval 30
 
-# agent-radar appends its "[agents - N]" badge to status-left unless status-left
-# already names agent-radar-status, and no option turns the badge off. Name it
-# here, before tpm loads the plugin: the script still runs (it is what marks an
-# agent seen for the prefix+a popup), but its output goes to /dev/null.
-set -g status-left "[#{session_name}] #(~/.tmux/plugins/agent-radar/scripts/agent-radar-status '#S' >/dev/null)"
+set -g status-left "[#{session_name}] "
 set -g status-left-length 40
 
 # default statusbar colors
@@ -304,21 +300,9 @@ set -g @plugin 'tmux-plugins/tpm'
 # To find panel use "prefix + s"
 set -g @plugin 'kristijan/fzf-pane-switch.tmux'
 
-set -g @plugin 'vieitesss/agent-radar'
-# agent-radar's default working-pattern only matches the braille spinner
-# (U+2800-28FF). Claude Code 2.x animates the sparkle family instead, so the
-# pane latched to "stopped" forever and the window stayed red while busy.
-# Override with the upstream's non-braille alternatives plus one anchored on
-# the spinner's elapsed-time counter ("Thinking... (1m 58s"), which only
-# renders during a live turn. The braille byte range is deliberately left
-# out: the plugin reads this option back via `show-option -v`, and tmux
-# escapes any lone non-UTF-8 byte as octal ("\342"), which grep -E then
-# rejects as an invalid back reference, killing detection entirely.
-#set -g @agent-radar-working-pattern "(■|⬝){4,}|msg=interrupt|… [(][0-9]+[ms][ ]"
-
-# No red window highlight for unseen-stopped agents; the [agents - N] badge in
-# status-left still says which sessions have one. Set to a color to re-enable.
-set -g @agent-radar-window-color default
+# agent-radar (vieitesss/agent-radar) removed 2026-10-23: its 2-second poller
+# forked ~270 processes/s and drove a macOS kernel leak in data.kalloc.1024
+# (10.4 GB wired on helix after 19 days). See hub journal/2026-10-23.
 
 # https://hiroppy.github.io/tmux-agent-sidebar/reference/tmux-options/
 set -g @sidebar_auto_create off
@@ -326,4 +310,3 @@ set -g @plugin 'hiroppy/tmux-agent-sidebar'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
-#run-shell ~/.tmux/plugins/agent-radar/agent-radar.tmux
