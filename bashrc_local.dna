@@ -23,13 +23,46 @@ fi
 # Use zoxide instead of z jumper
 eval "$(zoxide init bash)"
 
-# Set up nvm
+# Set up nvm, lazily. Sourcing nvm.sh cost 0.35-0.6 s per shell: it resolves
+# the default alias and runs `node --version`. Instead, put the default node on
+# PATH (and MANPATH) the way `nvm use` would, and load nvm on first use.
 export NVM_DIR="${HOME}/.nvm"
 if [ -s "/usr/local/opt/nvm/nvm.sh" ]; then
-    source "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-fi
-if [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ]; then
-    source "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
+    _nvm_lazy_load() {
+        unset -f nvm _nvm_lazy_load _nvm_lazy_complete
+        source "/usr/local/opt/nvm/nvm.sh"
+        if [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ]; then
+            source "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
+        fi
+    }
+    _nvm_default=""
+    [ -r "${NVM_DIR}/alias/default" ] && read -r _nvm_default < "${NVM_DIR}/alias/default"
+    case "${_nvm_default}" in
+        # `node` and `stable` mean the newest installed version
+        node|stable) _nvm_default=$(builtin cd "${NVM_DIR}/versions/node" 2>/dev/null &&
+                         printf '%s\n' v* | command sort -V | command tail -n 1) ;;
+    esac
+    if [ -n "${_nvm_default}" ] && [ -x "${NVM_DIR}/versions/node/${_nvm_default}/bin/node" ]; then
+        export NVM_BIN="${NVM_DIR}/versions/node/${_nvm_default}/bin"
+        export NVM_INC="${NVM_DIR}/versions/node/${_nvm_default}/include/node"
+        case ":${PATH}:" in
+            *":${NVM_BIN}:"*) ;;
+            *) export PATH="${NVM_BIN}:${PATH}" ;;
+        esac
+        _nvm_man="${NVM_DIR}/versions/node/${_nvm_default}/share/man"
+        case ":${MANPATH-}:" in
+            *":${_nvm_man}:"*) ;;
+            *) export MANPATH="${_nvm_man}:${MANPATH-}" ;;
+        esac
+        nvm() { _nvm_lazy_load; nvm "$@"; }
+        _nvm_lazy_complete() { _nvm_lazy_load; __nvm "$@"; }
+        complete -o default -F _nvm_lazy_complete nvm
+    else
+        # A default alias this cannot resolve cheaply (lts/*, a bare major
+        # number): load nvm now and let it decide, as before.
+        _nvm_lazy_load
+    fi
+    unset _nvm_default _nvm_man
 fi
 
 # Set up go
