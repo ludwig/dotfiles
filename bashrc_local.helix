@@ -74,7 +74,4 @@ source ~/dotfiles/bash_aliases.macos
 # Load helix profile
 [ -d ~/config ] && source ~/config/profiles.d/helix.sh
 
-# repo-man: each scan that folds a host also publishes the page to hal (https://repos.stash)
-export REPO_MAN_PUBLISH=hal-repo-man
-
 # -----------------------------------------------------------------------------
